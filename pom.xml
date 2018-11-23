@@ -6,12 +6,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.group7.pm</groupId>
-    <artifactId>personalmanagement</artifactId>
+    <artifactId>P2P</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>PersonalManagement</name>
-    <description>Project for PersonalManagement</description>
+    <name>P2P</name>
+    <description>Project for P2P</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
