@@ -1,0 +1,5 @@
+TB_user 用户表
+TB_role 角色表
+TB_resources 资源表
+TB_user_role 用户角色表
+TB_role_resources 角色资源表
