@@ -16,6 +16,7 @@ public class pageJump {
      */
     @RequestMapping("toIndex")
     public String indexPage(){
+        System.out.println(123);
         return "frontEnd/index";
     }
 
