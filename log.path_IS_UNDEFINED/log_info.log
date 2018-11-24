@@ -1,0 +1,1147 @@
+2018-11-24 09:26:08.395 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 7100 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 09:26:08.412 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 09:26:08.511 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 09:26:08.511 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 09:26:10.155 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 09:26:10.171 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 09:26:10.194 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 09:26:10.194 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 09:26:10.204 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 09:26:10.316 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 09:26:10.316 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1805 ms
+2018-11-24 09:26:10.375 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 09:26:10.376 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 09:26:10.377 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 09:26:10.377 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 09:26:10.382 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 09:26:10.382 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 09:26:10.382 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 09:26:10.382 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 09:26:10.383 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 09:26:10.383 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 09:26:10.576 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 09:26:11.218 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 09:26:11.593 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 09:26:11.950 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 09:26:11.988 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 09:26:11.998 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 09:26:12.018 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 09:26:12.022 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 4.839 seconds (JVM running for 7.01)
+2018-11-24 09:26:36.211 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 09:26:36.212 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 09:26:36.226 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 13 ms
+2018-11-24 09:29:11.261 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 6904 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 09:29:11.277 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 09:29:11.339 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 09:29:11.339 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 09:29:13.867 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 09:29:13.882 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 09:29:13.882 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 09:29:13.882 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 09:29:13.898 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 09:29:13.991 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 09:29:13.991 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2652 ms
+2018-11-24 09:29:14.038 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 09:29:14.038 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 09:29:14.038 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 09:29:14.038 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 09:29:14.038 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 09:29:14.038 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 09:29:14.038 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 09:29:14.038 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 09:29:14.038 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 09:29:14.038 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 09:29:14.163 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 09:29:14.740 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 09:29:15.052 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 09:29:15.411 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 09:29:15.473 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 09:29:15.489 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 09:29:15.505 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 09:29:15.505 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 5.117 seconds (JVM running for 6.416)
+2018-11-24 09:29:21.859 [http-nio-8080-exec-2] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 09:29:21.860 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 09:29:21.869 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 8 ms
+2018-11-24 09:30:37.856 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 6492 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 09:30:37.872 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 09:30:38.496 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 09:30:38.496 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 09:30:40.586 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 09:30:40.617 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 09:30:40.649 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 09:30:40.649 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 09:30:40.649 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 09:30:41.148 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 09:30:41.148 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2652 ms
+2018-11-24 09:30:41.257 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 09:30:41.257 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 09:30:41.257 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 09:30:41.257 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 09:30:41.257 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 09:30:41.257 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 09:30:41.257 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 09:30:41.257 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 09:30:41.257 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 09:30:41.257 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 09:30:41.397 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 09:30:42.177 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 09:30:42.521 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 09:30:42.833 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 09:30:42.879 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 09:30:42.879 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 09:30:42.911 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 09:30:42.911 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 6.444 seconds (JVM running for 8.747)
+2018-11-24 09:30:50.163 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 09:30:50.163 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 09:30:50.172 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 8 ms
+2018-11-24 09:31:26.211 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 6972 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 09:31:26.274 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 09:31:26.305 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 09:31:26.321 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 09:31:27.693 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 09:31:27.709 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 09:31:27.725 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 09:31:27.725 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 09:31:27.740 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 09:31:27.835 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 09:31:27.835 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1514 ms
+2018-11-24 09:31:27.882 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 09:31:27.882 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 09:31:27.882 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 09:31:27.882 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 09:31:27.882 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 09:31:27.882 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 09:31:27.882 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 09:31:27.882 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 09:31:27.882 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 09:31:27.882 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 09:31:28.006 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 09:31:28.568 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 09:31:28.880 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 09:31:29.239 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 09:31:29.270 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 09:31:29.286 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 09:31:29.301 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 09:31:29.301 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 4.431 seconds (JVM running for 5.901)
+2018-11-24 09:31:37.058 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 09:31:37.059 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 09:31:37.085 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 26 ms
+2018-11-24 10:01:59.737 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 5232 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 10:01:59.737 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 10:01:59.846 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 10:01:59.846 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 10:02:01.266 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 10:02:01.297 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:02:01.297 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 10:02:01.297 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 10:02:01.297 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 10:02:01.406 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 10:02:01.406 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1560 ms
+2018-11-24 10:02:01.453 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:02:01.453 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 10:02:01.453 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:02:01.453 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 10:02:01.453 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 10:02:01.453 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 10:02:01.453 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 10:02:01.453 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 10:02:01.453 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 10:02:01.453 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 10:02:01.578 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 10:02:02.108 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 10:02:02.389 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 10:02:02.686 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 10:02:02.717 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:02:02.717 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 10:02:02.732 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 10:02:02.748 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 4.415 seconds (JVM running for 5.859)
+2018-11-24 10:02:09.979 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 10:02:09.979 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 10:02:09.995 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 16 ms
+2018-11-24 10:04:05.019 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 1940 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 10:04:05.019 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 10:04:05.144 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 10:04:05.144 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 10:04:06.548 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 10:04:06.548 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:04:06.564 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 10:04:06.564 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 10:04:06.564 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 10:04:06.657 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 10:04:06.657 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1513 ms
+2018-11-24 10:04:06.720 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:04:06.720 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 10:04:06.720 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:04:06.720 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 10:04:06.720 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 10:04:06.720 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 10:04:06.720 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 10:04:06.720 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 10:04:06.720 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 10:04:06.720 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 10:04:06.845 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 10:04:07.397 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 10:04:07.742 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 10:04:08.129 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 10:04:08.176 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:04:08.191 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 10:04:08.207 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 10:04:08.207 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 4.108 seconds (JVM running for 6.435)
+2018-11-24 10:04:09.614 [http-nio-8080-exec-2] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 10:04:09.614 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 10:04:09.622 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 8 ms
+2018-11-24 10:04:35.062 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 5556 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 10:04:35.077 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 10:04:35.311 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 10:04:35.311 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 10:04:37.417 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 10:04:37.433 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:04:37.433 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 10:04:37.433 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 10:04:37.433 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 10:04:37.558 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 10:04:37.558 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2247 ms
+2018-11-24 10:04:37.605 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:04:37.605 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 10:04:37.605 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:04:37.605 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 10:04:37.605 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 10:04:37.605 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 10:04:37.605 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 10:04:37.605 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 10:04:37.605 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 10:04:37.605 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 10:04:37.761 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 10:04:38.307 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 10:04:38.619 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 10:04:38.915 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 10:04:38.946 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:04:38.962 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 10:04:38.977 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 10:04:38.977 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 4.633 seconds (JVM running for 6.66)
+2018-11-24 10:04:47.097 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 10:04:47.097 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 10:04:47.097 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2018-11-24 10:06:20.457 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 6060 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 10:06:20.463 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 10:06:20.530 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 10:06:20.530 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 10:06:23.020 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 10:06:23.032 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:06:23.038 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 10:06:23.038 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 10:06:23.045 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 10:06:23.165 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 10:06:23.165 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2635 ms
+2018-11-24 10:06:23.211 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:06:23.213 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 10:06:23.213 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:06:23.214 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 10:06:23.217 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 10:06:23.218 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 10:06:23.218 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 10:06:23.218 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 10:06:23.218 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 10:06:23.218 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 10:06:23.350 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 10:06:23.897 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 10:06:24.215 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 10:06:24.515 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 10:06:24.552 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:06:24.562 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 10:06:24.577 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 10:06:24.581 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 5.05 seconds (JVM running for 6.471)
+2018-11-24 10:07:29.456 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 10:07:29.456 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 10:07:29.467 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 10 ms
+2018-11-24 10:07:56.117 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 3520 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 10:07:56.132 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 10:07:56.210 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 10:07:56.210 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 10:07:57.567 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 10:07:57.567 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:07:57.583 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 10:07:57.583 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 10:07:57.583 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 10:07:57.677 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 10:07:57.677 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1467 ms
+2018-11-24 10:07:57.723 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:07:57.723 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 10:07:57.723 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:07:57.723 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 10:07:57.723 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 10:07:57.723 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 10:07:57.723 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 10:07:57.723 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 10:07:57.723 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 10:07:57.723 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 10:07:57.848 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 10:07:58.503 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 10:07:58.862 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 10:07:59.159 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 10:07:59.190 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:07:59.205 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 10:07:59.221 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 10:07:59.221 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 3.76 seconds (JVM running for 6.226)
+2018-11-24 10:08:38.906 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 10:08:38.906 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 10:08:38.915 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 9 ms
+2018-11-24 10:10:06.854 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 6048 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 10:10:06.857 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 10:10:06.906 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 10:10:06.906 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 10:10:08.986 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 10:10:09.000 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:10:09.004 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 10:10:09.005 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 10:10:09.013 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 10:10:09.134 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 10:10:09.134 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2228 ms
+2018-11-24 10:10:09.191 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:10:09.192 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 10:10:09.194 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:10:09.194 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 10:10:09.204 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 10:10:09.206 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 10:10:09.206 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 10:10:09.206 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 10:10:09.206 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 10:10:09.207 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 10:10:09.350 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 10:10:09.908 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 10:10:10.218 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 10:10:10.522 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 10:10:10.559 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:10:10.569 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 10:10:10.585 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 10:10:10.589 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 4.605 seconds (JVM running for 6.03)
+2018-11-24 10:15:15.075 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 6900 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 10:15:15.075 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 10:15:15.122 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 10:15:15.122 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 10:15:16.775 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 10:15:16.806 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:15:16.822 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 10:15:16.822 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 10:15:16.822 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 10:15:16.931 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 10:15:16.931 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1809 ms
+2018-11-24 10:15:16.978 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:15:16.978 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 10:15:16.978 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:15:16.978 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 10:15:16.978 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 10:15:16.978 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 10:15:16.978 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 10:15:16.978 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 10:15:16.978 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 10:15:16.978 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 10:15:17.103 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 10:15:17.680 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 10:15:18.008 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 10:15:18.320 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 10:15:18.351 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:15:18.366 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 10:15:18.382 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 10:15:18.382 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 4.462 seconds (JVM running for 6.498)
+2018-11-24 10:15:29.258 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 10:15:29.258 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 10:15:29.267 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 9 ms
+2018-11-24 10:16:22.346 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 4808 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 10:16:22.353 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 10:16:22.646 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 10:16:22.652 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 10:16:24.350 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 10:16:24.365 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:16:24.369 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 10:16:24.369 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 10:16:24.377 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 10:16:24.477 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 10:16:24.477 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1825 ms
+2018-11-24 10:16:24.530 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:16:24.531 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 10:16:24.532 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:16:24.533 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 10:16:24.536 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 10:16:24.536 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 10:16:24.537 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 10:16:24.537 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 10:16:24.537 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 10:16:24.537 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 10:16:24.664 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 10:16:25.165 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 10:16:25.467 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 10:16:25.770 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 10:16:25.810 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:16:25.819 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 10:16:25.835 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 10:16:25.839 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 4.432 seconds (JVM running for 6.474)
+2018-11-24 10:16:45.551 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 10:16:45.552 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 10:16:45.577 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 24 ms
+2018-11-24 10:18:11.427 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 1780 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 10:18:11.427 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 10:18:11.490 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 10:18:11.490 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 10:18:12.972 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 10:18:12.972 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:18:12.987 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 10:18:12.987 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 10:18:12.987 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 10:18:13.096 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 10:18:13.096 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1606 ms
+2018-11-24 10:18:13.143 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:18:13.143 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 10:18:13.143 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:18:13.143 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 10:18:13.159 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 10:18:13.159 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 10:18:13.159 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 10:18:13.159 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 10:18:13.159 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 10:18:13.159 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 10:18:13.284 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 10:18:13.798 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 10:18:14.126 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 10:18:14.422 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 10:18:14.469 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:18:14.469 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 10:18:14.485 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 10:18:14.485 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 4.633 seconds (JVM running for 7.068)
+2018-11-24 10:18:17.733 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 10:18:17.734 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 10:18:17.744 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 10 ms
+2018-11-24 10:19:15.275 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 5972 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 10:19:15.275 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 10:19:15.369 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 10:19:15.369 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 10:19:16.882 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 10:19:16.898 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:19:16.898 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 10:19:16.898 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 10:19:16.898 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 10:19:17.007 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 10:19:17.007 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1638 ms
+2018-11-24 10:19:17.054 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:19:17.069 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 10:19:17.069 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:19:17.069 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 10:19:17.069 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 10:19:17.069 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 10:19:17.069 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 10:19:17.069 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 10:19:17.069 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 10:19:17.069 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 10:19:17.225 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 10:19:17.771 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 10:19:18.083 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 10:19:18.426 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 10:19:18.473 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:19:18.473 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 10:19:18.504 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 10:19:18.520 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 4.009 seconds (JVM running for 6.432)
+2018-11-24 10:19:29.282 [http-nio-8080-exec-3] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 10:19:29.283 [http-nio-8080-exec-3] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 10:19:29.293 [http-nio-8080-exec-3] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 10 ms
+2018-11-24 10:20:32.975 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 6048 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 10:20:32.978 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 10:20:33.038 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 10:20:33.039 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 10:20:34.542 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 10:20:34.556 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:20:34.561 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 10:20:34.561 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 10:20:34.569 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 10:20:34.685 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 10:20:34.685 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1646 ms
+2018-11-24 10:20:34.733 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:20:34.735 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 10:20:34.735 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:20:34.736 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 10:20:34.739 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 10:20:34.740 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 10:20:34.740 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 10:20:34.740 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 10:20:34.740 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 10:20:34.741 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 10:20:34.891 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 10:20:35.457 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 10:20:35.775 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 10:20:36.084 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 10:20:36.121 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:20:36.130 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 10:20:36.147 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 10:20:36.150 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 3.904 seconds (JVM running for 8.61)
+2018-11-24 10:20:41.038 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 10:20:41.038 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 10:20:41.038 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2018-11-24 10:21:35.139 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 7328 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 10:21:35.154 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 10:21:35.279 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 10:21:35.279 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 10:21:36.652 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 10:21:36.668 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:21:36.668 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 10:21:36.668 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 10:21:36.668 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 10:21:36.792 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 10:21:36.792 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1513 ms
+2018-11-24 10:21:36.839 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:21:36.839 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 10:21:36.839 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:21:36.839 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 10:21:36.839 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 10:21:36.839 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 10:21:36.839 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 10:21:36.839 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 10:21:36.839 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 10:21:36.839 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 10:21:36.980 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 10:21:37.682 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 10:21:38.025 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 10:21:38.321 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 10:21:38.352 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:21:38.352 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 10:21:38.368 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 10:21:38.384 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 4.259 seconds (JVM running for 8.904)
+2018-11-24 10:21:41.891 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 10:21:41.891 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 10:21:41.903 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 12 ms
+2018-11-24 10:22:56.974 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 5684 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 10:22:56.990 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 10:22:57.177 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 10:22:57.177 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 10:22:58.940 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 10:22:58.955 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:22:58.955 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 10:22:58.955 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 10:22:58.971 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 10:22:59.064 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 10:22:59.064 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1887 ms
+2018-11-24 10:22:59.111 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:22:59.111 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 10:22:59.111 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:22:59.111 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 10:22:59.111 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 10:22:59.111 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 10:22:59.111 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 10:22:59.111 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 10:22:59.111 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 10:22:59.111 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 10:22:59.252 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 10:22:59.766 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 10:23:00.047 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 10:23:00.344 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 10:23:00.390 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:23:00.406 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 10:23:00.422 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 10:23:00.422 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 4.571 seconds (JVM running for 6.246)
+2018-11-24 10:23:08.969 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 10:23:08.969 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 10:23:08.978 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 9 ms
+2018-11-24 10:26:06.789 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 7712 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 10:26:06.789 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 10:26:06.883 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 10:26:06.883 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 10:26:08.287 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 10:26:08.303 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:26:08.318 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 10:26:08.318 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 10:26:08.318 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 10:26:08.412 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 10:26:08.412 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1529 ms
+2018-11-24 10:26:08.459 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:26:08.459 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 10:26:08.459 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:26:08.459 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 10:26:08.459 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 10:26:08.459 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 10:26:08.459 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 10:26:08.459 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 10:26:08.459 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 10:26:08.459 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 10:26:08.583 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 10:26:09.145 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 10:26:09.535 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 10:26:09.878 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 10:26:09.925 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:26:09.925 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 10:26:09.956 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 10:26:09.956 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 4.571 seconds (JVM running for 7.696)
+2018-11-24 10:26:28.409 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 10:26:28.409 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 10:26:28.418 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 9 ms
+2018-11-24 10:29:55.918 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 8128 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 10:29:55.918 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 10:29:55.996 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 10:29:55.996 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 10:29:57.682 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 10:29:57.713 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:29:57.713 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 10:29:57.713 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 10:29:57.728 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 10:29:57.822 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 10:29:57.822 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1826 ms
+2018-11-24 10:29:57.869 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:29:57.869 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 10:29:57.869 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:29:57.869 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 10:29:57.869 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 10:29:57.869 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 10:29:57.869 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 10:29:57.869 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 10:29:57.869 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 10:29:57.869 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 10:29:57.994 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 10:29:58.555 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 10:29:58.930 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 10:29:59.257 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 10:29:59.288 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:29:59.304 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 10:29:59.320 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 10:29:59.335 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 4.306 seconds (JVM running for 7.385)
+2018-11-24 10:30:05.361 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 10:30:05.361 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 10:30:05.361 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2018-11-24 10:30:34.676 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 7184 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 10:30:34.676 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 10:30:34.785 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 10:30:34.785 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 10:30:36.284 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 10:30:36.299 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:30:36.299 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 10:30:36.299 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 10:30:36.299 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 10:30:36.424 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 10:30:36.424 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1639 ms
+2018-11-24 10:30:36.486 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:30:36.486 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 10:30:36.486 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:30:36.486 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 10:30:36.486 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 10:30:36.486 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 10:30:36.486 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 10:30:36.486 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 10:30:36.486 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 10:30:36.486 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 10:30:36.642 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 10:30:37.188 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 10:30:37.485 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 10:30:37.828 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 10:30:37.859 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:30:37.875 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 10:30:37.906 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 10:30:37.922 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 4.042 seconds (JVM running for 6.889)
+2018-11-24 10:30:43.567 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 10:30:43.567 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 10:30:43.575 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 7 ms
+2018-11-24 10:31:34.913 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 7632 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 10:31:34.917 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 10:31:34.963 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 10:31:34.964 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 10:31:36.440 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 10:31:36.455 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:31:36.461 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 10:31:36.462 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 10:31:36.470 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 10:31:36.604 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 10:31:36.604 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1640 ms
+2018-11-24 10:31:36.665 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:31:36.666 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 10:31:36.667 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:31:36.667 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 10:31:36.672 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 10:31:36.673 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 10:31:36.673 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 10:31:36.673 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 10:31:36.673 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 10:31:36.673 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 10:31:36.803 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 10:31:37.410 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 10:31:38.016 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 10:31:38.550 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 10:31:38.595 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:31:38.606 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 10:31:38.625 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 10:31:38.630 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 4.584 seconds (JVM running for 7.267)
+2018-11-24 10:32:06.666 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 6048 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 10:32:06.670 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 10:32:06.828 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 10:32:06.833 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 10:32:08.418 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 10:32:08.434 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:32:08.443 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 10:32:08.443 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 10:32:08.452 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 10:32:08.552 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 10:32:08.552 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1718 ms
+2018-11-24 10:32:08.598 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:32:08.599 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 10:32:08.599 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:32:08.600 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 10:32:08.603 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 10:32:08.604 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 10:32:08.604 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 10:32:08.604 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 10:32:08.604 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 10:32:08.604 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 10:32:08.794 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 10:32:09.309 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 10:32:09.604 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 10:32:09.937 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 10:32:09.976 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:32:09.984 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 10:32:10.001 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 10:32:10.004 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 4.321 seconds (JVM running for 6.399)
+2018-11-24 10:32:17.632 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 10:32:17.633 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 10:32:17.641 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 8 ms
+2018-11-24 10:34:04.783 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 7456 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 10:34:04.787 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 10:34:04.848 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 10:34:04.853 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 10:34:04.920 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.0.13.Final
+2018-11-24 10:34:06.678 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 10:34:06.694 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:34:06.700 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 10:34:06.701 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 10:34:06.707 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 10:34:06.808 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 10:34:06.808 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1954 ms
+2018-11-24 10:34:06.861 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:34:06.862 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 10:34:06.862 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:34:06.863 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 10:34:06.866 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 10:34:06.867 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 10:34:06.867 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 10:34:06.867 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 10:34:06.867 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 10:34:06.867 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 10:34:06.995 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 10:34:07.563 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 10:34:07.877 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 10:34:08.173 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 10:34:08.209 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:34:08.218 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 10:34:08.234 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 10:34:08.238 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 4.161 seconds (JVM running for 6.847)
+2018-11-24 10:34:13.358 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 10:34:13.359 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 10:34:13.367 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 8 ms
+2018-11-24 10:40:07.176 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 5292 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 10:40:07.176 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 10:40:07.239 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 10:40:07.239 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 10:40:09.454 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 10:40:09.469 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:40:09.469 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 10:40:09.469 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 10:40:09.469 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 10:40:09.579 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 10:40:09.579 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2340 ms
+2018-11-24 10:40:09.625 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:40:09.625 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 10:40:09.625 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:40:09.625 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 10:40:09.641 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 10:40:09.641 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 10:40:09.641 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 10:40:09.641 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 10:40:09.641 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 10:40:09.641 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 10:40:09.766 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 10:40:10.313 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 10:40:10.656 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 10:40:10.964 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 10:40:11.011 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:40:11.026 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 10:40:11.061 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 10:40:11.065 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 4.684 seconds (JVM running for 6.177)
+2018-11-24 10:40:15.847 [http-nio-8080-exec-2] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 10:40:15.848 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 10:40:15.857 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 9 ms
+2018-11-24 10:41:35.783 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 5076 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 10:41:35.783 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 10:41:35.830 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 10:41:35.830 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 10:41:37.593 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 10:41:37.609 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:41:37.609 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 10:41:37.609 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 10:41:37.609 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 10:41:37.718 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 10:41:37.718 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1888 ms
+2018-11-24 10:41:37.765 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:41:37.765 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 10:41:37.765 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:41:37.765 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 10:41:37.765 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 10:41:37.765 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 10:41:37.765 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 10:41:37.765 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 10:41:37.765 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 10:41:37.765 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 10:41:37.889 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 10:41:38.529 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 10:41:38.888 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 10:41:39.215 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 10:41:39.247 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:41:39.262 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 10:41:39.278 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 10:41:39.278 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 3.963 seconds (JVM running for 6.828)
+2018-11-24 10:41:45.450 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 10:41:45.450 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 10:41:45.458 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 8 ms
+2018-11-24 10:53:28.159 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 5612 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 10:53:28.164 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 10:53:28.259 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 10:53:28.259 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 10:53:30.211 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 10:53:30.225 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:53:30.229 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 10:53:30.229 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 10:53:30.236 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 10:53:30.338 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 10:53:30.338 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2078 ms
+2018-11-24 10:53:30.385 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:53:30.387 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 10:53:30.388 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:53:30.388 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 10:53:30.391 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 10:53:30.392 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 10:53:30.392 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 10:53:30.392 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 10:53:30.392 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 10:53:30.393 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 10:53:30.519 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 10:53:31.037 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 10:53:31.347 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 10:53:31.653 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 10:53:31.691 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:53:31.700 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 10:53:31.716 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 10:53:31.720 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 4.464 seconds (JVM running for 5.841)
+2018-11-24 10:53:43.060 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 10:53:43.061 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 10:53:43.072 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 10 ms
+2018-11-24 10:54:43.421 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 6108 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 10:54:43.424 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 10:54:43.486 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 10:54:43.486 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 10:54:44.969 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 10:54:44.983 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:54:44.988 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 10:54:44.988 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 10:54:44.995 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 10:54:45.095 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 10:54:45.095 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1608 ms
+2018-11-24 10:54:45.144 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:54:45.146 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 10:54:45.146 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:54:45.146 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 10:54:45.149 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 10:54:45.149 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 10:54:45.150 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 10:54:45.150 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 10:54:45.150 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 10:54:45.150 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 10:54:45.273 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 10:54:45.801 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 10:54:46.100 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 10:54:46.396 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 10:54:46.434 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:54:46.443 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 10:54:46.459 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 10:54:46.462 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 3.629 seconds (JVM running for 5.885)
+2018-11-24 10:54:51.711 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 10:54:51.712 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 10:54:51.721 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 9 ms
+2018-11-24 10:55:06.431 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 6040 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 10:55:06.434 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 10:55:06.712 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 10:55:06.713 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 10:55:08.807 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 10:55:08.825 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:55:08.830 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 10:55:08.830 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 10:55:08.840 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 10:55:09.004 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 10:55:09.004 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2291 ms
+2018-11-24 10:55:09.054 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:55:09.055 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 10:55:09.056 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:55:09.056 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 10:55:09.059 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 10:55:09.060 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 10:55:09.060 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 10:55:09.060 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 10:55:09.060 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 10:55:09.060 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 10:55:09.238 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 10:55:09.830 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 10:55:10.240 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 10:55:10.564 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 10:55:10.600 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:55:10.608 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 10:55:10.624 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 10:55:10.628 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 5.593 seconds (JVM running for 7.492)
+2018-11-24 10:55:19.493 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 10:55:19.493 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 10:55:19.505 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 11 ms
+2018-11-24 10:55:32.350 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 7640 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 10:55:32.353 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 10:55:32.674 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 10:55:32.674 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 10:55:34.150 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 10:55:34.164 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:55:34.173 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 10:55:34.174 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 10:55:34.181 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 10:55:34.295 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 10:55:34.296 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1622 ms
+2018-11-24 10:55:34.341 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:55:34.343 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 10:55:34.343 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 10:55:34.343 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 10:55:34.346 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 10:55:34.347 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 10:55:34.347 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 10:55:34.347 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 10:55:34.347 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 10:55:34.347 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 10:55:34.464 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 10:55:34.954 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 10:55:35.260 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 10:55:35.544 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 10:55:35.580 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 10:55:35.595 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 10:55:35.613 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 10:55:35.616 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 4.195 seconds (JVM running for 6.22)
+2018-11-24 10:55:38.669 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 10:55:38.669 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 10:55:38.678 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 9 ms
+2018-11-24 13:13:32.748 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 8852 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 13:13:32.754 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 13:13:32.974 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 13:13:32.974 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 13:13:34.568 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 13:13:34.586 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 13:13:34.594 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 13:13:34.595 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 13:13:34.602 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 13:13:34.712 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 13:13:34.712 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1737 ms
+2018-11-24 13:13:34.764 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 13:13:34.765 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 13:13:34.766 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 13:13:34.766 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 13:13:34.769 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 13:13:34.769 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 13:13:34.770 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 13:13:34.770 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 13:13:34.770 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 13:13:34.770 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 13:13:34.901 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 13:13:35.452 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 13:13:35.775 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 13:13:36.129 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 13:13:36.175 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 13:13:36.187 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 13:13:36.211 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 13:13:36.217 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 4.601 seconds (JVM running for 6.238)
+2018-11-24 13:32:27.299 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 13:32:27.300 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 13:32:27.309 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 9 ms
+2018-11-24 13:48:35.956 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 4492 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 13:48:35.960 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 13:48:36.164 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 13:48:36.179 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 13:48:37.593 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 13:48:37.609 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 13:48:37.609 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 13:48:37.609 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 13:48:37.624 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 13:48:37.721 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 13:48:37.721 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1542 ms
+2018-11-24 13:48:37.768 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 13:48:37.768 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 13:48:37.768 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 13:48:37.768 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 13:48:37.768 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 13:48:37.768 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 13:48:37.768 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 13:48:37.768 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 13:48:37.768 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 13:48:37.768 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 13:48:37.892 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 13:48:38.408 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 13:48:38.715 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 13:48:38.985 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 13:48:39.031 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 13:48:39.031 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 13:48:39.047 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 13:48:39.047 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 4.348 seconds (JVM running for 6.182)
+2018-11-24 13:48:54.544 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 13:48:54.544 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 13:48:54.553 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 9 ms
+2018-11-24 13:49:08.165 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 9500 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 13:49:08.165 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 13:49:08.430 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 13:49:08.430 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 13:49:10.126 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 13:49:10.142 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 13:49:10.142 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 13:49:10.142 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 13:49:10.158 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 13:49:10.251 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 13:49:10.251 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1821 ms
+2018-11-24 13:49:10.314 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 13:49:10.314 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 13:49:10.314 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 13:49:10.314 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 13:49:10.314 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 13:49:10.314 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 13:49:10.314 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 13:49:10.314 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 13:49:10.314 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 13:49:10.314 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 13:49:10.438 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 13:49:10.973 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 13:49:11.285 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 13:49:11.567 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 13:49:11.598 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 13:49:11.613 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 13:49:11.629 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 13:49:11.629 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 4.761 seconds (JVM running for 6.097)
+2018-11-24 13:49:23.748 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 13:49:23.749 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 13:49:23.757 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 8 ms
+2018-11-24 13:49:54.564 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 8044 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 13:49:54.579 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 13:49:54.658 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 13:49:54.658 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 13:49:55.975 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 13:49:55.990 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 13:49:56.006 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 13:49:56.006 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 13:49:56.006 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 13:49:56.100 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 13:49:56.100 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1442 ms
+2018-11-24 13:49:56.147 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 13:49:56.147 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 13:49:56.147 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 13:49:56.147 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 13:49:56.147 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 13:49:56.163 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 13:49:56.163 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 13:49:56.163 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 13:49:56.163 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 13:49:56.163 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 13:49:56.272 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 13:49:56.799 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 13:49:57.127 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 13:49:57.408 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 13:49:57.439 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 13:49:57.455 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 13:49:57.471 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 13:49:57.471 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 3.574 seconds (JVM running for 6.489)
+2018-11-24 13:50:03.886 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 13:50:03.886 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 13:50:03.894 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 8 ms
+2018-11-24 13:51:06.086 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 9672 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 13:51:06.090 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 13:51:06.170 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 13:51:06.177 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 13:51:08.474 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 13:51:08.490 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 13:51:08.506 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 13:51:08.506 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 13:51:08.506 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 13:51:08.609 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 13:51:08.609 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2431 ms
+2018-11-24 13:51:08.656 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 13:51:08.656 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 13:51:08.656 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 13:51:08.656 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 13:51:08.656 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 13:51:08.656 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 13:51:08.656 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 13:51:08.656 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 13:51:08.656 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 13:51:08.656 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 13:51:08.787 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 13:51:09.412 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 13:51:09.704 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 13:51:10.056 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 13:51:10.107 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 13:51:10.107 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 13:51:10.122 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 13:51:10.122 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 4.991 seconds (JVM running for 6.536)
+2018-11-24 13:51:10.373 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 13:51:10.373 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 13:51:10.388 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 15 ms
+2018-11-24 13:51:32.516 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 10020 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 13:51:32.516 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 13:51:32.563 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 13:51:32.563 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 13:51:34.366 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 13:51:34.366 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 13:51:34.381 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 13:51:34.381 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 13:51:34.381 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 13:51:34.506 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 13:51:34.506 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1943 ms
+2018-11-24 13:51:34.553 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 13:51:34.553 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 13:51:34.553 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 13:51:34.553 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 13:51:34.569 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 13:51:34.569 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 13:51:34.569 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 13:51:34.569 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 13:51:34.569 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 13:51:34.569 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 13:51:34.705 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 13:51:35.260 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 13:51:35.614 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 13:51:35.928 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 13:51:35.968 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 13:51:35.977 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 13:51:35.995 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 13:51:35.999 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 4.417 seconds (JVM running for 6.531)
+2018-11-24 13:51:43.894 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 13:51:43.895 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 13:51:43.903 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 8 ms
+2018-11-24 13:53:38.956 [restartedMain] INFO  com.group7.SpringbootApplication - Starting SpringbootApplication on WIN-2AS3BBMISKU with PID 9964 (D:\P2P-Project\target\classes started by Administrator in D:\P2P-Project)
+2018-11-24 13:53:38.971 [restartedMain] INFO  com.group7.SpringbootApplication - No active profile set, falling back to default profiles: default
+2018-11-24 13:53:39.081 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-11-24 13:53:39.081 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-11-24 13:53:41.554 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-11-24 13:53:41.570 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-24 13:53:41.581 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-11-24 13:53:41.582 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-24 13:53:41.593 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_152\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\app\Administrator\product\11.1.0\db_1\bin;D:\maven\apache-maven-3.3.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\Java\jdk1.8.0_152\bin;D:\Program Files\Java\jdk1.8.0_152\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\Git\cmd;.]
+2018-11-24 13:53:41.731 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring embedded WebApplicationContext
+2018-11-24 13:53:41.731 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2650 ms
+2018-11-24 13:53:41.782 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 13:53:41.783 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-11-24 13:53:41.784 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-11-24 13:53:41.785 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+2018-11-24 13:53:41.795 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-24 13:53:41.799 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-24 13:53:41.800 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-11-24 13:53:41.800 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-24 13:53:41.800 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-11-24 13:53:41.800 [restartedMain] INFO  o.s.boot.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+2018-11-24 13:53:41.917 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-11-24 13:53:42.437 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-11-24 13:53:42.747 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-11-24 13:53:43.050 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-11-24 13:53:43.088 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-11-24 13:53:43.097 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-11-24 13:53:43.114 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/p2p'
+2018-11-24 13:53:43.118 [restartedMain] INFO  com.group7.SpringbootApplication - Started SpringbootApplication in 4.958 seconds (JVM running for 6.18)
+2018-11-24 13:53:45.868 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/p2p] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-11-24 13:53:45.869 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-11-24 13:53:45.879 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 10 ms

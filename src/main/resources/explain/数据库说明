@@ -3,3 +3,10 @@ TB_role 角色表
 TB_resources 资源表
 TB_user_role 用户角色表
 TB_role_resources 角色资源表
+tb_loans   借款表  		          seq_tb_loans_id      序列             前期添加的有数据  序列可能不是从1开始的
+tb_loansType  贷款类型表            seq_tb_loansType_id  序列
+tb_investment 投资表    	          seq_tb_investment_id 序列
+tb_resources   还款表	              seq_tb_resources_id   序列
+tb_userInformation 用户信息表       seq_tb_userInformation_id  序列
+tb_userAccount    账户信息表        seq_tb_userAccount_id  序列
+tb_moneyRecord  资金记录表          seq_tb_moneyRecord_id   序列
