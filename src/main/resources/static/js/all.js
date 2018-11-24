@@ -23,7 +23,6 @@ function slideNav(slidewper,slidebox)
 		   {
 		   	   $(this).addClass(objcur).siblings().removeClass(objcur);
 		   	   var index=$(this).index();
-		   	 
 		   	   $(boxone).eq(index).show().siblings().hide();
 		   });
 	   }
@@ -32,6 +31,8 @@ function slideNav(slidewper,slidebox)
       qiehuan(".product_tit span","product_curspan",".product_list");
       // borrow 切换
       qiehuan(".bor_detail_tit span","bor_decurspan",".bor_det_one");
+     /*qiehuan(".bor_detail_tit span","bor_decurspan",".bor_det_two");
+      qiehuan(".bor_detail_tit span","bor_decurspan",".bor_det_three");*/
 // 项目列表切换
 function qiehuan2(obj,objcur,boxone)
 	{

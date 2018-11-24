@@ -1,201 +1,411 @@
 <!doctype html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-	<title>borrow</title>
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<!-- <link rel="stylesheet/less" type="text/css" href="css/style.less" /> -->
-<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="js/all.js"></script>
-<!--<style>
-	.bor_det_oner .bor_inputbg04 {
-		background: url(images/baifenhao.png) no-repeat scroll 235px center #ffffff;
-	}
-</style>-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>borrow</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- <link rel="stylesheet/less" type="text/css" href="css/style.less" /> -->
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="js/all.js"></script>
+    <script src="../js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var type = '${type}';
+            if(type==1){
+                $(".bor_det_one").show().siblings().hide();
+            }
+        })
+    </script>
+
 </head>
 <body>
 <!-- header start -->
 <div class="zxcf_top_wper">
-	<div class="zxcf_top px1000 clearfix">
-		 <div class="zxcf_top_l fl">
-		    <img src="images/zxcf_phone.png" alt="">
-		    400-027-0101(工作时间9:00-17:30)
-		    <a href="#"><img src="images/zxcf_weixin.png" alt=""></a>
-		    <a href="#"><img src="images/zxcf_sina.png" alt=""></a>
-		    <a href="#"><img src="images/zxcf_qq.png" alt=""></a>
-		 </div>
-		<div class="zxcf_top_r fr">
-			<a href="toLogin" class="curspan">立即登录</a>
-			<span>|</span>
-			<a href="toRegister">免费注册</a>
-			<span>|</span>
-			<a href="toproblem">常见问题</a>
-		</div>
-	</div>
+    <div class="zxcf_top px1000 clearfix">
+        <div class="zxcf_top_l fl">
+            <img src="images/zxcf_phone.png" alt="">
+            400-027-0101(工作时间9:00-17:30)
+            <a href="#"><img src="images/zxcf_weixin.png" alt=""></a>
+            <a href="#"><img src="images/zxcf_sina.png" alt=""></a>
+            <a href="#"><img src="images/zxcf_qq.png" alt=""></a>
+        </div>
+        <div class="zxcf_top_r fr">
+            <a href="toLogin" class="curspan">立即登录</a>
+            <span>|</span>
+            <a href="toRegister">免费注册</a>
+            <span>|</span>
+            <a href="toproblem">常见问题</a>
+        </div>
+    </div>
 </div>
 <!-- end top -->
 <div class="zxcf_nav_wper">
-	<div class="zxcf_nav clearfix px1000">
-		 <div class="zxcf_nav_l fl"><img src="images/zxcf_logo.png" alt=""></div>
-		 <div class="zxcf_nav_r fr">
-		 	<img src="images/zxcf_perinfo.png" alt="">
-		 	<span>我的账户
+    <div class="zxcf_nav clearfix px1000">
+        <div class="zxcf_nav_l fl"><img src="images/zxcf_logo.png" alt=""></div>
+        <div class="zxcf_nav_r fr">
+            <img src="images/zxcf_perinfo.png" alt="">
+            <span>我的账户
 		 	<img src="images/zxcf_icon01.png" alt=""></span>
-			 <ul class="zxcf_perinfo" style="display:none;">
-				 <li style="color: #6cd159"><a href="#">切换账号</a></li>
-				 <li style="color: red"><a href="#">注销</a></li>
+            <ul class="zxcf_perinfo" style="display:none;">
+                <li style="color: #6cd159"><a href="#">切换账号</a></li>
+                <li style="color: red"><a href="#">注销</a></li>
 
-			 </ul>
-		 </div>
-	</div>
+            </ul>
+        </div>
+    </div>
 </div>
 <div class="zxcf_menu_wper">
-	<div class="zxcf_menu px1000">
-		<a href="toIndex" class="zm_cura">首页</a>
-		<a href="toInvest">我要投资</a>
-		<a href="toBorrow">我要借款</a>
-		<a href="#">实时财务</a>
-		<a href="toNoticelist">账户信息</a>
-		<a href="#" style="margin-right:0;">关于我们</a>
-	</div>
+    <div class="zxcf_menu px1000">
+        <a href="toIndex" class="zm_cura">首页</a>
+        <a href="toInvest">我要投资</a>
+        <a href="toBorrow">我要借款</a>
+        <a href="#">实时财务</a>
+        <a href="toNoticelist">账户信息</a>
+        <a href="#" style="margin-right:0;">关于我们</a>
+    </div>
 </div>
 <!-- end  -->
 <div class="bor_banner01">
-	 
+
 </div>
 <!-- end banner -->
 <div class="bor_con_wper">
-	  <div class="bor_con px1000">
-	  	    <div class="bor_detail">
-	  	    	   <h2 class="bor_detail_tit">
-	  	    	   	  <span class="bor_decurspan">房产抵押</span>
-	  	    	   	  <span>车辆抵押</span>
-	  	    	   	  <span>信用贷款</span>
-	  	    	   </h2>
-	  	    	   <div class="bor_detail_box">
-	  	    	   	    <div class="bor_det_one clearfix pt30 pb30">
-	  	    	   	    	  <div class="bor_det_onel fl">
-	  	    	   	    	  	       <p class="bor_p1">中兴财富平台的借款功能旨在帮助借款用户以
-										低成本获得借款。用户在需要资金时，可以将
-										自有房产和车产作为抵押物，小油菜线下审核
-										通过后，根据抵押物的价值融资。</p>
-										<p class="bor_p2">中兴财富平台的借款功能旨在帮助借款用户以
-										低成本获得借款。用户在需要资金时，可以将
-										自有房产和车产作为抵押物，小油菜线下审核
-										通过后，根据抵押物的价值融资。</p>
-										<h3 class="bor_onel_tit"><span>申请条件</span></h3>
-										<ul class="bor_onel_ul">
-											 <li><img src="images/bor_pic01.png" alt="">年满18周岁以上的公民
-											 </li>
-											 <li><img src="images/bor_pic02.png" alt="">需要郑州房产证明
-											 </li>
-											 <li><img src="images/bor_pic03.png" alt="">个人或企业银行征信记录良好
-											 </li>
-											 <li><img src="images/bor_pic04.png" alt="">
-											  无现有诉讼记录
-											 </li>
-										</ul>
+    <div class="bor_con px1000">
+        <div class="bor_detail">
+            <h2 class="bor_detail_tit">
+                <span class="bor_decurspan">房产抵押</span>
+                <span>车辆抵押</span>
+                <span>信用贷款</span>
+            </h2>
+            <div class="bor_detail_box">
+                <div class="bor_det_one clearfix pt30 pb30">
+                    <div class="bor_det_onel fl">
+                        <p class="bor_p1">中兴财富平台的借款功能旨在帮助借款用户以
+                            低成本获得借款。用户在需要资金时，可以将
+                            自有房产和车产作为抵押物，小油菜线下审核
+                            通过后，根据抵押物的价值融资。</p>
+                        <p class="bor_p2">中兴财富平台的借款功能旨在帮助借款用户以
+                            低成本获得借款。用户在需要资金时，可以将
+                            自有房产和车产作为抵押物，小油菜线下审核
+                            通过后，根据抵押物的价值融资。</p>
+                        <h3 class="bor_onel_tit"><span>申请条件</span></h3>
+                        <ul class="bor_onel_ul">
+                            <li><img src="images/bor_pic01.png" alt="">年满18周岁以上的公民
+                            </li>
+                            <li><img src="images/bor_pic02.png" alt="">需要郑州房产证明
+                            </li>
+                            <li><img src="images/bor_pic03.png" alt="">个人或企业银行征信记录良好
+                            </li>
+                            <li><img src="images/bor_pic04.png" alt="">无现有诉讼记录
+                            </li>
+                        </ul>
+                        <h3 class="bor_onel_tit"><span>提交资料</span></h3>
+                        <ul class="bor_onel_ul">
+                            <li>&nbsp;<img src="images/bor_pic05.png" alt="">身份证
+                            </li>
+                            <li><img src="images/bor_pic06.png" alt="">申请资料
+                            </li>
+                            <li><img src="images/bor_pic07.png" alt="">其他
+                            </li>
+                        </ul>
+                        <h3 class="bor_onel_tit"><span>完善信息</span></h3>
+                        <ul class="bor_onel_ul">
+                            <li>&nbsp;<img src="images/bor_pic01.png" alt="">实名认证<span></span>
+                            </li>
+                            <li><img src="images/bor_pic07.png" alt="">视频认证<span></span>
+                            </li>
+                            <li>&nbsp;<img src="images/bor_pic05.png" alt="">绑定银行卡<span></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- end l -->
+                    <div class="bor_det_oner fl">
+                        <form>
+                            <fieldset>
+                                <input type="hidden" name = "type" value = "1"/>
+                                <div>
+                                    <label>申请人</label>
+                                    <input type="text" name = "username">
+                                </div>
+                                <div class="mt15">
+                                    <label>*借款金额</label>
+                                    <input type="text" name="loansmoney" class = "bor_inputbg01">
+                                </div>
+                                <div class="mt15">
+                                    <label>*借款利率</label>
+                                    <input type="text" name="loansinterestrate" class="bor_inputbg04">
+                                </div>
+                                <div class="mt15">
+                                    <label>*还款期限</label>
+                                    <input type="text" name="refundeadline" class = "bor_inputbg02">
+                                </div>
+                                <div class="mt15">
+                                    <label>*还款方式</label>
+                                    <select name = "refundway">
+                                        <option value = "等额本息">等额本息</option>
+                                    </select>
+                                </div>
+                                <div class="mt15 guarmethod clearfix">
+                                    <label>*房屋证明</label>
+                                    <input type="file" name="housenumber" ><br>
+                                </div>
+                                <div class="mt15 guarmethod clearfix">
+                                    <label>*总价值</label>
+                                    <input type="text" name="globalvalue" class="bor_inputbg01"><br>
+                                </div>
+                                <div class="mt15">
+                                    <label>*借款用途</label>
+                                    <select name = "loansUsed">
+                                        <option value = "个人日常消费" selected = "selected">个人日常消费</option>
+                                        <option value = "装修">装修</option>
+                                        <option value = "旅游">旅游</option>
+                                        <option value = "教育">教育</option>
+                                        <option value = "医疗">医疗</option>
+                                    </select>
+                                </div>
+                                <div class="mt15">
+                                    <label>*借款描述</label>
+                                    <textarea name = "loansDescribe"></textarea>
+                                </div>
+                                <div class="mt15">
+                                    <label>*借款情况</label>
+                                    <input type="radio" class="input3" value ="1" name = "loanscase" checked = checked>
+                                    普通借款
+                                    <input type="radio" class="input3"value = "2" name = "loanscase">
+                                    紧急借款
+                                </div>
+                                <div class="mt30">
+                                    <label></label>
+                                    <button id="sub1" style="width: 100px;height: 30px;font-size: 15px;">提交材料</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+                <!-- end 房产抵押 -->
 
-										<h3 class="bor_onel_tit"><span>提交资料</span></h3>
-										<ul class="bor_onel_ul">
-											 <li>&nbsp;<img src="images/bor_pic05.png" alt="">身份证
-											 </li>
-											 <li><img src="images/bor_pic06.png" alt="">申请资料
-											 </li>
-											 <li><img src="images/bor_pic07.png" alt="">其他
-											 </li>
-										</ul>
+                <!--车辆抵押-->
+                <div class="bor_det_one" style="display:none;">
+                    <div class="bor_det_one clearfix pt30 pb30">
+                        <div class="bor_det_onel fl">
+                            <p class="bor_p1">中兴财富平台的借款功能旨在帮助借款用户以
+                                低成本获得借款。用户在需要资金时，可以将
+                                自有房产和车产作为抵押物，小油菜线下审核
+                                通过后，根据抵押物的价值融资。</p>
+                            <p class="bor_p2">中兴财富平台的借款功能旨在帮助借款用户以
+                                低成本获得借款。用户在需要资金时，可以将
+                                自有房产和车产作为抵押物，小油菜线下审核
+                                通过后，根据抵押物的价值融资。</p>
+                            <h3 class="bor_onel_tit"><span>申请条件</span></h3>
+                            <ul class="bor_onel_ul">
+                                <li><img src="images/bor_pic01.png" alt="">年满18周岁以上的公民
+                                </li>
+                                <li><img src="images/bor_pic02.png" alt="">需要车辆信息
+                                </li>
+                                <li><img src="images/bor_pic03.png" alt="">个人或企业银行征信记录良好
+                                </li>
+                                <li><img src="images/bor_pic04.png" alt="">无现有诉讼记录
+                                </li>
+                            </ul>
+                            <h3 class="bor_onel_tit"><span>提交资料</span></h3>
+                            <ul class="bor_onel_ul">
+                                <li>&nbsp;<img src="images/bor_pic05.png" alt="">身份证
+                                </li>
+                                <li><img src="images/bor_pic06.png" alt="">申请资料
+                                </li>
+                                <li><img src="images/bor_pic07.png" alt="">其他
+                                </li>
+                            </ul>
 
-								  		<h3 class="bor_onel_tit"><span>完善信息</span></h3>
-										<ul class="bor_onel_ul">
-											 <li>&nbsp;<img src="images/bor_pic01.png" alt="">实名认证<span></span>
-											 </li>
-											 <li><img src="images/bor_pic07.png" alt="">视频认证<span></span>
-											 </li>
-											 <li>&nbsp;<img src="images/bor_pic05.png" alt="">绑定银行卡<span></span>
-											 </li>
-										</ul>
-	  	    	   	    	  </div>  
-	  	    	   	    	  <!-- end l -->
-	  	    	   	    	  <div class="bor_det_oner fl">
-	  	    	   	    	  	     <form>
-	  	    	   	    	  	     	  <fieldset>
-	  	    	   	    	  	     	  	   <div>
-	  	    	   	    	  	     	  	   	   <label>申请人</label>
-	  	    	   	    	  	     	  	   	   <input type="text" name = "username">
-	  	    	   	    	  	     	  	   </div>
-	  	    	   	    	  	     	  	   <div class="mt15">
-	  	    	   	    	  	     	  	   	   <label>*借款金额</label>
-	  	    	   	    	  	     	  	   	   <input type="text" name="loansmoney" class = "bor_inputbg01">
-	  	    	   	    	  	     	  	   </div>
-											  <div class="mt15">
-	  	    	   	    	  	     	  	   	   <label>*借款利率</label>
-	  	    	   	    	  	     	  	   	   <input type="text" name="loansinterestrate" class="bor_inputbg04">
-	  	    	   	    	  	     	  	   </div>
-                                               <div class="mt15">
-	  	    	   	    	  	     	  	   	   <label>*还款期限</label>
-	  	    	   	    	  	     	  	   	   <input type="text" name="refundeadline" class = "bor_inputbg02">
-	  	    	   	    	  	     	  	   </div>
-	  	    	   	    	  	     	  	   <div class="mt15">
-	  	    	   	    	  	     	  	   	   <label>*还款方式</label>
-												   <select name = "refundway">
-													   <option value = "等额本息">等额本息</option>
-												   </select>
-	  	    	   	    	  	     	  	   </div>
-	  	    	   	    	  	     	  	   <div class="mt15 guarmethod clearfix">
-	  	    	   	    	  	     	  	   	   	  <label>*房屋证明</label>
-	  	    	   	    	  	     	  	   	   	  <input type="file" name="housenumber" ><br>
-	  	    	   	    	  	     	  	   </div>
-											  <div class="mt15 guarmethod clearfix">
-												  <label>*总价值</label>
-												  <input type="text" name="globalvalue" class="bor_inputbg01"><br>
-											  </div>
-	  	    	   	    	  	     	  	   <div class="mt15">
-	  	    	   	    	  	     	  	   	   <label>*借款用途</label>
-	  	    	   	    	  	     	  	   	   <select name = "loansUsed">
-	  	    	   	    	  	     	  	   	   	  <option value = "个人日常消费" selected = "selected">个人日常消费</option>
-	  	    	   	    	  	     	  	   	   	  <option value = "装修">装修</option>
-	  	    	   	    	  	     	  	   	   	  <option value = "旅游">旅游</option>
-	  	    	   	    	  	     	  	   	   	  <option value = "教育">教育</option>
-	  	    	   	    	  	     	  	   	   	  <option value = "医疗">医疗</option>
-	  	    	   	    	  	     	  	   	   </select>
-	  	    	   	    	  	     	  	   </div>
-	  	    	   	    	  	     	  	    <div class="mt15">
-	  	    	   	    	  	     	  	   	   <label>*借款描述</label> 
-	  	    	   	    	  	     	  	   	   <textarea name = "loansDescribe"></textarea>
-	  	    	   	    	  	     	  	   	 
-	  	    	   	    	  	     	  	   </div>
-	  	    	   	    	  	     	  	   <div class="mt15">
-	  	    	   	    	  	     	  	   	   <label>*借款情况</label>
-	  	    	   	    	  	     	  	   	   <input type="radio" class="input3" value ="1" name = "loanscase" checked = checked>
-	  	    	   	    	  	     	  	   	   普通借款
-	  	    	   	    	  	     	  	  	   <input type="radio" class="input3"value = "2" name = "loanscase">
-	  	    	   	    	  	     	  	   	   紧急借款 
-	  	    	   	    	  	     	  	   </div>
-	  	    	   	    	  	     	  	   <div class="mt30">
-	  	    	   	    	  	     	  	   	   <label></label>
-	  	    	   	    	  	     	  	   	   <button id="sub" style="width: 100px;height: 30px;font-size: 15px;">提交材料</button>
-	  	    	   	    	  	     	  	   </div>
-	  	    	   	    	  	     	  </fieldset>
-	  	    	   	    	  	     </form>
-	  	    	   	    	  </div>
-	  	    	   	    </div>
-	  	    	   	    <!-- end 房产抵押 -->
-	  	    	   	    <div class="bor_det_one" style="display:none;">
-	  	    	   	    	  2  
-	  	    	   	    </div>
-	  	    	   	    <!-- end  -->
-	  	    	   	    <div class="bor_det_one" style="display:none;">
-	  	    	   	    	 3
-	  	    	   	    </div>
-	  	    	   	    <!-- end  -->
-	  	    	   	    <div class="bor_det_one" style="display:none;">
-	  	    	   	    	 4
-	  	    	   	    </div>
-	  	    	   	    <!-- end  -->
-	  	    	   </div>
-	  	    </div>
-	  </div>
-</div>
+                            <h3 class="bor_onel_tit"><span>完善信息</span></h3>
+                            <ul class="bor_onel_ul">
+                                <li>&nbsp;<img src="images/bor_pic01.png" alt="">实名认证<span></span>
+                                </li>
+                                <li><img src="images/bor_pic07.png" alt="">视频认证<span></span>
+                                </li>
+                                <li>&nbsp;<img src="images/bor_pic05.png" alt="">绑定银行卡<span></span>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- end l -->
+                        <div class="bor_det_oner fl">
+                            <form>
+                                <fieldset>
+                                    <input type="hidden" name = "type" value = "1"/>
+                                    <div>
+                                        <label>申请人</label>
+                                        <input type="text" name = "username">
+                                    </div>
+                                    <div class="mt15">
+                                        <label>*借款金额</label>
+                                        <input type="text" name="loansmoney" class = "bor_inputbg01">
+                                    </div>
+                                    <div class="mt15">
+                                        <label>*借款利率</label>
+                                        <input type="text" name="loansinterestrate" class="bor_inputbg04">
+                                    </div>
+                                    <div class="mt15">
+                                        <label>*还款期限</label>
+                                        <input type="text" name="refundeadline" class = "bor_inputbg02">
+                                    </div>
+                                    <div class="mt15">
+                                        <label>*还款方式</label>
+                                        <select name = "refundway">
+                                            <option value = "等额本息">等额本息</option>
+                                        </select>
+                                    </div>
+                                    <div class="mt15 guarmethod clearfix">
+                                        <label>*房屋证明</label>
+                                        <input type="file" name="housenumber" ><br>
+                                    </div>
+                                    <div class="mt15 guarmethod clearfix">
+                                        <label>*总价值</label>
+                                        <input type="text" name="globalvalue" class="bor_inputbg01"><br>
+                                    </div>
+                                    <div class="mt15">
+                                        <label>*借款用途</label>
+                                        <select name = "loansUsed">
+                                            <option value = "个人日常消费" selected = "selected">个人日常消费</option>
+                                            <option value = "装修">装修</option>
+                                            <option value = "旅游">旅游</option>
+                                            <option value = "教育">教育</option>
+                                            <option value = "医疗">医疗</option>
+                                        </select>
+                                    </div>
+                                    <div class="mt15">
+                                        <label>*借款描述</label>
+                                        <textarea name = "loansDescribe"></textarea>
+
+                                    </div>
+                                    <div class="mt15">
+                                        <label>*借款情况</label>
+                                        <input type="radio" class="input3" value ="1" name = "loanscase" checked = checked>
+                                        普通借款
+                                        <input type="radio" class="input3"value = "2" name = "loanscase">
+                                        紧急借款
+                                    </div>
+                                    <div class="mt30">
+                                        <label></label>
+                                        <button id="sub2" style="width: 100px;height: 30px;font-size: 15px;">提交材料</button>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- end  -->
+
+                    <!--信用贷-->
+                    <div class="bor_det_one" style="display:none;">
+                        <div class="bor_det_one clearfix pt30 pb30">
+                            <div class="bor_det_onel fl">
+                                <p class="bor_p1">中兴财富平台的借款功能旨在帮助借款用户以
+                                    低成本获得借款。用户在需要资金时，可以将
+                                    自有房产和车产作为抵押物，小油菜线下审核
+                                    通过后，根据抵押物的价值融资。</p>
+                                <p class="bor_p2">中兴财富平台的借款功能旨在帮助借款用户以
+                                    低成本获得借款。用户在需要资金时，可以将
+                                    自有房产和车产作为抵押物，小油菜线下审核
+                                    通过后，根据抵押物的价值融资。</p>
+                                <h3 class="bor_onel_tit"><span>申请条件</span></h3>
+                                <ul class="bor_onel_ul">
+                                    <li><img src="images/bor_pic01.png" alt="">年满18周岁以上的公民
+                                    </li>
+                                    <li><img src="images/bor_pic02.png" alt="">需要北京房产或车产抵押
+                                    </li>
+                                    <li><img src="images/bor_pic03.png" alt="">个人或企业银行征信记录良好
+                                    </li>
+                                    <li><img src="images/bor_pic04.png" alt="">无现有诉讼记录
+                                    </li>
+                                </ul>
+                                <h3 class="bor_onel_tit"><span>提交资料</span></h3>
+                                <ul class="bor_onel_ul">
+                                    <li>&nbsp;<img src="images/bor_pic05.png" alt="">身份证
+                                    </li>
+                                    <li><img src="images/bor_pic06.png" alt="">申请资料
+                                    </li>
+                                    <li><img src="images/bor_pic07.png" alt="">其他
+                                    </li>
+                                </ul>
+
+                                <h3 class="bor_onel_tit"><span>完善信息</span></h3>
+                                <ul class="bor_onel_ul">
+                                    <li>&nbsp;<img src="images/bor_pic01.png" alt="">实名认证<span></span>
+                                    </li>
+                                    <li><img src="images/bor_pic07.png" alt="">视频认证<span></span>
+                                    </li>
+                                    <li>&nbsp;<img src="images/bor_pic05.png" alt="">绑定银行卡<span></span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- end l -->
+                            <div class="bor_det_oner fl">
+                                <form>
+                                    <fieldset>
+                                        <input type="hidden" name = "type" value = "1"/>
+                                        <div>
+                                            <label>申请人</label>
+                                            <input type="text" name = "username">
+                                        </div>
+                                        <div class="mt15">
+                                            <label>*借款金额</label>
+                                            <input type="text" name="loansmoney" class = "bor_inputbg01">
+                                        </div>
+                                        <div class="mt15">
+                                            <label>*借款利率</label>
+                                            <input type="text" name="loansinterestrate" class="bor_inputbg04">
+                                        </div>
+                                        <div class="mt15">
+                                            <label>*还款期限</label>
+                                            <input type="text" name="refundeadline" class = "bor_inputbg02">
+                                        </div>
+                                        <div class="mt15">
+                                            <label>*还款方式</label>
+                                            <select name = "refundway">
+                                                <option value = "等额本息">等额本息</option>
+                                            </select>
+                                        </div>
+                                        <div class="mt15 guarmethod clearfix">
+                                            <label>*房屋证明</label>
+                                            <input type="file" name="housenumber" ><br>
+                                        </div>
+                                        <div class="mt15 guarmethod clearfix">
+                                            <label>*总价值</label>
+                                            <input type="text" name="globalvalue" class="bor_inputbg01"><br>
+                                        </div>
+                                        <div class="mt15">
+                                            <label>*借款用途</label>
+                                            <select name = "loansUsed">
+                                                <option value = "个人日常消费" selected = "selected">个人日常消费</option>
+                                                <option value = "装修">装修</option>
+                                                <option value = "旅游">旅游</option>
+                                                <option value = "教育">教育</option>
+                                                <option value = "医疗">医疗</option>
+                                            </select>
+                                        </div>
+                                        <div class="mt15">
+                                            <label>*借款描述</label>
+                                            <textarea name = "loansDescribe"></textarea>
+
+                                        </div>
+                                        <div class="mt15">
+                                            <label>*借款情况</label>
+                                            <input type="radio" class="input3" value ="1" name = "loanscase" checked = checked>
+                                            普通借款
+                                            <input type="radio" class="input3"value = "2" name = "loanscase">
+                                            紧急借款
+                                        </div>
+                                        <div class="mt30">
+                                            <label></label>
+                                            <button id="sub3" style="width: 100px;height: 30px;font-size: 15px;">提交材料</button>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- end  -->
+                    </div>
+                </div>
+            </div>
+        </div>
 </body>
 </html>
