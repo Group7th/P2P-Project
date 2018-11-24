@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.group7.dao.LoanDao">
     <insert id="applyForLoad">
-      insert into tb_loans (loansid,userid,username,loansmoney,time,)
+      insert into tb_loans (loansid,userid,username,loansmoney,loansinterestrate,refundway,refunddeadline,loansused,describe,loanscase,begintime)
+      values ()
     </insert>
 </mapper>

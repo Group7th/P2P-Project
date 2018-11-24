@@ -7,7 +7,11 @@
 <!-- <link rel="stylesheet/less" type="text/css" href="css/style.less" /> -->
 <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="js/all.js"></script>
-
+<!--<style>
+	.bor_det_oner .bor_inputbg04 {
+		background: url(images/baifenhao.png) no-repeat scroll 235px center #ffffff;
+	}
+</style>-->
 </head>
 <body>
 <!-- header start -->
@@ -67,7 +71,6 @@
 	  	    	   	  <span class="bor_decurspan">房产抵押</span>
 	  	    	   	  <span>车辆抵押</span>
 	  	    	   	  <span>信用贷款</span>
-	  	    	   	  <span>零首付车贷</span>
 	  	    	   </h2>
 	  	    	   <div class="bor_detail_box">
 	  	    	   	    <div class="bor_det_one clearfix pt30 pb30">
@@ -140,8 +143,8 @@
 												   </select>
 	  	    	   	    	  	     	  	   </div>
 	  	    	   	    	  	     	  	   <div class="mt15 guarmethod clearfix">
-	  	    	   	    	  	     	  	   	   	  <label>*房屋数量</label>
-	  	    	   	    	  	     	  	   	   	  <input type="text" name="housenumber" class="bor_inputbg03"><br>
+	  	    	   	    	  	     	  	   	   	  <label>*房屋证明</label>
+	  	    	   	    	  	     	  	   	   	  <input type="file" name="housenumber" ><br>
 	  	    	   	    	  	     	  	   </div>
 											  <div class="mt15 guarmethod clearfix">
 												  <label>*总价值</label>
@@ -149,7 +152,7 @@
 											  </div>
 	  	    	   	    	  	     	  	   <div class="mt15">
 	  	    	   	    	  	     	  	   	   <label>*借款用途</label>
-	  	    	   	    	  	     	  	   	   <select name = "loanUsed">
+	  	    	   	    	  	     	  	   	   <select name = "loansUsed">
 	  	    	   	    	  	     	  	   	   	  <option value = "个人日常消费" selected = "selected">个人日常消费</option>
 	  	    	   	    	  	     	  	   	   	  <option value = "装修">装修</option>
 	  	    	   	    	  	     	  	   	   	  <option value = "旅游">旅游</option>
@@ -159,23 +162,19 @@
 	  	    	   	    	  	     	  	   </div>
 	  	    	   	    	  	     	  	    <div class="mt15">
 	  	    	   	    	  	     	  	   	   <label>*借款描述</label> 
-	  	    	   	    	  	     	  	   	   <textarea name = "loanDescribe"></textarea>
+	  	    	   	    	  	     	  	   	   <textarea name = "loansDescribe"></textarea>
 	  	    	   	    	  	     	  	   	 
 	  	    	   	    	  	     	  	   </div>
 	  	    	   	    	  	     	  	   <div class="mt15">
 	  	    	   	    	  	     	  	   	   <label>*借款情况</label>
-	  	    	   	    	  	     	  	   	   <input type="radio" class="input3" value ="1" name = "loancase" checked = checked>
+	  	    	   	    	  	     	  	   	   <input type="radio" class="input3" value ="1" name = "loanscase" checked = checked>
 	  	    	   	    	  	     	  	   	   普通借款
-	  	    	   	    	  	     	  	  	   <input type="radio" class="input3"value = "2" name = "loancase">
+	  	    	   	    	  	     	  	  	   <input type="radio" class="input3"value = "2" name = "loanscase">
 	  	    	   	    	  	     	  	   	   紧急借款 
-	  	    	   	    	  	     	  	   </div>
-	  	    	   	    	  	     	  	   <div class="mt15" >
-	  	    	   	    	  	     	  	   	   <label>*验证码</label>
-	  	    	   	    	  	     	  	   	   <input type="text" name="yanzheng" >
 	  	    	   	    	  	     	  	   </div>
 	  	    	   	    	  	     	  	   <div class="mt30">
 	  	    	   	    	  	     	  	   	   <label></label>
-	  	    	   	    	  	     	  	   	   <button id="sub">提交材料</button>
+	  	    	   	    	  	     	  	   	   <button id="sub" style="width: 100px;height: 30px;font-size: 15px;">提交材料</button>
 	  	    	   	    	  	     	  	   </div>
 	  	    	   	    	  	     	  </fieldset>
 	  	    	   	    	  	     </form>
