@@ -244,7 +244,7 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
 }
 * html body {
   /* IE6 fixed box hack */
-  _background-image: url(about:blank);
+  /*_background-image: url(about:blank);*/
   _background-attachment: fixed;
 }
 body {
@@ -2021,7 +2021,7 @@ body {
 }
 .hc_answer {
   padding: 20px 50px;
-  background: url(../images/hc_answer.png) no-repeat 10px 20px #fbfbfb;
+  /*background: url(../images/hc_answer.png) no-repeat 10px 20px #fbfbfb;*/
 }
 /*文章.css*/
 .helpconright h3 {

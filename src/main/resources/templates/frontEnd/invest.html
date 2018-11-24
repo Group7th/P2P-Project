@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
 	<title>invest</title>
@@ -7,13 +8,12 @@
 <!-- <link rel="stylesheet/less" type="text/css" href="css/style.less" /> -->
 <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="js/all.js"></script>
-<!--[if IE 6]> 
-<script src="./js/iepng.js" type="text/javascript"></script> 
-<script type="text/javascript">
-   EvPNG.fix('div, ul, img, li, input,span, p');
-</script>
-<![endif]-->
+<link rel="stylesheet" type="text/css" href="css/style1.css">
+<script type="text/javascript" src="js/script.js"></script>
+
+
 </head>
+
 <body>
 <!-- header start -->
 <div class="zxcf_top_wper">
@@ -25,13 +25,13 @@
 		    <a href="#"><img src="images/zxcf_sina.png" alt=""></a>
 		    <a href="#"><img src="images/zxcf_qq.png" alt=""></a>
 		 </div>
-		<div class="zxcf_top_r fr">
-			<a href="toLogin" class="curspan">立即登录</a>
-			<span>|</span>
-			<a href="toRegister">免费注册</a>
-			<span>|</span>
-			<a href="toproblem">常见问题</a>
-		</div>
+		 <div class="zxcf_top_r fr">
+		 	<a href="login.html" class="curspan">立即登录</a>
+		 	<span>|</span>
+		 	<a href="register.html">免费注册</a>
+		 	<span>|</span>
+		 	<a href="problem.html">常见问题</a>
+		 </div>
 	</div>
 </div>
 <!-- end top -->
@@ -42,22 +42,22 @@
 		 	<img src="images/zxcf_perinfo.png" alt="">
 		 	<span>我的账户
 		 	<img src="images/zxcf_icon01.png" alt=""></span>
-			 <ul class="zxcf_perinfo" style="display:none;">
-				 <li style="color: #6cd159"><a href="#">切换账号</a></li>
-				 <li style="color: red"><a href="#">注销</a></li>
-
-			 </ul>
+		 	<ul class="zxcf_perinfo" style="display:none;">
+		 		<li><a href="#">111</a></li>
+		 		<li><a href="#">111</a></li>
+		 		<li><a href="#">111</a></li>
+		 	</ul>
 		 </div>
 	</div>
 </div>
 <div class="zxcf_menu_wper">
 	<div class="zxcf_menu px1000">
-		<a href="toIndex" class="zm_cura">首页</a>
-		<a href="toInvest">我要投资</a>
-		<a href="toBorrow">我要借款</a>
-		<a href="#">实时财务</a>
-		<a href="toNoticelist">账户信息</a>
-		<a href="#" style="margin-right:0;">关于我们</a>
+		  <a href="index.html" class="zm_cura">首页</a>
+		  <a href="invest.html">我要投资</a>
+		  <a href="borrow.html">我要借款</a>
+		  <a href="#">实时财务</a>
+		  <a href="noticelist.html">新手指引</a>
+		  <a href="#" style="margin-right:0;">关于我们</a>
 	</div>
 </div>
 <!-- end  -->
@@ -65,35 +65,63 @@
 	  <div class="invest_con px1000">
 	  	     <div class="product_choose">
 	  	     	    <h2 class="product_tit clearfix">
-	  	     	       <em class="proall fl">全部理财产品</em>
 	  	     	       <div class="clearfix fl">
-	  	     	       <span class="product_curspan"><img src="images/invest_pic01.png"> 新手体验标</span>
-	  	     	       <span><img src="images/invest_pic02.png"> 项目列表</span>
-	  	     	       <span><img src="images/invest_pic03.png"> 债权转让</span>
+	  	     	       <span class="product_curspan"><img src="images/invest_pic02.png"> 项目列表</span>
 	  	     	       </div>
-	  	     	      
 	  	     	    </h2>
-	  	     	    <div class="product_box">
-	  	     	    	  <div class="product_list">
-	  	     	    	  	     <div class="invest_prochoose">
-				  	       	      <p><span>项目期限：</span><a href="#" class="inpro_cura">不限</a><a href="#">小于1个月</a><a href="#">1-3个月</a><a href="#">4-6个月</a><a href="#">7-12个月</a></p>
-				  	       	      <p><span>项目状态：</span><a href="#" class="inpro_cura">不限</a><a href="#">所有借款</a><a href="#">正在招标的借款</a><a href="#">已成功借款</a><a href="#">已完成借款</a></p>
-				  	       	      <p><span>项目收益：</span><a href="#" class="inpro_cura">不限</a><a href="#">10%以下</a><a href="#">10%-15%</a><a href="#">15%-20%</a><a href="#">20%-30%</a></p>
-				  	       	      <p><span>项目类型：</span><a href="#" class="inpro_cura">不限</a><a href="#">信用标</a><a href="#">抵押标</a></p>
-	  	                     </div>
-	  	     	    	  </div>
-	  	     	    	  <!--  -->
-	  	     	    	  <div class="product_list" style="display:none;">
-	  	     	    	  	  2
-	  	     	    	  </div>
-	  	     	    	  <!--  -->
-	  	     	    	  <div class="product_list" style="display:none;">
-	  	     	    	  	  3
-	  	     	    	  </div>
-	  	     	    	  <!--  -->
 
-	  	     	    </div>
-	  	     </div>
+				 <!--<tr th:each="prod : ${prods}">-->
+
+				 <!--<td th:text="${prod.name}">Onions</td>-->
+				 <!--<td th:text="${prod.price}">2.41</td>-->
+				 <!--<td th:text="${prod.inStock}? #{true} : #{false}">yes</td>-->
+			 <!--</tr>-->
+
+	  	     	    	  	   <ul class="select">
+	  	     	    	  	   	<li class="select-list">
+	  	     	    	  	   		<dl id="select1">
+	  	     	    	  	   			<dt>项目期限：</dt>
+	  	     	    	  	   			<dd class="select-all selected"><a href="#">不限</a></dd>
+	  	     	    	  	   			<dd><a href="#">1-3个月</a></dd>
+	  	     	    	  	   			<dd><a href="#">4-6个月</a></dd>
+	  	     	    	  	   			<dd><a href="#">7-12个月</a></dd>
+	  	     	    	  	   		</dl>
+	  	     	    	  	   	</li>
+	  	     	    	  	   	<li class="select-list">
+	  	     	    	  	   		<dl id="select2">
+	  	     	    	  	   			<dt>项目状态：</dt>
+	  	     	    	  	   			<dd class="select-all selected"><a href="#">不限</a></dd>
+	  	     	    	  	   			<dd><a href="#">所有借款</a></dd>
+	  	     	    	  	   			<dd><a href="#">正在招标的借款</a></dd>
+	  	     	    	  	   			<dd><a href="#">已成功借款</a></dd>
+	  	     	    	  	   			<dd><a href="#">已完成借款</a></dd>
+	  	     	    	  	   		</dl>
+	  	     	    	  	   	</li>
+	  	     	    	  	   	<li class="select-list">
+	  	     	    	  	   		<dl id="select3">
+	  	     	    	  	   			<dt>项目收益：</dt>
+	  	     	    	  	   			<dd class="select-all selected"><a href="#">不限</a></dd>
+	  	     	    	  	   			<dd><a href="#">5%以下</a></dd>
+	  	     	    	  	   			<dd><a href="#">6%-10%</a></dd>
+	  	     	    	  	   			<dd><a href="#">11%-15%</a></dd>
+	  	     	    	  	   		</dl>
+	  	     	    	  	   	</li>
+								<li class="select-list">
+									<dl id="select4">
+										<dt>项目类型：</dt>
+										<dd class="select-all selected"><a href="#">不限</a></dd>
+										<dd><a href="#">信用标</a></dd>
+										<dd><a href="#">抵押标</a></dd>
+									</dl>
+								</li>
+	  	     	    	  	   	<li class="select-result"  >    <!--style="display:none;"-->
+	  	     	    	  	   		<dl>
+	  	     	    	  	   			<dt>已选条件：</dt>
+	  	     	    	  	   			<dd class="select-no">暂时没有选择过滤条件</dd>
+	  	     	    	  	   		</dl>
+	  	     	    	  	   	</li>
+	  	     	    	  	   </ul>
+
 	  	     <!-- end block -->
 	  	    <h3 class="sort_tit mt30"><em>排序</em>
 	  	    <span>综合排序</span>
@@ -119,7 +147,7 @@
                                    认购进度：<span class="ui-progressbar-mid ui-progressbar-mid-100">100%</span>
                            	   </li>
                            	   <li class="prolist_btn">
-                           	   	    <a href="toDetail" class="pro_btn">立即投资</a>
+                           	   	    <a href="11112/detail.html" class="pro_btn">立即投资</a>
                            	   </li>
                            </ul>
 	  	             </div>
@@ -141,7 +169,7 @@
                                    认购进度：<span class="ui-progressbar-mid ui-progressbar-mid-100">100%</span>
                            	   </li>
                            	   <li class="prolist_btn">
-                           	   	    <a href="toDetail" class="pro_btn">立即投资</a>
+                           	   	    <a href="11112/detail.html" class="pro_btn">立即投资</a>
                            	   </li>
                            </ul>
 	  	             </div>
@@ -163,7 +191,7 @@
                                    认购进度：<span class="ui-progressbar-mid ui-progressbar-mid-100">100%</span>
                            	   </li>
                            	   <li class="prolist_btn">
-                           	   	    <a href="toDetail" class="pro_btn">立即投资</a>
+                           	   	    <a href="11112/detail.html" class="pro_btn">立即投资</a>
                            	   </li>
                            </ul>
 	  	             </div>
@@ -185,7 +213,7 @@
                                    认购进度：<span class="ui-progressbar-mid ui-progressbar-mid-100">100%</span>
                            	   </li>
                            	   <li class="prolist_btn">
-                           	   	    <a href="toDetail" class="pro_btn">立即投资</a>
+                           	   	    <a href="11112/detail.html" class="pro_btn">立即投资</a>
                            	   </li>
                            </ul>
 	  	             </div>
@@ -207,7 +235,7 @@
                                    认购进度：<span class="ui-progressbar-mid ui-progressbar-mid-100">100%</span>
                            	   </li>
                            	   <li class="prolist_btn">
-                           	   	    <a href="toDetail" class="pro_btn">立即投资</a>
+                           	   	    <a href="11112/detail.html" class="pro_btn">立即投资</a>
                            	   </li>
                            </ul>
 	  	             </div>
@@ -236,10 +264,8 @@
 	  	             <!-- end one -->
 	  	             <!-- pagelink -->
 	  	              <p class="pagelink">
-	  	                 <a href="#" class="pglink_cura">1</a>
-	  	                 <a href="#">2</a>
-	  	                 <a href="#">3</a>
-	  	                 <a href="#">下一页</a>
+	  	                 <a href="javascript:lasta()" >上一页</a>
+	  	                 <a href="javascript:next()" >下一页</a>
 	  	              </p>
 	  	             <!-- pagelink end -->
 	  	            
@@ -281,6 +307,7 @@
 	  	    </div>
 	  	    <!-- end right -->
 
+
 	  </div>
 </div>
 
@@ -294,6 +321,143 @@
 		  </p>
 	</div>
 </div>
-<!-- footer end -->
 </body>
+<script>
+	$(function(){
+          $(".select-list").on("click",".selected",function() {
+              var fa= asd();
+              var param = {
+                  "month" :fa.month,
+                  "state" :fa.state,
+                  "ratio" :fa.ratio,
+                  "type"  :fa.type,
+                  "pageNo"  :1
+              }
+              getPage(param)
+          });
+    });
+
+    function asd() {
+
+        var mycars=new Array(4);
+        var month = '';  //项目期限
+        var state = '';  //项目状态
+        var ratio = '';	 //项目收益
+        var type = '';   //项目类型
+
+            $(".select-result dl dd a").each(function(index, element) {
+                if($(this).html()=='1-3个月'){
+                    month = '1';
+                }else if($(this).html()=='4-6个月'){
+                    month = '2';
+                }else if($(this).html()=='7-12个月'){
+                    month = '3';
+                }
+
+                if($(this).html()=='所有借款'){
+                    state = '4';
+                }else if($(this).html()=='正在招标的借款'){
+                    state = '5';
+                }else if($(this).html()=='已成功借款'){
+                    state = '6';
+                }else if($(this).html()=='已完成借款'){
+                    state = '7';
+                }
+
+                if($(this).html()=='5%以下'){
+                    ratio = '8';
+                }else if($(this).html()=='6%-10%'){
+                    ratio = '9';
+                }else if($(this).html()=='11%-15%'){
+                    ratio = '10';
+                }
+
+                if($(this).html()=='信用标'){
+                    type = '11';
+                }else if($(this).html()=='抵押标'){
+                    type = '12';
+                }
+            });
+        var param = {
+            "month" :month,
+            "state" :state,
+            "ratio" :ratio,
+            "type"  :type
+        }
+		return param
+    }
+
+				var pageNo =1;
+				function lasta(){
+				    var la = asd();
+					if(pageNo<1)
+						pageNo=1;
+					pageNo=pageNo-1;
+                    var param = {
+                        "month" :la.month,
+                        "state" :la.state,
+                        "ratio" :la.ratio,
+                        "type"  :la.type,
+                        "pageNo":pageNo
+                    }
+					getPage(param)
+				}
+
+				function next(){
+                    var la = asd();
+					pageNo=pageNo+1;
+					var param = {
+						"month" :la.month,
+						"state" :la.state,
+						"ratio" :la.ratio,
+						"type"  :la.type,
+						"pageNo":pageNo
+					}
+					getPage(param)
+				}
+
+			  function getPage(param){
+				  $.ajax({
+					  type: "post",
+					  url: "/p2p/invest",
+					  dataType : "json",
+					  data : param,
+					  success: function(data){
+							alert(data.inves[1].USERNAME)
+						    alert(data.invesCount)
+                         /* if(data!=''){
+                              var str="";
+                              for (var i=0;i<data.length;i++){
+                                  str+="<h2 class=\"prolist_one_tit\"><span>抵押</span></h2>" +
+                                      "<ul class='prolist_one_ul clearfix'>" +
+                                      "<li>年华收益：<strong>12.49%</strong><br>" +
+                                      " 还款方式：按月付息，到期还本</li>" ;
+
+                              }
+                              $("#tby").append(str);
+                          }*/
+
+                           /* <h2 class="prolist_one_tit"><span>抵押</span>汽车销售服务企业补充流动资金（三期）
+                              </h2>
+                              <ul class="prolist_one_ul clearfix">
+                              <li>
+                              年华收益：<strong>12.49%</strong><br>
+                          还款方式：按月付息，到期还本
+                          </li>
+                          <li>
+                          剩余期限：<i>308</i>天<br>
+                          保障机构：中融兴业融资担保有限公司
+                          </li>
+                          <li class="prolist_press">
+                              募集金额：<strong>9,900.00</strong> 元 <br>
+                          认购进度：<span class="ui-progressbar-mid ui-progressbar-mid-100">100%</span>
+                              </li>
+                              <li class="prolist_btn">
+                              <a href="11112/detail.html" class="pro_btn">立即投资</a>
+                              </li>
+                              </ul>*/
+					  }
+				  });
+			  }
+</script>
 </html>
