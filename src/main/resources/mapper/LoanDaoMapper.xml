@@ -3,14 +3,29 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.group7.dao.LoanDao">
+    <!--点击申请贷款，查询当前用户的信息-->
+    <select id="getUserInfo" resultType="map">
+      select userid,userphone,name from tb_userinformation where userid=(select userid from tb_user where username=#{username})
+    </select>
     <!--房屋抵押贷款-->
     <insert id="applyForLoad">
-    <!--贷款编号-用户编号-用户姓名-贷款金额-贷款利息-还款方式-还款时限-贷款用途-贷款描述-贷款情况-开始投标时间-贷款类型-->
-      insert into tb_loans (loansid,userid,username,loansmoney,loansinterestrate,refundway,refunddeadline,loansused,describe,loanscase,begintime,loanstype)
+    <!--贷款编号-用户编号-用户姓名-贷款金额-贷款利息-还款方式-还款时限-贷款用途-贷款描述-贷款情况-开始投标时间-贷款类型-贷款状态-->
+      insert into tb_loans (loansid,userid,username,loansmoney,loansinterestrate,refundway,refunddeadline,loansused,describe,loanscase,begintime,loanstype,loansstate)
       values (seq_tb_loans_id,#{userid},#{username},#{loansmoney},#{loansinterstrate},#{refundway},#{refunddeadline},#{loansDescribe},#{loanscase}
-        sysdate,#{type})
+        sysdate,#{type},0)
     </insert>
-    <insert id="">
-
+    <!--贷款类型是房屋抵押贷的存到数据库中-->
+    <insert id="houseLoans">
+      <selectKey keyProperty="loansid" order="BEFORE" resultType="int">
+        select seq_tb_loans_id.currval from tb_loans
+      </selectKey>
+      insert into tb_loanstype (loanstypeid,loansid,loanstype,houseproperty,globalvalue) values (#{type},#{loansid},'房屋抵押贷',#{houseinfo},#{globalvalue})
+    </insert>
+    <!--贷款类型是车辆抵押贷的存到数据库中-->
+    <insert id="carLoans">
+        <selectKey keyProperty="loansid" order="BEFORE" resultType="int">
+            select seq_tb_loans_id.currval from tb_loans
+        </selectKey>
+        insert into tb_loanstype (loanstypeid,loansid,loanstype,carinformation,carvalue) values (#{type},#{loansid},'车辆抵押贷',#{carinfo},#{carinfo})
     </insert>
 </mapper>

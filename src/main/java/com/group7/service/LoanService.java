@@ -1,14 +1,14 @@
-package com.group7.dao;
+package com.group7.service;
 
 import java.util.Map;
 
 /**
  * className:LoanService
- * discriptoin:贷款业务 dao层
+ * discriptoin:申请贷款业务层
  * author:zz
- * createTime:2018-11-24 09:32
+ * createTime:2018-11-24 20:41
  */
-public interface LoanDao {
+public interface LoanService {
 
     /**
      * 点击申请贷款，查询当前用户的信息
@@ -44,5 +44,4 @@ public interface LoanDao {
      * @return
      */
     int creditLoans(Map map);
-
 }
