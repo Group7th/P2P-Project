@@ -10,8 +10,8 @@
     <!--房屋抵押贷款-->
     <insert id="applyForLoad">
     <!--贷款编号-用户编号-用户姓名-贷款金额-贷款利息-还款方式-还款时限-贷款用途-贷款描述-贷款情况-开始投标时间-贷款类型-贷款状态-->
-      insert into tb_loans (loansid,userid,username,loansmoney,loansinterestrate,refundway,refunddeadline,loansused,describe,loanscase,begintime,loanstype,loansstate)
-      values (seq_tb_loans_id,#{userid},#{username},#{loansmoney},#{loansinterstrate},#{refundway},#{refunddeadline},#{loansDescribe},#{loanscase}
+      insert into tb_loans (loansid,userid,name,loansmoney,loansinterestrate,refundway,refunddeadline,loansused,describe,loanscase,begintime,loanstype,loansstate)
+      values (seq_tb_loans_id,#{userid},#{name},#{loansmoney},#{loansinterstrate},#{refundway},#{refunddeadline},#{loansDescribe},#{loanscase}
         sysdate,#{type},0)
     </insert>
     <!--贷款类型是房屋抵押贷的存到数据库中-->

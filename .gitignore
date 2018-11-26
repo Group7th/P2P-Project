@@ -10,3 +10,4 @@ log.path_IS_UNDEFINED
 *.iml
 out
 gen
+*.log
