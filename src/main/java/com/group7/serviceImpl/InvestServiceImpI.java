@@ -6,6 +6,7 @@ import com.group7.service.InvestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,7 +23,6 @@ public class InvestServiceImpI implements InvestService {
     private InvestDao investDao;
 
     public List<Map> getInves(Map map) {
-        map.put("pageSize",5);
         //如果pageNo为空默认1  pageSize 为空,默认10
         int pageNo = map.get("pageNo")==null?1:Integer.valueOf(map.get("pageNo")+"");
         int pageSize = map.get("pageSize")==null?5:Integer.valueOf(map.get("pageSize")+"");
@@ -33,8 +33,22 @@ public class InvestServiceImpI implements InvestService {
     }
 
     @Override
-    public int getInvesCount(Map map) {
+    public Map getInvesCount(Map map) {
+        int pageSize = Integer.valueOf(map.get("pageSize")+"");  //当前页数据条数
+        int pageNo = Integer.valueOf(map.get("pageNo")+"");  //当前页数
+        int invesCount = investDao.getInvesCount(map); //获取总页数
+        int maxPage =  invesCount % pageSize == 0 ? invesCount / pageSize : invesCount / pageSize + 1;  //判断当前是第几页
+        Map tempMap = new HashMap();
+        if(pageNo>=maxPage){   //如果当前页大于最大页     把值赋给Map 1为显示 0为隐藏  下一页按钮
+            tempMap.put("hi",0);
+        }else {
+            tempMap.put("sh",1);
+        }
+        return tempMap;
+    }
 
-        return investDao.getInvesCount(map);
+    @Override
+    public Map investment(Map map) {
+        return investDao.investment(map);
     }
 }

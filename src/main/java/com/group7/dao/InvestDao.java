@@ -13,6 +13,7 @@ public interface InvestDao {
 
     /**
      * 多条件筛选 查询分页
+     *
      * @param map
      * @return
      */
@@ -20,8 +21,23 @@ public interface InvestDao {
 
     /**
      * 分页总数量
+     *
      * @param map
      * @return
      */
     int getInvesCount(Map map);
+
+    /**
+     * 获取个人贷款信息
+     *
+     * @param map
+     * @return
+     */
+    Map investment(Map map);
+
+
+    int investmentAmount();
+
+
+
 }

@@ -43,21 +43,18 @@
 		 	<span>我的账户
 		 	<img src="images/zxcf_icon01.png" alt=""></span>
 		 	<ul class="zxcf_perinfo" style="display:none;">
-		 		<li><a href="#">111</a></li>
-		 		<li><a href="#">111</a></li>
-		 		<li><a href="#">111</a></li>
 		 	</ul>
 		 </div>
 	</div>
 </div>
 <div class="zxcf_menu_wper">
 	<div class="zxcf_menu px1000">
-		  <a href="index.html" class="zm_cura">首页</a>
-		  <a href="invest.html">我要投资</a>
-		  <a href="borrow.html">我要借款</a>
-		  <a href="#">实时财务</a>
-		  <a href="noticelist.html">新手指引</a>
-		  <a href="#" style="margin-right:0;">关于我们</a>
+		<a href="toIndex" class="zm_cura">首页</a>
+		<a href="toInvest">我要投资</a>
+		<a href="toBorrow">我要借款</a>
+		<a href="#">实时财务</a>
+		<a href="toNoticelist">账户信息</a>
+		<a href="#" style="margin-right:0;">关于我们</a>
 	</div>
 </div>
 <!-- end  -->
@@ -69,13 +66,6 @@
 	  	     	       <span class="product_curspan"><img src="images/invest_pic02.png"> 项目列表</span>
 	  	     	       </div>
 	  	     	    </h2>
-
-				 <!--<tr th:each="prod : ${prods}">-->
-
-				 <!--<td th:text="${prod.name}">Onions</td>-->
-				 <!--<td th:text="${prod.price}">2.41</td>-->
-				 <!--<td th:text="${prod.inStock}? #{true} : #{false}">yes</td>-->
-			 <!--</tr>-->
 
 	  	     	    	  	   <ul class="select">
 	  	     	    	  	   	<li class="select-list">
@@ -114,9 +104,9 @@
 										<dd><a href="#">抵押标</a></dd>
 									</dl>
 								</li>
-	  	     	    	  	   	<li class="select-result"  >    <!--style="display:none;"-->
+	  	     	    	  	   	<li class="select-result" style="display:none" >
 	  	     	    	  	   		<dl>
-	  	     	    	  	   			<dt>已选条件：</dt>
+	  	     	    	  	   			<dt>已选条件：<input type="text" class="count"></dt>
 	  	     	    	  	   			<dd class="select-no">暂时没有选择过滤条件</dd>
 	  	     	    	  	   		</dl>
 	  	     	    	  	   	</li>
@@ -129,143 +119,13 @@
 	  	    <span>发布时间<img src="images/invest_jiantou.png" alt=""></span>
 	  	    <span>项目期限<img src="images/invest_jiantou.png" alt=""></span>
 	  	    </h3>
-	  	    <div class="product_list mt20">
-	  	    	     <div class="prolist_one prolist_one_bl01 mt20">
-	  	    	           <h2 class="prolist_one_tit"><span>抵押</span>汽车销售服务企业补充流动资金（三期）
-                           </h2>
-                           <ul class="prolist_one_ul clearfix">
-                           	   <li>
-                           	   	   年华收益：<strong>12.49%</strong><br>
-                           	   	   还款方式：按月付息，到期还本
-                           	   </li>
-                           	   <li>
-                           	   	   剩余期限：<i>308</i>天<br>
-                                    保障机构：中融兴业融资担保有限公司
-                           	   </li>
-                           	   <li class="prolist_press">
-                           	   	   募集金额：<strong>9,900.00</strong> 元 <br>
-                                   认购进度：<span class="ui-progressbar-mid ui-progressbar-mid-100">100%</span>
-                           	   </li>
-                           	   <li class="prolist_btn">
-                           	   	    <a href="11112/detail.html" class="pro_btn">立即投资</a>
-                           	   </li>
-                           </ul>
-	  	             </div>
-	  	             <!-- end one -->
-	  	             <div class="prolist_one prolist_one_bl01 mt20">
-	  	    	           <h2 class="prolist_one_tit"><span>抵押</span>汽车销售服务企业补充流动资金（三期）
-                           </h2>
-                           <ul class="prolist_one_ul clearfix">
-                           	   <li>
-                           	   	   年华收益：<strong>12.49%</strong><br>
-                           	   	   还款方式：按月付息，到期还本
-                           	   </li>
-                           	   <li>
-                           	   	   剩余期限：<i>308</i>天<br>
-                                    保障机构：中融兴业融资担保有限公司
-                           	   </li>
-                           	   <li class="prolist_press">
-                           	   	   募集金额：<strong>9,900.00</strong> 元 <br>
-                                   认购进度：<span class="ui-progressbar-mid ui-progressbar-mid-100">100%</span>
-                           	   </li>
-                           	   <li class="prolist_btn">
-                           	   	    <a href="11112/detail.html" class="pro_btn">立即投资</a>
-                           	   </li>
-                           </ul>
-	  	             </div>
-	  	             <!-- end one -->
-	  	             <div class="prolist_one prolist_one_bl02 mt20">
-	  	    	           <h2 class="prolist_one_tit"><span class="pro_spanbg02">抵押</span>汽车销售服务企业补充流动资金（三期）
-                           </h2>
-                           <ul class="prolist_one_ul clearfix">
-                           	   <li>
-                           	   	   年华收益：<strong>12.49%</strong><br>
-                           	   	   还款方式：按月付息，到期还本
-                           	   </li>
-                           	   <li>
-                           	   	   剩余期限：<i>308</i>天<br>
-                                    保障机构：中融兴业融资担保有限公司
-                           	   </li>
-                           	   <li class="prolist_press">
-                           	   	   募集金额：<strong>9,900.00</strong> 元 <br>
-                                   认购进度：<span class="ui-progressbar-mid ui-progressbar-mid-100">100%</span>
-                           	   </li>
-                           	   <li class="prolist_btn">
-                           	   	    <a href="11112/detail.html" class="pro_btn">立即投资</a>
-                           	   </li>
-                           </ul>
-	  	             </div>
-	  	             <!-- end one -->
-	  	             <div class="prolist_one prolist_one_bl02 mt20">
-	  	    	           <h2 class="prolist_one_tit"><span class="pro_spanbg02">抵押</span>汽车销售服务企业补充流动资金（三期）
-                           </h2>
-                           <ul class="prolist_one_ul clearfix">
-                           	   <li>
-                           	   	   年华收益：<strong>12.49%</strong><br>
-                           	   	   还款方式：按月付息，到期还本
-                           	   </li>
-                           	   <li>
-                           	   	   剩余期限：<i>308</i>天<br>
-                                    保障机构：中融兴业融资担保有限公司
-                           	   </li>
-                           	   <li class="prolist_press">
-                           	   	   募集金额：<strong>9,900.00</strong> 元 <br>
-                                   认购进度：<span class="ui-progressbar-mid ui-progressbar-mid-100">100%</span>
-                           	   </li>
-                           	   <li class="prolist_btn">
-                           	   	    <a href="11112/detail.html" class="pro_btn">立即投资</a>
-                           	   </li>
-                           </ul>
-	  	             </div>
-	  	             <!-- end one -->
-                     <div class="prolist_one prolist_one_bl03 mt20">
-	  	    	           <h2 class="prolist_one_tit"><span class="pro_spanbg03">抵押</span>汽车销售服务企业补充流动资金（三期）
-                           </h2>
-                           <ul class="prolist_one_ul clearfix">
-                           	   <li>
-                           	   	   年华收益：<strong>12.49%</strong><br>
-                           	   	   还款方式：按月付息，到期还本
-                           	   </li>
-                           	   <li>
-                           	   	   剩余期限：<i>308</i>天<br>
-                                    保障机构：中融兴业融资担保有限公司
-                           	   </li>
-                           	   <li class="prolist_press">
-                           	   	   募集金额：<strong>9,900.00</strong> 元 <br>
-                                   认购进度：<span class="ui-progressbar-mid ui-progressbar-mid-100">100%</span>
-                           	   </li>
-                           	   <li class="prolist_btn">
-                           	   	    <a href="11112/detail.html" class="pro_btn">立即投资</a>
-                           	   </li>
-                           </ul>
-	  	             </div>
-	  	             <!-- end one -->
-	  	             <div class="prolist_one prolist_one_bl03 prolist_onebg mt20">
-	  	    	           <h2 class="prolist_one_tit"><span class="pro_spanbg03">抵押</span>汽车销售服务企业补充流动资金（三期）
-                           </h2>
-                           <ul class="prolist_one_ul clearfix">
-                           	   <li>
-                           	   	   年华收益：<strong>12.49%</strong><br>
-                           	   	   还款方式：按月付息，到期还本
-                           	   </li>
-                           	   <li>
-                           	   	   剩余期限：<i>308</i>天<br>
-                                    保障机构：中融兴业融资担保有限公司
-                           	   </li>
-                           	   <li class="prolist_press">
-                           	   	   募集金额：<strong>9,900.00</strong> 元 <br>
-                                   认购进度：<span class="ui-progressbar-mid ui-progressbar-mid-100">100%</span>
-                           	   </li>
-                           	   <li class="prolist_btn">
-                           	   	    <a href="#" class="pro_btn pro_btnbg02">已完成</a>
-                           	   </li>
-                           </ul>
-	  	             </div>
-	  	             <!-- end one -->
+
+				 <div id="tby"></div>
+
 	  	             <!-- pagelink -->
 	  	              <p class="pagelink">
-	  	                 <a href="javascript:lasta()" >上一页</a>
-	  	                 <a href="javascript:next()" >下一页</a>
+	  	                 <a href="javascript:lasta()" id="shang"  >上一页</a>
+	  	                 <a href="javascript:next()" id="xia" >下一页</a>
 	  	              </p>
 	  	             <!-- pagelink end -->
 	  	            
@@ -299,7 +159,7 @@
 	  	    	 <ul class="fl clearfix">
 	  	    	 	<li><a href="#">联系我们</a></li>
 	  	    	 	<li><a href="#">我要融资</a></li>
-	  	    	 	<li><a href="problem.html">帮助中心</a></li>
+	  	    	 	<li><a href="#">帮助中心</a></li>
 	  	    	 	<li><a href="#">友情链接</a></li>
 	  	    	 	<li><a href="#">招贤纳士</a></li>
 	  	    	 	<li><a href="#">收益计算器</a></li>
@@ -324,9 +184,12 @@
 </body>
 <script>
 	$(function(){
+		 var tr = false;
+          <!--获取 和 传值-->
           $(".select-list").on("click",".selected",function() {
-              var fa= asd();
-              var param = {
+              var fa= filtrate();
+              tr = true;
+              var  param = {
                   "month" :fa.month,
                   "state" :fa.state,
                   "ratio" :fa.ratio,
@@ -335,16 +198,28 @@
               }
               getPage(param)
           });
+        <!--判断第一次为空-->
+        if(tr){
+
+        }else {
+            var  param = {
+                "month" :"",
+                "state" :"",
+                "ratio" :"",
+                "type"  :"",
+                "pageNo" :1
+            }
+            getPage(param)
+        }
+
+
     });
-
-    function asd() {
-
-        var mycars=new Array(4);
+    <!-- 筛选数据 -->
+    function filtrate() {
         var month = '';  //项目期限
         var state = '';  //项目状态
         var ratio = '';	 //项目收益
         var type = '';   //项目类型
-
             $(".select-result dl dd a").each(function(index, element) {
                 if($(this).html()=='1-3个月'){
                     month = '1';
@@ -386,13 +261,16 @@
         }
 		return param
     }
-
+    			<!--定义初始页码-->
 				var pageNo =1;
+    			<!--上一页-->
 				function lasta(){
-				    var la = asd();
-					if(pageNo<1)
-						pageNo=1;
+				    var la = filtrate();  //调用筛选方法 获取数据
+
 					pageNo=pageNo-1;
+                    if(pageNo<1){
+                        pageNo=1;
+                    }
                     var param = {
                         "month" :la.month,
                         "state" :la.state,
@@ -400,64 +278,68 @@
                         "type"  :la.type,
                         "pageNo":pageNo
                     }
-					getPage(param)
+					getPage(param)  // 把值传到后台
 				}
+    			<!--下一页-->
+				function next() {
+                    var la = filtrate(); //调用筛选方法 获取数据
+                    pageNo = pageNo + 1;
+                    var param = {
+                        "month": la.month,
+                        "state": la.state,
+                        "ratio": la.ratio,
+                        "type": la.type,
+                        "pageNo": pageNo
+                    }
+                    getPage(param)// 把值传到后台
+                }
 
-				function next(){
-                    var la = asd();
-					pageNo=pageNo+1;
-					var param = {
-						"month" :la.month,
-						"state" :la.state,
-						"ratio" :la.ratio,
-						"type"  :la.type,
-						"pageNo":pageNo
-					}
-					getPage(param)
-				}
+   						 <!--向后台传值 获取数据 在前台拼接字符串-->
+                    function getPage(param) {
+                        $.ajax({
+                            type: "post",
+                            url: "/p2p/invest",
+                            dataType: "json",
+                            data: param,
+                            success: function (data) {
+                                $("#tby").empty();  <!-- 在次执行 清空之前数据 -->
+                                if (data.inves[0] != null && data.inves[0] != '') {  <!-- 判断不能为空 -->
+									var LOANSTYPE = "";
+                                    var str = "";
+                                    for (var i = 0; i < data.inves.length; i++) {
 
-			  function getPage(param){
-				  $.ajax({
-					  type: "post",
-					  url: "/p2p/invest",
-					  dataType : "json",
-					  data : param,
-					  success: function(data){
-							alert(data.inves[1].USERNAME)
-						    alert(data.invesCount)
-                         /* if(data!=''){
-                              var str="";
-                              for (var i=0;i<data.length;i++){
-                                  str+="<h2 class=\"prolist_one_tit\"><span>抵押</span></h2>" +
-                                      "<ul class='prolist_one_ul clearfix'>" +
-                                      "<li>年华收益：<strong>12.49%</strong><br>" +
-                                      " 还款方式：按月付息，到期还本</li>" ;
+                                        if(data.inves[i].LOANSTYPE==1){
+                                            LOANSTYPE="信用"
+                                        }else{
+                                            LOANSTYPE="抵押"
+                                        }
 
-                              }
-                              $("#tby").append(str);
-                          }*/
+                                        str += "<div class='product_list mt20'>" +
+                                            "<div class='prolist_one prolist_one_bl01 mt20'>" +
+                                            "<h2 class='prolist_one_tit'><span>" +LOANSTYPE+"</span>汽车销售服务企业补充流动资金（三期）</h2>" +
+                                            "<ul class='prolist_one_ul clearfix'>" +
+                                            "<li>年华收益：<strong>" + data.inves[i].LOANSINTERESTRATE + '%' + "</strong><br>" +
+                                            " 还款方式：" + data.inves[i].REFUNDWAY + "</li>" +
+                                            "<li>贷款期数：<i>" + data.inves[i].REFUNDDEADLINE + "</i>月<br>" +
+                                            "保障机构：中融兴业融资担保有限公司</li>" +
+                                            "<li class='prolist_press'>募集金额：<strong>" + data.inves[i].LOANSMONEY + "</strong> 元 <br>" +
+                                            "认购进度：<span class='ui-progressbar-mid ui-progressbar-mid-100'>" + data.inves[i].INVESTMENTAMOUNT / data.inves[i].LOANSMONEY * 100 + '%' + "</span></li>" +
+                                            "<li class='prolist_btn'><a href='/p2p/toDetail?loansId="+data.inves[i].LOANSID+"&userId="+data.inves[i].USERID+" ' class='pro_btn'>立即投资</a></li>" +
+                                            "</ul>" +
+                                            "</div>" +
+                                            "</div>"
+                                    }
+                                    $("#tby").append(str);
+                                    <!-- 断值  1为显示 0为隐藏  下一页按钮 -->
+                                    if(data.invesCount.hi == 0){
+										$("#xia").hide()
+									}else if(data.invesCount.sh == 1){
+                                        $("#xia").show()
+									}
+                                }
+                            }
+                        });
+                    }
 
-                           /* <h2 class="prolist_one_tit"><span>抵押</span>汽车销售服务企业补充流动资金（三期）
-                              </h2>
-                              <ul class="prolist_one_ul clearfix">
-                              <li>
-                              年华收益：<strong>12.49%</strong><br>
-                          还款方式：按月付息，到期还本
-                          </li>
-                          <li>
-                          剩余期限：<i>308</i>天<br>
-                          保障机构：中融兴业融资担保有限公司
-                          </li>
-                          <li class="prolist_press">
-                              募集金额：<strong>9,900.00</strong> 元 <br>
-                          认购进度：<span class="ui-progressbar-mid ui-progressbar-mid-100">100%</span>
-                              </li>
-                              <li class="prolist_btn">
-                              <a href="11112/detail.html" class="pro_btn">立即投资</a>
-                              </li>
-                              </ul>*/
-					  }
-				  });
-			  }
 </script>
 </html>
