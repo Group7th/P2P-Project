@@ -84,6 +84,33 @@ public class pageJump {
         return "frontEnd/register";
     }
 
+    /**
+     * 跳转前台首页
+     * @return
+     */
+    @RequestMapping("toDashboard")
+    public String toDashboard(){
+        return "examples/dashboard";
+    }
+
+    /**
+     * 跳转统计页面
+     * @return
+     */
+    @RequestMapping("totatistics")
+    public String totatistics(){
+        return "examples/dashboard.1";
+    }
+
+    /**
+     * 跳转后台模板
+     * @return
+     */
+    @RequestMapping("toMap")
+    public String toMap(){
+        return "examples/map";
+    }
+
 
 
 }
