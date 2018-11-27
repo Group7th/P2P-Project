@@ -7,15 +7,18 @@
     <!-- <link rel="stylesheet/less" type="text/css" href="css/style.less" /> -->
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/all.js"></script>
-    <script src="../js/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            var type = '${type}';
-            if(type==1){
-                $(".bor_det_one").show().siblings().hide();
-            }
-        })
-    </script>
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script src="http://lib.sinaapp.com/js/jquery/1.7.2/jquery.min.js"></script>
+    <script src="http://yukon12345.com/yukon12345.com/js/jquery.cookie.js"></script>
+    <script src="js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
+    <!--    <script type="text/javascript">
+            $(function () {
+                var type = '${type}';
+                if(type==1){
+                    $(".bor_det_one").show().siblings().hide();
+                }
+            })
+        </script>-->
 
 </head>
 <body>
@@ -123,9 +126,10 @@
                         <form>
                             <fieldset>
                                 <input type="hidden" name = "type" value = "1"/>
+                                <input type="hidden" name = "userid" id="userid"/>
                                 <div>
                                     <label>申请人</label>
-                                    <input type="text" name = "username">
+                                    <input type="text" name = "name" class="name">
                                 </div>
                                 <div class="mt15">
                                     <label>*借款金额</label>
@@ -147,7 +151,7 @@
                                 </div>
                                 <div class="mt15 guarmethod clearfix">
                                     <label>*房屋证明</label>
-                                    <input type="file" name="housenumber" ><br>
+                                    <input type="file" name="houseinfo" ><br>
                                 </div>
                                 <div class="mt15 guarmethod clearfix">
                                     <label>*总价值</label>
@@ -174,6 +178,15 @@
                                     <input type="radio" class="input3"value = "2" name = "loanscase">
                                     紧急借款
                                 </div>
+                                <div>
+                                <label>手机号</label>
+                                    <input type="text" name = "userphone" class="userphone">
+                                    <button id="send" type="button" style="width:100px;height:40px;">发送验证码</button>
+                                </div>
+                                <div>
+                                    <label>验证码</label>
+                                    <input type="text" name = "jiaoyan" class="jiaoyan">
+                                </div>
                                 <div class="mt30">
                                     <label></label>
                                     <button id="sub1" style="width: 100px;height: 30px;font-size: 15px;">提交材料</button>
@@ -185,7 +198,6 @@
                 <!-- end 房产抵押 -->
 
                 <!--车辆抵押-->
-                <div class="bor_det_one" style="display:none;">
                     <div class="bor_det_one clearfix pt30 pb30">
                         <div class="bor_det_onel fl">
                             <p class="bor_p1">中兴财富平台的借款功能旨在帮助借款用户以
@@ -231,10 +243,10 @@
                         <div class="bor_det_oner fl">
                             <form>
                                 <fieldset>
-                                    <input type="hidden" name = "type" value = "1"/>
+                                    <input type="hidden" name = "type" value = "2"/>
                                     <div>
                                         <label>申请人</label>
-                                        <input type="text" name = "username">
+                                        <input type="text" name = "name" class="name">
                                     </div>
                                     <div class="mt15">
                                         <label>*借款金额</label>
@@ -255,8 +267,8 @@
                                         </select>
                                     </div>
                                     <div class="mt15 guarmethod clearfix">
-                                        <label>*房屋证明</label>
-                                        <input type="file" name="housenumber" ><br>
+                                        <label>*车辆证明</label>
+                                        <input type="file" name="carinfo" ><br>
                                     </div>
                                     <div class="mt15 guarmethod clearfix">
                                         <label>*总价值</label>
@@ -275,7 +287,6 @@
                                     <div class="mt15">
                                         <label>*借款描述</label>
                                         <textarea name = "loansDescribe"></textarea>
-
                                     </div>
                                     <div class="mt15">
                                         <label>*借款情况</label>
@@ -283,6 +294,15 @@
                                         普通借款
                                         <input type="radio" class="input3"value = "2" name = "loanscase">
                                         紧急借款
+                                    </div>
+                                    <div>
+                                        <label>手机号</label>
+                                        <input type="text" name = "userphone" class="userphone" >
+                                        <button class="send" type="button" style="width:100px;height:40px;">发送验证码</button>
+                                    </div>
+                                    <div>
+                                        <label>验证码</label>
+                                        <input type="text" name = "jiaoyan" class="jiaoyan">
                                     </div>
                                     <div class="mt30">
                                         <label></label>
@@ -295,7 +315,6 @@
                     <!-- end  -->
 
                     <!--信用贷-->
-                    <div class="bor_det_one" style="display:none;">
                         <div class="bor_det_one clearfix pt30 pb30">
                             <div class="bor_det_onel fl">
                                 <p class="bor_p1">中兴财富平台的借款功能旨在帮助借款用户以
@@ -309,8 +328,6 @@
                                 <h3 class="bor_onel_tit"><span>申请条件</span></h3>
                                 <ul class="bor_onel_ul">
                                     <li><img src="images/bor_pic01.png" alt="">年满18周岁以上的公民
-                                    </li>
-                                    <li><img src="images/bor_pic02.png" alt="">需要北京房产或车产抵押
                                     </li>
                                     <li><img src="images/bor_pic03.png" alt="">个人或企业银行征信记录良好
                                     </li>
@@ -341,10 +358,10 @@
                             <div class="bor_det_oner fl">
                                 <form>
                                     <fieldset>
-                                        <input type="hidden" name = "type" value = "1"/>
+                                        <input type="hidden" name = "type" value = "3"/>
                                         <div>
                                             <label>申请人</label>
-                                            <input type="text" name = "username">
+                                            <input type="text" name = "name" class ="name">
                                         </div>
                                         <div class="mt15">
                                             <label>*借款金额</label>
@@ -363,14 +380,6 @@
                                             <select name = "refundway">
                                                 <option value = "等额本息">等额本息</option>
                                             </select>
-                                        </div>
-                                        <div class="mt15 guarmethod clearfix">
-                                            <label>*房屋证明</label>
-                                            <input type="file" name="housenumber" ><br>
-                                        </div>
-                                        <div class="mt15 guarmethod clearfix">
-                                            <label>*总价值</label>
-                                            <input type="text" name="globalvalue" class="bor_inputbg01"><br>
                                         </div>
                                         <div class="mt15">
                                             <label>*借款用途</label>
@@ -394,6 +403,15 @@
                                             <input type="radio" class="input3"value = "2" name = "loanscase">
                                             紧急借款
                                         </div>
+                                        <div>
+                                        <label>手机号</label>
+                                        <input type="text" name = "userphone" class="userphone">
+                                        <button class="send" type="button" style="width:100px;height:40px;">发送验证码</button>
+                                        </div>
+                                        <div>
+                                            <label>验证码</label>
+                                            <input type="text" name = "jiaoyan" class="jiaoyan">
+                                        </div>
                                         <div class="mt30">
                                             <label></label>
                                             <button id="sub3" style="width: 100px;height: 30px;font-size: 15px;">提交材料</button>
@@ -403,9 +421,34 @@
                             </div>
                         </div>
                         <!-- end  -->
-                    </div>
-                </div>
             </div>
         </div>
+    </div>
+</div>
+
+<script>
+    /**
+     * 根据当前用户名查找用户信息
+     */
+    $(function(){
+        $(".bor_det_one").eq(0).show().siblings().hide();
+        var username='xingbobo';
+        $.ajax({
+            url:"/p2p/getUserInfo",
+            type:"POST",
+            data:{username:username},
+            success:function(data){
+                $(".userid").val(data.USERID);
+                $(".name").val(data.NAME);
+                $(".userphone").val(data.USERPHONE);
+            }
+        });
+    });
+
+    /**
+     * 发送验证码
+     */
+
+</script>
 </body>
 </html>
