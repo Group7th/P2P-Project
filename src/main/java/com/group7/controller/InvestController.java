@@ -40,7 +40,6 @@ public class InvestController {
             tempMap.put("inves",inves);
             tempMap.put("invesCount",invesCount);
         //}
-        System.out.println(tempMap);
         return tempMap;
     }
 
@@ -53,9 +52,23 @@ public class InvestController {
     @RequestMapping("/investment")
     public Object investment(@RequestParam Map map){
         Map investment = investService.investment(map);
-        System.out.println(investment);
         return investment;
     }
+
+    /**
+     * 贷款 投资详情信息
+     * @param map
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/investmentAmount")
+    public Object investmentAmount(@RequestParam Map map){
+
+        return null;
+    }
+
+
+
 
 
 

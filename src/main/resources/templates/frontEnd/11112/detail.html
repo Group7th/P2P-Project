@@ -84,15 +84,15 @@
 	  	     	    	  	    		 </span>
 	  	     	    	  	    	</li>
 	  	     	    	  	    	<li>
-	  	     	    	  	    		 项目期限<br>
+	  	     	    	  	    		 贷款期限<br>
 										<span style="color:#ff7112;">
 	  	     	    	  	    		 	 <strong id="deadline"></strong>个月
 	  	     	    	  	    		 </span>
 	  	     	    	  	    	</li>
                                     <li>
-	  	     	    	  	    		 项目规模<br>
+	  	     	    	  	    		 贷款金额<br>
 										<span style="color:#ff7112;">
-	  	     	    	  	    		 	 <strong id="money"></strong>万
+	  	     	    	  	    		 	 <strong id="money"></strong>元
 	  	     	    	  	    		 </span>
 	  	     	    	  	    	</li>
 
@@ -106,7 +106,7 @@
 	  	     	    	  	    	    还款方式：<span id="type"></span>
 	  	     	    	  	    	</li>
 	  	     	    	  	    	<li>
-	  	     	    	  	    		 还款日期：<span id="hTime"></span>
+										还款日期：<span id="hTime"></span>
 	  	     	    	  	    	</li>
 	  	     	    	  	    	<li>
 	  	     	    	  	    		保障机构：北京国能小额贷款股份公司
@@ -116,19 +116,15 @@
 	  	     	    	  <!-- end text -->
 	  	     	    </div>
 	  	     	    <div class="detail_intro_r fr">
-	  	     	    	  <h2 class="det_intro_h2 clearfix"><span class="fl">投资进度:</span><em class="fr">46.05%</em></h2>
-	  	     	    	  <div class="jklb_press_wper">
-                                                	 	  <div class="jklb_press">
-                                                	 	  	  
-                                                	 	  </div>
-                          </div>
-                          <!--  -->
-                          <p class="det_rzye clearfix"><span class="fl">融资余额</span><em class="fr"><strong>1,078,121.00</strong>元</em></p>
+	  	     	    	  <h2 class="det_intro_h2 clearfix"><span class="fl">投资进度:</span><em class="fr" id="bili"></em></h2>
+							 	<!--进度条-->
+							   <meter id="jindu" max="100" min="0" value="" low="100" optimum="1" style='width: 247px;height: 10px' ></meter>
+                          <p class="det_rzye clearfix"><span class="fl">融资余额</span><em class="fr"><strong id="touzi"></strong>元</em></p>
                           <p class="det_input">
-                          	  <input type="text" placeholder="100">
+                          	  <input type="text" placeholder="100" id="financing">
                           </p>
-                          <p class="det_shouyi">每投资1万元收益<strong>183.33元</strong></p>
-                          <p><a href="#" class=" pro_btn det_btn">立即投资</a></p>
+                          <p class="det_shouyi">每投资1万元收益  <strong id="shouyi"></strong></p>
+                          <p><a href="#" class="pro_btn det_btn financing" >立即投资</a></p>
 	  	     	    </div>
 	  	     </div>
 	  	     <!-- end block1 -->
@@ -503,32 +499,81 @@
 </body>
 <script>
 	$(function () {
-
-
-        var userId = GetQueryString("userId");
-
-
+        var userId = GetQueryString("userId");  //获取url
         $.ajax({
             type: "post",
             url: "/p2p/investment",
             dataType: "json",
             data: {userId:userId},
             success: function (data) {
-                alert(data.LOANSINTERESTRATE)
- 				$("#deadline").html(data.LOANSINTERESTRATE); // 贷款利息比例
-                $("#ratio").html(data.REFUNDDEADLINE);   //贷款期数
-                $("#money").html(data.LOANSMONEY);		//贷款金额
-                $("#fTime").html(data.ABEGINTIME);		//发布日期
-                $("#type").html(data.REFUNDWAY);		//还款方式
-                $("#hTime").html(data.ATDATE);		//还款日期
+                if(data!=null&&data!="") {
+                    var money = 10000;
+                    $("#deadline").html(data.LOANSINTERESTRATE); // 贷款利息比例
+                    $("#ratio").html(data.REFUNDDEADLINE);   //贷款期数
+                    $("#money").html(data.LOANSMONEY);		//贷款金额
+                    $("#fTime").html(data.ABEGINTIME);		//发布日期
+                    $("#type").html(data.REFUNDWAY);		//还款方式
+                    $("#hTime").html(data.ATDATE);		//还款日期
+                    $("#bili").html((data.INVESTMENTAMOUNT / data.LOANSMONEY * 100)+"%");  //进度比例
+                    $("#jindu").val(data.INVESTMENTAMOUNT / data.LOANSMONEY * 100);  //进度条
+                    $("#touzi").html(data.LOANSMONEY-data.INVESTMENTAMOUNT);      //贷款剩余金额
+                    $("#shouyi").html(Math.floor(money*data.REFUNDDEADLINE*(data.LOANSINTERESTRATE/100)/12));
+
+                }
             }
+
 		})
 
+		var falt = false;
+		$(".detail_intro_r").on("click",".financing",function() {
+			var financing = Number($("#financing").val());
+            var money  = Number($("#money").html());
+			alert(financing)
+			if(financing!=null&&financing!=0){
+			    alert(12)
+                var patrn = /^[0-9]*$/; //正则 必须为数字
+                if(money<financing){
+                    falt=false;
+				}else {
+                    falt=true;
+                    if(patrn.test(financing)){
+                        falt=true;
+                    }else{
+                        falt=false;
+                    }
+				}
+				if(falt){
+                    $.ajax({
+                        type: "post",
+                        url: "/p2p/investmentAmount",
+                        dataType: "json",
+                        data: {userId:userId},
+                        success: function (data) {
+
+
+                        }
+                    })
+
+				}else {
+                    $("#financing").val("");
+                    $(".det_shouyi").html("金额输入有误！");
+					$(".det_shouyi").css("color","red");
+				}
+			}else {
+                $(".det_shouyi").html("请输入您要投资的金额");
+                $(".det_shouyi").css("color","red");
+            }
+
+        })
+		
+		
 
     })
 
 
 
+
+	//获取地址url方法
     function GetQueryString(name)
     {
         var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");

@@ -36,5 +36,8 @@ public interface InvestDao {
     Map investment(Map map);
 
 
+    int investmentAmount();
+
+
 
 }
