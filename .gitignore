@@ -7,5 +7,6 @@
 *.iml
 target
 log.path_IS_UNDEFINED
+personalmanagement.iml
 out
 gen
