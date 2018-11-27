@@ -23,5 +23,12 @@ public interface InvestService {
      * @param map
      * @return
      */
-    int getInvesCount(Map map);
+    Map getInvesCount(Map map);
+
+    /**
+     * 获取个人贷款信息  个人信息 账户信息
+     * @param map
+     * @return
+     */
+    Map investment(Map map);
 }

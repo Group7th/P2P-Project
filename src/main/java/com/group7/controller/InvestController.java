@@ -6,8 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,17 +23,41 @@ public class InvestController {
     @Autowired  //依赖注入
     private InvestService investService;
 
+
+    /**
+     * 投资选择页面
+     * @param map
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/invest")
     public Object invest(@RequestParam Map map){
-        System.out.println(map);
-        System.out.println(map.get("month"));
-        System.out.println(map.get("type"));
-        List<Map> inves = investService.getInves(map);
-        int invesCount = investService.getInvesCount(map);
         Map tempMap = new HashMap();
-        tempMap.put("inves",inves);
-        tempMap.put("invesCount",invesCount);
+        //if(map!=null&&"".equals(map)){  //判断不能为空
+            map.put("pageSize",5);   //定义一页 页数
+            List<Map> inves = investService.getInves(map);  //获取查询信息
+            Map invesCount = investService.getInvesCount(map);  //获取页码信息
+            tempMap.put("inves",inves);
+            tempMap.put("invesCount",invesCount);
+        //}
+        System.out.println(tempMap);
         return tempMap;
     }
+
+    /**
+     * 投资页面
+     * @param map
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/investment")
+    public Object investment(@RequestParam Map map){
+        Map investment = investService.investment(map);
+        System.out.println(investment);
+        return investment;
+    }
+
+
+
+
 }
