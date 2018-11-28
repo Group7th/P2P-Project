@@ -14,7 +14,7 @@ public class pageJump {
      * 跳转首页
      * @return
      */
-    @RequestMapping("/toIndex")
+    @RequestMapping("toIndex")
     public String indexPage(){
         return "frontEnd/index";
     }
@@ -24,7 +24,7 @@ public class pageJump {
      * 跳转我要投资
      * @return
      */
-    @RequestMapping("/toInvest")
+    @RequestMapping("toInvest")
     public String toInvest(){
         return "frontEnd/invest";
     }
@@ -33,7 +33,7 @@ public class pageJump {
      * 跳转借贷
      * @return
      */
-    @RequestMapping("/toBorrow")
+    @RequestMapping("toBorrow")
     public String toBorrow(){
         return "frontEnd/borrow";
     }
@@ -42,9 +42,9 @@ public class pageJump {
      * 跳转账户信息
      * @return
      */
-    @RequestMapping("/toNoticelist")
-    public String toNoticelist(){
-        return "frontEnd/noticelist";
+    @RequestMapping("toAccount")
+    public String toAccount(){
+        return "frontEnd/Account";
     }
 
 
@@ -52,7 +52,7 @@ public class pageJump {
      * 跳转投资页面
      * @return
      */
-    @RequestMapping("/toDetail")
+    @RequestMapping("toDetail")
     public String toDetail(){
         return "frontEnd/11112/detail";
     }
@@ -61,7 +61,7 @@ public class pageJump {
      * 跳转常见问题
      * @return
      */
-    @RequestMapping("/toproblem")
+    @RequestMapping("toproblem")
     public String toproblem(){
         return "frontEnd/problem";
     }
@@ -70,7 +70,7 @@ public class pageJump {
      * 跳转登录
      * @return
      */
-    @RequestMapping("/toLogin")
+    @RequestMapping("toLogin")
     public String toLogin(){
         return "frontEnd/login";
     }
@@ -79,9 +79,18 @@ public class pageJump {
      * 跳转注册
      * @return
      */
-    @RequestMapping("/toRegister")
+    @RequestMapping("toRegister")
     public String toRegister(){
         return "frontEnd/register";
+    }
+
+    /**
+     * 跳转公告列表
+     * @return
+     */
+    @RequestMapping("toNoticelist")
+    public String toNoticelist(){
+        return "frontEnd/noticelist";
     }
 
 

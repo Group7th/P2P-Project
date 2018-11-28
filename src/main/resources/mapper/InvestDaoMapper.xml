@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.group7.dao.InvestDao">
+    <!--多条件筛选 查询分页-->
+
+    <select id="getInves" resultType="map">
+         select * from
+          (select rownum rn,t.* from (select * from tb_loans <where>
+
+        <!--项目期限-->
+            <if test="month != null ">
+                <if test="month == 1 "> <!-- 1-3个月 前台获取值为1 代表 1月 2月 3月 -->
+                    AND  REFUNDDEADLINE in(1,2,3)
+                </if>
+                <if test="month == 2 "><!-- 4-6个月  -->
+                    AND  REFUNDDEADLINE in(4,5,6)
+                </if>
+                <if test="month == 3 "><!-- 7-12个月  -->
+                    AND  REFUNDDEADLINE in(7,8,9,10,11,12)
+                </if>
+            </if>
+        <!--项目状态-->
+            <if test="state != null ">
+                <if test="state == 4 "><!--所有借款 前台获取值为4  2代表 招标中 5：满标 7：贷款成功 11:贷款结束 还玩款的-->
+                    AND  LOANCASE in(2,5,7,11)
+                </if>
+                <if test="state == 5 "><!--正在招标的借款  -->
+                    AND  LOANCASE in(2)
+                </if>
+                <if test="state == 6 "><!--已成功借款 -->
+                    AND  LOANCASE in(7)
+                </if>
+                <if test="state == 7 "><!--已完成借款 -->
+                    AND  LOANCASE in(11)
+                </if>
+            </if>
+        <!--项目收益-->
+            <if test="ratio != null ">
+                <if test="ratio == 8 "><!--5%以下 贷款利率 前台传值为8   1 代表 1%  2 代表 2% -->
+                    AND  LOANSINTERESTRATE in(1,2,3,4,5)
+                </if>
+                <if test="ratio == 9 "><!-- 6%-10% -->
+                    AND  LOANSINTERESTRATE in(6,7,8,9,10)
+                </if>
+                <if test="ratio == 10 "><!--11%-15% -->
+                    AND  LOANSINTERESTRATE in(11,12,13,14,15)
+                </if>
+            </if>
+        <!--项目类型-->
+            <if test="type != null ">
+                <if test="type == 11 "><!-- 信用标  信用贷款 -->
+                    AND  LOANSTYPE in(1)
+                </if>
+                <if test="type == 12 "><!--抵押标  车辆抵押  房产抵押  -->
+                    AND  LOANSTYPE in(2,3)
+                </if>
+            </if>
+      </where>) t where rownum &lt; #{end}) a
+        where a.rn &gt; #{start}
+    </select>
+
+    <!--分页 查询条数-->
+    <select id="getInvesCount" resultType="int">
+        select count(1) as con from tb_loans
+        <where>
+
+            <!--项目期限-->
+            <if test="month != null ">
+                <if test="month == 1 "> <!-- 1-3个月 前台获取值为1 代表 1月 2月 3月 -->
+                    AND  REFUNDDEADLINE in(1,2,3)
+                </if>
+                <if test="month == 2 "><!-- 4-6个月  -->
+                    AND  REFUNDDEADLINE in(4,5,6)
+                </if>
+                <if test="month == 3 "><!-- 7-12个月  -->
+                    AND  REFUNDDEADLINE in(7,8,9,10,11,12)
+                </if>
+            </if>
+            <!--项目状态-->
+            <if test="state != null ">
+                <if test="state == 4 "><!--所有借款 前台获取值为4  2代表 招标中 5：满标 7：贷款成功 11:贷款结束 还玩款的-->
+                    AND  LOANCASE in(2,5,7,11)
+                </if>
+                <if test="state == 5 "><!--正在招标的借款  -->
+                    AND  LOANCASE in(2)
+                </if>
+                <if test="state == 6 "><!--已成功借款 -->
+                    AND  LOANCASE in(7)
+                </if>
+                <if test="state == 7 "><!--已完成借款 -->
+                    AND  LOANCASE in(11)
+                </if>
+            </if>
+            <!--项目收益-->
+            <if test="ratio != null ">
+                <if test="ratio == 8 "><!--5%以下 贷款利率 前台传值为8   1 代表 1%  2 代表 2% -->
+                    AND  LOANSINTERESTRATE in(1,2,3,4,5)
+                </if>
+                <if test="ratio == 9 "><!-- 6%-10% -->
+                    AND  LOANSINTERESTRATE in(6,7,8,9,10)
+                </if>
+                <if test="ratio == 10 "><!--11%-15% -->
+                    AND  LOANSINTERESTRATE in(11,12,13,14,15)
+                </if>
+            </if>
+            <!--项目类型-->
+            <if test="type != null ">
+                <if test="type == 11 "><!-- 信用标  信用贷款 -->
+                    AND  LOANSTYPE in(1)
+                </if>
+                <if test="type == 12 "><!--抵押标  车辆抵押  房产抵押  -->
+                    AND  LOANSTYPE in(2,3)
+                </if>
+            </if>
+        </where>
+    </select>
+
+    <!--查询贷款和个人信息-->
+    <select id="investment" resultType="map">
+        select a.*,to_char(BEGINTIME,'yyyy-MM-dd') as ABEGINTIME,to_char(TDATE,'yyyy-MM-dd') as ATDATE  from tb_loans a
+        join tb_user b on a.userId=b.id
+        join tb_userinformation c on b.id=c.userid
+        <where>
+            <if test="userId!=null">
+                and b.id=#{userId}
+            </if>
+            <if test="loansId!=null">
+                and a.loansId=#{loansId}
+            </if>
+        </where>
+
+    </select>
+
+
+
+</mapper>
