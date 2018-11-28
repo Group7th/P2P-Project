@@ -42,9 +42,9 @@ public class pageJump {
      * 跳转账户信息
      * @return
      */
-    @RequestMapping("toNoticelist")
-    public String toNoticelist(){
-        return "frontEnd/noticelist";
+    @RequestMapping("toAccount")
+    public String toAccount(){
+        return "frontEnd/Account";
     }
 
 
@@ -82,6 +82,15 @@ public class pageJump {
     @RequestMapping("toRegister")
     public String toRegister(){
         return "frontEnd/register";
+    }
+
+    /**
+     * 跳转公告列表
+     * @return
+     */
+    @RequestMapping("toNoticelist")
+    public String toNoticelist(){
+        return "frontEnd/noticelist";
     }
 
 

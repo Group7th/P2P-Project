@@ -60,30 +60,60 @@
 		<a href="#" style="margin-right:0;">关于我们</a>
 	</div>
 </div>
-<!-- end  -->
 
-	  	     	  <!-- end l -->
-	  	     	  <div class="notic_sec_r fl">
-	  	     	  	     <div class="helpconright">
-        	   	     <h3>互联网金融两年后或上演“马太效益”</h3>
-        	   	     <h6>来源：证券日报    2014-04-02  星期三</h6>
-        	   	     <h4>中商创始人表示，这个行业不应只是前来前往</h4>
-        	   	     <h5 class="helpconrp1"><img src="images/h03.jpg"> <span>本报记者</span> 鬼小孙</h5>
-        	   	     <p>那些行业的项目能在2014年持续受到投资人的钟爱呢？互联王金融是个热门的备选答案。</p>
-        	   	     <p>那些行业的项目能在2014年持续受到投资人的钟爱呢？互联王金融是个热门的备选答案。那些行业的项目能在2014年持续受到投资人的钟爱呢？互联王金融是个热门的备选答案。那些行业的项目能在2014年持续受到投资人的钟爱呢？互联王金融是个热门的备选答案。</p>
-        	   	     <div class="helpconimg of"><img src="images/h04.jpg">
-        	   	          <img src="images/h05.jpg">
-        	   	          <img src="images/h06.jpg">
-        	   	     </div>
-        	   	     <p>那些行业的项目能在2014年持续受到投资人的钟爱呢？互联王金融是个热门的备选答案。那些行业的项目能在2014年持续受到投资人的钟爱呢？互联王金融是个热门的备选答案。那些行业的项目能在2014年持续受到投资人的钟爱呢？互联王金融是个热门的备选答案。</p>
-        	   	     <p>那些行业的项目能在2014年持续受到投资人的钟爱呢？互联王金融是个热门的备选答案。那些行业的项目能在2014年持续受到投资人的钟爱呢？互联王金融是个热门的备选答案。那些行业的项目能在2014年持续受到投资人的钟爱呢？互联王金融是个热门的备选答案。</p>
-        	   	     <p>那些行业的项目能在2014年持续受到投资人的钟爱呢？互联王金融是个热门的备选答案。那些行业的项目能在2014年持续受到投资人的钟爱呢？互联王金融是个热门的备选答案。那些行业的项目能在2014年持续受到投资人的钟爱呢？互联王金融是个热门的备选答案。</p>
-        	   	     <p>那些行业的项目能在2014年持续受到投资人的钟爱呢？互联王金融是个热门的备选答案。那些行业的项目能在2014年持续受到投资人的钟爱呢？互联王金融是个热门的备选答案。那些行业的项目能在2014年持续受到投资人的钟爱呢？互联王金融是个热门的备选答案。</p>
-        	  
-	   	     	  </div>
-	  	     	  </div>
-	  	     </div>
-	  </div>
+<div class="notic_con_wper">
+	<div class="notic_con px1000">
+		<div class="notic_ban">
+			<img src="images/notic_ban01.png" alt="">
+		</div>
+		<div class="notic_section clearfix">
+
+		</div>
+		<!-- end l -->
+		<div class="notic_sec_r fl">
+			<div class="helpconright">
+
+
+
+			</div>
+		</div>
+	</div>
 </div>
+</div>
+<script type="text/javascript">
+	$(function(){
+        /* 用途: 接收地直栏参数 取id=1 根据ID的值 */
+        var urlinfo=window.location.href; //获取当前页面的url
+        var len=urlinfo.length;//获取url的长度
+        var offset=urlinfo.indexOf("?");//设置参数字符串开始的位置
+        var newsidinfo=urlinfo.substr(offset,len);//取出参数字符串 这里会获得类似“id=1”这样的字符串
+        var newsids=newsidinfo.split("=");//对获得的参数字符串按照“=”进行分割
+        var newsid=newsids[1];//得到参数值
+
+
+        $.ajax({
+            url : "getNoteceListMap?id="+newsid,
+            type : "POST",
+            dataType : "json",
+            success : function(data){
+                if(data!=''){
+                    var str="";
+					str+="<h3>"+data[0].HEADLINE+"</h3>"+
+						 "<h6>来源："+data[0].OPERATOR+"&nbsp;&nbsp;&nbsp;&nbsp;时间&nbsp;&nbsp;&nbsp;&nbsp;"+data[0].TIME+"</h6>"+
+						 "<h4>"+data[0].CONTENT+"</h4>"+
+						 "<h5 class=\"helpconrp1\"><img src=\"images/h03.jpg\">"+
+						 "<div class=\"helpconimg of\"><img src=\"images/h04.jpg\">\n" +
+                        "\t\t\t\t\t<img src=\"images/h05.jpg\">\n" +
+                        "\t\t\t\t\t<img src=\"images/h06.jpg\">\n" +
+                        "\t\t\t\t</div>"+
+						"<p>"+data[0].CONTENT+"</p>"
+                }
+                $(".helpconright").append(str)
+            }
+        })
+	})
+
+
+</script>
 </body>
 </html>

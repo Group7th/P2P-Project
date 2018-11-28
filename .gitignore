@@ -5,7 +5,7 @@
 # IntelliJ project files
 .idea
 target
-数据库说明
+log.path_IS_UNDEFINED
 *.iml
 out
 gen

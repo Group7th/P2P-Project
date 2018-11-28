@@ -1,17 +1,22 @@
 <!doctype html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
 	<title>注册</title>
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<!-- <link rel="stylesheet/less" type="text/css" href="css/style.less" /> -->
-<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="js/all.js"></script>
-<!--[if IE 6]> 
-<script src="./js/iepng.js" type="text/javascript"></script> 
+	<script type="text/javascript" src="js/jquery3.3.1.min.js"></script>
+	<script type="text/javascript" src="js/all.js"></script>
+	<script type="text/javascript" src="js/dist/sweetalert.min.js"></script>
+	<link rel="stylesheet" href="js/dist/sweetalert.css">
+	<!--<script src="./js/iepng.js" type="text/javascript"></script>-->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<!-- <link rel="stylesheet/less" type="text/css" href="css/style.less" /> -->
+	<!--[if IE 6]>
 <script type="text/javascript">
    EvPNG.fix('div, ul, img, li, input,span, p');
 </script>
+<style>
+
+</style>
 <![endif]-->
 </head>
 <body>
@@ -62,26 +67,42 @@
 	  	   	     	<form>
 	  	   	     	   	    <fieldset>
 	  	   	     	   	    	  <p class="mt20">
-	  	   	     	   	    	  	 <input type="text" placeholder="用户名/手机" class="lg_input01 lg_input">
+	  	   	     	   	    	  	 <input type="text" placeholder="用户名" class="lg_input01 lg_input" id="username">
 	  	   	     	   	    	  </p>
-                                  <p class="mt20">
-	  	   	     	   	    	  	 <input type="text" placeholder="密码" class="lg_input02 lg_input">
+								  <p style="height:25px;padding-left:13px;font-size: 14px;line-height:25px"></p>
+                                  <p class="mt20" style="margin-top: 0px;">
+	  	   	     	   	    	  	 <input type="text" placeholder="密码" class="lg_input02 lg_input" id="pwd">
 	  	   	     	   	    	  </p>
-                                  <p class="mt20">
-	  	   	     	   	    	  	 <input type="text" placeholder="密码确认" class="lg_input02 lg_input">
+								<p style="height:25px;padding-left:13px;font-size: 14px;line-height:25px"></p>
+								<p class="mt20" style="margin-top: 0px;">
+	  	   	     	   	    	  	 <input type="text" placeholder="密码确认" class="lg_input02 lg_input" id="pwd1">
 	  	   	     	   	    	  </p>
-                                  <p class="mt20">
-	  	   	     	   	    	  	 <input type="text" placeholder="手机号" class="lg_input03 lg_input">
+								<p style="height:25px;padding-left:13px;font-size: 14px;line-height:25px"></p>
+								<p class="mt20" style="margin-top: 0px;">
+	  	   	     	   	    	  	 <input type="text" placeholder="手机号" class="lg_input03 lg_input" id="tel">
 	  	   	     	   	    	  </p>
-                                  <p class="mt20 yanzheng">
-	  	   	     	   	    	  	 <input type="text" placeholder="验证码" class="lg_input04 lg_input">
-	  	   	     	   	    	  	 <span href="#">发送验证码</span>
+								<p style="height:25px;padding-left:13px;font-size: 14px;line-height:25px"></p>
+                                  <p class="mt20 yanzheng" style="margin-top: 0px;">
+	  	   	     	   	    	  	 <input type="text" placeholder="验证码" class="lg_input04 lg_input" id="vcode">
+	  	   	     	   	    	  	 <input type="button" value="获取验证码" id="sendMsg" style=" display: inline-block;
+									  width: 100px;
+									  height: 40px;
+									  line-height: 40px;
+									  text-align: center;
+									  color: #fff;
+									  font-size: 14px;
+									  background-color: #f8b551;
+									  margin-left: 30px;
+									  border-radius: 5px;
+									  border: 0px;"/>
+
 	  	   	     	   	    	  </p>
-                                   <p class="mt20">
-	  	   	     	   	    	  	 <input type="text" placeholder="邀请码" class="lg_input03 lg_input">
-	  	   	     	   	    	  </p>
-                                  <p class="pt10"><a href="#">使用条款</a>&nbsp;&nbsp;<a href="#">隐私条款</a></p>
-                                 <p class="mt20"><a href="#" class="lg_btn">立即登陆</a></p>
+								<p style="height:25px;padding-left:13px;font-size: 14px;line-height:25px"></p>
+                                   <!--<p class="mt20">-->
+	  	   	     	   	    	  	 <!--<input type="text" placeholder="邀请码" class="lg_input03 lg_input" id="">-->
+	  	   	     	   	    	  <!--</p>-->
+                                  <p class="pt10" style="padding-top: 0px;"><a href="#">使用条款</a>&nbsp;&nbsp;<a href="#">隐私条款</a></p>
+                                 <p class="mt20"><a href="javascript:void(0);" class="lg_btn" id="sbt">立即注册</a></p>
 	  	   	     	   	    </fieldset>
 	  	   	     	   </form>
 		   	   </div>
@@ -126,7 +147,7 @@
 	  </div>
 </div>
 
-<div class="zscf_bottom_wper">
+<div class="zscf_bottom_wper" id="point">
 	<div class="zscf_bottom px1000 clearfix">
 		  <p class="fl">© 2014 zhongxincaifu &nbsp;  &nbsp;&nbsp;   中兴财富金融信息服务股份有限公司 &nbsp;&nbsp;&nbsp;    来源:<a href="http://www.mycodes.net/" target="_blank">源码之家</a></p>
 		  <p class="fr">
@@ -137,5 +158,277 @@
 	</div>
 </div>
 <!-- footer end -->
+<!--页面js代码-->
+<!--<script th:inline="javascript">-->
+    <!--var codeMsg = [[${session.vcode}]];-->
+    <!--var sendTime = [[${session.sendTime}]];-->
+	<!--console.log([[${session.vcode}]]);-->
+    <!--console.log([[${session.sendTime}]]);-->
+
+	// function getVcode(){
+    //     /*<![CDATA[*/
+    //     //利用thymeleaf获取后台放入session中的验证码
+    //     var codeMsgTemp = codeMsg;
+    //     var sendTimeTemp = sendTime;
+    //     console.log(codeMsgTemp+"codeMsgTemp");
+    //     console.log(sendTimeTemp+"sendTimeTemp");
+    //     /*]]>*/
+	// 	return codeMsg+"+"+sendTime;
+	// }
+
+<!--</script>-->
+<script>
+    $(function () {
+        var flag=true;
+        var regU=/^[a-zA-Z][a-zA-Z0-9]{3,15}$/; //验证用户名
+        var regP=/^[a-zA-Z0-9]{4,8}$/;  //验证密码
+        var regT=/^[1][3,4,5,7,8][0-9]{9}$/; //验证手机号
+        var regNum =/^\d{6}$/;// 6位数字正则
+        var toSend = false; //判断能否发送验证码
+        var idfyCode = 0; //设置验证码的默认值
+        /*注册开始*/
+        $("#sbt").click(function(){
+			console.log(idfyCode+"后台传过来的验证码的值");
+			// console.log(flag+"我不信");
+            $("#username,#pwd,#pwd1,#tel,#vcode").each(function (){
+                $(this).trigger("blur");
+            });
+			console.log("可以点吗"+flag);
+			if(flag=true) {  //限定只有前面所有信息无误后才可以核对验证码
+                if ($("#vcode").val().trim() == "") {
+                    $("#vcode").parent().next().text("请输入您的短信验证码").css("color", "red");
+                    flag = false;
+                } else if ($("#vcode").val().trim() != "" && flag == true && $("#vcode").val() == idfyCode) {//判断如果信息全部正确后验证码也正确
+                    $.ajax({
+                        async: false,//设置同步 锁定全局变量flag的值，避免最终判断直接读取flag的初始值;
+                        type: "post",
+                        url: "/p2p/user/hasVcode",
+                        dataType: "json",
+                        success: function (data) {
+                            if (data.msg == "success") {
+                                flag = true;
+                            } else {
+                                $("#vcode").parent().next().text("验证码超时，请重新获取").css("color", "red");
+                                flag = false;
+                                console.log("aaa" + flag);
+                            }
+                        }
+                    });
+                } else {
+                    $("#vcode").parent().next().text("验证码错误，请重新输入").css("color", "red");
+                    flag = false;
+                }
+
+                console.log("flag的值" + flag);
+                if (flag) {
+                    console.log("可以注册");
+                    $.ajax({
+                        type: "post",
+                        url: "user/register",
+                        data: {userName: $("#username").val(), password: $("#pwd").val(),userPhone:$("#tel").val()},
+                        dataType: "json",
+                        success: function (data) {
+                            if (data.msg == 'success') {
+                                //注册成功
+                                sweetAlert({
+                                    title: "恭喜您",
+                                    text: "注册成功！3秒后自动跳转登录页面",
+                                    timer: 3000,
+                                    type: "success",
+                                    showConfirmButton: false
+                                }, function () {
+                                    location.href = "/p2p/toLogin";
+                                });
+                            } else {
+                                //注册失败
+                                sweetAlert({
+                                    title: "不高兴",
+                                    text: "注册出错了！",
+                                    type: "error"
+                                });
+                            }
+                        }
+                    })
+                }
+            }
+        }); //注册按钮结束
+
+
+	/*注册结束*/
+
+	/*用户名校验*/
+        $("#username").blur(function () {
+			var username = $(this).val();
+			var nextP = $(this).parent().next();
+			if(username==""||username==null){
+                nextP.text('用户名不能为空').css("color","red");
+                flag=false;
+			}else if(!regU.test(username)){
+                nextP.text('用户名不合法').css("color","red");
+                flag=false;
+            }else{
+			    $.ajax({
+					type:"post",
+					url:"/p2p/user/checkUserName",
+					data:{userName:username},
+					dataType:"json",
+					success:function(data){
+					    if(data.msg=="success"){
+                            nextP.text('该用户名可以使用√').css("color","green");
+                            flag=true;
+						}else{
+                            nextP.text('该用户名已存在，请重新输入').css("color","red");
+                            flag=false;
+						}
+					}
+				})
+			}
+        });
+		//鼠标聚焦时 清除P标签中的校验信息
+        $("#username").focus(function () {
+			$(this).parent().next().text("");
+        });
+
+	/*密码校验*/
+		$("#pwd").blur(function () {
+			var password = $(this).val();
+			if(password==""||password==null){
+                $(this).parent().next().text('密码不能为空').css("color","red");
+                flag=false;
+			}else if(!regP.test(password)){
+                $(this).parent().next().text('密码格式错误，请重新输入').css("color","red");
+                flag=false;
+			}else{
+                flag=true;
+			}
+        });
+        //鼠标聚焦时 清除P标签中的校验密码的信息
+        $("#pwd").focus(function () {
+            $(this).parent().next().text("");
+        });
+
+        //鼠标聚焦时 清除验证码的校验信息
+        $("#vcode").focus(function () {
+            $(this).parent().next().text("");
+        });
+
+		//确认密码校验
+		$("#pwd1").blur(function () {
+			if($(this).val()==""||$(this).val==null){
+                $(this).parent().next().text('请确认密码输入').css("color","red");
+                flag=false;
+            }
+		    else if($(this).val()!=$("#pwd").val()){
+                $(this).parent().next().text('密码输入不匹配').css("color","red");
+                flag=false;
+			}else{
+                flag=true;
+			}
+        });
+		//清除确认密码的提示
+        $("#pwd1").focus(function () {
+            $(this).parent().next().text("");
+        });
+
+		//验证手机
+		$("#tel").blur(function () {
+		    var nextP=$(this).parent().next();
+            if($(this).val()==""||$(this).val==null){
+                $(this).parent().next().text('请输入您的手机号码').css("color","red");
+                flag=false;
+            }
+            else if(!regT.test($(this).val())){
+                $(this).parent().next().text('手机号码不合法，请重新输入').css("color","red");
+                flag=false;
+            }else {
+                $.ajax({
+					type:"post",
+					url:"/p2p/user/checkPhone",
+					data:{phone:$("#tel").val()},
+					dataType:"json",
+					success:function (data) {
+                        if(data.msg=="success"){
+                            nextP.text('该手机号可以使用√').css("color","green");
+                            flag=true;
+                        }else{
+                            nextP.text('该手机号已被注册').css("color","red");
+                            flag=false;
+                        }
+                    }
+				});
+			}
+			//如果手机号正确
+            // toSend=flag;
+            // console.log("手机"+toSend);
+        });
+
+		//清空手机验证提示
+        $("#tel").focus(function () {
+            $(this).parent().next().text("");
+        });
+
+        // function addScript(){
+		// 	var scriptCode = "<script th:inline=\"javascript\">\n" +
+        //         "    var codeMsg = [[${session.vcode}]];\n" +
+        //         "    var sendTime = [[${session.sendTime}]];" +
+		// 		"console.log(\"验证码：\"+codeMsg);console.log(\"发送时间：\"+sendTime)<\/script>";
+		//
+		// 	$("#point").after(scriptCode);
+		// }
+
+        /**
+		 * 设置发送验证码按钮倒计时
+         * @param obj
+         */
+        function invokeSettime(obj){
+            var countdown=60;
+            settime(obj);
+            function settime(obj) {
+                if (countdown == 0) {
+                    $(obj).attr("disabled",false);
+                    $(obj).val("获取验证码");
+                    countdown = 60;
+                    return;
+                } else {
+                    $(obj).attr("disabled",true);
+                    $(obj).val( countdown + "s后重新发送");
+                    countdown--;
+                }
+                setTimeout(function() {
+                        settime(obj) }
+                    ,1000)
+            }
+        }
+
+        //发送验证码按钮
+		$("#sendMsg").click(function () {
+            $("#username,#pwd,#pwd1,#tel,#vcode").each(function (){
+                $(this).trigger("blur");
+            });
+            console.log(flag);
+            //如果手机号没有任何错误，可以发送验证码
+            if(flag){
+                console.log("可以发送");
+                invokeSettime("#sendMsg");
+					$.ajax({
+						type:"post",
+						url:"/p2p/user/sendMessage",
+						data:{phone:$("#tel").val()},
+						dataType:"json",
+						success:function(data){
+							console.log(data.vcode);
+							console.log(data.sessionId);
+                            idfyCode=data.vcode;
+						}
+					});
+            }else{
+                $("#tel").parent().next().text("请检查您的手机号码").css("color","red");
+                flag=false;
+                //不能发送验证码
+			}
+        });
+    });
+</script>
+
 </body>
 </html>
