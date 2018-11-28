@@ -40,7 +40,6 @@ public class BorrowingInformationController {
     @RequestMapping("indexInformationDiYa")
     public Object indexInformationDiYa(@RequestParam Map map){
         map.put("type","2");
-        System.out.println("进入方法");
         return biService.getBorrowingList(map);
     }
 
