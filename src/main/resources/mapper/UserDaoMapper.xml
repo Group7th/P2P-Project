@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.group7.dao.UserDao">
+    <!--配置文件加这个Redis-->
+    <!--<cache type="org.mybatis.caches.redis.RedisCache" blocking="false"-->
+           <!--flushInterval="0" readOnly="true" size="1024" eviction="FIFO"/>-->
+
+    <!--useGeneratedKeys="true" keyProperty="id" keyColumn="id"-->
+
+    <!--用户注册-->
+    <insert id="register" parameterType="user">
+        <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Integer">
+            select seq_tb_user_id.nextval from dual
+        </selectKey>
+          insert into tb_user values (#{id},#{userName},#{password},1)
+    </insert>
+
+    <!--用户名查重-->
+    <select id="checkRepeat" resultType="String">
+        select userName from tb_user where userName=#{userName}
+    </select>
+
+    <!--手机号查重-->
+    <select id="checkRepeatPhone" resultType="String">
+        select userPhone from tb_userinformation where userPhone=#{phone}
+    </select>
+
+    <!--手机号插入用户信息表-->
+    <insert id="addPhone" >
+        insert into tb_userinformation (userinformation,userid,userPhone,state) values(seq_tb_userinformation_id.nextval,#{userId},#{userPhone},1)
+    </insert>
+
+</mapper>
