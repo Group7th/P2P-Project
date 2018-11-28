@@ -4,6 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.group7.dao.InvestDao">
+
+
+
     <!--多条件筛选 查询分页-->
 
     <select id="getInves" resultType="map">
@@ -134,6 +137,19 @@
 
     </select>
 
+    <!--添加投资信息-->
+    <insert id="investmentAmount"  >
+          insert into tb_investment values(seq_tb_investment_id.nextval,#{userId},#{loansId},#{investmentMoney},sysdate,#{interestrate})
+    </insert>
+
+    <!--查询投资人 不能重复投资-->
+    <select id="investmentVerify" resultType="map">
+        select investmentId  from tb_investment where userId = #{userId} and loansId = #{loansId}
+    </select>
 
 
+    <!--修复投资表投资金额-->
+    <update id="investmentMoeny" >
+        update tb_loans set investmentamount = #{investmentamount}+ #{investmentMoney} where userId = #{userId} and loansId = #{loansId}
+    </update>
 </mapper>

@@ -1,5 +1,8 @@
 package com.group7.dao;
 
+import com.group7.entity.InvestmentAmount;
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 import java.util.Map;
 
@@ -36,8 +39,26 @@ public interface InvestDao {
     Map investment(Map map);
 
 
-    int investmentAmount();
+    /**
+     * 投资信息表   贷款人的投资人和投资信息记录
+     * @param invest
+     * @return
+     */
+    int investmentAmount(InvestmentAmount invest);
 
+    /**
+     * 查询投资信息  不能重复投资
+     * @param userId
+     * @param loansId
+     * @return
+     */
+    Map investmentVerify(@Param("userId") Integer userId, @Param("loansId") Integer loansId);
 
+    /**
+     * 投资金额 添加到 投资表 总投资金额中
+     * @param invest
+     * @return
+     */
+    int investmentMoeny(InvestmentAmount invest);
 
 }
