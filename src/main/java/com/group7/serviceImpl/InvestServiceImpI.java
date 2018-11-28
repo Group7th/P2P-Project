@@ -2,7 +2,9 @@ package com.group7.serviceImpl;
 
 import com.group7.dao.InvestDao;
 import com.group7.entity.Invest;
+import com.group7.entity.InvestmentAmount;
 import com.group7.service.InvestService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,12 @@ public class InvestServiceImpI implements InvestService {
     @Autowired
     private InvestDao investDao;
 
+
+    /**
+     * 多条件筛选 查询分页
+     * @param map
+     * @return
+     */
     public List<Map> getInves(Map map) {
         //如果pageNo为空默认1  pageSize 为空,默认10
         int pageNo = map.get("pageNo")==null?1:Integer.valueOf(map.get("pageNo")+"");
@@ -32,6 +40,12 @@ public class InvestServiceImpI implements InvestService {
         return investDao.getInves(map);
     }
 
+
+    /**
+     * 分页总数量
+     * @param map
+     * @return
+     */
     @Override
     public Map getInvesCount(Map map) {
         int pageSize = Integer.valueOf(map.get("pageSize")+"");  //当前页数据条数
@@ -47,8 +61,40 @@ public class InvestServiceImpI implements InvestService {
         return tempMap;
     }
 
+
+    /**
+     * 获取个人贷款信息  个人信息 账户信息
+     * @param map
+     * @return
+     */
     @Override
     public Map investment(Map map) {
         return investDao.investment(map);
+    }
+
+    /**
+     * 投资信息表   贷款人的投资人和投资信息记录
+     * @param invest
+     * @return
+     */
+    @Override
+    public int investmentAmount(InvestmentAmount invest) {
+        return investDao.investmentAmount(invest);
+    }
+
+    /**
+     * 查询投资信息  不能重复投资
+     * @param userId
+     * @param loansId
+     * @return
+     */
+    @Override
+    public Map investmentVerify(@Param("userId") Integer userId,@Param("loansId") Integer loansId) {
+        return investDao.investmentVerify(userId,loansId);
+    }
+
+    @Override
+    public int investmentMoeny(InvestmentAmount invest) {
+        return investDao.investmentMoeny(invest);
     }
 }

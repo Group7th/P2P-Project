@@ -78,15 +78,15 @@
 	  	     	    	  <div class="det_intro_text mr20">
 	  	     	    	  	    <ul class="det_intro_tul clearfix">
 	  	     	    	  	    	<li>
-	  	     	    	  	    		 年华收益<br>
+	  	     	    	  	    		 年化收益<br>
 	  	     	    	  	    		 <span style="color:#ff7112;">
-	  	     	    	  	    		 	 <strong id="ratio"></strong>% 年华
+	  	     	    	  	    		 	 <strong id="deadline"></strong>% 年化
 	  	     	    	  	    		 </span>
 	  	     	    	  	    	</li>
 	  	     	    	  	    	<li>
 	  	     	    	  	    		 贷款期限<br>
 										<span style="color:#ff7112;">
-	  	     	    	  	    		 	 <strong id="deadline"></strong>个月
+	  	     	    	  	    		 	 <strong id="ratio"></strong>个月
 	  	     	    	  	    		 </span>
 	  	     	    	  	    	</li>
                                     <li>
@@ -116,15 +116,16 @@
 	  	     	    	  <!-- end text -->
 	  	     	    </div>
 	  	     	    <div class="detail_intro_r fr">
+						  <span id="touzijine"></span>
 	  	     	    	  <h2 class="det_intro_h2 clearfix"><span class="fl">投资进度:</span><em class="fr" id="bili"></em></h2>
 							 	<!--进度条-->
 							   <meter id="jindu" max="100" min="0" value="" low="100" optimum="1" style='width: 247px;height: 10px' ></meter>
                           <p class="det_rzye clearfix"><span class="fl">融资余额</span><em class="fr"><strong id="touzi"></strong>元</em></p>
                           <p class="det_input">
-                          	  <input type="text" placeholder="100" id="financing">
+                          	  <input type="text" placeholder="最低投资1000元" id="financing">
                           </p>
-                          <p class="det_shouyi">每投资1万元收益  <strong id="shouyi"></strong></p>
-                          <p><a href="#" class="pro_btn det_btn financing" >立即投资</a></p>
+						  <p class="det_shouyi">每投资1万元收益  <strong id="shouyi"></strong></p>
+                          <p><a href="#" class="pro_btn det_btn financing" >立即投资</a><a href="#" class="pro_btn det_btn one">已投资</a></p>
 	  	     	    </div>
 	  	     </div>
 	  	     <!-- end block1 -->
@@ -251,26 +252,26 @@
 	  	     	   	            <!-- end fk -->
 	  	     	   	            <div class="det_proone_l" style="display:none;">
 	  	     	   	            	 <h2 class="det_proone_tit">放款通知</h2>
-	  	     	   	            	 <p class="dhgl_p1"><img src="images/1.jpg" alt="">融资成功,企业正在还款</p>
+	  	     	   	            	 <p class="dhgl_p1"><img src="" alt="">融资成功,企业正在还款</p>
 	  	     	   	            	 <h2 class="det_proone_tit">还款概况</h2>
 	  	     	   	            	 <ul  class="dhgl_ul">
 	  	     	   	            	 	 <li>
-	  	     	   	            	 	    <img src="images/2.jpg" alt="">
+	  	     	   	            	 	    <img src="" alt="">
 	  	     	   	            	 	    <span>应付利息</span>
 	  	     	   	            	 	    <span>123213.4元（12期）</span>
 	  	     	   	            	 	 </li>
 	  	     	   	            	 	 <li>
-	  	     	   	            	 	    &nbsp;<img src="images/3.jpg" alt="">
+	  	     	   	            	 	    &nbsp;<img src="" alt="">
 	  	     	   	            	 	    <span>应付利息</span>
 	  	     	   	            	 	    <span>123213.4元（12期）</span>
 	  	     	   	            	 	 </li>
 	  	     	   	            	 	 <li>
-	  	     	   	            	 	    &nbsp;<img src="images/4.jpg" alt="">
+	  	     	   	            	 	    &nbsp;<img src="" alt="">
 	  	     	   	            	 	    <span>应付利息</span>
 	  	     	   	            	 	    <span>123213.4元（12期）</span>
 	  	     	   	            	 	 </li>
 	  	     	   	            	 	 <li>
-	  	     	   	            	 	    <img src="images/5.jpg" alt="">
+	  	     	   	            	 	    <img src="" alt="">
 	  	     	   	            	 	    <span>应付利息</span>
 	  	     	   	            	 	    <span>123213.4元（12期）</span>
 	  	     	   	            	 	 </li>
@@ -477,7 +478,7 @@
 	  	    	 	<li><a href="problem.html">帮助中心</a></li>
 	  	    	 	<li><a href="#">友情链接</a></li>
 	  	    	 	<li><a href="#">招贤纳士</a></li>
-	  	    	 	<li><a href="#">收益计算器</a></li>
+	  	    	 	<li><a href="http://www.yinqiao.com/aboutus/scafina.html">收益计算器</a></li>
 	  	    	 </ul>
 	  	    </div>
 	  	    <!-- end right -->
@@ -500,6 +501,27 @@
 <script>
 	$(function () {
         var userId = GetQueryString("userId");  //获取url
+        var loansId = GetQueryString("loansId");
+
+        //查询是否投资过
+        $(".one").hide();
+        $.ajax({
+            type: "post",
+            url: "/p2p/investmentVerify",
+            dataType: "json",
+            data: {userId:userId,loansId:loansId},
+            success: function (data) {
+                //判断如果查询到已投资  则显示已投资  按钮失效
+				alert(data.INVESTMENTID)
+                if(Number(data.INVESTMENTID)>0) {
+                    $(".one").show();
+                    $(".financing").hide();
+                }
+
+            }
+        })
+
+
         $.ajax({
             type: "post",
             url: "/p2p/investment",
@@ -517,20 +539,23 @@
                     $("#bili").html((data.INVESTMENTAMOUNT / data.LOANSMONEY * 100)+"%");  //进度比例
                     $("#jindu").val(data.INVESTMENTAMOUNT / data.LOANSMONEY * 100);  //进度条
                     $("#touzi").html(data.LOANSMONEY-data.INVESTMENTAMOUNT);      //贷款剩余金额
-                    $("#shouyi").html(Math.floor(money*data.REFUNDDEADLINE*(data.LOANSINTERESTRATE/100)/12));
+                    $("#shouyi").html(Math.floor(money*data.REFUNDDEADLINE*(data.LOANSINTERESTRATE/100)/12));  //算出投资1000的收益  本金*期数*利率/12
+                    $("#touzijine").html(data.INVESTMENTAMOUNT);		//还款日期
 
                 }
             }
-
 		})
 
+
+
+        var conf = false;
 		var falt = false;
 		$(".detail_intro_r").on("click",".financing",function() {
-			var financing = Number($("#financing").val());
-            var money  = Number($("#money").html());
-			alert(financing)
-			if(financing!=null&&financing!=0){
-			    alert(12)
+			var financing = Number($("#financing").val()); //输入框输入金额
+            var money  = Number($("#money").html());    //总贷款金额
+            var ratio = $("#ratio").html();            //获取利率
+			var investmentamount = $("#touzijine").html();
+            if(financing!=null&&financing!=0){
                 var patrn = /^[0-9]*$/; //正则 必须为数字
                 if(money<financing){
                     falt=false;
@@ -542,34 +567,79 @@
                         falt=false;
                     }
 				}
+
+				if(confirm("你确定投资吗")){
+                    conf=true;
+                    if(financing>=1000){
+                       // 判断投资不能少于1000元
+					}else {
+                        falt=false;
+					}
+				}else {
+                    conf=false;
+				}
+
+
+                var param = {
+                    "userId":userId ,
+                    "loansId":loansId,
+                    "investmentMoney":financing,
+                    "interestrate": ratio,
+					"investmentamount":investmentamount
+                }
+
 				if(falt){
-                    $.ajax({
-                        type: "post",
-                        url: "/p2p/investmentAmount",
-                        dataType: "json",
-                        data: {userId:userId},
-                        success: function (data) {
+
+				    if(conf){
+                        $.ajax({
+                            type: "post",
+                            url: "/p2p/investmentAmount",
+                            contentType: 'application/json; charset=UTF-8',
+                            dataType: "json",
+                            data: JSON.stringify(param),
+                            success: function (data) {
+                                if(data!=null&&data!=""){
+									if(Number(data)>0){
+										alert("投资成功,可以到个人账户查询");
+                                        $(".financing").hide();  // 隐藏投资按钮
+                                        $(".one").show();	    //显示已投资按钮
+                                        $("#financing").val("");
+									}else {
+										$(".det_shouyi").html("投资失败");
+										$(".det_shouyi").css("color","red");
+									}
+                                }
+                            }
+                        })
 
 
-                        }
-                    })
+					}else {
+                        $(".det_shouyi").html("投资有风险，投资需谨慎。");
+                    }
+
 
 				}else {
+                    falt = false;
                     $("#financing").val("");
                     $(".det_shouyi").html("金额输入有误！");
 					$(".det_shouyi").css("color","red");
 				}
 			}else {
+                falt = false;
                 $(".det_shouyi").html("请输入您要投资的金额");
                 $(".det_shouyi").css("color","red");
             }
 
         })
-		
-		
+
+
+        $("#financing").blur(function(){
+			$(".det_shouyi").html("");
+		})
+
+
 
     })
-
 
 
 
