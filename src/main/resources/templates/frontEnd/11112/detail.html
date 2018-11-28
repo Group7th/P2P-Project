@@ -80,19 +80,19 @@
 	  	     	    	  	    	<li>
 	  	     	    	  	    		 年华收益<br>
 	  	     	    	  	    		 <span style="color:#ff7112;">
-	  	     	    	  	    		 	 <strong>12</strong>% 年华
+	  	     	    	  	    		 	 <strong id="ratio"></strong>% 年华
 	  	     	    	  	    		 </span>
 	  	     	    	  	    	</li>
 	  	     	    	  	    	<li>
-	  	     	    	  	    		 项目期限<br>
-	  	     	    	  	    		 <span>
-	  	     	    	  	    		 	 <strong>12</strong>个月
+	  	     	    	  	    		 贷款期限<br>
+										<span style="color:#ff7112;">
+	  	     	    	  	    		 	 <strong id="deadline"></strong>个月
 	  	     	    	  	    		 </span>
 	  	     	    	  	    	</li>
                                     <li>
-	  	     	    	  	    		 项目规模<br>
-	  	     	    	  	    		 <span >
-	  	     	    	  	    		 	 <strong>1000</strong>万
+	  	     	    	  	    		 贷款金额<br>
+										<span style="color:#ff7112;">
+	  	     	    	  	    		 	 <strong id="money"></strong>元
 	  	     	    	  	    		 </span>
 	  	     	    	  	    	</li>
 
@@ -100,13 +100,13 @@
 	  	     	    	  	    <!-- end  -->
 	  	     	    	  	    <ul class="det_intro_tul2 clearfix">
 	  	     	    	  	    	<li>
-	  	     	    	  	    		发布日期：2015-07-08
+	  	     	    	  	    		发布日期：<span id="fTime"></span>
 	  	     	    	  	    	</li>
 	  	     	    	  	    	<li>
-	  	     	    	  	    	    还款方式：按月付息，到期还本
+	  	     	    	  	    	    还款方式：<span id="type"></span>
 	  	     	    	  	    	</li>
 	  	     	    	  	    	<li>
-	  	     	    	  	    		 还款日期：2016-07-11
+										还款日期：<span id="hTime"></span>
 	  	     	    	  	    	</li>
 	  	     	    	  	    	<li>
 	  	     	    	  	    		保障机构：北京国能小额贷款股份公司
@@ -116,19 +116,15 @@
 	  	     	    	  <!-- end text -->
 	  	     	    </div>
 	  	     	    <div class="detail_intro_r fr">
-	  	     	    	  <h2 class="det_intro_h2 clearfix"><span class="fl">投资进度:</span><em class="fr">46.05%</em></h2>
-	  	     	    	  <div class="jklb_press_wper">
-                                                	 	  <div class="jklb_press">
-                                                	 	  	  
-                                                	 	  </div>
-                          </div>
-                          <!--  -->
-                          <p class="det_rzye clearfix"><span class="fl">融资余额</span><em class="fr"><strong>1,078,121.00</strong>元</em></p>
+	  	     	    	  <h2 class="det_intro_h2 clearfix"><span class="fl">投资进度:</span><em class="fr" id="bili"></em></h2>
+							 	<!--进度条-->
+							   <meter id="jindu" max="100" min="0" value="" low="100" optimum="1" style='width: 247px;height: 10px' ></meter>
+                          <p class="det_rzye clearfix"><span class="fl">融资余额</span><em class="fr"><strong id="touzi"></strong>元</em></p>
                           <p class="det_input">
-                          	  <input type="text" placeholder="100">
+                          	  <input type="text" placeholder="100" id="financing">
                           </p>
-                          <p class="det_shouyi">每投资1万元收益<strong>183.33元</strong></p>
-                          <p><a href="#" class=" pro_btn det_btn">立即投资</a></p>
+                          <p class="det_shouyi">每投资1万元收益  <strong id="shouyi"></strong></p>
+                          <p><a href="#" class="pro_btn det_btn financing" >立即投资</a></p>
 	  	     	    </div>
 	  	     </div>
 	  	     <!-- end block1 -->
@@ -163,37 +159,10 @@
 	  	     	   	            	         	<li>
 	  	     	   	            	         		注册资金：人名币50万元整
 	  	     	   	            	         	</li>
-	  	     	   	            	         	<li>融资企业：厦门食品有限公司</li>
-	  	     	   	            	         	<li>
-	  	     	   	            	         		注册资金：人名币50万元整
-	  	     	   	            	         	</li>
-	  	     	   	            	         	<li>融资企业：厦门食品有限公司</li>
-	  	     	   	            	         	<li>
-	  	     	   	            	         		注册资金：人名币50万元整
-	  	     	   	            	         	</li>
-	  	     	   	            	         	<li>融资企业：厦门食品有限公司</li>
-	  	     	   	            	         	<li>
-	  	     	   	            	         		注册资金：人名币50万元整
-	  	     	   	            	         	</li>
-	  	     	   	            	         	<li>融资企业：厦门食品有限公司</li>
-	  	     	   	            	         	<li>
-	  	     	   	            	         		注册资金：人名币50万元整
-	  	     	   	            	         	</li>
-	  	     	   	            	         	<li>融资企业：厦门食品有限公司</li>
-	  	     	   	            	         	<li>
-	  	     	   	            	         		注册资金：人名币50万元整
-	  	     	   	            	         	</li>
 
 	  	     	   	            	         </ul>
 	  	     	   	            	    </div>
-	  	     	   	            	     <h2 class="det_proone_tit mt30">企业经营状况</h2>
-	  	     	   	            	     <div class="det_clsj">
-	  	     	   	            	     	 厦门食品有限公司于1999年6月厦门工商局登记注册，公司的办公地址位于厦门市同安区轻工业园区
-	  	     	   	            	     </div>
-	  	     	   	            	     <h2 class="det_proone_tit mt30">财务状况</h2>
-	  	     	   	            	     <div class="det_clsj">
-	  	     	   	            	     	 厦门食品有限公司于1999年6月厦门工商局登记注册，公司的办公地址位于厦门市同安区轻工业园区
-	  	     	   	            	     </div>
+
 	  	     	   	            </div>
 	  	     	   	            <!-- end 项目描述 -->
 	  	     	   	            <div class="det_proone_l" style="display:none;">
@@ -474,48 +443,7 @@
 	  	     	   </div>
 	  	     </div>
 	  	     <!-- end block2 -->
-	  	     <!-- 用户评论开始 -->
-	  	     <div class="det_comment mt30">
-	  	     	   <h2 class="det_comment_tit">用户评论</h2>
-	  	     	   <div class="det_comment_text clearfix">
-	  	     	   	   <div class="comment_l fl pl30">
-	  	     	   	   	   <img src="11112/images/comment_pic02.png" alt="">
-	  	     	   	   </div>
-	  	     	   	   <!-- end l -->
-	  	     	   	   <div class="comment_r fl ml20">
-	  	     	   	   	   <textarea name="" id="" cols="30" rows="10"></textarea>
-	  	     	   	   </div>
-	  	     	   	   <!-- end r -->
-	  	     	   </div>
-	  	     	   <div class="comment_btn clearfix">
-	  	     	   	   <a href="#" class="det_btn">提交</a>
-	  	     	   </div>
-	  	     	   <div class="comment_show">
-	  	     	   	     <ul class="comment_show_ul">
-	  	     	   	     	 <li class="clearfix">
-	  	     	   	     	 <span class="fl mr30">
-	  	     	   	     	   <img src="11112/images/comment_pic03.png" alt="">
-	  	     	   	     	 </span>
-	  	     	   	     	 <div class="fl ml">
-	  	     	   	     	 	  <h3>发布的风向 标</h3>
-	  	     	   	     	 	  <p><img src="11112/images/comment_pic04.png" alt=""></p>
-	  	     	   	     	 	  <p>前天 13:40</p>
-	  	     	   	     	 </div>
-	  	     	   	     	 </li>
-	  	     	   	     	 <li class="clearfix">
-	  	     	   	     	 <span class="fl mr30">
-	  	     	   	     	   <img src="11112/images/comment_pic03.png" alt="">
-	  	     	   	     	 </span>
-	  	     	   	     	 <div class="fl ml">
-	  	     	   	     	 	  <h3>发布的风向 标</h3>
-	  	     	   	     	 	  <p><img src="11112/images/comment_pic04.png" alt=""></p>
-	  	     	   	     	 	  <p>前天 13:40</p>
-	  	     	   	     	 </div>
-	  	     	   	     	 </li>
-	  	     	   	     </ul>
-	  	     	   </div>
-	  	     </div>
-	  	     <!-- 用户评结束 -->
+
 	  </div>
 </div>
 <!-- end con -->
@@ -569,4 +497,95 @@
 </div>
 <!-- footer end -->
 </body>
+<script>
+	$(function () {
+        var userId = GetQueryString("userId");  //获取url
+        $.ajax({
+            type: "post",
+            url: "/p2p/investment",
+            dataType: "json",
+            data: {userId:userId},
+            success: function (data) {
+                if(data!=null&&data!="") {
+                    var money = 10000;
+                    $("#deadline").html(data.LOANSINTERESTRATE); // 贷款利息比例
+                    $("#ratio").html(data.REFUNDDEADLINE);   //贷款期数
+                    $("#money").html(data.LOANSMONEY);		//贷款金额
+                    $("#fTime").html(data.ABEGINTIME);		//发布日期
+                    $("#type").html(data.REFUNDWAY);		//还款方式
+                    $("#hTime").html(data.ATDATE);		//还款日期
+                    $("#bili").html((data.INVESTMENTAMOUNT / data.LOANSMONEY * 100)+"%");  //进度比例
+                    $("#jindu").val(data.INVESTMENTAMOUNT / data.LOANSMONEY * 100);  //进度条
+                    $("#touzi").html(data.LOANSMONEY-data.INVESTMENTAMOUNT);      //贷款剩余金额
+                    $("#shouyi").html(Math.floor(money*data.REFUNDDEADLINE*(data.LOANSINTERESTRATE/100)/12));
+
+                }
+            }
+
+		})
+
+		var falt = false;
+		$(".detail_intro_r").on("click",".financing",function() {
+			var financing = Number($("#financing").val());
+            var money  = Number($("#money").html());
+			alert(financing)
+			if(financing!=null&&financing!=0){
+			    alert(12)
+                var patrn = /^[0-9]*$/; //正则 必须为数字
+                if(money<financing){
+                    falt=false;
+				}else {
+                    falt=true;
+                    if(patrn.test(financing)){
+                        falt=true;
+                    }else{
+                        falt=false;
+                    }
+				}
+				if(falt){
+                    $.ajax({
+                        type: "post",
+                        url: "/p2p/investmentAmount",
+                        dataType: "json",
+                        data: {userId:userId},
+                        success: function (data) {
+
+
+                        }
+                    })
+
+				}else {
+                    $("#financing").val("");
+                    $(".det_shouyi").html("金额输入有误！");
+					$(".det_shouyi").css("color","red");
+				}
+			}else {
+                $(".det_shouyi").html("请输入您要投资的金额");
+                $(".det_shouyi").css("color","red");
+            }
+
+        })
+		
+		
+
+    })
+
+
+
+
+	//获取地址url方法
+    function GetQueryString(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);//search,查询？后面的参数，并匹配正则
+        if(r!=null)
+            return  unescape(r[2]);
+        return null;
+    }
+
+</script>
+
+
+
+
 </html>

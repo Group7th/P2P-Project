@@ -4,9 +4,8 @@
 
 # IntelliJ project files
 .idea
-*.iml
 target
-log.path_IS_UNDEFINED
-personalmanagement.iml
+数据库说明
+*.iml
 out
 gen
