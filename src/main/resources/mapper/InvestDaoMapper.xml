@@ -5,10 +5,10 @@
 
 <mapper namespace="com.group7.dao.InvestDao">
 
-
+    <cache type="org.mybatis.caches.redis.RedisCache" blocking="false"
+           flushInterval="0" readOnly="true" size="1024" eviction="FIFO"/>
 
     <!--多条件筛选 查询分页-->
-
     <select id="getInves" resultType="map">
          select * from
           (select rownum rn,t.* from (select * from tb_loans <where>
@@ -28,16 +28,16 @@
         <!--项目状态-->
             <if test="state != null ">
                 <if test="state == 4 "><!--所有借款 前台获取值为4  2代表 招标中 5：满标 7：贷款成功 11:贷款结束 还玩款的-->
-                    AND  LOANCASE in(2,5,7,11)
+                    AND  LOANSSTATE in(2,5,7,11)
                 </if>
                 <if test="state == 5 "><!--正在招标的借款  -->
-                    AND  LOANCASE in(2)
+                    AND  LOANSSTATE in(2)
                 </if>
                 <if test="state == 6 "><!--已成功借款 -->
-                    AND  LOANCASE in(7)
+                    AND  LOANSSTATE in(7)
                 </if>
                 <if test="state == 7 "><!--已完成借款 -->
-                    AND  LOANCASE in(11)
+                    AND  LOANSSTATE in(11)
                 </if>
             </if>
         <!--项目收益-->
@@ -127,9 +127,6 @@
         join tb_user b on a.userId=b.id
         join tb_userinformation c on b.id=c.userid
         <where>
-            <if test="userId!=null">
-                and b.id=#{userId}
-            </if>
             <if test="loansId!=null">
                 and a.loansId=#{loansId}
             </if>
@@ -148,8 +145,9 @@
     </select>
 
 
-    <!--修复投资表投资金额-->
+    <!--修该投资表投资金额-->
     <update id="investmentMoeny" >
         update tb_loans set investmentamount = #{investmentamount}+ #{investmentMoney} where userId = #{userId} and loansId = #{loansId}
     </update>
+
 </mapper>

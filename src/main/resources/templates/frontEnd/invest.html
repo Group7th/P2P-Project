@@ -3,7 +3,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-	<title>invest</title>
+	<title>贷款选择页面</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <!-- <link rel="stylesheet/less" type="text/css" href="css/style.less" /> -->
 <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
@@ -306,6 +306,8 @@
                                 if (data.inves[0] != null && data.inves[0] != '') {  <!-- 判断不能为空 -->
 									var LOANSTYPE = "";
                                     var str = "";
+                                    var a = "满标";
+                                    var b = "立即投资";
                                     for (var i = 0; i < data.inves.length; i++) {
 
                                         if(data.inves[i].LOANSTYPE==1){
@@ -316,19 +318,20 @@
 
                                         str += "<div class='product_list mt20'>" +
                                             "<div class='prolist_one prolist_one_bl01 mt20'>" +
-                                            "<h2 class='prolist_one_tit'><span>" +LOANSTYPE+"</span>汽车销售服务企业补充流动资金（三期）</h2>" +
+                                            "<h2 class='prolist_one_tit'><span>" +LOANSTYPE+"</span>" + data.inves[i].USERNAME + "</h2>" +
                                             "<ul class='prolist_one_ul clearfix'>" +
                                             "<li>年华收益：<strong>" + data.inves[i].LOANSINTERESTRATE + '%' + "</strong><br>" +
                                             " 还款方式：" + data.inves[i].REFUNDWAY + "</li>" +
                                             "<li>贷款期数：<i>" + data.inves[i].REFUNDDEADLINE + "</i>月<br>" +
                                             "保障机构：中融兴业融资担保有限公司</li>" +
                                             "<li class='prolist_press'>募集金额：<strong>" + data.inves[i].LOANSMONEY + "</strong> 元 <br>" +
-                                            "认购进度：<span class='ui-progressbar-mid ui-progressbar-mid-100'>" + data.inves[i].INVESTMENTAMOUNT / data.inves[i].LOANSMONEY * 100 + '%' + "</span></li>" +
-                                            "<li class='prolist_btn'><a href='/p2p/toDetail?loansId="+data.inves[i].LOANSID+"&userId="+data.inves[i].USERID+" ' class='pro_btn'>立即投资</a></li>" +
+                                            "认购进度：<span class='ui-progressbar-mid ui-progressbar-mid-100'>" + Math.floor(data.inves[i].INVESTMENTAMOUNT / data.inves[i].LOANSMONEY * 100) + '%' + "</span></li>" +
+                                            "<li class='prolist_btn'><a href='/p2p/toDetail?loansId="+data.inves[i].LOANSID+"&userId="+data.inves[i].USERID+" ' class='pro_btn'>" + ((data.inves[i].INVESTMENTAMOUNT / data.inves[i].LOANSMONEY * 100)==100?a:b) +"</a></li>" +
                                             "</ul>" +
                                             "</div>" +
                                             "</div>"
                                     }
+
                                     $("#tby").append(str);
                                     <!-- 断值  1为显示 0为隐藏  下一页按钮 -->
                                     if(data.invesCount.hi == 0){
