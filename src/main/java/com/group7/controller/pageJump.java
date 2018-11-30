@@ -42,9 +42,9 @@ public class pageJump {
      * 跳转账户信息
      * @return
      */
-    @RequestMapping("toNoticelist")
-    public String toNoticelist(){
-        return "frontEnd/noticelist";
+    @RequestMapping("toAccount")
+    public String toAccount(){
+        return "frontEnd/Account";
     }
 
 
@@ -66,7 +66,14 @@ public class pageJump {
         return "frontEnd/problem";
     }
 
-
+    /**
+     * 跳转登录
+     * @return
+     */
+    @RequestMapping("toLogin")
+    public String toLogin(){
+        return "frontEnd/login";
+    }
 
     /**
      * 跳转注册
@@ -78,39 +85,144 @@ public class pageJump {
     }
 
     /**
-     * 跳转前台首页
+     * 跳转公告列表
      * @return
      */
-    @RequestMapping("toDashboard")
-    public String toDashboard(){
-        return "backStage/dashboard";
+    @RequestMapping("toNoticelist")
+    public String toNoticelist(){
+        return "frontEnd/noticelist";
     }
 
     /**
-     * 跳转统计页面
+     * 个人中心首页
      * @return
      */
-    @RequestMapping("totatistics")
-    public String totatistics(){
-        return "backStage/dashboard.1";
+    @RequestMapping("toGeRenZhongXinShouYe")
+    public String toGeRenZhongXinShouYe(){
+        return "yirenbaopage/GRZX.html";
     }
 
     /**
-     * 跳转后台模板
+     * 个人中心充值
      * @return
      */
-    @RequestMapping("toMap")
-    public String toMap(){
-        return "backStage/map";
+    @RequestMapping("toGRZXChongZhi")
+    public String toGRZXChongZhi(){
+        return "yirenbaopage/个人中心-充值.html";
+
     }
 
     /**
-     * 跳转贷款初审
+     * 个人中心充值1
      * @return
      */
-    @RequestMapping("toLoanAudit")
-    public String toLoanAudit(){
-        return "backStage/LoanAudit";
+    @RequestMapping("toGRZXChongZhi1")
+    public String toGRZXChongZhi1(){
+        return "yirenbaopage/个人中心-充值1.html";
+
     }
+
+    /**
+     * 兑换记录
+     * @return
+     */
+    @RequestMapping("toGRZXDuiHuan")
+    public String toGRZXDuiHuan(){
+        return "yirenbaopage/个人中心-兑换历史.html";
+
+    }
+
+    /**
+     * 回款计划
+     * @return
+     */
+    @RequestMapping("toGRZXHuiKuan")
+    public String toGRZXHuiKuan(){
+        return "yirenbaopage/个人中心-回款计划.html";
+    }
+
+    /**
+     * 开通第三方
+     * @return
+     */
+    @RequestMapping("toGRZXKaiTong")
+    public String toGRZXKaiTong(){
+        return "yirenbaopage/个人中心-开通第三方.html";
+    }
+
+    /**
+     * 开通第三方1
+     * @return
+     */
+    @RequestMapping("toGRZXKaiTong1")
+    public String toGRZXKaiTong1(){
+        return "yirenbaopage/个人中心-开通第三方1.html";
+    }
+
+
+    /**
+     * 我的红包
+     * @return
+     */
+    @RequestMapping("toGRZXHongBao")
+    public String toGRZXHongBao(){
+        return "yirenbaopage/个人中心-我的红包.html";
+    }
+
+    /**
+     * 投资纪录
+     * @return
+     */
+    @RequestMapping("toGRZXTouZi")
+    public String toGRZXTouZi(){
+        return "yirenbaopage/个人中心-投资记录.html";
+    }
+
+    /**
+     * 提现
+     * @return
+     */
+    @RequestMapping("toGRZXTiXian")
+    public String toGRZXTiXian(){
+        return "yirenbaopage/个人中心-提现.html";
+    }
+
+    /**
+     * 提现1
+     * @return
+     */
+    @RequestMapping("toGRZXTiXian1")
+    public String toGRZXTiXian1(){
+        return "yirenbaopage/个人中心-提现1.html";
+    }
+
+    /**
+     * 系统消息
+     * @return
+     */
+    @RequestMapping("toGRZXXiTongXiaoXi")
+    public String toGRZXXiTongXiaoXi(){
+        return "yirenbaopage/个人中心-系统消息.html";
+    }
+
+
+    /**
+     * 账号设置
+     * @return
+     */
+    @RequestMapping("toGRZXZhangHao")
+    public String toGRZXZhangHao(){
+        return "yirenbaopage/个人中心-账户设置.html";
+    }
+
+    /**
+     * 资金纪录
+     * @return
+     */
+    @RequestMapping("toGRZXZiJin")
+    public String toGRZXZiJin(){
+        return "yirenbaopage/个人中心-资金记录 .html";
+    }
+
 
 }

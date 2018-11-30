@@ -3,8 +3,9 @@ package com.group7;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-//@EnableTransactionManagement//spring boot 开启注解式事务
+@EnableTransactionManagement//spring boot 开启注解式事务
 @SpringBootApplication
 @MapperScan("com.group7.dao")
 public class SpringbootApplication {

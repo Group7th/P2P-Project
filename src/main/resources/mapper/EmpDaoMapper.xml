@@ -7,7 +7,4 @@
     <cache type="org.mybatis.caches.redis.RedisCache" blocking="false"
            flushInterval="0" readOnly="true" size="1024" eviction="FIFO"/>
 
-    <select id="getList" resultType="map">
-        select * from emp
-    </select>
 </mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.group7.dao.AccountInfoDao">
+    <!--&lt;!&ndash;配置文件加这个Redis&ndash;&gt;-->
+    <!--<cache type="org.mybatis.caches.redis.RedisCache" blocking="false"-->
+           <!--flushInterval="0" readOnly="true" size="1024" eviction="FIFO"/>-->
+    <select id="accountInfo" resultType="map" parameterType="java.lang.String">
+        select * from tb_useraccount where useraccountid =
+          (select userinformation from tb_userinformation where userinformation =
+            (select id from tb_user where username = #{userName}))
+    </select>
+
+</mapper>
