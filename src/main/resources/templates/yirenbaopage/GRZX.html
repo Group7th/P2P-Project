@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>p2p网贷平台</title>
@@ -7,16 +7,34 @@
 <meta name="description" content="" />
 <link href="yirenbao/css/common.css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="yirenbao/css/user.css" />
-<script type="text/javascript" src="yirenbao/script/jquery.min.js"></script>
-<script type="text/javascript" src="yirenbao/script/common.js"></script>
+<!--<script type="text/javascript" src="yirenbao/script/common.js"></script>-->
 <script src="yirenbao/script/user.js" type="text/javascript"></script>
   <!------------------->
   <link rel="stylesheet" type="text/css" href="style/style.css"/>
-  <script type="text/javascript" src="script/javasrcipt.js"></script>
+  <!--<script type="text/javascript" src="script/javasrcipt.js"></script>-->
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <!-- <link rel="stylesheet/less" type="text/css" href="css/style.less" /> -->
   <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
   <script type="text/javascript" src="js/all.js"></script>
+  <script type="text/javascript">
+    $(function () {
+        $.ajax({
+            type:"post",
+            url:"/p2p/account/accountList",
+            dataType:"json",
+            success:function (data) {
+                console.log(data);
+                // $("#total").text(data.ACCOUNMONEY);
+                $("#canuse").text(data.AVAILMONEY);
+                $("#interest").text(data.AWAITINTEREST);
+                $("#capital").text(data.AWAITMONEY);
+                $("#bepaid").text(data.MONEY);
+                $("#creditline").text(data.LINEOFCREDIT);
+            }
+        })
+    })
+
+  </script>
 </head>
 <body>
 
@@ -67,10 +85,10 @@
 <!--个人中心-->
 <div class="wrapper wbgcolor">
   <div class="w1200 personal">
-    <div class="credit-ad"><img src="images/clist1.jpg" width="1200" height="96"></div>
+    <div class="credit-ad"><img src="yirenbao/images/clist1.jpg" width="1200" height="96"></div>
     <div id="personal-left" class="personal-left">
       <ul>
-        <li class="pleft-cur"><span><a href="GRZX.html"><i class="dot dot1"></i>账户总览</a></span></li>
+        <li class="pleft-cur"><span><a href="toGeRenZhongXinShouYe"><i class="dot dot1"></i>账户总览</a></span></li>
         <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXZiJin">资金记录</a></span></li>
         <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXTouZi">投资记录</a></span></li>
         <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXHuiKuan">回款计划</a></span></li>
@@ -84,7 +102,7 @@
       </ul>
     </div>
     <div class="personal-main">
-      <link rel="stylesheet" type="text/css" href="css/fileupload.less.css">
+      <link rel="stylesheet" type="text/css" href="yirenbao/css/fileupload.less.css">
       <style type="text/css">
 		.ui-fileupload-choose{
 			background:none;
@@ -99,8 +117,8 @@
 			width:0px;height:0px;
 		} 
 	</style>
-      <div class="pmain-profile">
-        <div class="pmain-welcome"> <span class="fl"><span id="outLogin">晚上好，</span>tg_gpdt0139 喝一杯下午茶，让心情放松一下~</span> <span class="fr">上次登录时间：
+      <div class="pmain-profile" style="height:510px">
+        <div class="pmain-welcome"> <span class="fl"><span id="outLogin">晚上好，</span><em th:text="${session.userName}">tg_gpdt0139</em>> 喝一杯下午茶，让心情放松一下~</span> <span class="fr">上次登录时间：
           2015-09-11 14:05:07 </span> </div>
         <div class="pmain-user">
           <div class="user-head"> <span id="clickHeadImage" class="head-img" title="点击更换头像">
@@ -109,7 +127,8 @@
               <span id="userPhotoUploadForm:photo"><img id="userPhotoUploadForm:photoImage" src="yirenbao/images/touxiang.png" alt="" style="width:88px;height:88px;z-index:0;"> <i class="headframe" style="z-index:0;"></i>-
               <div id="userPhotoUploadForm:shangchuan-btn" class="ui-fileupload ui-widget" style="z-index:0;">
                 <div class="ui-fileupload-buttonbar ui-corner-top"><span class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left ui-fileupload-choose" role="button"><span class="ui-button-icon-left ui-icon ui-c ui-icon-plusthick"></span><span class="ui-button-text ui-c"></span>
-                  <input type="file" id="userPhotoUploadForm:shangchuan-btn_input" name="userPhotoUploadForm:shangchuan-btn_input" style="z-index:0;">
+                  <!--更换头像-->
+                  <!--<input type="file" id="userPhotoUploadForm:shangchuan-btn_input" name="userPhotoUploadForm:shangchuan-btn_input" style="z-index:0;">-->
                   </span></div>
                 <div class="ui-fileupload-content ui-widget-content ui-corner-bottom">
                   <table class="ui-fileupload-files">
@@ -132,9 +151,12 @@
         </div>
         <div class="pmain-money">
           <ul>
-            <li class="none"><span><em>账户总额</em><i id="zhze" class="markicon"></i><span class="arrow-show1" style="display:none;">可用余额+待收本息</span><span class="icon-show1" style="display:none;"></span></span> <span class="truemoney"><i class="f26 fb">0.00 </i> 元</span> </li>
-            <li><span><em>待收本息</em><i id="dsbx" class="markicon"></i><span class="arrow-show2" style="display:none;">未到账的投资项目的本金、利息总额</span><span class="icon-show2" style="display:none;"></span></span> <span class="truemoney"><i class="f26 fb">0.00 </i>元</span> </li>
-            <li><span><em>累计收益</em><i id="ljsy" class="markicon"></i><span class="arrow-show3" style="display: none;">已到账的投资收益+未到账的投资收益</span><span class="icon-show3" style="display: none;"></span></span> <span class="truemoney"><i class="f26 fb c-pink">0.00 </i> 元</span> </li>
+            <li class="none"><span><em>账户总额</em><i id="zhze" class="markicon"></i><span class="arrow-show1" style="display:none;">可用余额+待收本息</span><span class="icon-show1" style="display:none;"></span></span> <span class="truemoney"><i class="f26 fb" th:text="${session.accountList.ACCOUNMONEY}"></i>.00元</span> </li>
+            <li><span><em>可用余额</em><i id="kyje" class="markicon"></i><span class="arrow-show2" style="display: none;">已到账的投资收益+未到账的投资收益</span><span class="icon-show2" style="display: none;"></span></span> <span class="truemoney"><i class="f26 fb " id="canuse"> </i> .00元</span> </li>
+            <li><span><em>待收利息</em><i id="dsbx" class="markicon"></i><span class="arrow-show3" style="display: none;">未到账的投资项目的本金、利息总额</span><span class="icon-show3" style="display: none;"></span></span> <span class="truemoney"><i class="f26 fb" id="interest"></i>.00元</span> </li>
+            <li><span><em>待收本金</em><i id="dsbj" class="markicon"></i><span class="arrow-show4" style="display: none;">已到账的投资收益+未到账的投资收益</span><span class="icon-show4" style="display: none;"></span></span> <span class="truemoney"><i class="f26 fb " id="capital"> </i>.00元</span> </li>
+            <li><span><em>代还金额</em><i id="dhje" class="markicon"></i><span class="arrow-show5" style="display: none;">已到账的投资收益+未到账的投资收益</span><span class="icon-show5" style="display: none;"></span></span> <span class="truemoney"><i class="f26 fb " id="bepaid"></i>.00元</span> </li>
+            <li><span><em>信用额度</em><i id="xyed" class="markicon"></i><span class="arrow-show7" style="display: none;">已到账的投资收益+未到账的投资收益</span><span class="icon-show7" style="display: none;"></span></span> <span class="truemoney"><i class="f26 fb " id="creditline"></i>.00元</span> </li>
           </ul>
         </div>
       </div>

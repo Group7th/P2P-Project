@@ -27,8 +27,8 @@ public class AccountServiceImpl implements AccountService {
 
 
     @Override
-    public List<Map> accountInfo(String userName) {
-        List<Map> tempList = accountInfoDao.accountInfo(userName);
+    public Map accountInfo(String userName) {
+        Map tempList = accountInfoDao.accountInfo(userName);
         return tempList;
     }
 }

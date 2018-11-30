@@ -16,5 +16,5 @@ public interface AccountInfoDao {
      * 账户信息
      * @return
      */
-    List<Map> accountInfo(String userName);
+    Map accountInfo(String userName);
 }

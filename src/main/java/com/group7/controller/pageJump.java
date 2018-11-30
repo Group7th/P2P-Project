@@ -10,6 +10,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class pageJump {
+
+    /**
+     * 支付密码界面
+     * @return
+     */
+    @RequestMapping("/toPay")
+    public String toPay(){
+        return "backStage/IpayPassword";
+    }
+
+
+    /**
+     * 跳转上传页面
+     * @return
+     */
+    @RequestMapping("toUpload")
+    public String upLoadPage(){
+        return "backStage/Upload";
+    }
+
     /**
      * 跳转首页
      * @return
@@ -99,26 +119,16 @@ public class pageJump {
      */
     @RequestMapping("toGeRenZhongXinShouYe")
     public String toGeRenZhongXinShouYe(){
-        return "yirenbaopage/GRZX.html";
+        return "yirenbaopage/GRZX";
     }
 
     /**
      * 个人中心充值
      * @return
      */
-    @RequestMapping("toGRZXChongZhi")
-    public String toGRZXChongZhi(){
-        return "yirenbaopage/个人中心-充值.html";
-
-    }
-
-    /**
-     * 个人中心充值1
-     * @return
-     */
     @RequestMapping("toGRZXChongZhi1")
     public String toGRZXChongZhi1(){
-        return "yirenbaopage/个人中心-充值1.html";
+        return "yirenbaopage/个人中心-充值.html";
 
     }
 
@@ -145,18 +155,9 @@ public class pageJump {
      * 开通第三方
      * @return
      */
-    @RequestMapping("toGRZXKaiTong")
-    public String toGRZXKaiTong(){
-        return "yirenbaopage/个人中心-开通第三方.html";
-    }
-
-    /**
-     * 开通第三方1
-     * @return
-     */
     @RequestMapping("toGRZXKaiTong1")
     public String toGRZXKaiTong1(){
-        return "yirenbaopage/个人中心-开通第三方1.html";
+        return "yirenbaopage/个人中心-开通第三方.html";
     }
 
 
@@ -182,18 +183,9 @@ public class pageJump {
      * 提现
      * @return
      */
-    @RequestMapping("toGRZXTiXian")
-    public String toGRZXTiXian(){
-        return "yirenbaopage/个人中心-提现.html";
-    }
-
-    /**
-     * 提现1
-     * @return
-     */
     @RequestMapping("toGRZXTiXian1")
     public String toGRZXTiXian1(){
-        return "yirenbaopage/个人中心-提现1.html";
+        return "yirenbaopage/个人中心-提现.html";
     }
 
     /**

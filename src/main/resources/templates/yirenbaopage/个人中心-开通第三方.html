@@ -3,71 +3,84 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>p2p网贷平台</title>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<link href="css/common.css" rel="stylesheet" />
-<link rel="stylesheet" type="text/css" href="css/user.css" />
-<link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.css"/>
-<script type="text/javascript" src="script/jquery.min.js"></script>
-<script type="text/javascript" src="script/common.js"></script>
-<script src="script/user.js" type="text/javascript"></script>
+
+  <meta name="description" content="" />
+  <link href="yirenbao/css/common.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="yirenbao/css/user.css" />
+  <script type="text/javascript" src="yirenbao/script/jquery.min.js"></script>
+  <!--<script type="text/javascript" src="yirenbao/script/common.js"></script>-->
+  <script src="yirenbao/script/user.js" type="text/javascript"></script>
+  <!------------------->
+  <link rel="stylesheet" type="text/css" href="style/style.css"/>
+  <!--<script type="text/javascript" src="script/javasrcipt.js"></script>-->
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <!-- <link rel="stylesheet/less" type="text/css" href="css/style.less" /> -->
+  <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="js/all.js"></script>
 </head>
 <body>
-<header>
-  <div class="header-top min-width">
-    <div class="container fn-clear"> <strong class="fn-left">咨询热线：400-848-6698<span class="s-time">服务时间：9:00 - 18:00</span></strong>
-      <ul class="header_contact">
-        <li class="c_1"> <a class="ico_head_weixin" id="wx"></a>
-          <div class="ceng" id="weixin_xlgz" style="display: none;">
-            <div class="cnr"> <img src="images/code.png"> </div>
-            <b class="ar_up ar_top"></b> <b class="ar_up_in ar_top_in"></b> </div>
-        </li>
-        <li class="c_2"><a href="#" target="_blank" title="官方QQ" alt="官方QQ"><b class="ico_head_QQ"></b></a></li>
-        <li class="c_4"><a href="#" target="_blank" title="新浪微博" alt="新浪微博"><b class="ico_head_sina"></b></a></li>
-      </ul>
-      <ul class="fn-right header-top-ul">
-        <li> <a href="#" class="app">返回首页</a> </li>
-        <li>
-          <div class=""><a href="#" class="c-orange" title="免费注册">免费注册</a></div>
-        </li>
-        <li>
-          <div class=""><a href="javascript:;" class="js-login" title="登录">登录</a></div>
-        </li>
+
+<div class="zxcf_top_wper">
+  <div class="zxcf_top px1000 clearfix">
+    <div class="zxcf_top_l fl">
+      <img src="images/zxcf_phone.png" alt="">
+      400-027-0101(工作时间9:00-17:30)
+      <a href="#"><img src="images/zxcf_weixin.png" alt=""></a>
+      <a href="#"><img src="images/zxcf_sina.png" alt=""></a>
+      <a href="#"><img src="images/zxcf_qq.png" alt=""></a>
+    </div>
+    <div class="zxcf_top_r fr">
+      <a href="toLogin" class="curspan">立即登录</a>
+      <span>|</span>
+      <a href="toRegister">免费注册</a>
+      <span>|</span>
+      <a href="toproblem">常见问题</a>
+    </div>
+  </div>
+</div>
+<!-- end top -->
+
+</div>
+<!-- end top -->
+<div class="zxcf_nav_wper">
+  <div class="zxcf_nav clearfix px1000">
+    <div class="zxcf_nav_l fl"><img src="images/zxcf_logo.png" alt=""></div>
+    <div class="zxcf_nav_r fr">
+      <img src="images/zxcf_perinfo.png" alt="">
+      <span>我的账户
+		 	<img src="images/zxcf_icon01.png" alt=""></span>
+      <ul class="zxcf_perinfo" style="display:none;">
       </ul>
     </div>
   </div>
-  <div class="header min-width">
-    <div class="container">
-      <div class="fn-left logo"> <a class="" href="/"> <img src="images/logo.png"  title=""> </a> </div>
-      <ul class="top-nav fn-clear">
-        <li class="on"> <a href="/">首页</a> </li>
-        <li> <a href="#" class="">我要投资</a> </li>
-        <li> <a href="#">我要融资</a> </li>
-        <li> <a href="#">安全保障</a> </li>
-        <li class="top-nav-safe"> <a href="/about-7">我的账户</a> </li>
-        <li> <a href="#">关于我们</a> </li>
-      </ul>
-    </div>
+</div>
+<div class="zxcf_menu_wper">
+  <div class="zxcf_menu px1000">
+    <a href="toIndex" class="zm_cura">首页</a>
+    <a href="toInvest">我要投资</a>
+    <a href="toBorrow">我要借款</a>
+    <a href="#">实时财务</a>
+    <a href="toGeRenZhongXinShouYe">账户信息</a>
+    <a href="#" style="margin-right:0;">关于我们</a>
   </div>
-</header>
+</div>
 <!--个人中心-->
 <div class="wrapper wbgcolor">
   <div class="w1200 personal">
-    <div class="credit-ad"><img src="images/clist1.jpg" width="1200" height="96"></div>
+    <div class="credit-ad"><img src="yirenbao/images/clist1.jpg" width="1200" height="96"></div>
     <div id="personal-left" class="personal-left">
       <ul>
-        <li class="pleft-cur"><span><a href="#"><i class="dot dot1"></i>账户总览</a></span></li>
-        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="#">资金记录</a></span></li>
-        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="#">投资记录</a></span></li>
-        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="#">回款计划</a></span></li>
-        <li class=""><span><a href="#"><i class="dot dot02"></i>开通第三方</a> </span> </li>
-        <li><span><a href="#"><i class="dot dot03"></i>充值</a></span></li>
-        <li class=""><span><a href="#"><i class="dot dot04"></i>提现</a></span></li>
-        <li style="position:relative;" class=""> <span> <a href="#"> <i class="dot dot06"></i> 我的红包 </a> </span> </li>
-        <li class=""><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="#">兑换历史</a></span></li>
-        <li class=""><span><a href="#"><i class="dot dot07"></i>自动投标</a></span></li>
-        <li style="position:relative;"> <span> <a href="#"><i class="dot dot08"></i>系统信息 </a> </span> </li>
-        <li><span><a href="#"><i class="dot dot09"></i>账户设置</a></span></li>
+        <li class=""><span><a href="toGeRenZhongXinShouYe"><i class="dot dot1"></i>账户总览</a></span></li>
+        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXZiJin">资金记录</a></span></li>
+        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXTouZi">投资记录</a></span></li>
+        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXHuiKuan">回款计划</a></span></li>
+        <li class="pleft-cur"><span><a href="toGRZXKaiTong1"><i class="dot dot02"></i>开通第三方</a> </span> </li>
+        <li><span><a href="toGRZXChongZhi1"><i class="dot dot03"></i>充值</a></span></li>
+        <li class=""><span><a href="toGRZXTiXian1"><i class="dot dot04"></i>提现</a></span></li>
+        <li style="position:relative;" class=""> <span> <a href="toGRZXHongBao"> <i class="dot dot06"></i> 我的红包 </a> </span> </li>
+        <li class=""><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXDuiHuan">兑换历史</a></span></li>
+        <li style="position:relative;"> <span> <a href="toGRZXXiTongXiaoXi"><i class="dot dot08"></i>系统信息 </a> </span> </li>
+        <li><span><a href="toGRZXZhangHao"><i class="dot dot09"></i>账户设置</a></span></li>
       </ul>
     </div>
     <style>
@@ -153,47 +166,43 @@
 			}
 			//]]>
 		</script>
-    <script type="text/javascript">
-	//<![CDATA[
-	     $(function(){
-				var emailFlag="false";
-				if(emailFlag=='false')
-				{
-					showSpan('alert-activeEmail');//绑定邮箱
-					return;
-				}
-			})      
-	//]]>
-	</script>
+    <input id="investorValiCodeError" type="hidden" name="investorValiCodeError">
     <div class="personal-main">
       <div class="personal-pay">
         <h3><i>开通第三方账户</i></h3>
-        <form id="form" name="form" method="post" action="">
+        <form id="form" name="form" method="post" action="" enctype="application/x-www-form-urlencoded">
           <div class="pay-notice">
             <p>开通第三方资金托管账户的信息将提交至<a href="http://www.sumapay.com/" target="_blank">丰付支付</a>网站执行，</p>
-            <p><a href="http://www.sumapay.com/" target="_blank">丰付支付</a>系统将为您分配唯一用户ID（格式为：TG_用户名），并与您亿人宝金融账户自动绑定，您无需修改和记忆。 </p>
+            <p><a href="http://www.sumapay.com/" target="_blank">丰付支付</a>系统将为您分配唯一用户ID（格式为：TG_用户名），并与您亿人宝账户自动绑定，您无需修改和记忆。 </p>
           </div>
           <div class="pay-form">
             <h6>请输入您的身份证信息</h6>
             <ul>
               <li>
                 <label for="realname">真实姓名</label>
-                <input type="text" name="" class="pay-txt" maxlength="16"  placeholder="您的真实姓名">
+                <input type="text"  class="pay-txt" maxlength="16"  placeholder="您的真实姓名">
                 <div id="realnameErrorDiv"></div>
               </li>
               <li>
                 <label for="idCard">身份证号</label>
-                <input type="text" name="" class="pay-txt" maxlength="18" placeholder="您的身份证号">
+                <input type="text" class="pay-txt" maxlength="18" placeholder="您的身份证号">
                 <div id="idCardErrorDiv">
                   <p style="margin-top:10px;">身份证信息认证后将不可修改，请您仔细填写</p>
                 </div>
+              </li>
+            </ul>
+            <h6>邮箱已绑定</h6>
+            <ul>
+              <li>
+                <label for="email">邮箱</label>
+                <label id="form:email"> 348****@qq.com</label>
               </li>
             </ul>
             <h6>手机号已绑定</h6>
             <ul>
               <li>
                 <label for="phone">手机号</label>
-                <input type="hidden" name="form:j_idt98" value="15055100139">
+                <input type="hidden" name="" value="15055100139">
                 <label> 150****0139</label>
               </li>
               <li>
@@ -233,29 +242,10 @@
 			           }
 			//]]>
 		</script>
-        <div class="pay-tipcon"> 1、为切实保障投资人的利益，亿人宝金融将理财资金托管在<a href="http://www.sumapay.com/" target="_blank">丰付第三方支付</a>平台。平台是2012年6月获批中国人民银行支付许可证和中国证监会基金支付许可的第三方支付公司，在金融支付领域业界领先地位。详情请登录<a href="http://www.sumapay.com/" target="_blank">丰付支付</a>官方网站查看。<br>
-          2、根据相关法律规定，亿人宝金融在开通资金托管账户时，需要验证您的身份信息。该信息一经设置，无法修改，请慎重选择。为了确保您可以顺利提现，请确认您拥有一张使用该身份证开户的有效储蓄卡。<br>
-          3、亿人宝金融将最大限度的尊重和保护您的个人隐私，详情请阅读<a href="/node/Candyprivacypolicy/RegistrationAgreement0001test" target="_blank">《亿人宝金融隐私条款》</a>。<br>
+        <div class="pay-tipcon"> 1、为切实保障投资人的利益，亿人宝将理财资金托管在<a href="http://www.sumapay.com/" target="_blank">丰付第三方支付</a>平台。平台是2012年6月获批中国人民银行支付许可证和中国证监会基金支付许可的第三方支付公司，在金融支付领域业界领先地位。详情请登录<a href="http://www.sumapay.com/" target="_blank">丰付支付</a>官方网站查看。<br>
+          2、根据相关法律规定，亿人宝在开通资金托管账户时，需要验证您的身份信息。该信息一经设置，无法修改，请慎重选择。为了确保您可以顺利提现，请确认您拥有一张使用该身份证开户的有效储蓄卡。<br>
+          3、亿人宝将最大限度的尊重和保护您的个人隐私，详情请阅读<a href="#" target="_blank">《亿人宝隐私条款》</a>。<br>
           4、您在开通第三方账号过程中，如有遇到问题，可以查看理财帮助，也可以联系我们的客服进行咨询，咨询电话：400-999-8850。 </div>
-      </div>
-      <div class="alert-450" id="alert-activeEmail" style="display: block;">
-        <div class="alert-title">
-          <h3>激活邮箱</h3>
-        </div>
-        <div class="alert-main">
-          <form id="activeEmail" name="activeEmail" method="post" action="/user/depositAuthenticationAccount" enctype="application/x-www-form-urlencoded" target="_blank">
-            <input type="hidden" name="activeEmail" value="activeEmail">
-            <ul>
-              <li>
-                <label class="txt-name">邮箱</label>
-                <input id="activeEmail:activeEmailemail" type="text" name="activeEmail:activeEmailemail" class="txt235" onblur="jsf.util.chain(this,event,'return checkactiveEmailFormEmail()','mojarra.ab(this,event,\'blur\',0,0)')" placeholder="请输入邮箱">
-                <div id="activeEmailemailErrorDiv" class="alert-error120"></div>
-              </li>
-              <input type="submit" name="activeEmail:j_idt108" value="立即激活邮箱" class="btn-ok txt-right" onclick="return checkActiveEmailAll()">
-            </ul>
-            <input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="3539659789631542353:-7321825572772818867" autocomplete="off">
-          </form>
-        </div>
       </div>
       <script type="text/javascript">
 				//<![CDATA[
@@ -366,49 +356,34 @@
   </div>
 </div>
 <!--网站底部-->
-<div id="footer" class="ft">
-  <div class="ft-inner clearfix">
-    <div class="ft-helper clearfix">
-      <dl>
-        <dt>关于我们</dt>
-        <dd><a href="#">品牌优势</a><a href="#">管理团队</a><a href="#">官方公告</a><a href="#">联系我们</a></dd>
-      </dl>
-      <dl>
-        <dt>相关业务</dt>
-        <dd><a href="#">我要投资</a><a href="#">我要借款</a><a href="#">阳光宝盒</a><a href="#">我要加盟</a></dd>
-      </dl>
-      <dl>
-        <dt>帮助中心</dt>
-        <dd><a href="#">新手入门</a><a href="#">我的账户</a><a href="#">债权转让</a><a href="#">其它</a></dd>
-      </dl>
-      <dl>
-        <dt>帮助中心</dt>
-        <dd><a href="#">新手入门</a><a href="#">我的账户</a><a href="#">债权转让</a><a href="#">其它</a></dd>
-      </dl>
-    </div>
-    <div class="ft-service">
-      <dl>
-        <dd>
-          <p><strong>400-090-1268</strong><br>
-            工作日 9:00-22:00<br>
-            官方交流群:<em>12345678</em><br>
-            工作日 9:00-22:00 / 周六 9:00-18:00<br>
-          </p>
-          <div class="ft-serv-handle clearfix"><a class="icon-hdSprite icon-ft-sina a-move a-moveHover" title="阳光易贷新浪微博" target="_blank" href="http://weibo.com/p/1006065369665393/home?from=page_100606&mod=TAB#place"></a><a class="icon-hdSprite icon-ft-qqweibo a-move a-moveHover" title="阳光易贷腾讯微博" target="_blank" href="http://e.t.qq.com/ygydai?pgv_ref=im.perinfo.perinfo.icon"></a><a class="icon-ft-qun a-move a-moveHover" title="阳光易贷QQ群" target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=ad0ad5a8c1d09ac24357aff7f6c6f4eb6367ef0f972ae5a9f31d570d7e98a0c9"></a><a class="icon-hdSprite icon-ft-email a-move a-moveHover mrn" title="阳光易贷email" target="_blank" href="mailto:xz@ygydai.com"></a></div>
-        </dd>
-      </dl>
-    </div>
-    <div class="ft-wap clearfix">
-      <dl>
-        <dt>官方二维码</dt>
-        <dd><span class="icon-ft-erweima"><img src="images/code.png" style="display: inline;"></span></dd>
-      </dl>
-    </div>
+<div class="footer">
+  <div class="foot">
+    <article>
+      <div class="friend">
+        <a href="#">关于我们</a>
+        <span></span>
+        <a href="#">法律声明</a>
+        <span></span>
+        <a href="#">媒体报道</a>
+        <span></span>
+        <a href="#">团队介绍</a>
+        <span></span>
+        <a href="#">帮助中心</a>
+        <span></span>
+        <a href="#">友情链接</a>
+      </div>
+      <figure></figure>
+      <p>© 2016 北京乐融多源信息技术有限公司 京ICP证12049103号-3 京公网安备11010502025440</p>
+      <div class="certificate"></div>
+    </article>
+    <aside>
+      <p>联系我们 <span>9:00 - 21:00</span> </p>
+      <h1>400-068-1176</h1>
+      <div class="customer"><a href="#">在线客服</a></div>
+      <div class="customer"><a href="#">客服邮箱</a></div>
+    </aside>
   </div>
-  <div class="ft-record">
-    <div class="ft-approve clearfix"><a class="icon-approve approve-0 fadeIn-2s" target="_blank" href="#"></a><a class="icon-approve approve-1 fadeIn-2s" target="_blank" href="#"></a><a class="icon-approve approve-2 fadeIn-2s" target="_blank" href="#"></a><a class="icon-approve approve-3 fadeIn-2s" target="_blank" href="#"></a></div>
-    <div class="ft-identity">©2015 亿人宝 All rights reserved&nbsp;&nbsp;&nbsp;<span class="color-e6">|</span>&nbsp;&nbsp;&nbsp;安徽省亿人宝投资管理有限公司&nbsp;&nbsp;&nbsp;<span class="color-e6">|</span>&nbsp;&nbsp;&nbsp;<a target="_blank" href="http://www.miitbeian.gov.cn/">皖ICP备12345678号-1</a></div>
-  </div>
+
 </div>
 </body>
 </html>
