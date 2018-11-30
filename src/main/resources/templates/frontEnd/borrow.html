@@ -7,19 +7,170 @@
     <!-- <link rel="stylesheet/less" type="text/css" href="css/style.less" /> -->
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/all.js"></script>
-    <script src="js/jquery-1.7.2.min.js"></script>
-    <script src="http://lib.sinaapp.com/js/jquery/1.7.2/jquery.min.js"></script>
-    <script src="http://yukon12345.com/yukon12345.com/js/jquery.cookie.js"></script>
-    <script src="js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
-    <!--    <script type="text/javascript">
-            $(function () {
-                var type = '${type}';
-                if(type==1){
-                    $(".bor_det_one").show().siblings().hide();
+    <script type="text/javascript" src="js/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="js/dist/sweetalert.css">
+    <script>
+        function tihuan(from) {
+            //校验房屋抵押贷款总价值
+            $("#"+ from).on("blur", ".bor_inputbg03", function () {
+                var globalvalue = $(this).val();
+                if (globalvalue <= 0 || globalvalue == null || globalvalue == "") {
+                    $(".globalvalue").html("<image src='./images/cuo.jpg'/>");
+                    $(".sub").attr("disabled", true);
+                } else {
+                    $(".globalvalue").html("<image src='./images/dui.jpg'/>");
+                    $(".sub").removeAttr("disabled");
                 }
-            })
-        </script>-->
+            });
 
+            //检验评估报告  appraisalreport
+            $("#" + from).on("blur", ".appraisalreport", function () {
+                var appraisalreport = $(this).val();
+                if (appraisalreport == null || appraisalreport == "") {
+                    $(".report").html("<image src='./images/cuo.jpg'/>");
+                    $(".sub").attr("disabled", true);
+                } else {
+                    $(".report").html("<image src='./images/dui.jpg'/>");
+                    $(".sub").removeAttr("disabled");
+                }
+            });
+
+            //校验总价值 bor_inputbg03
+            $("#" + from).on("blur", ".bor_inputbg03", function () {
+                var globalvalue = $(this).val();
+                if (globalvalue == null || globalvalue == "" || globalvalue <= 0) {
+                    $(".globalvalue").html("<image src='./images/cuo.jpg'/>");
+                    $(".sub").attr("disabled", true);
+                } else {
+                    $(".globalvalue").html("<image src='./images/dui.jpg'/>");
+                    $(".sub").removeAttr("disabled");
+                }
+            });
+
+            //校验贷款利率bor_inputbg04
+            $("#" + from).on("blur", ".bor_inputbg04", function () {
+                var loansinterestrate = $(this).val();
+                if (loansinterestrate == null || loansinterestrate == "" || loansinterestrate <= 0 || loansinterestrate > 17) {
+                    $(".bor_inputbg04").html("<image src='./images/cuo.jpg'/>");
+                    $(".sub").attr("disabled", true);
+                } else {
+                    $(".bor_inputbg04").html("<image src='./images/dui.jpg'/>");
+                    $(".sub").removeAttr("disabled");
+                }
+            });
+
+            //校验贷款期限bor_inputbg02
+            $("#" + from).on("blur", ".bor_inputbg02", function () {
+                var refundeadline = $(this).val();
+                if (refundeadline == null || refundeadline == "" || refundeadline > 12) {
+                    $(".bor_inputbg02").html("<image src='./images/cuo.jpg'/>");
+                    $(".sub").attr("disabled", true);
+                } else {
+                    $(".bor_inputbg02").html("<image src='./images/dui.jpg'/>");
+                    $(".sub").removeAttr("disabled");
+                }
+            });
+
+            //校验贷款描述describe
+            $("#" + from).on("blur", ".describe", function () {
+                var describe = $(this).val();
+                if (describe == null || describe == "") {
+                    $(".loansdescribe").html("<image src='./images/cuo.jpg'/>");
+                    $(".sub").attr("disabled", true);
+                } else {
+                    $(".loansdescribe").html("<image src='./images/dui.jpg'/>");
+                    $(".sub").removeAttr("disabled");
+                }
+            });
+
+            //校验验证码
+            $("#" + from).on("blur", ".vcode", function () {
+                var vcode = $(this).val();
+                if (vcode == null || vcode == "") {
+                    $(".vcode").html("<image src='./images/cuo.jpg'/>");
+                    $(".sub").attr("disabled", true);
+                } else {
+                    $(".vcode").html("<image src='./images/dui.jpg'/>");
+                    $(".sub").removeAttr("disabled");
+                }
+            });
+        }
+
+        //校验
+        $(function() {
+
+            if ($(".bor_detail_tit .bor_decurspan").html() == '房产抵押') {
+                tihuan("form1");
+                //校验房屋抵押贷款房屋信息houseproperty
+                $("#form1").on("blur", ".houseproperty", function () {
+                    var houseproperty = $(this).val();
+                    if (houseproperty == null || houseproperty == "") {
+                        $(".house").html("<image src='./images/cuo.jpg'/>");
+                        $(".sub").attr("disabled", true);
+                    } else {
+                        $(".house").html("<image src='./images/dui.jpg'/>");
+                        $(".sub").removeAttr("disabled");
+                    }
+                });
+                //校验房屋抵押贷款借款金额bor_inputbg01
+                $("#form1").on("blur", ".bor_inputbg01", function () {
+                    var hlmoney = $(this).val();
+                    var globalvalue = $(".bor_inputbg03").val();
+                    if (hlmoney == null || hlmoney == ""||hlmoney>globalvalue||hlmoney<=0) {
+                        $(".hlmoney").html("<image src='./images/cuo.jpg'/>");
+                        $(".sub").attr("disabled", true);
+                    } else {
+                        $(".hlmoney").html("<image src='./images/dui.jpg'/>");
+                        $(".sub").removeAttr("disabled");
+                    }
+                });
+            }
+
+            $(".bor_detail_tit").on("click", ".bor_decurspan", function () {
+                if ($(this).html() == '车辆抵押') {
+                    tihuan("form2");
+                    //校验车辆抵押贷款借款金额 clmoney
+                    $("#form2").on("blur", "#clmoney", function () {
+                        var clmoney = $(this).val();
+                        var globalvalue = $("#form2 .bor_inputbg03").val();
+                        alert(globalvalue);
+                        if (clmoney == null || clmoney == ""||clmoney>globalvalue||clmoney<=0) {
+                            $(".clmoney").html("<image src='./images/cuo.jpg'/>");
+                            $(".sub").attr("disabled", true);
+                        } else {
+                            $(".clmoney").html("<image src='./images/dui.jpg'/>");
+                            $(".sub").removeAttr("disabled");
+                        }
+                    });
+                    //校验车辆抵押贷款车辆信息 carinfo
+                    $("#form2").on("blur", ".carinfo", function () {
+                        var carinfo = $(this).val();
+                        if (carinfo == null || carinfo == "") {
+                            $("#carinfo").html("<image src='./images/cuo.jpg'/>");
+                            $(".sub").attr("disabled", true);
+                        } else {
+                            $("#carinfo").html("<image src='./images/dui.jpg'/>");
+                            $(".sub").removeAttr("disabled");
+                        }
+                    });
+                } else if ($(this).html() == '信用贷款') {
+                    tihuan("form3");
+                    //校验信用贷款贷款金额 xymoney
+                    $("#form3").on("blur", "#xymoney", function () {
+                        var xymoney = $(this).val();
+                        if (xymoney == null || xymoney == ""||xymoney<=0||xymoney>5) {
+                            $(".xymoney").html("<image src='./images/cuo.jpg'/>");
+                            $(".sub").attr("disabled", true);
+                        } else {
+                            $(".xymoney").html("<image src='./images/dui.jpg'/>");
+                            $(".sub").removeAttr("disabled");
+                        }
+                    });
+                }
+            });
+
+        });
+    </script>
 </head>
 <body>
 <!-- header start -->
@@ -113,83 +264,97 @@
                         </ul>
                         <h3 class="bor_onel_tit"><span>完善信息</span></h3>
                         <ul class="bor_onel_ul">
-                            <li>&nbsp;<img src="images/bor_pic01.png" alt="">实名认证<span></span>
+                            <li>&nbsp;<img src="images/bor_pic01.png" alt="">实名认证&nbsp;<span class="idcard"></span>
                             </li>
-                            <li><img src="images/bor_pic07.png" alt="">视频认证<span></span>
-                            </li>
-                            <li>&nbsp;<img src="images/bor_pic05.png" alt="">绑定银行卡<span></span>
+                            <li>&nbsp;<img src="images/bor_pic05.png" alt="">绑定银行卡&nbsp;<span class="bankcard"></span>
                             </li>
                         </ul>
                     </div>
                     <!-- end l -->
                     <div class="bor_det_oner fl">
-                        <form>
+                        <form id="form1">
                             <fieldset>
-                                <input type="hidden" name = "type" value = "1"/>
-                                <input type="hidden" name = "userid" id="userid"/>
+                                <input type="hidden" name = "userid" class="userid"/>
+                                <input type="hidden" name = "type" class="type" value="1"/>
                                 <div>
                                     <label>申请人</label>
-                                    <input type="text" name = "name" class="name">
-                                </div>
-                                <div class="mt15">
-                                    <label>*借款金额</label>
-                                    <input type="text" name="loansmoney" class = "bor_inputbg01">
-                                </div>
-                                <div class="mt15">
-                                    <label>*借款利率</label>
-                                    <input type="text" name="loansinterestrate" class="bor_inputbg04">
-                                </div>
-                                <div class="mt15">
-                                    <label>*还款期限</label>
-                                    <input type="text" name="refundeadline" class = "bor_inputbg02">
-                                </div>
-                                <div class="mt15">
-                                    <label>*还款方式</label>
-                                    <select name = "refundway">
-                                        <option value = "等额本息">等额本息</option>
-                                    </select>
+                                    <input type="text" name = "name" class="name" style="cursor:not-allowed"readonly="readonly" >
                                 </div>
                                 <div class="mt15 guarmethod clearfix">
                                     <label>*房屋证明</label>
-                                    <input type="file" name="houseinfo" ><br>
+                                    <input type="file" name="houseproperty" class="houseproperty"><span class="house"></span><br>
+                                </div>
+                                <div class="mt15 guarmethod clearfix">
+                                    <label>*评估报告</label>
+                                    <input type="file" name="appraisalreport" class="appraisalreport" ><span class="report"></span><br>
                                 </div>
                                 <div class="mt15 guarmethod clearfix">
                                     <label>*总价值</label>
-                                    <input type="text" name="globalvalue" class="bor_inputbg01"><br>
+                                    <input type="text" name="globalvalue" class="bor_inputbg03"><span class="globalvalue"></span><br>
+                                </div>
+                                <div class="mt15">
+                                    <label>*借款金额</label>
+                                    <input type="text" name="loansmoney" class = "bor_inputbg01" id="hlmoney" ><span class="hlmoney"></span>
+                                </div>
+                                <div class="mt15">
+                                    <label>*借款利率</label>
+                                    <input type="text" name="loansinterestrate" class="bor_inputbg04"><span class="bor_inputbg04"></span>
+                                </div>
+                                <div class="mt15">
+                                    <label>*还款期限</label>
+                                    <input type="text" name="refundeadline" class = "bor_inputbg02"><span class="bor_inputbg02"></span>
+                                </div>
+                                <div class="mt15">
+                                    <label>*还款方式</label>
+                                    <select name = "refundway" class="refundway">
+                                        <option value = "到期还本还息" selected="selected">到期还本还息</option>
+                                        <option value = "按月还息到期还本">按月还息到期还本</option>
+                                    </select><span class="refundway"></span>
                                 </div>
                                 <div class="mt15">
                                     <label>*借款用途</label>
-                                    <select name = "loansUsed">
+                                    <select name = "loansUsed" class="loansUsed">
                                         <option value = "个人日常消费" selected = "selected">个人日常消费</option>
                                         <option value = "装修">装修</option>
                                         <option value = "旅游">旅游</option>
                                         <option value = "教育">教育</option>
                                         <option value = "医疗">医疗</option>
-                                    </select>
+                                    </select><span class="loansUsed"></span>
                                 </div>
                                 <div class="mt15">
                                     <label>*借款描述</label>
-                                    <textarea name = "loansDescribe"></textarea>
+                                    <textarea name = "describe" class="describe"></textarea><span class="loansdescribe"></span>
                                 </div>
                                 <div class="mt15">
                                     <label>*借款情况</label>
-                                    <input type="radio" class="input3" value ="1" name = "loanscase" checked = checked>
+                                    <input type="radio" class="input3" value ="3" name = "loanscase" checked = checked>
                                     普通借款
-                                    <input type="radio" class="input3"value = "2" name = "loanscase">
+                                    <input type="radio" class="input3"value = "5" name = "loanscase">
                                     紧急借款
                                 </div>
-                                <div>
-                                <label>手机号</label>
-                                    <input type="text" name = "userphone" class="userphone">
-                                    <button id="send" type="button" style="width:100px;height:40px;">发送验证码</button>
+                                <div class="mt15">
+                                    <label>手机号</label>
+                                    <input type="text"  class="userphone" id="tel"><span class="tel"></span>
                                 </div>
-                                <div>
+                                <div class="mt15">
                                     <label>验证码</label>
-                                    <input type="text" name = "jiaoyan" class="jiaoyan">
+                                    <input type="text"id="vcode" class = "vcode" style="width: 120px;height: 40px;line-height: 40px;">
+                                    <input type="button" value="    获取验证码" class="sendMsg" style=" display: inline-block;
+									  width: 100px;
+									  height: 40px;
+									  line-height: 40px;
+									  text-align: center;
+									  color: #fff;
+									  font-size: 14px;
+									  background-color: #f8b551;
+									  margin-left: 10px;
+									  border-radius: 5px;
+									  border: 0px;"/><br>
+                                    <span class="yzm"></span>
+
                                 </div>
                                 <div class="mt30">
-                                    <label></label>
-                                    <button id="sub1" style="width: 100px;height: 30px;font-size: 15px;">提交材料</button>
+                                    <button class="sub" type="button" style="width: 100px;height: 30px;font-size: 15px;">提交材料</button>
                                 </div>
                             </fieldset>
                         </form>
@@ -231,48 +396,51 @@
 
                             <h3 class="bor_onel_tit"><span>完善信息</span></h3>
                             <ul class="bor_onel_ul">
-                                <li>&nbsp;<img src="images/bor_pic01.png" alt="">实名认证<span></span>
+                                <li>&nbsp;<img src="images/bor_pic01.png" alt="">实名认证&nbsp;<span class="idcard"></span>
                                 </li>
-                                <li><img src="images/bor_pic07.png" alt="">视频认证<span></span>
-                                </li>
-                                <li>&nbsp;<img src="images/bor_pic05.png" alt="">绑定银行卡<span></span>
+                                <li>&nbsp;<img src="images/bor_pic05.png" alt="">绑定银行卡&nbsp;<span class="bankcard"></span>
                                 </li>
                             </ul>
                         </div>
                         <!-- end l -->
                         <div class="bor_det_oner fl">
-                            <form>
+                            <form id="form2">
                                 <fieldset>
-                                    <input type="hidden" name = "type" value = "2"/>
+                                    <input type="hidden" name = "userid" class="userid"/>
+                                    <input type="hidden" name = "type" class="type" value="2"/>
                                     <div>
                                         <label>申请人</label>
-                                        <input type="text" name = "name" class="name">
+                                        <input type="text" name = "name" class="name" style="cursor:not-allowed"readonly="readonly">
+                                    </div>
+                                    <div class="mt15 guarmethod clearfix">
+                                        <label>*车辆证明</label>
+                                        <input type="file" name="carinfo" class="carinfo" ><span id="carinfo"></span><br>
+                                    </div>
+                                    <div class="mt15 guarmethod clearfix">
+                                        <label>*评估报告</label>
+                                        <input type="file" name="appraisalreport" class="appraisalreport" ><span class="report"></span><br>
+                                    </div>
+                                    <div class="mt15 guarmethod clearfix">
+                                        <label>*总价值</label>
+                                        <input type="text" name="globalvalue" class="bor_inputbg03"><span class="globalvalue"></span><br>
                                     </div>
                                     <div class="mt15">
                                         <label>*借款金额</label>
-                                        <input type="text" name="loansmoney" class = "bor_inputbg01">
+                                        <input type="text" name="loansmoney" class = "bor_inputbg01" id="clmoney"><span class="clmoney"></span>
                                     </div>
                                     <div class="mt15">
                                         <label>*借款利率</label>
-                                        <input type="text" name="loansinterestrate" class="bor_inputbg04">
+                                        <input type="text" name="loansinterestrate" class="bor_inputbg04"><span class="bor_inputbg04"></span>
                                     </div>
                                     <div class="mt15">
                                         <label>*还款期限</label>
-                                        <input type="text" name="refundeadline" class = "bor_inputbg02">
+                                        <input type="text" name="refundeadline" class = "bor_inputbg02"><span class="bor_inputbg02"></span>
                                     </div>
                                     <div class="mt15">
                                         <label>*还款方式</label>
                                         <select name = "refundway">
                                             <option value = "等额本息">等额本息</option>
                                         </select>
-                                    </div>
-                                    <div class="mt15 guarmethod clearfix">
-                                        <label>*车辆证明</label>
-                                        <input type="file" name="carinfo" ><br>
-                                    </div>
-                                    <div class="mt15 guarmethod clearfix">
-                                        <label>*总价值</label>
-                                        <input type="text" name="globalvalue" class="bor_inputbg01"><br>
                                     </div>
                                     <div class="mt15">
                                         <label>*借款用途</label>
@@ -286,7 +454,7 @@
                                     </div>
                                     <div class="mt15">
                                         <label>*借款描述</label>
-                                        <textarea name = "loansDescribe"></textarea>
+                                        <textarea name = "describe" class="describe"></textarea><span class="loansdescribe"></span>
                                     </div>
                                     <div class="mt15">
                                         <label>*借款情况</label>
@@ -295,18 +463,28 @@
                                         <input type="radio" class="input3"value = "2" name = "loanscase">
                                         紧急借款
                                     </div>
-                                    <div>
+                                    <div class="mt15">
                                         <label>手机号</label>
-                                        <input type="text" name = "userphone" class="userphone" >
-                                        <button class="send" type="button" style="width:100px;height:40px;">发送验证码</button>
+                                        <input type="text"  class="userphone" id="tel2"><span class="tel2"></span>
                                     </div>
-                                    <div>
+                                    <div class="mt15">
                                         <label>验证码</label>
-                                        <input type="text" name = "jiaoyan" class="jiaoyan">
+                                        <input type="text"id="vcode2" class = "vcode" style="width: 120px;height: 40px;line-height: 40px;">
+                                        <input type="button" value="    获取验证码" class="sendMsg" style=" display: inline-block;
+									  width: 100px;
+									  height: 40px;
+									  line-height: 40px;
+									  text-align: center;
+									  color: #fff;
+									  font-size: 14px;
+									  background-color: #f8b551;
+									  margin-left: 10px;
+									  border-radius: 5px;
+									  border: 0px;"/><br>
+                                        <span class="yzm2"></span>
                                     </div>
                                     <div class="mt30">
-                                        <label></label>
-                                        <button id="sub2" style="width: 100px;height: 30px;font-size: 15px;">提交材料</button>
+                                        <button class="sub" type="button" style="width: 100px;height: 30px;font-size: 15px;">提交材料</button>
                                     </div>
                                 </fieldset>
                             </form>
@@ -343,47 +521,45 @@
                                     <li><img src="images/bor_pic07.png" alt="">其他
                                     </li>
                                 </ul>
-
                                 <h3 class="bor_onel_tit"><span>完善信息</span></h3>
                                 <ul class="bor_onel_ul">
-                                    <li>&nbsp;<img src="images/bor_pic01.png" alt="">实名认证<span></span>
+                                    <li>&nbsp;<img src="images/bor_pic01.png" alt="">实名认证&nbsp;<span class="idcard"></span>
                                     </li>
-                                    <li><img src="images/bor_pic07.png" alt="">视频认证<span></span>
-                                    </li>
-                                    <li>&nbsp;<img src="images/bor_pic05.png" alt="">绑定银行卡<span></span>
+                                    <li>&nbsp;<img src="images/bor_pic05.png" alt="">绑定银行卡&nbsp;<span class="bankcard"></span>
                                     </li>
                                 </ul>
                             </div>
                             <!-- end l -->
                             <div class="bor_det_oner fl">
-                                <form>
+                                <form id="form3">
                                     <fieldset>
-                                        <input type="hidden" name = "type" value = "3"/>
+                                        <input type="hidden" name = "userid" class="userid"/>
+                                        <input type="hidden" name = "type" class="type" value="3"/>
                                         <div>
                                             <label>申请人</label>
-                                            <input type="text" name = "name" class ="name">
+                                            <input type="text" name = "name" class ="name" style="cursor:not-allowed"readonly="readonly">
                                         </div>
                                         <div class="mt15">
                                             <label>*借款金额</label>
-                                            <input type="text" name="loansmoney" class = "bor_inputbg01">
+                                            <input type="text" name="loansmoney" class = "bor_inputbg01" id="xymoney"><span class="xymoney"></span>
                                         </div>
                                         <div class="mt15">
                                             <label>*借款利率</label>
-                                            <input type="text" name="loansinterestrate" class="bor_inputbg04">
+                                            <input type="text" name="loansinterestrate" class="bor_inputbg04"><span class="bor_inputbg04"></span>
                                         </div>
                                         <div class="mt15">
                                             <label>*还款期限</label>
-                                            <input type="text" name="refundeadline" class = "bor_inputbg02">
+                                            <input type="text" name="refundeadline" class = "bor_inputbg02"><span class="bor_inputbg02"></span>
                                         </div>
                                         <div class="mt15">
                                             <label>*还款方式</label>
-                                            <select name = "refundway">
+                                            <select name = "refundway" class="refundway">
                                                 <option value = "等额本息">等额本息</option>
                                             </select>
                                         </div>
                                         <div class="mt15">
                                             <label>*借款用途</label>
-                                            <select name = "loansUsed">
+                                            <select name = "loansUsed" class="loansUsed">
                                                 <option value = "个人日常消费" selected = "selected">个人日常消费</option>
                                                 <option value = "装修">装修</option>
                                                 <option value = "旅游">旅游</option>
@@ -393,8 +569,7 @@
                                         </div>
                                         <div class="mt15">
                                             <label>*借款描述</label>
-                                            <textarea name = "loansDescribe"></textarea>
-
+                                            <textarea name = "describe" class="describe"></textarea><span class="loansdescribe"></span>
                                         </div>
                                         <div class="mt15">
                                             <label>*借款情况</label>
@@ -403,18 +578,29 @@
                                             <input type="radio" class="input3"value = "2" name = "loanscase">
                                             紧急借款
                                         </div>
-                                        <div>
-                                        <label>手机号</label>
-                                        <input type="text" name = "userphone" class="userphone">
-                                        <button class="send" type="button" style="width:100px;height:40px;">发送验证码</button>
+                                        <div class="mt15">
+                                            <label>手机号</label>
+                                            <input type="text"  class="userphone" id="tel3"><span class="tel3"></span>
                                         </div>
-                                        <div>
+                                        <div class="mt15">
                                             <label>验证码</label>
-                                            <input type="text" name = "jiaoyan" class="jiaoyan">
+                                            <input type="text"id="vcode3" class = "vcode" style="width: 120px;height: 40px;line-height: 40px;">
+                                            <input type="button" value="    获取验证码" class="sendMsg" style=" display: inline-block;
+                                              width: 100px;
+                                              height: 40px;
+                                              line-height: 40px;
+                                              text-align: center;
+                                              color: #fff;
+                                              font-size: 14px;
+                                              background-color: #f8b551;
+                                              margin-left: 10px;
+                                              border-radius: 5px;
+                                              border: 0px;"/><br>
+                                            <span class="yzm3"></span>
+
                                         </div>
                                         <div class="mt30">
-                                            <label></label>
-                                            <button id="sub3" style="width: 100px;height: 30px;font-size: 15px;">提交材料</button>
+                                            <button class="sub" type="button" style="width: 100px;height: 30px;font-size: 15px;">提交材料</button>
                                         </div>
                                     </fieldset>
                                 </form>
@@ -430,24 +616,460 @@
     /**
      * 根据当前用户名查找用户信息
      */
-    $(function(){
+    $(function() {
+
+        var flag = true;
+        var regT = /^[1][3,4,5,7,8][0-9]{9}$/; //验证手机号
+        var toSend = false; //判断能否发送验证码
+        var idfyCode = 0; //设置验证码的默认值
         $(".bor_det_one").eq(0).show().siblings().hide();
-        var username='xingbobo';
+        //var username='xingbobo';
+        var username = 'ceshi';
         $.ajax({
-            url:"/p2p/getUserInfo",
-            type:"POST",
-            data:{username:username},
-            success:function(data){
+            url: "/p2p/getUserInfo",
+            type: "POST",
+            dataType: "json",
+            data: {username: username},
+            success: function (data) {
                 $(".userid").val(data.USERID);
                 $(".name").val(data.NAME);
                 $(".userphone").val(data.USERPHONE);
+                if (data.BANKCARDNUMBERS != null) {
+                    $(".bankcard").html("已绑定").css("color", "green");
+                } else if (data.BANKCARDNUMBERS == null) {
+                    //$(".bankcard").html("未绑定").css("color","orange");
+                    sweetAlert({
+                        title: "提示信息",
+                        text: "您未绑定银行卡，请前往账户中心绑定后再执行操作，5秒后自动跳转到账户中心",
+                        timer: 5000,
+                        type: "error",
+                        showConfirmButton: false
+                    }, function () {
+                        location.href = "/p2p/toNoticelist";
+                    });
+                }
+                if (data.CERTIFICATION == 0) {
+                    // $(".idcard").html("未认证").css("color","orange");
+                    sweetAlert({
+                        title: "提示信息",
+                        text: "您未实名认证，请前往账户中心绑定后再执行操作，5秒后自动跳转到账户中心",
+                        timer: 5000,
+                        type: "error",
+                        showConfirmButton: false
+                    }, function () {
+                        location.href = "/p2p/toNoticelist";
+                    });
+                } else if (data.CERTIFICATION == 1) {
+                    $(".idcard").html("已认证").css("color", "green");
+                }
             }
         });
-    });
 
-    /**
-     * 发送验证码
-     */
+
+        //验证手机
+        $(".userphone").blur(function () {
+            if ($(this).val() == "" || $(this).val == null) {
+                $(".tel").html('<img src="./images/cuo.jpg"/>');
+                flag = false;
+            }
+            else if (!regT.test($(this).val())) {
+                $(".tel").html('<img src="./images/cuo.jpg"/>');
+                flag = false;
+            } else {
+                $(".tel").html('<img src="./images/dui.jpg"/>');
+                flag = true;
+            }
+        });
+        //如果手机号正确
+        // toSend=flag;
+        // console.log("手机"+toSend);
+        /**
+         * 设置发送验证码按钮倒计时
+         * @param obj
+         */
+        function invokeSettime(obj) {
+            var countdown = 60;
+            settime(obj);
+
+            function settime(obj) {
+                if (countdown == 0) {
+                    $(obj).attr("disabled", false);
+                    $(obj).val("获取验证码");
+                    countdown = 60;
+                    return;
+                } else {
+                    $(obj).attr("disabled", true);
+                    $(obj).val(countdown + "s后重新发送");
+                    countdown--;
+                }
+                setTimeout(function () {
+                        settime(obj)
+                    }
+                    , 1000)
+            }
+        }
+
+        //发送验证码按钮
+        $(".sendMsg").click(function () {
+
+            //如果手机号没有任何错误，可以发送验证码
+            console.log("可以发送");
+            console.log($(".userphone").val());
+            invokeSettime(".sendMsg");
+            $.ajax({
+                type: "post",
+                url: "/p2p/user/sendMessage",
+                data: {phone: $(".userphone").val()},
+                dataType: "json",
+                success: function (data) {
+                    console.log(data.vcode);
+                    console.log(data.sessionId);
+                    idfyCode = data.vcode;
+                }
+            });
+        });
+
+        /*房屋抵押贷款提交*/
+        $("#form1 .sub").click(function () {
+            var flag = true;
+            //var username = 'xingbobo';
+            var username = 'ceshi';
+            $.ajax({
+                url: "/p2p/selectLoans",
+                type: "POST",
+                //contentType : "application/json",
+                dataType: "json",
+                data: {username: username},
+                success: function (data) {
+                    if (data != null) {
+                        sweetAlert({
+                            title: "提示信息",
+                            text: "正在贷款中的账号不能再次贷款，3秒钟自动跳转到账户信息页面",
+                            timer: 3000,
+                            type: "error",
+                            showConfirmButton: false
+                        }, function () {
+                            location.href = "/p2p/toNoticelist";
+                        });
+                    } else {
+                        $("#form1 input").each(function () {
+                            var value = $.trim($(this).val());
+                            if (value == '' || value == null) {
+                                flag = false;
+                                $(this).focus();
+                            }
+                        });
+                        $("#form1 select").each(function () {
+                            var value = $.trim($(this).val());
+                            if (value == '' || value == null) {
+                                flag = false;
+                                $(this).focus();
+                            }
+                        });
+                        console.log(idfyCode + "后台传过来的验证码的值");
+                        if (flag = true) {  //限定只有前面所有信息无误后才可以核对验证码
+                            if ($("#vcode").val().trim() == "") {
+                                $(".yzm").html("请输入您的验证码").css("color", "red");
+                                flag = false;
+                            } else if ($("#vcode").val().trim() != "" && flag == true && $("#vcode").val() == idfyCode) {//判断如果信息全部正确后验证码也正确
+                                $.ajax({
+                                    async: false,//设置同步 锁定全局变量flag的值，避免最终判断直接读取flag的初始值;
+                                    type: "post",
+                                    url: "/p2p/user/hasVcode",
+                                    dataType: "json",
+                                    success: function (data) {
+                                        if (data.msg == "success") {
+                                            flag = true;
+                                        } else {
+                                            $(".yzm").html("验证码超时，请重新获取").css("color", "red");
+                                            flag = false;
+                                            console.log("aaa" + flag);
+                                        }
+                                    }
+                                });
+                            } else {
+                                $(".yzm").html("验证码错误，请重新输入").css("color", "red");
+                                flag = false;
+                            }
+                            console.log("flag的值" + flag);
+                            if (flag) {
+                                console.log("可以注册");
+                                var param = {
+                                    "userid":$("#form2 .userid").val(),
+                                    "type":$("#form2 .type").val(),
+                                    "name":$("#form2 .name").val(),
+                                    "carinfo":$("#form2 .carinfo").val(),//车辆信息
+                                    "appraisalreport":$("#form2 .appraisalreport").val(),//评估报告
+                                    "globalvalue":$("#form2 .bor_inputbg03").val(),//价值
+                                    "loansmoney":$("#form2 .bor_inputbg01").val(),//金额
+                                    "loansinterestrate":$("#form2 .bor_inputbg04").val(),//利率
+                                    "refunddeadline":$("#form2 .bor_inputbg02").val(),//期限
+                                    "refundway":$("#form2 .refundway").val(),//还款方式
+                                    "loansused":$("#form2 .loansUsed").val(),//贷款用途
+                                    "describe":$("#form2 .describe").val(),//描述
+                                    "loanscase":$("#form2 .input3").val(),//贷款情况
+                                    "userphone":$("#form2 .userphone").val(),//手机号码
+                                }
+                                $.ajax({
+                                    url:"/p2p/applyForLoan",
+                                    type: "POST",
+                                    contentType : "application/json",
+                                    //dataType: "json",
+                                    data:JSON.stringify(param),
+                                    success: function (data) {
+                                        if(data==1){
+                                            sweetAlert({
+                                                title: "恭喜您",
+                                                text: "贷款申请提交成功！3秒后自动跳转账户信息页面",
+                                                timer: 3000,
+                                                type: "success",
+                                                showConfirmButton: false
+                                            }, function () {
+                                                location.href = "/p2p/toNoticelist";
+                                            });
+                                        }else{
+                                            sweetAlert({
+                                                title: "不高兴",
+                                                text: "贷款申请提交出错了！",
+                                                type: "error"
+                                            });
+                                        }
+                                    }
+                                });
+                            }
+                        }
+                    }
+                }
+            })
+        })
+
+        /*车辆抵押贷款提交*/
+        $("#form2 .sub").click(function () {
+            var flag = true;
+            //var username = 'xingbobo';
+            var username = 'ceshi';
+            $.ajax({
+                url: "/p2p/selectLoans",
+                type: "POST",
+                //contentType : "application/json",
+                dataType: "json",
+                data: {username: username},
+                success: function (data) {
+                    if (data != null) {
+                        sweetAlert({
+                            title: "提示信息",
+                            text: "正在贷款中的账号不能再次贷款，3秒钟自动跳转到账户信息页面",
+                            timer: 3000,
+                            type: "error",
+                            showConfirmButton: false
+                        }, function () {
+                            location.href = "/p2p/toNoticelist";
+                        });
+                    } else {
+                        $("#form2 input").each(function () {
+                            var value = $.trim($(this).val());
+                            if (value == '' || value == null) {
+                                flag = false;
+                                $(this).focus();
+                            }
+                        });
+                        $("#form2 select").each(function () {
+                            var value = $.trim($(this).val());
+                            if (value == '' || value == null) {
+                                flag = false;
+                                $(this).focus();
+                            }
+                        });
+                        console.log(idfyCode + "后台传过来的验证码的值");
+                        if (flag = true) {  //限定只有前面所有信息无误后才可以核对验证码
+                            if ($("#vcode2").val().trim() == "") {
+                                $(".yzm2").html("请输入您的验证码").css("color", "red");
+                                flag = false;
+                            } else if ($("#vcode2").val().trim() != "" && flag == true && $("#vcode2").val() == idfyCode) {//判断如果信息全部正确后验证码也正确
+                                $.ajax({
+                                    async: false,//设置同步 锁定全局变量flag的值，避免最终判断直接读取flag的初始值;
+                                    type: "post",
+                                    url: "/p2p/user/hasVcode",
+                                    dataType: "json",
+                                    success: function (data) {
+                                        if (data.msg == "success") {
+                                            flag = true;
+                                        } else {
+                                            $(".yzm2").html("验证码超时，请重新获取").css("color", "red");
+                                            flag = false;
+                                            console.log("aaa" + flag);
+                                        }
+                                    }
+                                });
+                            } else {
+                                $(".yzm2").html("验证码错误，请重新输入").css("color", "red");
+                                flag = false;
+                            }
+                            console.log("flag的值" + flag);
+                            if (flag) {
+                                console.log("可以注册");
+                                var param = {
+                                    "userid":$("#form2 .userid").val(),
+                                    "type":$("#form2 .type").val(),
+                                    "name":$("#form2 .name").val(),
+                                    "carinfo":$("#form2 .carinfo").val(),//车辆信息
+                                    "appraisalreport":$("#form2 .appraisalreport").val(),//评估报告
+                                    "globalvalue":$("#form2 .bor_inputbg03").val(),//价值
+                                    "loansmoney":$("#form2 .bor_inputbg01").val(),//金额
+                                    "loansinterestrate":$("#form2 .bor_inputbg04").val(),//利率
+                                    "refunddeadline":$("#form2 .bor_inputbg02").val(),//期限
+                                    "refundway":$("#form2 .refundway").val(),//还款方式
+                                    "loansused":$("#form2 .loansUsed").val(),//贷款用途
+                                    "describe":$("#form2 .describe").val(),//描述
+                                    "loanscase":$("#form2 .input3").val(),//贷款情况
+                                    "userphone":$("#form2 .userphone").val(),//手机号码
+                                }
+                                $.ajax({
+                                    url:"/p2p/applyForLoan",
+                                    type: "POST",
+                                    contentType : "application/json",
+                                    //dataType: "json",
+                                    data:JSON.stringify(param),
+                                    success: function (data) {
+                                        if(data==1){
+                                            sweetAlert({
+                                                title: "恭喜您",
+                                                text: "贷款申请提交成功！3秒后自动跳转账户信息页面",
+                                                timer: 3000,
+                                                type: "success",
+                                                showConfirmButton: false
+                                            }, function () {
+                                                location.href = "/p2p/toNoticelist";
+                                            });
+                                        }else{
+                                            sweetAlert({
+                                                title: "不高兴",
+                                                text: "贷款申请提交出错了！",
+                                                type: "error"
+                                            });
+                                        }
+                                    }
+                                });
+                            }
+                        }
+                    }
+                }
+            })
+        })
+
+        /*个人信用贷款提交*/
+        $("#form3 .sub").click(function () {
+            var flag = true;
+            //var username = 'xingbobo';
+            var username = 'ceshi';
+            $.ajax({
+                url: "/p2p/selectLoans",
+                type: "POST",
+                //contentType : "application/json",
+                dataType: "json",
+                data: {username: username},
+                success: function (data) {
+                    if (data != null) {
+                        sweetAlert({
+                            title: "提示信息",
+                            text: "正在贷款中的账号不能再次贷款，3秒钟自动跳转到账户信息页面",
+                            timer: 3000,
+                            type: "error",
+                            showConfirmButton: false
+                        }, function () {
+                            location.href = "/p2p/toNoticelist";
+                        });
+                    } else {
+                        $("#form3 input").each(function () {
+                            var value = $.trim($(this).val());
+                            if (value == '' || value == null) {
+                                flag = false;
+                                $(this).focus();
+                            }
+                        });
+                        $("#form3 select").each(function () {
+                            var value = $.trim($(this).val());
+                            if (value == '' || value == null) {
+                                flag = false;
+                                $(this).focus();
+                            }
+                        });
+                        console.log(idfyCode + "后台传过来的验证码的值");
+                        if (flag = true) {  //限定只有前面所有信息无误后才可以核对验证码
+                            if ($("#vcode3").val().trim() == "") {
+                                $(".yzm3").html("请输入您的验证码").css("color", "red");
+                                flag = false;
+                            } else if ($("#vcode3").val().trim() != "" && flag == true && $("#vcode3").val() == idfyCode) {//判断如果信息全部正确后验证码也正确
+                                $.ajax({
+                                    async: false,//设置同步 锁定全局变量flag的值，避免最终判断直接读取flag的初始值;
+                                    type: "post",
+                                    url: "/p2p/user/hasVcode",
+                                    dataType: "json",
+                                    success: function (data) {
+                                        if (data.msg == "success") {
+                                            flag = true;
+                                        } else {
+                                            $(".yzm3").html("验证码超时，请重新获取").css("color", "red");
+                                            flag = false;
+                                            console.log("aaa" + flag);
+                                        }
+                                    }
+                                });
+                            } else {
+                                $(".yzm3").html("验证码错误，请重新输入").css("color", "red");
+                                flag = false;
+                            }
+                            console.log("flag的值" + flag);
+                            if (flag) {
+                                console.log("可以注册");
+                                var param = {
+                                    "userid":$("#form3 .userid").val(),
+                                    "type":$("#form3 .type").val(),
+                                    "name":$("#form3 .name").val(),
+                                    "loansmoney":$("#form3 #xymoney").val(),//金额
+                                    "loansinterestrate":$("#form3 .bor_inputbg04").val(),//利率
+                                    "refunddeadline":$("#form3 .bor_inputbg02").val(),//期限
+                                    "refundway":$("#form3 .refundway").val(),//还款方式
+                                    "loansused":$("#form3 .loansUsed").val(),//贷款用途
+                                    "describe":$("#form3 .describe").val(),//描述
+                                    "loanscase":$("#form3 .input3").val(),//贷款情况
+                                    "userphone":$("#form3 .userphone").val(),//手机号码
+                                }
+                                $.ajax({
+                                    url:"/p2p/applyForLoan",
+                                    type: "POST",
+                                    contentType : "application/json",
+                                    //dataType: "json",
+                                    data:JSON.stringify(param),
+                                    success: function (data) {
+                                        if(data==1){
+                                            sweetAlert({
+                                                title: "恭喜您",
+                                                text: "贷款申请提交成功！3秒后自动跳转账户信息页面",
+                                                timer: 3000,
+                                                type: "success",
+                                                showConfirmButton: false
+                                            }, function () {
+                                                location.href = "/p2p/toNoticelist";
+                                            });
+                                        }else{
+                                            sweetAlert({
+                                                title: "不高兴",
+                                                text: "贷款申请提交出错了！",
+                                                type: "error"
+                                            });
+                                        }
+                                    }
+                                });
+                            }
+                        }
+                    }
+                }
+            })
+        })
+    })
+ //注册按钮结束
+
 
 </script>
 </body>

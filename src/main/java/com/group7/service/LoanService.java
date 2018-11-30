@@ -12,10 +12,10 @@ public interface LoanService {
 
     /**
      * 点击申请贷款，查询当前用户的信息
-     * @param username
+     * @param map
      * @return
      */
-    Map getUserInfo(String username);
+    Map getUserInfo(Map map);
 
     /**
      * 申请贷款，把申请贷款的信息存到数据库
@@ -32,6 +32,12 @@ public interface LoanService {
     int houseLoans(Map map);
 
     /**
+     * 查询是否已经贷款了
+     * @return
+     */
+    Map selectloans(String username);
+
+    /**
      * 申请贷款，把车辆抵押贷款类型的信息存到数据库
      * @param map
      * @return
@@ -42,6 +48,6 @@ public interface LoanService {
      * 申请贷款，把信用贷款类型的信息存到数据库
      * @param map
      * @return
-     */
-    int creditLoans(Map map);
+     *//*
+    int creditLoans(Map map);*/
 }
