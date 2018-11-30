@@ -22,15 +22,6 @@ import java.util.Map;
 @Controller
 public class LoginController {
 
-	/**
-	 * 跳转登录
-	 * @return
-	 */
-	@RequestMapping("toLogin")
-	public String toLogin(Model model){
-		return "frontEnd/login";
-	}
-
 	@RequestMapping("/login")
 	public String login(HttpServletRequest request, Model model) throws Exception{
 		String  userName= request.getParameter("userName");
