@@ -66,14 +66,7 @@ public class pageJump {
         return "frontEnd/problem";
     }
 
-    /**
-     * 跳转登录
-     * @return
-     */
-    @RequestMapping("toLogin")
-    public String toLogin(){
-        return "frontEnd/login";
-    }
+
 
     /**
      * 跳转注册
@@ -90,7 +83,7 @@ public class pageJump {
      */
     @RequestMapping("toDashboard")
     public String toDashboard(){
-        return "examples/dashboard";
+        return "backStage/dashboard";
     }
 
     /**
@@ -99,7 +92,7 @@ public class pageJump {
      */
     @RequestMapping("totatistics")
     public String totatistics(){
-        return "examples/dashboard.1";
+        return "backStage/dashboard.1";
     }
 
     /**
@@ -108,9 +101,16 @@ public class pageJump {
      */
     @RequestMapping("toMap")
     public String toMap(){
-        return "examples/map";
+        return "backStage/map";
     }
 
-
+    /**
+     * 跳转贷款初审
+     * @return
+     */
+    @RequestMapping("toLoanAudit")
+    public String toLoanAudit(){
+        return "backStage/LoanAudit";
+    }
 
 }

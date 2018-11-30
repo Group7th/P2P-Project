@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.group7.dao.UserInfoDao">
+    <!--获取登录时的用户名-->
+    <select id="login" resultType="com.group7.entity.UserInfo" >
+        SELECT u.USERNAME,u.PASSWORD,r.ROLEID AS roleid,
+        concat(u.USERNAME,u.salt) AS salt,enable
+        from TB_USER u JOIN TB_USER_ROLE r
+        on u.id=r.USERID
+        WHERE u.USERNAME=#{userName}
+    </select>
+    <!--根据userName查询角色-->
+    <select id="seletRole" parameterType="String" resultType="String">
+        SELECT r.ROLEDESC FROM TB_ROLE r
+        WHERE r.ID=(SELECT z.ROLEID FROM TB_USER u
+        JOIN TB_USER_ROLE z ON u.ID=z.USERID
+        WHERE u.USERNAME=#{userName})
+    </select>
+    <!--根据userName查询权限-->
+    <select id="selectPermission" parameterType="String" resultType="String">
+
+    </select>
+</mapper>
