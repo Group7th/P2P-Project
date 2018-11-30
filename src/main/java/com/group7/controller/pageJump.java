@@ -2,6 +2,7 @@ package com.group7.controller;
 
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -38,7 +39,6 @@ public class pageJump {
     public String indexPage(){
         return "frontEnd/index";
     }
-
 
     /**
      * 跳转我要投资
@@ -215,6 +215,7 @@ public class pageJump {
     public String toGRZXZiJin(){
         return "yirenbaopage/个人中心-资金记录 .html";
     }
+
 
 
 }

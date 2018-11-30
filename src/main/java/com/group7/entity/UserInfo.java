@@ -3,137 +3,70 @@ package com.group7.entity;
 import java.io.Serializable;
 
 /**
- * className:UserDao
+ * className:UserInfo
  * discriptoin:
- * author:严浩天
- * createTime:2018-11-24 09:55
+ * 引用Redis 实体类必须序列化
+ * 继承Serializable
+ * 用户表实体
+ * author:毛宇
+ * createTime:2018-11-23 16:36
  */
-public class UserInfo {
+public class UserInfo implements Serializable {
 
-    private Integer userInfomationId;
-    private Integer userId;
-    private String userName;
-    private Integer userSex;
-    private String userPhone;
-    private String identityCard;
-    private String bankCardNumbers;
-    private String email;
-    private String headPortrait;
-    private String site;
-    private String education;
-    private String marriage;
-    private String basicinCome;
-    private Integer state;
+	private Integer id;
+	private String userName;//账号
+	private String passWord;//密码
+	private String salt;//加密密码的盐
+	private Integer enable;//用户状态 1:正常状态,2：用户被锁定
 
-    public Integer getUserInfomationId() {
-        return userInfomationId;
-    }
+	public UserInfo() {
+	}
 
-    public void setUserInfomationId(Integer userInfomationId) {
-        this.userInfomationId = userInfomationId;
-    }
+	public UserInfo(Integer id, String userName, String passWord, String salt, Integer enable) {
+		this.id = id;
+		this.userName = userName;
+		this.passWord = passWord;
+		this.salt = salt;
+		this.enable = enable;
+	}
 
-    public Integer getUserId() {
-        return userId;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public String getUserName() {
-        return userName;
-    }
+	public String getUserName() {
+		return userName;
+	}
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
-    public Integer getUserSex() {
-        return userSex;
-    }
+	public String getPassWord() {
+		return passWord;
+	}
 
-    public void setUserSex(Integer userSex) {
-        this.userSex = userSex;
-    }
+	public void setPassWord(String passWord) {
+		this.passWord = passWord;
+	}
 
-    public String getUserPhone() {
-        return userPhone;
-    }
+	public Integer getEnable() {
+		return enable;
+	}
 
-    public void setUserPhone(String userPhone) {
-        this.userPhone = userPhone;
-    }
+	public void setEnable(Integer enable) {
+		this.enable = enable;
+	}
 
-    public String getIdentityCard() {
-        return identityCard;
-    }
+	public String getSalt() {
+		return salt;
+	}
 
-    public void setIdentityCard(String identityCard) {
-        this.identityCard = identityCard;
-    }
-
-    public String getBankCardNumbers() {
-        return bankCardNumbers;
-    }
-
-    public void setBankCardNumbers(String bankCardNumbers) {
-        this.bankCardNumbers = bankCardNumbers;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getHeadPortrait() {
-        return headPortrait;
-    }
-
-    public void setHeadPortrait(String headPortrait) {
-        this.headPortrait = headPortrait;
-    }
-
-    public String getSite() {
-        return site;
-    }
-
-    public void setSite(String site) {
-        this.site = site;
-    }
-
-    public String getEducation() {
-        return education;
-    }
-
-    public void setEducation(String education) {
-        this.education = education;
-    }
-
-    public String getMarriage() {
-        return marriage;
-    }
-
-    public void setMarriage(String marriage) {
-        this.marriage = marriage;
-    }
-
-    public String getBasicinCome() {
-        return basicinCome;
-    }
-
-    public void setBasicinCome(String basicinCome) {
-        this.basicinCome = basicinCome;
-    }
-
-    public Integer getState() {
-        return state;
-    }
-
-    public void setState(Integer state) {
-        this.state = state;
-    }
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
 }

@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-	<title>detail</title>
+	<title>贷款信息页面</title>
 <link rel="stylesheet" type="text/css" href="11112/css/style.css">
 <!-- <link rel="stylesheet/less" type="text/css" href="css/style.less" /> -->
 <script type="text/javascript" src="11112/js/jquery-1.7.2.min.js"></script>
@@ -92,7 +92,7 @@
                                     <li>
 	  	     	    	  	    		 贷款金额<br>
 										<span style="color:#ff7112;">
-	  	     	    	  	    		 	 <strong id="money"></strong>元
+	  	     	    	  	    		 	 <strong id="money"></strong>万元
 	  	     	    	  	    		 </span>
 	  	     	    	  	    	</li>
 
@@ -116,13 +116,13 @@
 	  	     	    	  <!-- end text -->
 	  	     	    </div>
 	  	     	    <div class="detail_intro_r fr">
-						  <span id="touzijine"></span>
+						  <span id="touzijine" style="display:none"></span>  <!--投资总额-->
 	  	     	    	  <h2 class="det_intro_h2 clearfix"><span class="fl">投资进度:</span><em class="fr" id="bili"></em></h2>
 							 	<!--进度条-->
 							   <meter id="jindu" max="100" min="0" value="" low="100" optimum="1" style='width: 247px;height: 10px' ></meter>
-                          <p class="det_rzye clearfix"><span class="fl">融资余额</span><em class="fr"><strong id="touzi"></strong>元</em></p>
+                          <p class="det_rzye clearfix"><span class="fl">剩余投标金额</span><em class="fr"><strong id="touzi"></strong>元</em></p>
                           <p class="det_input">
-                          	  <input type="text" placeholder="最低投资1000元" id="financing">
+                          	  <input type="text" placeholder="最低投资金额为1000元或1000的倍数 " id="financing">
                           </p>
 						  <p class="det_shouyi">每投资1万元收益  <strong id="shouyi"></strong></p>
                           <p><a href="#" class="pro_btn det_btn financing" >立即投资</a><a href="#" class="pro_btn det_btn one">已投资</a></p>
@@ -503,8 +503,10 @@
         var userId = GetQueryString("userId");  //获取url
         var loansId = GetQueryString("loansId");
 
-        //查询是否投资过
+        //查询是否投资过  默认隐藏
         $(".one").hide();
+        $(".two").hide();
+
         $.ajax({
             type: "post",
             url: "/p2p/investmentVerify",
@@ -512,39 +514,15 @@
             data: {userId:userId,loansId:loansId},
             success: function (data) {
                 //判断如果查询到已投资  则显示已投资  按钮失效
-				alert(data.INVESTMENTID)
-                if(Number(data.INVESTMENTID)>0) {
+                if(data!=null){
                     $(".one").show();
                     $(".financing").hide();
                 }
-
             }
         })
 
-
-        $.ajax({
-            type: "post",
-            url: "/p2p/investment",
-            dataType: "json",
-            data: {userId:userId},
-            success: function (data) {
-                if(data!=null&&data!="") {
-                    var money = 10000;
-                    $("#deadline").html(data.LOANSINTERESTRATE); // 贷款利息比例
-                    $("#ratio").html(data.REFUNDDEADLINE);   //贷款期数
-                    $("#money").html(data.LOANSMONEY);		//贷款金额
-                    $("#fTime").html(data.ABEGINTIME);		//发布日期
-                    $("#type").html(data.REFUNDWAY);		//还款方式
-                    $("#hTime").html(data.ATDATE);		//还款日期
-                    $("#bili").html((data.INVESTMENTAMOUNT / data.LOANSMONEY * 100)+"%");  //进度比例
-                    $("#jindu").val(data.INVESTMENTAMOUNT / data.LOANSMONEY * 100);  //进度条
-                    $("#touzi").html(data.LOANSMONEY-data.INVESTMENTAMOUNT);      //贷款剩余金额
-                    $("#shouyi").html(Math.floor(money*data.REFUNDDEADLINE*(data.LOANSINTERESTRATE/100)/12));  //算出投资1000的收益  本金*期数*利率/12
-                    $("#touzijine").html(data.INVESTMENTAMOUNT);		//还款日期
-
-                }
-            }
-		})
+		//获取投资信息和投资人信息 放到页面
+        getInvest(loansId)  //初始化加载
 
 
 
@@ -552,12 +530,14 @@
 		var falt = false;
 		$(".detail_intro_r").on("click",".financing",function() {
 			var financing = Number($("#financing").val()); //输入框输入金额
-            var money  = Number($("#money").html());    //总贷款金额
-            var ratio = $("#ratio").html();            //获取利率
-			var investmentamount = $("#touzijine").html();
+            var money = Number($("#money").html())*10000;    //总贷款金额
+			alert(money)
+            var ratio = Number($("#ratio").html());     //获取利率
+			var investmentamount = Number($("#touzijine").html()); <!--投资总金额-->
+
             if(financing!=null&&financing!=0){
                 var patrn = /^[0-9]*$/; //正则 必须为数字
-                if(money<financing){
+                if(money<financing){   //校验
                     falt=false;
 				}else {
                     falt=true;
@@ -570,8 +550,11 @@
 
 				if(confirm("你确定投资吗")){
                     conf=true;
-                    if(financing>=1000){
-                       // 判断投资不能少于1000元
+                    // 判断投资不能少于1000元  投资为1000的倍数
+                    if(financing>=1000&&(financing%1000)==0){
+                       if((investmentamount+financing)>money){ //当前输入贷款金额 + 总投资金额  不能大于 总金额
+                           falt=false;
+					   }
 					}else {
                         falt=false;
 					}
@@ -580,17 +563,18 @@
 				}
 
 
-                var param = {
+                var param = {  //拼JSON值
                     "userId":userId ,
                     "loansId":loansId,
                     "investmentMoney":financing,
                     "interestrate": ratio,
-					"investmentamount":investmentamount
+					"investmentamount":investmentamount,
+					"loansmoney":money
                 }
 
-				if(falt){
+				if(falt){  //判断投资金额不得有误
 
-				    if(conf){
+				    if(conf){  //判断是否确认投资
                         $.ajax({
                             type: "post",
                             url: "/p2p/investmentAmount",
@@ -601,6 +585,7 @@
                                 if(data!=null&&data!=""){
 									if(Number(data)>0){
 										alert("投资成功,可以到个人账户查询");
+                                        getInvest(loansId); //获取投资信息和投资人信息 放到页面 调用刷新页面
                                         $(".financing").hide();  // 隐藏投资按钮
                                         $(".one").show();	    //显示已投资按钮
                                         $("#financing").val("");
@@ -637,11 +622,43 @@
 			$(".det_shouyi").html("");
 		})
 
-
-
     })
 
-
+	//获取投资信息和投资人信息 放到页面
+    function getInvest(loansId){
+        $.ajax({
+            type: "post",
+            url: "/p2p/investment",
+            dataType: "json",
+            data: {loansId:loansId},
+            success: function (data) {
+                if(data.error=="1"){
+                    alert("页面有误，请联系客服解决！谢谢")
+                }else {
+                    if (data != null && data != "") {
+                        var money = 10000;
+                        $("#deadline").html(data.LOANSINTERESTRATE); // 贷款利息比例
+                        $("#ratio").html(data.REFUNDDEADLINE);   //贷款期数
+                        $("#money").html(data.LOANSMONEY/money);		//贷款金额
+                        $("#fTime").html(data.ABEGINTIME);		//发布日期
+                        $("#type").html(data.REFUNDWAY);		//还款方式
+                        $("#hTime").html(data.ATDATE);		//还款日期
+                        $("#bili").html(Math.floor(data.INVESTMENTAMOUNT / data.LOANSMONEY * 100) + "%");  //进度比例
+                        $("#jindu").val(data.INVESTMENTAMOUNT / data.LOANSMONEY * 100);  //进度条
+                        $("#touzi").html(data.LOANSMONEY - data.INVESTMENTAMOUNT);      //贷款剩余金额
+                        $("#shouyi").html(Math.floor(money * data.REFUNDDEADLINE * (data.LOANSINTERESTRATE / 100) / 12));  //算出投资10000的收益  本金*期数*利率/12
+                        $("#touzijine").html(data.INVESTMENTAMOUNT);  //投资金额
+						//判断是否满标
+						if(Number(data.LOANSMONEY) - Number(data.INVESTMENTAMOUNT)==0){
+							$(".financing").hide();
+                            $(".one").show();
+                            $(".one").html("满标");
+						}
+                    }
+                }
+            }
+        })
+    }
 
 	//获取地址url方法
     function GetQueryString(name)
@@ -653,9 +670,10 @@
         return null;
     }
 
+
+
+
 </script>
-
-
 
 
 </html>

@@ -24,47 +24,42 @@ public class LoanController {
 
     /**
      * 点击申请贷款，查询当前用户的信息
-     * @param username
+     * @param map
      * @return
      */
     @ResponseBody
     @RequestMapping("/getUserInfo")
-    public Map getUserInfo(@RequestParam String username){
-        return loanService.getUserInfo(username);
+    public Object getUserInfo(@RequestParam Map map){
+        return loanService.getUserInfo(map);
     }
+
+    /**
+     * 查询当前用户是否已经贷款
+     * @param username
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/selectLoans")
+    public Object selectLoans(@RequestParam String username){
+        Map info = loanService.selectloans(username);
+        return info;
+    }
+
     /**
      * 申请贷款时向数据库添加信息
      * @param map
      * @return
      */
     @ResponseBody
-    @RequestMapping("applyForLoan")
+    @RequestMapping("/applyForLoan")
     public Object applyForLoan(@RequestBody Map map){
-        System.out.println(map.get("type"));
-        System.out.println(map);
-        boolean state = false;
-        if(map!=null){
-            int result = loanService.applyForLoad(map);
-            if(result>0){
-                if(map.get("type").equals(1)){
-                    int i = loanService.houseLoans(map);
-                    if(i>0){
-                        state = true;
-                    }
-                }else if(map.get("type").equals(2)){
-                    int i = loanService.carLoans(map);
-                    if(i>0){
-                        state = true;
-                    }
-                }else{
-                    int i = loanService.creditLoans(map);
-                    if(i>0){
-                        state = true;
-                    }
-                }
-            }
+        int i = loanService.applyForLoad(map);
+        map.put("loansid",map.get("loansid"));
+        if(map.get("type").equals("1")){
+            loanService.houseLoans(map);
+        }else if(map.get("type").equals("2")){
+            loanService.carLoans(map);
         }
-        return state;
+        return i;
     }
-
 }

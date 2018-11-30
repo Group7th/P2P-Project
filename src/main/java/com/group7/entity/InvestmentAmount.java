@@ -9,7 +9,7 @@ import java.io.Serializable;
  * author:ZHEN
  * createTime:2018-11-27 17:15
  */
-public class InvestmentAmount   {
+public class InvestmentAmount implements Serializable {
 
   /*investmentid
     userid          NUMBER not null,
@@ -24,7 +24,8 @@ public class InvestmentAmount   {
     private Integer investmentMoney;//投资金额
     private Data     investmentDate;//投资时间
     private Integer interestrate;  //利率
-    private Integer investmentamount;  //投资总部金额
+    private Integer investmentamount;  //投资总金额
+    private Integer loansmoney; //贷款总金额
 
     @Override
     public String toString() {
@@ -36,20 +37,8 @@ public class InvestmentAmount   {
                 ", investmentDate=" + investmentDate +
                 ", interestrate=" + interestrate +
                 ", investmentamount=" + investmentamount +
+                ", loansmoney=" + loansmoney +
                 '}';
-    }
-
-    public InvestmentAmount(Integer investmentId, Integer userId, Integer loansId, Integer investmentMoney, Data investmentDate, Integer interestrate, Integer investmentamount) {
-        this.investmentId = investmentId;
-        this.userId = userId;
-        this.loansId = loansId;
-        this.investmentMoney = investmentMoney;
-        this.investmentDate = investmentDate;
-        this.interestrate = interestrate;
-        this.investmentamount = investmentamount;
-    }
-
-    public InvestmentAmount() {
     }
 
     public Integer getInvestmentId() {
@@ -106,5 +95,27 @@ public class InvestmentAmount   {
 
     public void setInvestmentamount(Integer investmentamount) {
         this.investmentamount = investmentamount;
+    }
+
+    public Integer getLoansmoney() {
+        return loansmoney;
+    }
+
+    public void setLoansmoney(Integer loansmoney) {
+        this.loansmoney = loansmoney;
+    }
+
+    public InvestmentAmount() {
+    }
+
+    public InvestmentAmount(Integer investmentId, Integer userId, Integer loansId, Integer investmentMoney, Data investmentDate, Integer interestrate, Integer investmentamount, Integer loansmoney) {
+        this.investmentId = investmentId;
+        this.userId = userId;
+        this.loansId = loansId;
+        this.investmentMoney = investmentMoney;
+        this.investmentDate = investmentDate;
+        this.interestrate = interestrate;
+        this.investmentamount = investmentamount;
+        this.loansmoney = loansmoney;
     }
 }

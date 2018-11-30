@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
 	<title>首页</title>
@@ -59,16 +59,17 @@
 	  	   	     	      <span class="fl">登录</span>
 	  	   	     	      <em class="fr">没有帐号，<a href="toRegister">立即注册</a></em>
 	  	   	     	   </h2>
-	  	   	     	   <form>
+					 <center><span th:text="${msg}" style="font-size: 17px;color:lightseagreen;"></span></center>
+	  	   	     	   <form action="/p2p/login" method="post">
 	  	   	     	   	    <fieldset>
 	  	   	     	   	    	  <p class="mt20">
-	  	   	     	   	    	  	 <input type="text" placeholder="用户名/手机" class="lg_input01 lg_input">
+	  	   	     	   	    	  	 <input type="text" placeholder="用户名/手机" class="lg_input01 lg_input" name="userName">
 	  	   	     	   	    	  </p>
                                   <p class="mt20">
-	  	   	     	   	    	  	 <input type="text" placeholder="密码" class="lg_input02 lg_input">
+	  	   	     	   	    	  	 <input type="text" placeholder="密码" class="lg_input02 lg_input" name="passWord">
 	  	   	     	   	    	  </p>
                                  <p class="clearfix lg_check"><span class="fl"><input type="checkbox">记住用户名</span><a href="#" class="fr">忘记密码？找回</a></p>
-                                 <p><a href="#" class="lg_btn">立即登陆</a></p>
+                                 <p><INPUT  class="lg_btn" TYPE="submit" value="登录"> </p>
 	  	   	     	   	    </fieldset>
 	  	   	     	   </form>
 	  	   	     </div>
@@ -115,7 +116,7 @@
 
 <div class="zscf_bottom_wper">
 	<div class="zscf_bottom px1000 clearfix">
-		  <p class="fl">© 2014 zhongxincaifu &nbsp;  &nbsp;&nbsp;   中兴财富金融信息服务股份有限公司 &nbsp;&nbsp;&nbsp;    来源:<a href="http://www.mycodes.net/" target="_blank">源码之家</a></p>
+		  <p class="fl">© 2014 zhongxincaifu &nbsp;  &nbsp;&nbsp;   中兴财富金融信息服务股份有限公司 &nbsp;&nbsp;&nbsp;    来源:<a href="#">group7</a></p>
 		  <p class="fr">
 		    <a href="#"><img src="images/360.png" alt=""></a>
 		    <a href="#"><img src="images/kexin.png" alt=""></a>

@@ -20,13 +20,18 @@ public class LoanServiceImpl implements LoanService {
     private LoanDao loanDao;
 
     @Override
-    public Map getUserInfo(String username) {
-        return loanDao.getUserInfo(username);
+    public Map getUserInfo(Map map) {
+        return loanDao.getUserInfo(map);
     }
 
     @Override
     public int applyForLoad(Map map) {
         return loanDao.applyForLoad(map);
+    }
+
+    @Override
+    public Map selectloans(String username) {
+        return loanDao.selectloans(username);
     }
 
     @Override
@@ -39,8 +44,8 @@ public class LoanServiceImpl implements LoanService {
         return loanDao.carLoans(map);
     }
 
-    @Override
+    /*@Override
     public int creditLoans(Map map) {
         return loanDao.creditLoans(map);
-    }
+    }*/
 }
