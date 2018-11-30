@@ -69,7 +69,14 @@ public class InvestServiceImpI implements InvestService {
      */
     @Override
     public Map investment(Map map) {
-        return investDao.investment(map);
+        Map tempMap = new HashMap();
+        Map investment = investDao.investment(map);
+        if(investment!=null){
+            return investDao.investment(map);
+        }else{
+            tempMap.put("error","1");
+            return tempMap;
+        }
     }
 
     /**

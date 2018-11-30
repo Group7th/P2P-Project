@@ -37,13 +37,11 @@ public class InvestController {
     @RequestMapping("/invest")
     public Object invest(@RequestParam Map map){
         Map tempMap = new HashMap();
-        //if(map!=null&&"".equals(map)){  //判断不能为空
-            map.put("pageSize",5);   //定义一页 页数
-            List<Map> inves = investService.getInves(map);  //获取查询信息
-            Map invesCount = investService.getInvesCount(map);  //获取页码信息
-            tempMap.put("inves",inves);
-            tempMap.put("invesCount",invesCount);
-        //}
+        map.put("pageSize",5);   //定义一页 页数
+        List<Map> inves = investService.getInves(map);  //获取查询信息
+        Map invesCount = investService.getInvesCount(map);  //获取页码信息
+        tempMap.put("inves",inves);
+        tempMap.put("invesCount",invesCount);
         return tempMap;
     }
 
@@ -56,7 +54,6 @@ public class InvestController {
     @RequestMapping("/investment")
     public Object investment(@RequestParam Map map){
         Map investment = investService.investment(map);
-       // System.out.println(investment);
         return investment;
     }
 
@@ -69,11 +66,10 @@ public class InvestController {
     @RequestMapping("/investmentAmount")
     public Object investmentAmount(@RequestBody InvestmentAmount invest){
         System.out.println(invest.toString());
-        int i = investService.investmentAmount(invest);
-        int i1 = investService.investmentMoeny(invest);
-
-        System.out.println(invest);
-
+        int i = investService.investmentAmount(invest);//添加投资信息
+        if(i>0){
+            investService.investmentMoeny(invest);//修该投资表投资金额
+        }
         return i;
     }
 
@@ -88,9 +84,14 @@ public class InvestController {
     public Object investmentVerify(@RequestParam Integer userId,Integer loansId){
         //System.out.println(userId+","+loansId);
         Map map = investService.investmentVerify(userId, loansId);
-        //System.out.println(map);
         return map;
     }
+
+
+
+
+
+
 
 
 
