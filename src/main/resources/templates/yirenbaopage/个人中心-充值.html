@@ -5,19 +5,23 @@
 <title>p2p网贷平台</title>
   <meta name="keywords" content="" />
   <meta name="description" content="" />
+  <script type="text/javascript" src="js/jquery3.3.1.min.js"></script>
   <link href="yirenbao/css/common.css" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="yirenbao/css/user.css" />
   <script type="text/javascript" src="yirenbao/script/jquery.min.js"></script>
   <!--<script type="text/javascript" src="yirenbao/script/common.js"></script>-->
+
+  <script type="text/javascript" src="layui/layui.js"></script>
+
   <script src="yirenbao/script/user.js" type="text/javascript"></script>
   <script type="text/javascript" src="js/dist/sweetalert.min.js"></script>
   <link rel="stylesheet" href="js/dist/sweetalert.css">
   <!------------------->
+  <link rel="stylesheet" type="text/css" href="layui/css/layui.css">
   <link rel="stylesheet" type="text/css" href="style/style.css"/>
   <!--<script type="text/javascript" src="script/javasrcipt.js"></script>-->
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <!-- <link rel="stylesheet/less" type="text/css" href="css/style.less" /> -->
-  <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
   <script type="text/javascript" src="js/all.js"></script>
   <script type="text/javascript" src="js/bankCard/bankCardAttribution.js"></script>
 
@@ -89,8 +93,13 @@
     </div>
     <label id="typeValue" style="display:none;"> </label>
     <script>
-		$(function(){
+      //layui监听
+        layui.use('layer', function(){
+            var layer = layui.layer;
+        });
+        $(function(){
             console.log(bankCardAttribution('6228482399519775674'));
+            console.log("6228482399519775674");
 		    $('.quick-tit').click(function(){
 		      
 		      $(this).addClass('pay-cur');
@@ -333,19 +342,15 @@
 				}*/
 				// return payflag;
                 if(payflag==true){
-                    // swal({
-                    //     title: '<i>HTML</i> <u>示例</u>',
-                    //     type: 'info',
-                    //     html: '<iframe src="IpayPassword.html" width="800px" height= "500px" name="topFrame" scrolling="No" noresize="noresize" frameborder="0" id="topFrame">'+
-                    //     '</iframe>',
-                    //     showCloseButton: true,
-                    //     showCancelButton: true,
-                    //     confirmButtonText:
-                    //         '<i class="fa fa-thumbs-up"></i> 太棒了！',
-                    //     cancelButtonText:
-                    //         '<i class="fa fa-thumbs-down"></i>'
-                    // })
-                    console.log("你好");
+                    layer.open({
+                        type: 2,
+                        title: '支付密码界面',
+                        shadeClose: true,
+                        shade: 0.8,
+                        anim: 2,
+                        area: ['700px', '500px'],
+                        content: '/p2p/toPay' //iframe的url
+                    });
                 }
 			}
 
@@ -413,6 +418,7 @@
 					 return false;
 				}*/
 				return payflag;
+
 			}
 
 			/* function showSpan(op){
@@ -445,7 +451,7 @@
             <div class="quick-main">
               <div class="fl quick-info">
                 <div class="info-1"> <span class="info-tit">充值金额</span> <span class="info1-input">
-                  <input id="form:actualMoney1" type="text" name="" class="pay-money-txt" maxlength="10" >
+                  <input id="form:actualMoney1" type="text" name="dollar" class="pay-money-txt" maxlength="10" >
                   <em>元</em> </span> <span class="quick-error"> </span> </div>
                 <div class="info-tips">亿人宝提醒您：充值金额超过50000元时，请切换到网银充值</div>
                 <div class="info-2" style="width:600px"> <span class="info-tit">银行卡号</span> <span class="info2-input" style="width:354px">
@@ -456,7 +462,7 @@
                   <label id="form:defaultBankName" style="font-size:16px;"> </label>
                   </em> </span> <span class="quick-error3" id="bankCardError" style="padding-top: 10px"></span> </div>
                 <div class="bank-check" id="bank-check2"> <b class="selected" id="bankProtocol1"></b><span class="bank-agree">我同意并接受<a href="#" target="_blank">《亿人宝投资咨询与管理服务电子协议》</a></span> <span class="error" id="bankProtocol_message" style="display:none;margin-top:-3px;">请同意协议内容！</span> </div>
-                <input type="submit" name="" value="充值" class="btn-paycz" onclick="getShowPayVal1()">
+                <input type="button" name="" value="充值" class="btn-paycz" onclick="getShowPayVal1()">
               </div>
               <!--<div class="fr bank-info">-->
                 <!--<p class="bank-tit">快捷支付支持银行：</p>-->
@@ -557,7 +563,7 @@
       <!--</div>-->
       <div class="alert-450 alert-h220" id="alert-rechargeFailture" style="display:none;">
         <div class="alert-title">
-          <h3>登录网上银行充值</h3>
+          <h3 id="ceshi">登录网上银行充值</h3>
           <span class="alert-close" onclick="displaySpan('alert-rechargeFailture')"></span></div>
         <div class="alert-main">
           <form id="rechargeFailtureForm">

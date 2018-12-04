@@ -24,7 +24,7 @@ public class LoginController {
 
 	@RequestMapping("/login")
 	public String login(HttpServletRequest request, Model model) throws Exception{
-		String  userName= request.getParameter("userName");
+		String userName= request.getParameter("userName");
 		String passWord = request.getParameter("passWord");
 		Subject subject = SecurityUtils.getSubject();
 		if(userName!=null&&!"".equals(userName)) {

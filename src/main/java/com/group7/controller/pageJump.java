@@ -21,7 +21,6 @@ public class pageJump {
         return "backStage/IpayPassword";
     }
 
-
     /**
      * 跳转上传页面
      * @return
@@ -117,10 +116,10 @@ public class pageJump {
      * 个人中心首页
      * @return
      */
-    @RequestMapping("toGeRenZhongXinShouYe")
-    public String toGeRenZhongXinShouYe(){
-        return "yirenbaopage/GRZX";
-    }
+//    @RequestMapping("toGeRenZhongXinShouYe")
+//    public String toGeRenZhongXinShouYe(){
+//        return "yirenbaopage/GRZX";
+//    }
 
     /**
      * 个人中心充值

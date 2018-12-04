@@ -16,25 +16,7 @@
   <!-- <link rel="stylesheet/less" type="text/css" href="css/style.less" /> -->
   <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
   <script type="text/javascript" src="js/all.js"></script>
-  <script type="text/javascript">
-    $(function () {
-        $.ajax({
-            type:"post",
-            url:"/p2p/account/accountList",
-            dataType:"json",
-            success:function (data) {
-                console.log(data);
-                // $("#total").text(data.ACCOUNMONEY);
-                $("#canuse").text(data.AVAILMONEY);
-                $("#interest").text(data.AWAITINTEREST);
-                $("#capital").text(data.AWAITMONEY);
-                $("#bepaid").text(data.MONEY);
-                $("#creditline").text(data.LINEOFCREDIT);
-            }
-        })
-    })
-
-  </script>
+  <script src="js/jquery.form.js"></script>
 </head>
 <body>
 
@@ -121,14 +103,14 @@
         <div class="pmain-welcome"> <span class="fl"><span id="outLogin">晚上好，</span><em th:text="${session.userName}">tg_gpdt0139</em>> 喝一杯下午茶，让心情放松一下~</span> <span class="fr">上次登录时间：
           2015-09-11 14:05:07 </span> </div>
         <div class="pmain-user">
-          <div class="user-head"> <span id="clickHeadImage" class="head-img" title="点击更换头像">
-            <form  method="post" action="">
+          <div class="user-head"> <span id="clickHeadImage" class="head-img" title="点击更换头像" >
+            <form  method="post" action="/p2p/fileUpload" enctype="multipart/form-data" id="form1" onsubmit="return sbt();">
               <input type="hidden" name="userPhotoUploadForm" value="userPhotoUploadForm">
-              <span id="userPhotoUploadForm:photo"><img id="userPhotoUploadForm:photoImage" src="yirenbao/images/touxiang.png" alt="" style="width:88px;height:88px;z-index:0;"> <i class="headframe" style="z-index:0;"></i>-
+              <span id="userPhotoUploadForm:photo"><img id="userPhotoUploadForm:photoImage" name="portrait" src="/p2p/showFtp?fileName=touxiang4.jpg" alt="用户头像" style="width:88px;height:88px;z-index:0;"> <i class="headframe" style="z-index:0;"></i>-
               <div id="userPhotoUploadForm:shangchuan-btn" class="ui-fileupload ui-widget" style="z-index:0;">
                 <div class="ui-fileupload-buttonbar ui-corner-top"><span class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left ui-fileupload-choose" role="button"><span class="ui-button-icon-left ui-icon ui-c ui-icon-plusthick"></span><span class="ui-button-text ui-c"></span>
                   <!--更换头像-->
-                  <!--<input type="file" id="userPhotoUploadForm:shangchuan-btn_input" name="userPhotoUploadForm:shangchuan-btn_input" style="z-index:0;">-->
+                  <input type="file" id="changeHeadImg" name="file" onchange="xmTanUploadImg(this)" style="z-index:0;display:none;">
                   </span></div>
                 <div class="ui-fileupload-content ui-widget-content ui-corner-bottom">
                   <table class="ui-fileupload-files">
@@ -143,7 +125,7 @@
             </span> <span class="head-icon"> <a href="#"><i title="第三方资金账户未认证" class="headiconbg headicon01"></i></a> <a href="#"><i class="headiconbg headicon2"></i></a> <a href="#"><i class="headiconbg headicon03"></i></a> </span> </div>
           <div class="user-info user-info1">
             <ul>
-              <li>用户名<span>tg_gpdt0139</span></li>
+              <li>用户名<span th:text="${session.accountList.userName}">tg_gpdt0139</span></li>
               <li>安全级别<span><i class="safe-level"><i class="onlevel" style="width:40%;"></i></i></span> <a href="#">[低]</a></li>
               <li>您还未开通第三方支付账户，请 <a class="pmain-log" href="#">立即开通</a>以确保您的正常使用和资金安全。 </li>
             </ul>
@@ -152,20 +134,71 @@
         <div class="pmain-money">
           <ul>
             <li class="none"><span><em>账户总额</em><i id="zhze" class="markicon"></i><span class="arrow-show1" style="display:none;">可用余额+待收本息</span><span class="icon-show1" style="display:none;"></span></span> <span class="truemoney"><i class="f26 fb" th:text="${session.accountList.ACCOUNMONEY}"></i>.00元</span> </li>
-            <li><span><em>可用余额</em><i id="kyje" class="markicon"></i><span class="arrow-show2" style="display: none;">已到账的投资收益+未到账的投资收益</span><span class="icon-show2" style="display: none;"></span></span> <span class="truemoney"><i class="f26 fb " id="canuse"> </i> .00元</span> </li>
-            <li><span><em>待收利息</em><i id="dsbx" class="markicon"></i><span class="arrow-show3" style="display: none;">未到账的投资项目的本金、利息总额</span><span class="icon-show3" style="display: none;"></span></span> <span class="truemoney"><i class="f26 fb" id="interest"></i>.00元</span> </li>
-            <li><span><em>待收本金</em><i id="dsbj" class="markicon"></i><span class="arrow-show4" style="display: none;">已到账的投资收益+未到账的投资收益</span><span class="icon-show4" style="display: none;"></span></span> <span class="truemoney"><i class="f26 fb " id="capital"> </i>.00元</span> </li>
-            <li><span><em>代还金额</em><i id="dhje" class="markicon"></i><span class="arrow-show5" style="display: none;">已到账的投资收益+未到账的投资收益</span><span class="icon-show5" style="display: none;"></span></span> <span class="truemoney"><i class="f26 fb " id="bepaid"></i>.00元</span> </li>
-            <li><span><em>信用额度</em><i id="xyed" class="markicon"></i><span class="arrow-show7" style="display: none;">已到账的投资收益+未到账的投资收益</span><span class="icon-show7" style="display: none;"></span></span> <span class="truemoney"><i class="f26 fb " id="creditline"></i>.00元</span> </li>
+            <li><span><em>可用余额</em><i id="kyje" class="markicon"></i><span class="arrow-show2" style="display: none;">已到账的投资收益+未到账的投资收益</span><span class="icon-show2" style="display: none;"></span></span> <span class="truemoney"><i class="f26 fb " th:text="${session.accountList.AVAILMONEY}" id="canuse"> </i> .00元</span> </li>
+            <li><span><em>待收利息</em><i id="dsbx" class="markicon"></i><span class="arrow-show3" style="display: none;">未到账的投资项目的本金、利息总额</span><span class="icon-show3" style="display: none;"></span></span> <span class="truemoney"><i class="f26 fb" th:text="${session.accountList.AWAITINTEREST}" id="interest"></i>.00元</span> </li>
+            <li><span><em>待收本金</em><i id="dsbj" class="markicon"></i><span class="arrow-show4" style="display: none;">已到账的投资收益+未到账的投资收益</span><span class="icon-show4" style="display: none;"></span></span> <span class="truemoney"><i class="f26 fb" th:text="${session.accountList.AWAITMONEY}" id="capital"> </i>.00元</span> </li>
+            <li><span><em>待还金额</em><i id="dhje" class="markicon"></i><span class="arrow-show5" style="display: none;">已到账的投资收益+未到账的投资收益</span><span class="icon-show5" style="display: none;"></span></span> <span class="truemoney"><i class="f26 fb " th:text="${session.accountList.MONEY}" id="bepaid"></i>.00元</span> </li>
+            <li><span><em>信用额度</em><i id="xyed" class="markicon"></i><span class="arrow-show7" style="display: none;">已到账的投资收益+未到账的投资收益</span><span class="icon-show7" style="display: none;"></span></span> <span class="truemoney"><i class="f26 fb " th:text="${session.accountList.LINEOFCREDIT}" id="creditline"></i>.00元</span> </li>
           </ul>
         </div>
       </div>
       <script type="text/javascript">
+          //选择图片，马上预览
+          function xmTanUploadImg(obj) {
+              var file = obj.files[0];
+              console.log(obj);console.log(file);
+              // console.log("file.size = " + file.size);
+              var reader = new FileReader();
+              reader.onloadstart = function (e) {
+                  console.log("开始读取....");
+              };
+              reader.onprogress = function (e) {
+                  console.log("正在读取中....");
+              };
+              reader.onabort = function (e) {
+                  console.log("中断读取....");
+              };
+              reader.onerror = function (e) {
+                  console.log("读取异常....");
+              };
+              reader.onload = function (e) {
+                  console.log("成功读取....");
+                  var img = document.getElementById("userPhotoUploadForm:photoImage");
+                  img.src = e.target.result;
+              };
+              reader.readAsDataURL(file);
+              $("#form1").ajaxSubmit(function (message) {
+                  //对于表单提交成功后处理，message为提交页面/p2p/fileUpload的返回内容
+                  console.log(message+"回调ajax的form表单");
+                  var param = {imgName:message};
+                  $.post('/p2p/addImg',param,function(data){
+                          console.log(data.msg);
+                  });
+
+              });
+              return false;
+          }
+
 			//<![CDATA[
 			       $(function(){
+                       //加载用户头像方法
+			           $.ajax({
+                           url:"/p2p/getImg",
+                           type:"post",
+                           dataType:"json",
+                           success:function (data) {
+                               console.log(data.msg);
+                               var pre="/p2p/showFtp?fileName=";
+                               //将请求回调回来的图片名称和ftp请求图片方法拼接一起赋给图片的src属性
+                               Ipath=pre+data.msg;
+                               document.getElementById("userPhotoUploadForm:photoImage").setAttribute("src",Ipath);
+                           }
+                       });
+
+
 			    	   $("#clickHeadImage").click(function(){
 			    		   $(this).find('span').removeClass('ui-state-hover');
-			    		   document.getElementById("userPhotoUploadForm:shangchuan-btn_input").click();
+			    		   document.getElementById("changeHeadImg").click();
 			    	   });
 			    	   var safeLevel = "低";
 			    	   if(safeLevel=="高"){

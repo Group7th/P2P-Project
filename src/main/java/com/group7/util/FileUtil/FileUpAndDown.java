@@ -3,7 +3,9 @@ package com.group7.util.FileUtil;
 
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.multipart.MultipartFile;
@@ -32,38 +34,50 @@ import java.util.UUID;
  * Author:严浩天
  * CreateTime:2018-11-29 15:07
  */
+@Component
 public class FileUpAndDown{
+    //私有构造
+    private FileUpAndDown(){};
+    //私有静态属性
+    private static FileUpAndDown fileUpAndDown;
+    //懒汉模式
+    public static FileUpAndDown getInstance(){
+        if(fileUpAndDown==null){
+            fileUpAndDown = new FileUpAndDown();
+        }
+        return fileUpAndDown;
+    }
 
     @Value("${remoteIp}")
-    private  String remoteIp;
+    private String remoteIp;
 
     @Value("${uploadPort}")
-    private  int uploadPort;
+    private int uploadPort;
 
     @Value("${ftpUserName}")
-    private static String ftpUserName;
+    private  String ftpUserName;
 
     @Value("${ftpPassWord}")
-    private static String ftpPassWord;
+    private  String ftpPassWord;
 
     @Value("${remotePath}")
-    private static String remotePath;
+    private  String remotePath;
 
     /**
      * 将图片上传到ftp远程服务器
      */
-    public static void upLoad(MultipartFile multipartFile){
+    public String upLoad(MultipartFile multipartFile){
         //创建客户端对象
         FTPClient ftp = new FTPClient();
         InputStream local = null;
+        String newFileName = null;
         try {
-            System.out.println(new FileUpAndDown().remoteIp);
             //连接ftp服务器
             ftp.connect("39.96.8.65",21);
             //登录
             ftp.login("ftpadmin","yanhaotian");
             //设置上传路径
-            String path = "/home/ftpadmin/images/";
+            String path = "/home/ftpadmin/images";
             //检查上传路径是否存在 如果不存在返回false
             boolean flag = ftp.changeWorkingDirectory(path);
             if(!flag){
@@ -81,7 +95,7 @@ public class FileUpAndDown{
             //System.out.println(absolutePath+"绝对路径。。。。。。。。。。。");
 
             String originalFilename = multipartFile.getOriginalFilename();
-            String newFileName= UUID.randomUUID()+originalFilename.substring(originalFilename.lastIndexOf("."));
+            newFileName= UUID.randomUUID()+originalFilename.substring(originalFilename.lastIndexOf("."));
             //读取本地文件
             File file =new File("E:/localftp"+File.separator+newFileName);
             //multipartFile.transferTo(file);
@@ -108,7 +122,9 @@ public class FileUpAndDown{
             }catch (IOException e){
                 e.printStackTrace();
             }
-        }
+        }//finally
+        System.out.println(newFileName+"图片的名字");
+        return newFileName;
     }
 }
 

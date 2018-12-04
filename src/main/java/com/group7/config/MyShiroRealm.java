@@ -56,7 +56,7 @@ public class MyShiroRealm extends AuthorizingRealm implements Serializable{
 		//authenticationInfo.setCredentialsSalt(ByteSource.Util.bytes(user.getSalt()));
 		//当验证信息都通过后，把用户信息放在session里
 
-		session.setAttribute("userSession",user);
+		session.setAttribute("userSession",user.getUserName());
 		//session.setAttribute("userSessionId",user.getId());
 		return authenticationInfo;
 	}
