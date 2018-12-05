@@ -31,4 +31,39 @@ public class AccountServiceImpl implements AccountService {
         Map tempList = accountInfoDao.accountInfo(userName);
         return tempList;
     }
+
+    @Override
+    public int payPwd(String userName) {
+        return accountInfoDao.payPwd(userName);
+    }
+
+    @Override
+    public int charge(Map map) {
+        return accountInfoDao.charge(map);
+    }
+
+    @Override
+    public String headPic(String userName) {
+        return accountInfoDao.headPic(userName);
+    }
+
+    @Override
+    public int addHeadPic(Map map) {
+        return accountInfoDao.addHeadPic(map);
+    }
+
+    @Override
+    public Map accountSet(String userName) {
+        return accountInfoDao.accountSet(userName);
+    }
+
+    @Override
+    public int changePhone(Map map) {
+        return accountInfoDao.changePhone(map);
+    }
+
+    @Override
+    public int changePwd(Map map) {
+        return accountInfoDao.changePwd(map);
+    }
 }
