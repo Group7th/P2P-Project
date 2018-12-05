@@ -9,7 +9,7 @@ import java.io.Serializable;
  * author:ZHEN
  * createTime:2018-11-27 17:15
  */
-public class InvestmentAmount implements Serializable {
+public class InvestmentAmount  {
 
   /*investmentid
     userid          NUMBER not null,

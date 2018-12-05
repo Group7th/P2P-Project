@@ -217,5 +217,40 @@ public class pageJump {
     }
 
 
+    /**
+     * 权限管理  角色信息
+     * @return
+     */
+    @RequestMapping("/permission")
+    public String permission(){
+        return "permission/authorityManagement";
+    }
 
+    /**
+     * 修改权限树
+     * @return
+     */
+    @RequestMapping("/updatePermission")
+    public String updatePermission(){
+        return "permission/updatePermission";
+    }
+
+    /**
+     * 账户管理
+     * @return
+     */
+    @RequestMapping("/accountManagement")
+    public String accountManagement(){
+        return "permission/accountManagement";
+    }
+
+
+    /**
+     * 后台登陆
+     * @return
+     */
+    @RequestMapping("/loginTo")
+    public String Login(){
+        return "permission/toLogin";
+    }
 }
