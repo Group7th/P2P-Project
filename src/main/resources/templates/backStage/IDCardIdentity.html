@@ -1,0 +1,324 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>身份证认证界面</title>-->
+    <!--<link href="yirenbao/css/common.css" rel="stylesheet" />-->
+    <!--<link rel="stylesheet" type="text/css" href="yirenbao/css/user.css" />-->
+    <!--<link rel="stylesheet" type="text/css" href="style/style.css"/>-->
+    <!--<link rel="stylesheet" type="text/css" href="css/style.css">-->
+    <!--<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>-->
+    <!--<script type="text/javascript" src="js/all.js"></script>-->
+    <!--<script src="js/jquery.form.js"></script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<span id="clickHeadImage" class="head-img" title="点击更换头像">-->
+    <!--<form method="post" action="/p2p/fileUpload" enctype="multipart/form-data" id="form1" onsubmit="return sbt();">-->
+        <!--<div style="border: 1px solid #0C0C0C; float: left;width: 370px;height: 230px;">-->
+
+        <!--</div>-->
+        <!--<div style="border: 1px solid #0C0C0C; float: left;width: 370px;height: 230px;">-->
+
+        <!--</div>-->
+
+    <!--</form>-->
+<!--</span>-->
+
+
+
+
+
+
+<!--&lt;!&ndash;<input type="hidden" name="userPhotoUploadForm" value="userPhotoUploadForm">&ndash;&gt;-->
+<!--&lt;!&ndash;<span id="userPhotoUploadForm:photo"><img id="userPhotoUploadForm:photoImage" name="portrait" src="/p2p/showFtp?fileName=036eaa22-04ae-41fb-a1dc-ca772ad44f99.png" alt="用户头像" style="width:88px;height:88px;z-index:0;"> <i class="headframe" style="z-index:0;"></i>- &ndash;&gt;-->
+              <!--&lt;!&ndash;<div id="userPhotoUploadForm:shangchuan-btn" class="ui-fileupload ui-widget" style="z-index:0;">&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="ui-fileupload-buttonbar ui-corner-top"><span class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left ui-fileupload-choose" role="button"><span class="ui-button-icon-left ui-icon ui-c ui-icon-plusthick"></span><span class="ui-button-text ui-c"></span>&ndash;&gt;-->
+                    <!--&lt;!&ndash;&lt;!&ndash;更换头像&ndash;&gt;&ndash;&gt;-->
+                  <!--&lt;!&ndash;<input type="file" id="changeHeadImg" name="file" onchange="xmTanUploadImg(this)" style="z-index:0;display:none;">&ndash;&gt;-->
+                  <!--&lt;!&ndash;</span></div>&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="ui-fileupload-content ui-widget-content ui-corner-bottom">&ndash;&gt;-->
+                  <!--&lt;!&ndash;<table class="ui-fileupload-files">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<tbody>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</tbody>&ndash;&gt;-->
+                  <!--&lt;!&ndash;</table>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;</span>&ndash;&gt;-->
+<!--<script type="text/javascript">-->
+    <!--//选择图片，马上预览-->
+    <!--function xmTanUploadImg(obj) {-->
+        <!--var file = obj.files[0];-->
+        <!--console.log(obj);-->
+        <!--console.log(file);-->
+        <!--// console.log("file.size = " + file.size);-->
+        <!--var reader = new FileReader();-->
+        <!--reader.onloadstart = function (e) {-->
+            <!--console.log("开始读取....");-->
+        <!--};-->
+        <!--reader.onprogress = function (e) {-->
+            <!--console.log("正在读取中....");-->
+        <!--};-->
+        <!--reader.onabort = function (e) {-->
+            <!--console.log("中断读取....");-->
+        <!--};-->
+        <!--reader.onerror = function (e) {-->
+            <!--console.log("读取异常....");-->
+        <!--};-->
+        <!--reader.onload = function (e) {-->
+            <!--console.log("成功读取....");-->
+            <!--var img = document.getElementById("userPhotoUploadForm:photoImage");-->
+            <!--img.src = e.target.result;-->
+        <!--};-->
+        <!--reader.readAsDataURL(file);-->
+        <!--$("#form1").ajaxSubmit(function (message) {-->
+            <!--//对于表单提交成功后处理，message为提交页面/p2p/fileUpload的返回内容-->
+            <!--console.log(message + "回调ajax的form表单");-->
+            <!--var param = {imgName: message};-->
+            <!--$.post('/p2p/addImg', param, function (data) {-->
+                <!--console.log(data.msg);-->
+            <!--});-->
+
+        <!--});-->
+        <!--return false;-->
+    <!--}-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <meta name="viewport" content="width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>图片生成</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+        }
+
+        body {
+            font-size: 12px;
+            font-family: Arial, Verdana;
+            color: #fff;
+            font-weight: 100;
+            cursor: default;
+            background:#FFFFFF;
+            min-width:320px;
+        }
+        textarea,select,input[type="text"],input[type="button"], input[type="submit"], input[type="reset"] {
+            -webkit-appearance: none;
+            appearance:none;
+            outline:none;
+            -webkit-tap-highlight-color:rgba(0,0,0,0);
+            border-radius:0;
+            background: none;
+        }
+        .head1{
+            width:100%;
+            height:50px;
+            line-height:50px;
+            color:#323232;
+            background:#F7F7F7;
+            text-align:center;
+            font-family:"微软雅黑";
+            border-bottom:5px solid #EFEFEF;
+        }
+        .cancel{
+            width:50px;
+            height:50px;
+            color:#989898;
+            position:absolute;
+        }
+        .save_btn{
+            margin:20px auto;
+            border:none;
+            height:40px;
+            width:95%;
+            background:#ce1b1b!important;
+            border-radius:3px!important;
+            font-family:"微软雅黑";
+            font-size:16px;
+            color:white;
+            line-height:40px;
+        }
+        .info_list{
+            width:100%;
+            height:50px;
+            border-bottom:1px solid #F2F2F2;
+        }
+        .list_left{
+            width:27%;
+            margin-left:3%;
+            height:50px;
+            font-family:"微软雅黑";
+            font-size:16px;
+            color:#636363;
+            line-height:50px;
+            float:left;
+        }
+        .list_left2{
+            width:97%;
+            margin-left:3%;
+            height:50px;
+            font-family:"微软雅黑";
+            font-size:16px;
+            color:#636363;
+            line-height:50px;
+            float:left;
+        }
+        .list_left2 span{
+            color:#A04E52;
+            font-size:12px;
+            margin-left:5px;
+        }
+        .list_right{
+            width:65%;
+            margin-right:3%;
+            height:50px;
+
+            color:#636363;
+            line-height:50px;
+            float:right;
+        }
+        .edit{
+            width:100%;
+            height:50px;
+            color:#898989;
+            font-family:"微软雅黑";
+            font-size:16px;
+            border: none;
+        }
+        .id_img_wp{
+            width:94%;
+            margin:0 auto;
+            min-height:30px;
+        }
+        .img_wp{
+            width:40%;
+            margin:0 5% 0 5%;
+            float:left;
+            cursor:pointer;
+            /*background-image: url("images/defaultImg.gif");*/
+            /*background-repeat: no-repeat;*/
+            /*background-position: center;*/
+        }
+        .img_wp img{
+            width:100%;
+            height:100%;
+        }
+        .img_intro{
+            color:#383838;
+            text-align:center;
+            font-family:"微软雅黑";
+            padding:10px 0 10px 0;
+        }
+        .cf{
+            clear:both;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery3.3.1.min.js"></script>
+</head>
+<body>
+<form action="" onsubmit="return checkForm()">
+    <div class="info_list">
+        <div class="list_left">真实姓名：</div>
+        <div class="list_right">
+            <input type="text" class="edit" id="real_name" placeholder="请输入您的真实姓名"/>
+        </div>
+    </div>
+    <div class="info_list">
+        <div class="list_left">身份证号码：</div>
+        <div class="list_right">
+            <input type="text" class="edit" id="card_no" placeholder="请输入您的身份证号码"/>
+        </div>
+    </div>
+    <div class="info_list" style="border-bottom:none;">
+        <div class="list_left2">身份证上传<span>(请上传身份证正反面，图片保持清晰)</span></div>
+    </div>
+    <div class="id_img_wp">
+        <input type="file" accept="image/*" onchange="getzImg(this)" style="display:none" value="" id="img_z"/>
+        <input type="file" accept="image/*" onchange="getfImg(this)" value="" id="img_f" style="display:none"/>
+        <div class="img_wp" onclick="zhengmian()">
+            <img src="images/defaultImg.gif" id="zmz" style="height: 295.078px;visibility: visible;" />
+            <p class="img_intro">身份证正面照</p>
+        </div>
+
+        <div class="img_wp" onclick="fanmian()">
+            <img src="images/defaultImg.gif" id="fmz" style="height: 295.078px;visibility: visible;"/>
+            <p class="img_intro">身份证反面照</p>
+        </div>
+        <div class="cf"></div>
+    </div>
+    <p style="text-align:center;">
+        <input type="submit" value="确认申请" class="save_btn"/>
+    </p>
+</form>
+
+<script>
+    $(function(){
+        $('.img_wp img').height($('.img_wp img').width()*0.6);
+        $(window).resize(function(){
+            $('.img_wp img').height($('.img_wp img').width()*0.6);
+        })
+    })
+    //正面
+    function zhengmian(){
+        $('#img_z').click();
+    }
+    function getzImg(imgFile){
+
+        var file = imgFile.files[0];
+
+        var reader = new FileReader();
+        reader.readAsDataURL(file);//将文件读取为Data URL小文件   这里的小文件通常是指图像与 html 等格式的文件
+        reader.onload = function(e){
+            $("#zmz").attr("src",e.target.result);
+        }
+    }
+
+    //反面
+    function fanmian(){
+        $('#img_f').click();
+    }
+    function getfImg(imgFile){
+
+        var file = imgFile.files[0];
+
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function(e){
+            $("#fmz").attr("src",e.target.result);
+        }
+    }
+    //申请
+    function checkForm(){
+        var cardNo=$('#card_no');
+        if(cardNo.val() &&  /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test(cardNo.val())){
+
+        }else{
+            cardNo.focus();
+            alert('身份证号码格式不正确！');
+            return false;
+        }
+        if($('#img_z').val()==null||$('#img_z').val()==''){
+            alert('请上传身份证正面照！');
+            return false;
+        }
+        if($('#img_f').val()==null||$('#img_f').val()==''){
+            alert('请上传身份证反面照！');
+            return false;
+        }
+        //提交表单
+    }
+</script>
+</body>
+</html>
