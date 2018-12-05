@@ -116,10 +116,10 @@ public class pageJump {
      * 个人中心首页
      * @return
      */
-//    @RequestMapping("toGeRenZhongXinShouYe")
-//    public String toGeRenZhongXinShouYe(){
-//        return "yirenbaopage/GRZX";
-//    }
+   /* @RequestMapping("toGeRenZhongXinShouYe")
+    public String toGeRenZhongXinShouYe(){
+        return "yirenbaopage/GRZX.html";
+    }*/
 
     /**
      * 个人中心充值

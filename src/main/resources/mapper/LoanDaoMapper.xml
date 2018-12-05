@@ -6,7 +6,7 @@
     <!--点击申请贷款，查询当前用户的信息-->
     <select id="getUserInfo" resultType="map">
       select a.userid,a.userphone,a.bankcardnumbers as bankcardnumbers,a.identitycard,a.name,b.certification as certification from tb_userinformation a
-        join tb_useraccount b on b.userinformationid = a.userinformation
+        join tb_useraccount b on b.userinformationid = a.userinformationid
         where a.userid=(select c.id from tb_user c where c.username=#{username})
     </select>
     <!--查询是否该账户已经贷款-->
