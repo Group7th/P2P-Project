@@ -5,8 +5,6 @@
 
 <mapper namespace="com.group7.dao.InvestDao">
 
-    <cache type="org.mybatis.caches.redis.RedisCache" blocking="false"
-           flushInterval="0" readOnly="true" size="1024" eviction="FIFO"/>
 
     <!--多条件筛选 查询分页-->
     <select id="getInves" resultType="map">
