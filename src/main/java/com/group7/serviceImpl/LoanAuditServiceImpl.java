@@ -42,4 +42,28 @@ public class LoanAuditServiceImpl implements LoanAuditService{
 	public int getPageCount(Map map) {
 		return loanAuditDao.getPageCount(map);
 	}
+
+	/**
+	 * 审核通过
+	 * @param LOANSSTATE
+	 * @param LOANSID
+	 * @return
+	 */
+	@Override
+	public int update(Integer LOANSSTATE, Integer LOANSID) {
+
+		return loanAuditDao.update(LOANSSTATE,LOANSID);
+	}
+
+	/**
+	 * 驳回贷款 修改状态 存入驳回理由
+	 * @param REASON
+	 * @param LOANSSTATE
+	 * @param LOANSID
+	 * @return
+	 */
+	@Override
+	public int reject(String REASON, Integer LOANSSTATE, Integer LOANSID) {
+		return loanAuditDao.reject(REASON,LOANSSTATE,LOANSID);
+	}
 }

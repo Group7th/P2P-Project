@@ -43,4 +43,25 @@ public interface AccountService {
      * @return
      */
     int addHeadPic(Map map);
+
+    /**
+     * 查询用户手机号和登录密码
+     * @param userName
+     * @return
+     */
+    Map accountSet(String userName);
+
+    /**
+     * 用户更换手机号
+     * @param map
+     * @return
+     */
+    int changePhone(Map map);
+
+    /**
+     * 用户更换密码
+     * @param map
+     * @return
+     */
+    int changePwd(Map map);
 }

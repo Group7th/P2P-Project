@@ -2,11 +2,13 @@ package com.group7.controller;
 
 import com.group7.service.AccountService;
 import com.group7.util.FileUtil.FileUpAndDown;
+import com.group7.util.MapUtil.MapUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -39,6 +41,7 @@ public class AccountController {
 
     @javax.annotation.Resource
     private FileUpAndDown fileUpAndDown;
+
     /**
      * 账号信息页面
      * @return
@@ -47,10 +50,16 @@ public class AccountController {
     public String accountList(){
         Object userSession = session.getAttribute("userSession");
         String userName = userSession+"";
+        //获取账户总揽页面所需要的信息
         Map accountList = accountService.accountInfo(userName);
+        //获取账户设置页面所需要的信息
+        Map accountSet = accountService.accountSet(userName);
         System.out.println(accountList);
         accountList.put("userName",userName);
-        session.setAttribute("accountList",accountList);
+        //调用map合并工具类将两个map合并成一个map
+        Map<String,Object> resultMap = MapUtil.mergeMaps(new Map[]{accountList,accountSet});
+        System.out.println("测试合并后的map"+resultMap);
+        session.setAttribute("accountList",resultMap);
         return "yirenbaopage/GRZX";
     }
 
@@ -176,5 +185,105 @@ public class AccountController {
             msgMap.put("msg","修改头像失败");
         }
         return msgMap;
+    }
+
+    /**
+     * 账号信息页面
+     * @return
+     */
+    @RequestMapping("/toGRZXZhangHao")
+    public String accountSet(Model model){
+        Object userSession = session.getAttribute("userSession");
+        String userName = userSession+"";
+        //获取账户总揽页面所需要的信息
+//        Map accountList = accountService.accountInfo(userName);
+        //获取账户设置页面所需要的信息
+        Map accountSet = accountService.accountSet(userName);
+        String phone=accountSet.get("USERPHONE")+"";
+        String password=accountSet.get("PASSWORD")+"";
+        model.addAttribute("phone",phone);
+        model.addAttribute("password",password);
+//        System.out.println(accountList);
+//        accountList.put("userName",userName);
+        //调用map合并工具类将两个map合并成一个map
+//        Map<String,Object> resultMap = MapUtil.mergeMaps(new Map[]{accountList,accountSet});
+//        session.setAttribute("accountList",resultMap);
+        return "yirenbaopage/个人中心-账户设置";
+    }
+
+    /**
+     * 更换用户手机号
+     * @param newPhone
+     * @return
+     */
+    @RequestMapping("/changePhone")
+    @ResponseBody
+    public Map<String, String> changePhone(@RequestParam String newPhone){
+        //从session中取出userName
+        Object userSession = session.getAttribute("userSession");
+        //将userName转换成String
+        String userName =userSession+"";
+        //获取session中存放的所有账户信息并转换回map类型
+        Map accountList =(Map)session.getAttribute("accountList");
+        //获取用户的手机号（和密码）数据来源于数据库中 是最新的数据
+        Map accountSet = accountService.accountSet(userName);
+        //从map中取出用户手机号
+        String userphone = accountSet.get("USERPHONE")+"";
+        //将从session中取出的userinformationid转换成integer类型
+        Integer o = Integer.valueOf(accountList.get("USERINFORMATIONID")+"");
+        Map tempMap = new HashMap();
+        tempMap.put("phone",newPhone);
+        tempMap.put("userinformationid",o);
+        int i = accountService.changePhone(tempMap);
+        Map<String,String> msgMap = new HashMap();
+        if(i>0){
+            msgMap.put("msg","success");
+            msgMap.put("newP",userphone);
+            session.setAttribute("USERPHONE",newPhone);
+        }else{
+            msgMap.put("msg","fail");
+        }
+        return msgMap;
+    }
+
+    /**
+     * 更新密码
+     * @param oldPwd
+     * @param newPwd
+     * @return
+     */
+    @RequestMapping("/changePwd")
+    @ResponseBody
+    public Map<String, String> changePwd(@RequestParam String oldPwd,String newPwd){
+        //从session中取出userName
+        Object userSession = session.getAttribute("userSession");
+        //将userName转换成String
+        String userName =userSession+"";
+        //获取session中存放的所有账户信息并转换回map类型
+        Map accountList =(Map)session.getAttribute("accountList");
+        //获取用户的手机号（和密码）数据来源于数据库中 是最新的数据
+        Map accountSet = accountService.accountSet(userName);
+        //从map中取出用户密码
+        String userPwd = accountSet.get("PASSWORD")+"";
+        //创建一个userMap进行方法操作
+        Map userMap = new HashMap();
+        //创建返回值的map
+        Map tempMap = new HashMap();
+        if(!oldPwd.equals(userPwd)){
+            System.out.println("输入的原来的密码："+oldPwd+"-----原来的密码："+userPwd);
+            //输入的原密码错误
+            tempMap.put("msg","fail");
+            System.out.println("错误");
+        }else{
+            System.out.println("新密码"+newPwd);
+            userMap.put("password",newPwd);
+            userMap.put("userName",userName);
+            accountService.changePwd(userMap);
+            //密码正确 更新成功
+            tempMap.put("msg","success");
+            System.out.println("成功");
+
+        }
+        return tempMap;
     }
 }

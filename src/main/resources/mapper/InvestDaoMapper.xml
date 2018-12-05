@@ -5,13 +5,14 @@
 
 <mapper namespace="com.group7.dao.InvestDao">
 
-    <cache type="org.mybatis.caches.redis.RedisCache" blocking="false"
-           flushInterval="0" readOnly="true" size="1024" eviction="FIFO"/>
 
     <!--多条件筛选 查询分页-->
     <select id="getInves" resultType="map">
          select * from
           (select rownum rn,t.* from (select * from tb_loans <where>
+
+        <!--所有借款 前台获取值为4  2代表 招标中 5：满标 7：贷款成功 11:贷款结束 还玩款的-->
+            AND  LOANSSTATE in(2,5,7,11)
 
         <!--项目期限-->
             <if test="month != null ">
@@ -26,10 +27,7 @@
                 </if>
             </if>
         <!--项目状态-->
-            <if test="state != null ">
-                <if test="state == 4 "><!--所有借款 前台获取值为4  2代表 招标中 5：满标 7：贷款成功 11:贷款结束 还玩款的-->
-                    AND  LOANSSTATE in(2,5,7,11)
-                </if>
+            <if test="state != null ">  <!--所有借款 前台获取值为4  2代表 招标中 5：满标 7：贷款成功 11:贷款结束 还玩款的-->
                 <if test="state == 5 "><!--正在招标的借款  -->
                     AND  LOANSSTATE in(2)
                 </if>

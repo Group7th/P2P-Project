@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>角色权限管理</title>
+
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="This is my page">
+
+    <link rel="stylesheet" href="./layui/css/layui.css">
+    <script src="./layui/layui-xtree.js"></script>
+    <script src="./js/address.js"></script>
+    <script src="./layui/layui.js"></script>
+    <script src="./js/jquery3.3.1.min.js"></script>
+    <script src="./js/xadmin.js"></script>
+
+</head>
+<body>
+<div class="demoTable" style="margin-top: 10px;width: 1662px;margin-left: 20px;">
+    角色ID：
+    <div class="layui-inline">
+        <input class="layui-input" name="roleId" id="selRoleId" autocomplete="off">
+    </div>
+    角色名称：
+    <div class="layui-inline">
+        <input class="layui-input" name="role_name" id="selRoleName" autocomplete="off">
+    </div>
+    <div class="layui-btn" data-type="reload" id="searchBtn"><i class="layui-icon">&#xe615;</i>搜索</div>
+    <div class="layui-btn" data-type="reload" id="redo"><i class="layui-icon">&#xe669;</i></div>
+    <div class="layui-btn layui-btn-warm" id="addRole" style="margin-left:780px;"><i class="layui-icon">&#xe608;</i>添加</div>
+</div>
+<table class="layui-hide" id="powerList" lay-filter="demo"></table>
+<script>
+    layui.use('table', function() {
+        var table = layui.table;
+        //方法级渲染
+        table.render({
+            elem: '#powerList'
+            , title: '用户数据表'
+            , height: 740
+            , width: 1695
+            , url: '/p2p/roleList' //数据接口
+            , page: true //开启分页
+            , even: true
+            , size: 'lg'
+            , cols: [ [ //表头
+                {checkbox: true, fixed: true}
+                , {field: 'ROLEID', title: '角色权限', width: 200, sort: true, unresize: true, fixed: 'left'}
+                , {field: 'ROLENAME', title: '角色名称', width: 400}
+                , {field: 'ROLEDESC', title: '角色描述', width: 450}
+                , {field: 'ROLEFLAG', title: '角色状态', width: 260, sort: true,templet: '#roleState'}
+                , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 327}
+            ] ]
+            ,id: 'testReload'
+            , request:{
+                pageName:'pageNo',//页码的参数名称，默认：page
+                limitName:'pageSize'//每页数据量的参数名：默认：limit
+            },
+            limits:[5,10,15],  //显示
+            limit:10  //每页默认显示的数量
+
+        });
+
+
+        //监听工具条
+        table.on('tool(demo)', function(obj){
+            var data = obj.data;
+            if(obj.event === 'del'){
+                if(data.ROLEID==1){
+                    alert("管理员不能删除")
+                }else {
+                    layer.confirm('确定要删除吗', function (index) {
+                        $.ajax({
+                            url: "/p2p/de",
+                            type: "post",
+                            data: {"roleId": data.ROLEID},
+                            dataType: "json",
+                            success: function (data) {
+                                if (data>0) {
+                                    obj.del();
+                                    layer.close(index);
+                                    layer.msg("删除成功", {icon: 6});
+                                } else {
+                                    layer.msg("删除失败", {icon: 5});
+                                }
+                            }
+                        });//ajax
+                    });
+                }
+            } else if(obj.event === 'edit'){
+                layer.open({
+                    title: '修改用户信息'
+                    ,type: 1
+                    ,area: ['500px', '440px']
+                    ,anim: 1
+                    ,content:$("#editDemo").html()
+                    ,success:function(layero,index){
+                        var nodes=layero[0];
+                        $("#upRoleId").val(data.ROLEID);
+                        $("#upRoleName").val(data.ROLENAME);
+                        $("#upRoledesc").val(data.ROLEDESC);
+                        $("#upRoleState").val(data.ROLEFLAG);
+
+                        $("#sbt").click(function(){
+                            var roleName = $("#upRoleName").val();
+                            alert(roleName)
+                            var roleDesc = $("#upRoledesc").val();
+                            var roleFlag = $("#upRoleState").val();
+                            alert(roleFlag)
+                            if(roleName==''&&roleDesc==''&&roleFlag==''){
+                                alert("不能为空")
+                            }else {
+                                $.ajax({
+                                    url: "/p2p/up",
+                                    type: "post",
+                                    data: {
+                                        "roleId": data.ROLEID,
+                                        "roleName": roleName,
+                                        "roleDesc": roleDesc,
+                                        "roleFlag": roleFlag
+                                    },
+                                    dataType: "json",
+                                    success: function (data) {
+
+                                        //获取当前的页码
+                                        if (data>0) {
+                                            layer.close(index);
+                                            layer.msg("修改成功", {icon: 6});
+                                            setTimeout(function () {
+                                                location.reload();
+                                            }, 500);
+                                        } else {
+                                            layer.msg("修改失败", {icon: 5});
+                                        }
+                                    }   //success
+                                });  //ajax
+                            } //判断
+                        });  //#sbt
+
+                        //弹出层取消按钮
+                        $("#cancel").click(function(){
+                            layer.closeAll('page');
+                        })
+                    }  //success(layero)
+
+                }) //open
+            }  //edit
+            else if(obj.event === 'givePower'){
+                //授权菜单弹出层
+                layer.open({
+                    title: '角色授权'
+                    ,type: 1
+                    ,area: ['500px', '700px']
+                    ,anim: 1
+                    ,content:$("#powerTree").html()
+                    ,success:function(layero,index){
+                        var nodes=layero[0];
+                        $("#role_name").val(data.ROLENAME);
+                        $("#ifr").attr("src","/p2p/updatePermission?roleId="+data.ROLEID);
+
+                    }
+                })
+
+
+            }
+        });
+
+        //搜索功能
+        var $ = layui.$, active = {
+            reload: function(){
+                var roleId = $('#selRoleId');
+                var roleName = $('#selRoleName');
+                table.reload('testReload', {
+
+                    where: {
+                        roleId: roleId.val(),
+                        roleName:roleName.val()
+                    }
+                });
+            }
+        };
+
+        //搜索按钮
+        $("#searchBtn").on('click', function(){
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+
+        //取消搜索按钮
+        $("#redo").click(function(){
+            $("#selRoleId").val("");
+            $("#selRoleName").val("");
+            $("#searchBtn").trigger("click");
+        })
+
+    });//layui use
+
+    //添加
+    $("#addRole").click(function(){
+        layer.open({
+            title: '添加角色信息'
+            ,type: 1
+            ,area: ['500px', '440px']
+            ,anim: 1
+            ,content:$("#addDemo").html()
+            ,success:function(layero,index){
+
+                $("#sbt2").click(function(){
+                    var roleName = $("#addRoleName").val();
+                    var roleDesc = $("#addRoledesc").val();
+                    var roleFlag = $("#addRoleState").val();
+                    if(roleName==''&&roleDesc==''){
+                        alert("不能为空")
+                    }else {
+                        $.ajax({
+                            url: '/p2p/add',
+                            type: 'post',
+                            data: {
+                                "roleName": roleName,
+                                "roleDesc": roleDesc,
+                                "roleFlag": roleFlag
+                            },
+                            dataType: "json",
+                            success: function (data) {
+
+                                if (data>0) {
+                                    layer.close(index);
+                                    layer.msg("添加成功", {icon: 6});
+                                    setTimeout(function () {
+                                        location.reload();
+                                    }, 500);
+                                } else {
+                                    layer.msg("添加失败", {icon: 5});
+                                }
+                            }   //success
+                        }) //ajax
+                    } //判断
+                })//addRole结束
+
+                //弹出层取消按钮
+                $("#cancel2").click(function(){
+                    layer.closeAll('page');
+                })
+
+            }
+        }) //layer.open:success
+    })//#addUser".click
+
+
+
+
+</script>
+
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="givePower">授权<i class="layui-icon">&#xe642;</i></a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑<i class="layui-icon">&#xe642;</i></a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除<i class="layui-icon">&#xe640;</i></a>
+</script>
+
+<script type="text/html" id="roleState">
+    {{#if (d.ROLEFLAG == 1) { }}
+    <span style="color: lightskyblue;">正常</span>
+    {{# }else if(d.ROLEFLAG == 2){ }}
+    <span style="color: #F581B1;">禁用</span>
+    {{# } }}
+</script>
+
+<!-- 编辑框弹出模板-->
+<script type="text/html" id="editDemo">
+    <form id="updateForm">
+        <div class="layui-form-item" align="center">
+            <div class="layui-inline">
+                <label class="layui-form-label">角色权限</label>
+                <div class="layui-input-inline">
+                    <input name="client_id" class="layui-input" id="upRoleId" readonly="readonly">
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label">角色名称</label>
+                <div class="layui-input-inline">
+                    <input name="client_name" class="layui-input" id="upRoleName">
+                </div>
+            </div>
+
+            <br/>
+
+            <div class="layui-inline">
+                <label class="layui-form-label">角色描述</label>
+                <div class="layui-input-inline">
+                    <input name="client_username" class="layui-input" id="upRoledesc">
+                </div>
+            </div>
+
+            <br/>
+
+            <div class="layui-inline">
+                <label class="layui-form-label">角色状态</label>
+                <div class="layui-input-inline">
+                    <select name="client_type"  id="upRoleState"  lay-verify="required"  style="width: 190px;height:38px; margin-right:15px">
+                        <option value="1">启用</option>
+                        <option value="2">禁用</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div align="center">
+        <input type="button" value="确认更新" id="sbt" class="layui-btn layui-btn-sm" />
+        <input type="button" value="取消" id="cancel" class="layui-btn layui-btn-sm layui-btn-normal" />
+    </div>
+</script>
+
+<!--添加页面-->
+<script type="text/html" id="addDemo">
+    <form id="addForm">
+        <div class="layui-form-item" align="center">
+            <div class="layui-inline">
+                <label class="layui-form-label">角色名称</label>
+                <div class="layui-input-inline">
+                    <input name="client_id" id="addRoleName" class="layui-input" >
+                </div>
+            </div>
+            <br/>
+            <div class="layui-inline">
+                <label class="layui-form-label">角色描述</label>
+                <div class="layui-input-inline">
+                    <input name="client_name" id="addRoledesc" class="layui-input" >
+                </div>
+            </div>
+            <br/>
+            <div class="layui-inline">
+                <label class="layui-form-label">角色状态</label>
+                <div class="layui-input-inline">
+                    <select name="client_type"  id="addRoleState"  lay-verify="required"  style="width: 190px;height:38px; margin-right:15px">
+                        <option value="1">启用</option>
+                        <option value="2">禁用</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div align="center">
+        <input type="button" value="确认添加" id="sbt2" class="layui-btn" />
+        <input type="button" value="取消" id="cancel2" class="layui-btn layui-btn-warm"/>
+    </div>
+</script>
+
+<!--修改权限-->
+<script  id = "powerTree" type="text/html">
+    <table align="center">
+        <tr>
+            <td>
+                <div class="layui-inline">
+                    <label class="layui-form-label">角色名称</label>
+                    <div class="layui-input-inline">
+                        <input class="layui-input" id="role_name" readonly="readonly"  autocomplete="off">
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="layui-inline">
+                    <label class="layui-form-label">关联菜单</label>
+                    <div class="layui-input-inline">
+                        <iframe id="ifr" style="width:300px;min-height:500px;" frameborder="no"/>
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+    </table>
+</script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

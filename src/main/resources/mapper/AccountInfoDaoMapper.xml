@@ -6,25 +6,44 @@
     <!--&lt;!&ndash;配置文件加这个Redis&ndash;&gt;-->
     <cache type="org.mybatis.caches.redis.RedisCache" blocking="false"
            flushInterval="0" readOnly="true" size="1024" eviction="FIFO"/>
+    <!--获取用户账号所有信息-->
     <select id="accountInfo" resultType="map" parameterType="java.lang.String">
         select * from tb_useraccount where useraccountid =
           (select userinformationid from tb_userinformation where userinformationid =
             (select id from tb_user where username = #{userName}))
     </select>
 
+    <!--查询用户手机号和密码-->
+    <select id="accountSet" resultType="map">
+          select USERPHONE,PASSWORD from tb_userinformation a,tb_user b where a.userinformationid = b.id and username=#{userName}
+    </select>
+
+    <!--查询用户支付密码-->
     <select id="payPwd" resultType="int" parameterType="java.lang.String">
           select PAYPASSWORD from tb_userinformation where userid =(select id from tb_user where username = #{userName})
     </select>
 
+    <!--用户充钱-->
     <update id="charge" parameterType="map">
-        update tb_useraccount set ACCOUNMONEY=#{money} , AVAILMONEY=#{money} where userinformationid=#{userinformationid}
+        update tb_useraccount set ACCOUNMONEY=#{money}+ACCOUNMONEY , AVAILMONEY=#{money}+AVAILMONEY where userinformationid=#{userinformationid}
     </update>
-
+    <!--查询用户头像-->
     <select id="headPic" resultType="java.lang.String" parameterType="java.lang.String">
         select HEADPORTRAIT from tb_userinformation where USERID=(select ID from tb_user where username=#{userName})
     </select>
-
+    <!--更换用户头像-->
     <update id="addHeadPic" parameterType="map">
         update tb_userinformation set HEADPORTRAIT =#{imgName} where USERINFORMATIONID=#{userinformationid}
     </update>
+
+    <!--更换用户手机号-->
+    <update id="changePhone" parameterType="map">
+        update tb_userinformation set USERPHONE=#{phone} where USERINFORMATIONID=#{userinformationid}
+    </update>
+
+    <!--更换用户密码-->
+    <update id="changePwd" parameterType="map">
+        update tb_user set PASSWORD=#{password} where USERNAME=#{userName}
+    </update>
+
 </mapper>
