@@ -28,7 +28,7 @@
 		 <div class="zxcf_top_r fr">
 		 	<a href="login.html" class="curspan">立即登录</a>
 		 	<span>|</span>
-		 	<a href="register.html">免费注册</a>
+		 	<a href="/p2p/toRegister">免费注册</a>
 		 	<span>|</span>
 		 	<a href="problem.html">常见问题</a>
 		 </div>
@@ -57,16 +57,16 @@
 	  	   	     <div class="lg_section_r fl">
 	  	   	     	   <h2 class="lg_sec_tit clearfix">
 	  	   	     	      <span class="fl">登录</span>
-	  	   	     	      <em class="fr">没有帐号，<a href="toRegister">立即注册</a></em>
+	  	   	     	      <em class="fr">没有帐号，<a href="/toRegister">立即注册</a></em>
 	  	   	     	   </h2>
 					 <center><span th:text="${msg}" style="font-size: 17px;color:lightseagreen;"></span></center>
 	  	   	     	   <form action="/p2p/login" method="post">
 	  	   	     	   	    <fieldset>
 	  	   	     	   	    	  <p class="mt20">
-	  	   	     	   	    	  	 <input type="text" placeholder="用户名/手机" class="lg_input01 lg_input" name="userName">
+	  	   	     	   	    	  	 <input type="text" placeholder="用户名/手机" class="lg_input01 lg_input" name="userName" required="true">
 	  	   	     	   	    	  </p>
                                   <p class="mt20">
-	  	   	     	   	    	  	 <input type="text" placeholder="密码" class="lg_input02 lg_input" name="passWord">
+	  	   	     	   	    	  	 <input type="password" placeholder="密码" class="lg_input02 lg_input" name="passWord" required="true">
 	  	   	     	   	    	  </p>
                                  <p class="clearfix lg_check"><span class="fl"><input type="checkbox">记住用户名</span><a href="#" class="fr">忘记密码？找回</a></p>
                                  <p><INPUT  class="lg_btn" TYPE="submit" value="登录"> </p>
