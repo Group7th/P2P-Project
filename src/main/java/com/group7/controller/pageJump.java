@@ -13,6 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class pageJump {
 
     /**
+     * 身份证验证界面
+     * @return
+     */
+    @RequestMapping("/toIdentity")
+    public String toIdentity(){
+        return "backStage/IDCardIdentity";
+    }
+
+    /**
      * 支付密码界面
      * @return
      */
@@ -20,7 +29,6 @@ public class pageJump {
     public String toPay(){
         return "backStage/IpayPassword";
     }
-
 
     /**
      * 跳转上传页面
@@ -117,10 +125,10 @@ public class pageJump {
      * 个人中心首页
      * @return
      */
-    @RequestMapping("toGeRenZhongXinShouYe")
-    public String toGeRenZhongXinShouYe(){
-        return "yirenbaopage/GRZX";
-    }
+//    @RequestMapping("toGeRenZhongXinShouYe")
+//    public String toGeRenZhongXinShouYe(){
+//        return "yirenbaopage/GRZX";
+//    }
 
     /**
      * 个人中心充值
@@ -198,14 +206,6 @@ public class pageJump {
     }
 
 
-    /**
-     * 账号设置
-     * @return
-     */
-    @RequestMapping("toGRZXZhangHao")
-    public String toGRZXZhangHao(){
-        return "yirenbaopage/个人中心-账户设置.html";
-    }
 
     /**
      * 资金纪录
