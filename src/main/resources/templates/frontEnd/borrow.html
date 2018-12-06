@@ -335,10 +335,10 @@
                                 </div>
                                 <div class="mt15">
                                     <label>*借款情况</label>
-                                    <input type="radio" class="input3" value ="3" name = "loanscase" checked = "checked">
-                                    普通借款
-                                    <input type="radio" class="input3"value = "5" name = "loanscase">
-                                    紧急借款
+                                    <select name = "loanscase" class="loanscase">
+                                        <option value="3" selected="selected">普通贷款</option>
+                                        <option value="5">紧急贷款</option>
+                                    </select>
                                 </div>
                                 <div class="mt15">
                                     <label>手机号</label>
@@ -466,10 +466,10 @@
                                     </div>
                                     <div class="mt15">
                                         <label>*借款情况</label>
-                                        <input type="radio" class="input3" value ="1" name = "loanscase" checked = "checked">
-                                        普通借款
-                                        <input type="radio" class="input3"value = "2" name = "loanscase">
-                                        紧急借款
+                                        <select name = "loanscase" class="loanscase">
+                                            <option value="3" selected="selected">普通贷款</option>
+                                            <option value="5">紧急贷款</option>
+                                        </select>
                                     </div>
                                     <div class="mt15">
                                         <label>手机号</label>
@@ -580,10 +580,10 @@
                                         </div>
                                         <div class="mt15">
                                             <label>*借款情况</label>
-                                            <input type="radio" class="input3" value ="1" name = "loanscase" checked = "checked">
-                                            普通借款
-                                            <input type="radio" class="input3"value = "2" name = "loanscase">
-                                            紧急借款
+                                            <select name = "loanscase" class="loanscase">
+                                                <option value="3" selected="selected">普通贷款</option>
+                                                <option value="5">紧急贷款</option>
+                                            </select>
                                         </div>
                                         <div class="mt15">
                                             <label>手机号</label>
@@ -783,7 +783,7 @@
                 url: "/p2p/selectLoans",
                 type: "POST",
                 dataType: "json",
-                data: {username: user.userName},
+                data: {username: username},
                 success: function (data) {
                     if (data != null) {
                         sweetAlert({
@@ -897,7 +897,7 @@
                 type: "POST",
                 //contentType : "application/json",
                 dataType: "json",
-                data: {username: user.userName},
+                data: {username: username},
                 success: function (data) {
                     if (data != null) {
                         sweetAlert({
