@@ -9,7 +9,14 @@
     <script type="text/javascript" src="js/all.js"></script>
     <script type="text/javascript" src="js/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="js/dist/sweetalert.css">
+    <script src="js/jquery.form.js"></script>
+
+
     <script>
+
+
+
+        //替换贷款方式
         function tihuan(from) {
             //校验房屋抵押贷款总价值
             $("#"+ from).on("blur", ".bor_inputbg03", function () {
@@ -38,7 +45,7 @@
             //校验总价值 bor_inputbg03
             $("#" + from).on("blur", ".bor_inputbg03", function () {
                 var globalvalue = $(this).val();
-                if (globalvalue == null || globalvalue == "" || globalvalue <= 0) {
+                if (globalvalue == null || globalvalue == "" || globalvalue <= 0||isNaN(globalvalue)) {
                     $(".globalvalue").html("<image src='./images/cuo.jpg'/>");
                     $(".sub").attr("disabled", true);
                 } else {
@@ -50,7 +57,7 @@
             //校验贷款利率bor_inputbg04
             $("#" + from).on("blur", ".bor_inputbg04", function () {
                 var loansinterestrate = $(this).val();
-                if (loansinterestrate == null || loansinterestrate == "" || loansinterestrate <= 0 || loansinterestrate > 17) {
+                if (loansinterestrate == null || loansinterestrate == "" || loansinterestrate <= 0 || loansinterestrate > 17||isNaN(loansinterestrate)) {
                     $(".bor_inputbg04").html("<image src='./images/cuo.jpg'/>");
                     $(".sub").attr("disabled", true);
                 } else {
@@ -62,7 +69,7 @@
             //校验贷款期限bor_inputbg02
             $("#" + from).on("blur", ".bor_inputbg02", function () {
                 var refundeadline = $(this).val();
-                if (refundeadline == null || refundeadline == "" || refundeadline > 12) {
+                if (refundeadline == null || refundeadline == "" || refundeadline > 12||isNaN(refundeadline)) {
                     $(".bor_inputbg02").html("<image src='./images/cuo.jpg'/>");
                     $(".sub").attr("disabled", true);
                 } else {
@@ -115,11 +122,11 @@
                 //校验房屋抵押贷款借款金额bor_inputbg01
                 $("#form1").on("blur", ".bor_inputbg01", function () {
                     var hlmoney = $(this).val();
-                    var globalvalue = $(".bor_inputbg03").val();
-                    if (hlmoney == null || hlmoney == ""||hlmoney>globalvalue||hlmoney<=0) {
+                    var globalvalue = $("#form1 .bor_inputbg03").val();
+                    if (hlmoney == null || hlmoney == ""||Number(hlmoney)>Number(globalvalue)||Number(hlmoney)<=0||isNaN(hlmoney)) {
                         $(".hlmoney").html("<image src='./images/cuo.jpg'/>");
                         $(".sub").attr("disabled", true);
-                    } else {
+                    } else{
                         $(".hlmoney").html("<image src='./images/dui.jpg'/>");
                         $(".sub").removeAttr("disabled");
                     }
@@ -133,8 +140,7 @@
                     $("#form2").on("blur", "#clmoney", function () {
                         var clmoney = $(this).val();
                         var globalvalue = $("#form2 .bor_inputbg03").val();
-                        alert(globalvalue);
-                        if (clmoney == null || clmoney == ""||clmoney>globalvalue||clmoney<=0) {
+                        if (clmoney == null || clmoney == ""||Number(clmoney)>Number(globalvalue)||Number(clmoney)<=0||isNaN(clmoney)) {
                             $(".clmoney").html("<image src='./images/cuo.jpg'/>");
                             $(".sub").attr("disabled", true);
                         } else {
@@ -158,7 +164,7 @@
                     //校验信用贷款贷款金额 xymoney
                     $("#form3").on("blur", "#xymoney", function () {
                         var xymoney = $(this).val();
-                        if (xymoney == null || xymoney == ""||xymoney<=0||xymoney>5) {
+                        if (xymoney == null || xymoney == ""||Number(xymoney)<=0||Number(xymoney)>5||isNaN(xymoney)) {
                             $(".xymoney").html("<image src='./images/cuo.jpg'/>");
                             $(".sub").attr("disabled", true);
                         } else {
@@ -272,22 +278,25 @@
                     </div>
                     <!-- end l -->
                     <div class="bor_det_oner fl">
-                        <form id="form1">
-                            <fieldset>
+                            <fieldset id="form1">
                                 <input type="hidden" name = "userid" class="userid"/>
                                 <input type="hidden" name = "type" class="type" value="1"/>
                                 <div>
                                     <label>申请人</label>
                                     <input type="text" name = "name" class="name" style="cursor:not-allowed"readonly="readonly" >
                                 </div>
-                                <div class="mt15 guarmethod clearfix">
-                                    <label>*房屋证明</label>
-                                    <input type="file" name="houseproperty" class="houseproperty"><span class="house"></span><br>
-                                </div>
-                                <div class="mt15 guarmethod clearfix">
-                                    <label>*评估报告</label>
-                                    <input type="file" name="appraisalreport" class="appraisalreport" ><span class="report"></span><br>
-                                </div>
+                                <form id = "updatePic" method="post" enctype="multipart/form-data" action="/p2p/fileUpload">
+                                    <div class="mt15 guarmethod clearfix">
+                                        <label>*房屋证明</label>
+                                        <input type="file" name="file" class="houseproperty" onchange="xmTanUploadImg1(this)">
+                                        <span class="house"></span><br>
+                                    </div>
+                                    <div class="mt15 guarmethod clearfix">
+                                        <label>*评估报告</label>
+                                        <input type="file" name="appraisalreport" class="appraisalreport" onchange="xmTanUploadImg1(this)">
+                                        <span class="report"></span><br>
+                                    </div>
+                                </form>
                                 <div class="mt15 guarmethod clearfix">
                                     <label>*总价值</label>
                                     <input type="text" name="globalvalue" class="bor_inputbg03"><span class="globalvalue"></span><br>
@@ -308,7 +317,6 @@
                                     <label>*还款方式</label>
                                     <select name = "refundway" class="refundway">
                                         <option value = "到期还本还息" selected="selected">到期还本还息</option>
-                                        <option value = "按月还息到期还本">按月还息到期还本</option>
                                     </select><span class="refundway"></span>
                                 </div>
                                 <div class="mt15">
@@ -327,7 +335,7 @@
                                 </div>
                                 <div class="mt15">
                                     <label>*借款情况</label>
-                                    <input type="radio" class="input3" value ="3" name = "loanscase" checked = checked>
+                                    <input type="radio" class="input3" value ="3" name = "loanscase" checked = "checked">
                                     普通借款
                                     <input type="radio" class="input3"value = "5" name = "loanscase">
                                     紧急借款
@@ -357,7 +365,6 @@
                                     <button class="sub" type="button" style="width: 100px;height: 30px;font-size: 15px;">提交材料</button>
                                 </div>
                             </fieldset>
-                        </form>
                     </div>
                 </div>
                 <!-- end 房产抵押 -->
@@ -404,22 +411,23 @@
                         </div>
                         <!-- end l -->
                         <div class="bor_det_oner fl">
-                            <form id="form2">
-                                <fieldset>
+                                <fieldset id="form2">
                                     <input type="hidden" name = "userid" class="userid"/>
                                     <input type="hidden" name = "type" class="type" value="2"/>
                                     <div>
                                         <label>申请人</label>
                                         <input type="text" name = "name" class="name" style="cursor:not-allowed"readonly="readonly">
                                     </div>
-                                    <div class="mt15 guarmethod clearfix">
-                                        <label>*车辆证明</label>
-                                        <input type="file" name="carinfo" class="carinfo" ><span id="carinfo"></span><br>
-                                    </div>
-                                    <div class="mt15 guarmethod clearfix">
-                                        <label>*评估报告</label>
-                                        <input type="file" name="appraisalreport" class="appraisalreport" ><span class="report"></span><br>
-                                    </div>
+                                    <form id = "updateCLPic" method="post" enctype="multipart/form-data" action="/p2p/fileUpload">
+                                        <div class="mt15 guarmethod clearfix">
+                                            <label>*车辆证明</label>
+                                            <input type="file" name="file" class="carinfo" onchange="xmTanUploadImg2(this)"><span id="carinfo"></span><br>
+                                        </div>
+                                        <div class="mt15 guarmethod clearfix">
+                                            <label>*评估报告</label>
+                                            <input type="file" name="appraisalreport" class="appraisalreport" onchange="xmTanUploadImg2(this)"><span class="report"></span><br>
+                                        </div>
+                                    </form>
                                     <div class="mt15 guarmethod clearfix">
                                         <label>*总价值</label>
                                         <input type="text" name="globalvalue" class="bor_inputbg03"><span class="globalvalue"></span><br>
@@ -438,9 +446,9 @@
                                     </div>
                                     <div class="mt15">
                                         <label>*还款方式</label>
-                                        <select name = "refundway">
-                                            <option value = "等额本息">等额本息</option>
-                                        </select>
+                                        <select name = "refundway" class="refundway">
+                                            <option value = "到期还本还息" selected="selected">到期还本还息</option>
+                                        </select><span class="refundway"></span>
                                     </div>
                                     <div class="mt15">
                                         <label>*借款用途</label>
@@ -458,7 +466,7 @@
                                     </div>
                                     <div class="mt15">
                                         <label>*借款情况</label>
-                                        <input type="radio" class="input3" value ="1" name = "loanscase" checked = checked>
+                                        <input type="radio" class="input3" value ="1" name = "loanscase" checked = "checked">
                                         普通借款
                                         <input type="radio" class="input3"value = "2" name = "loanscase">
                                         紧急借款
@@ -487,7 +495,6 @@
                                         <button class="sub" type="button" style="width: 100px;height: 30px;font-size: 15px;">提交材料</button>
                                     </div>
                                 </fieldset>
-                            </form>
                         </div>
                     </div>
                     <!-- end  -->
@@ -554,8 +561,8 @@
                                         <div class="mt15">
                                             <label>*还款方式</label>
                                             <select name = "refundway" class="refundway">
-                                                <option value = "等额本息">等额本息</option>
-                                            </select>
+                                                <option value = "到期还本还息" selected="selected">到期还本还息</option>
+                                            </select><span class="refundway"></span>
                                         </div>
                                         <div class="mt15">
                                             <label>*借款用途</label>
@@ -573,7 +580,7 @@
                                         </div>
                                         <div class="mt15">
                                             <label>*借款情况</label>
-                                            <input type="radio" class="input3" value ="1" name = "loanscase" checked = checked>
+                                            <input type="radio" class="input3" value ="1" name = "loanscase" checked = "checked">
                                             普通借款
                                             <input type="radio" class="input3"value = "2" name = "loanscase">
                                             紧急借款
@@ -613,18 +620,57 @@
 </div>
 
 <script>
+    var hlmoney=null;
+    var report=null;
+    var clmoney=null;
+    //房屋贷款选择图片，马上预览
+    function xmTanUploadImg1(obj) {
+        var file = obj.files[0];
+        console.log($(obj).prev().html());
+        $("#updatePic").ajaxSubmit(function (message) {
+            //对于表单提交成功后处理，message为提交页面/p2p/fileUpload的返回内容
+            console.log(message+"回调ajax的form表单");
+            if($(obj).prev().html()=="*房屋证明"){
+                hlmoney = message;
+                console.log(hlmoney+"房屋证明图片名称");
+            }else if ($(obj).prev().html()=="*评估报告"){
+                report=message;
+                console.log(report+"评估报告图片名称");
+            }
+        });
+        return false;
+    }
+
+    //车辆贷款选择图片，马上预览
+    function xmTanUploadImg2(obj) {
+        var file = obj.files[0];
+        console.log($(obj).prev().html());
+        $("#form2 #updateCLPic").ajaxSubmit(function (message) {
+            //对于表单提交成功后处理，message为提交页面/p2p/fileUpload的返回内容
+            console.log(message+"回调ajax的form表单");
+            if ($(obj).prev().html()=="*车辆证明"){
+                clmoney=message;
+                console.log(clmoney+"车辆证明图片名称");
+            }else if ($(obj).prev().html()=="*评估报告"){
+                report=message;
+                console.log(report+"评估报告图片名称");
+            }
+        });
+        return false;
+    }
+
+
     /**
      * 根据当前用户名查找用户信息
      */
     $(function() {
 
-        var flag = true;
+        var username  =  localStorage.getItem("userInfo");
+          var flag = true;
         var regT = /^[1][3,4,5,7,8][0-9]{9}$/; //验证手机号
         var toSend = false; //判断能否发送验证码
         var idfyCode = 0; //设置验证码的默认值
         $(".bor_det_one").eq(0).show().siblings().hide();
-        //var username='xingbobo';
-        var username = 'ceshi';
         $.ajax({
             url: "/p2p/getUserInfo",
             type: "POST",
@@ -645,7 +691,7 @@
                         type: "error",
                         showConfirmButton: false
                     }, function () {
-                        location.href = "/p2p/toNoticelist";
+                        location.href = "/p2p/toGeRenZhongXinShouYe";
                     });
                 }
                 if (data.CERTIFICATION == 0) {
@@ -657,7 +703,7 @@
                         type: "error",
                         showConfirmButton: false
                     }, function () {
-                        location.href = "/p2p/toNoticelist";
+                        location.href = "/p2p/toGeRenZhongXinShouYe";
                     });
                 } else if (data.CERTIFICATION == 1) {
                     $(".idcard").html("已认证").css("color", "green");
@@ -729,17 +775,15 @@
             });
         });
 
+
         /*房屋抵押贷款提交*/
         $("#form1 .sub").click(function () {
             var flag = true;
-            //var username = 'xingbobo';
-            var username = 'ceshi';
             $.ajax({
                 url: "/p2p/selectLoans",
                 type: "POST",
-                //contentType : "application/json",
                 dataType: "json",
-                data: {username: username},
+                data: {username: user.userName},
                 success: function (data) {
                     if (data != null) {
                         sweetAlert({
@@ -749,7 +793,7 @@
                             type: "error",
                             showConfirmButton: false
                         }, function () {
-                            location.href = "/p2p/toNoticelist";
+                            location.href = "/p2p/toGeRenZhongXinShouYe";
                         });
                     } else {
                         $("#form1 input").each(function () {
@@ -794,27 +838,29 @@
                             console.log("flag的值" + flag);
                             if (flag) {
                                 console.log("可以注册");
+                                console.log("提交时得到了房屋"+hlmoney);
+                                console.log("提交时得到了报告"+report);
                                 var param = {
-                                    "userid":$("#form2 .userid").val(),
-                                    "type":$("#form2 .type").val(),
-                                    "name":$("#form2 .name").val(),
-                                    "carinfo":$("#form2 .carinfo").val(),//车辆信息
-                                    "appraisalreport":$("#form2 .appraisalreport").val(),//评估报告
-                                    "globalvalue":$("#form2 .bor_inputbg03").val(),//价值
-                                    "loansmoney":$("#form2 .bor_inputbg01").val(),//金额
-                                    "loansinterestrate":$("#form2 .bor_inputbg04").val(),//利率
-                                    "refunddeadline":$("#form2 .bor_inputbg02").val(),//期限
-                                    "refundway":$("#form2 .refundway").val(),//还款方式
-                                    "loansused":$("#form2 .loansUsed").val(),//贷款用途
-                                    "describe":$("#form2 .describe").val(),//描述
-                                    "loanscase":$("#form2 .input3").val(),//贷款情况
-                                    "userphone":$("#form2 .userphone").val(),//手机号码
+                                    "userid":$("#form1 .userid").val(),
+                                    "type":$("#form1 .type").val(),
+                                    "name":$("#form1 .name").val(),
+                                    "houseproperty":hlmoney,
+                                    "appraisalreport":report,
+                                    "globalvalue":$("#form1 .bor_inputbg03").val(),//价值
+                                    "loansmoney":$("#form1 .bor_inputbg01").val(),//金额
+                                    "loansinterestrate":$("#form1 .bor_inputbg04").val(),//利率
+                                    "refunddeadline":$("#form1 .bor_inputbg02").val(),//期限
+                                    "refundway":$("#form1 .refundway").val(),
+                                    "loansused":$("#form1 .loansUsed").val(),
+                                    "describe":$("#form1 .describe").val(),
+                                    "loanscase":$("#form1 .input3").val(),
+                                    "userphone":$("#form1 .userphone").val(),
                                 }
                                 $.ajax({
                                     url:"/p2p/applyForLoan",
                                     type: "POST",
                                     contentType : "application/json",
-                                    //dataType: "json",
+                                    dataType: "json",
                                     data:JSON.stringify(param),
                                     success: function (data) {
                                         if(data==1){
@@ -825,7 +871,7 @@
                                                 type: "success",
                                                 showConfirmButton: false
                                             }, function () {
-                                                location.href = "/p2p/toNoticelist";
+                                                location.href = "/p2p/toGeRenZhongXinShouYe";
                                             });
                                         }else{
                                             sweetAlert({
@@ -846,14 +892,12 @@
         /*车辆抵押贷款提交*/
         $("#form2 .sub").click(function () {
             var flag = true;
-            //var username = 'xingbobo';
-            var username = 'ceshi';
             $.ajax({
                 url: "/p2p/selectLoans",
                 type: "POST",
                 //contentType : "application/json",
                 dataType: "json",
-                data: {username: username},
+                data: {username: user.userName},
                 success: function (data) {
                     if (data != null) {
                         sweetAlert({
@@ -863,7 +907,7 @@
                             type: "error",
                             showConfirmButton: false
                         }, function () {
-                            location.href = "/p2p/toNoticelist";
+                            location.href = "/p2p/toGeRenZhongXinShouYe";
                         });
                     } else {
                         $("#form2 input").each(function () {
@@ -908,12 +952,14 @@
                             console.log("flag的值" + flag);
                             if (flag) {
                                 console.log("可以注册");
+                                console.log("得到车辆证明的图片名称"+clmoney);
+                                console.log("得到车辆评估报告的图片名称"+report);
                                 var param = {
                                     "userid":$("#form2 .userid").val(),
                                     "type":$("#form2 .type").val(),
                                     "name":$("#form2 .name").val(),
-                                    "carinfo":$("#form2 .carinfo").val(),//车辆信息
-                                    "appraisalreport":$("#form2 .appraisalreport").val(),//评估报告
+                                    "carinfo":clmoney,//车辆信息
+                                    "appraisalreport":report,//评估报告
                                     "globalvalue":$("#form2 .bor_inputbg03").val(),//价值
                                     "loansmoney":$("#form2 .bor_inputbg01").val(),//金额
                                     "loansinterestrate":$("#form2 .bor_inputbg04").val(),//利率
@@ -924,11 +970,12 @@
                                     "loanscase":$("#form2 .input3").val(),//贷款情况
                                     "userphone":$("#form2 .userphone").val(),//手机号码
                                 }
+
                                 $.ajax({
                                     url:"/p2p/applyForLoan",
                                     type: "POST",
                                     contentType : "application/json",
-                                    //dataType: "json",
+                                    dataType: "json",
                                     data:JSON.stringify(param),
                                     success: function (data) {
                                         if(data==1){
@@ -939,7 +986,7 @@
                                                 type: "success",
                                                 showConfirmButton: false
                                             }, function () {
-                                                location.href = "/p2p/toNoticelist";
+                                                location.href = "/p2p/toGeRenZhongXinShouYe";
                                             });
                                         }else{
                                             sweetAlert({
@@ -960,14 +1007,12 @@
         /*个人信用贷款提交*/
         $("#form3 .sub").click(function () {
             var flag = true;
-            //var username = 'xingbobo';
-            var username = 'ceshi';
             $.ajax({
                 url: "/p2p/selectLoans",
                 type: "POST",
                 //contentType : "application/json",
                 dataType: "json",
-                data: {username: username},
+                data: {username: user.userName},
                 success: function (data) {
                     if (data != null) {
                         sweetAlert({
@@ -977,7 +1022,7 @@
                             type: "error",
                             showConfirmButton: false
                         }, function () {
-                            location.href = "/p2p/toNoticelist";
+                            location.href = "/p2p/toGeRenZhongXinShouYe";
                         });
                     } else {
                         $("#form3 input").each(function () {
@@ -1050,7 +1095,7 @@
                                                 type: "success",
                                                 showConfirmButton: false
                                             }, function () {
-                                                location.href = "/p2p/toNoticelist";
+                                                location.href = "/p2p/toGeRenZhongXinShouYe";
                                             });
                                         }else{
                                             sweetAlert({

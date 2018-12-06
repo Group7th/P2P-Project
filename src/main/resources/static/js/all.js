@@ -82,6 +82,21 @@ $(".notic_secl_ul li").click(function()
 	 $(this).addClass("notic_curli").siblings().removeClass("notic_curli");
 });
 
+ //var userInfo;
+    $.ajax({
+        type : "post",
+        url : "/p2p/getSessoinUserInfo",
+		async:false,
+        success : function(result) {
+            localStorage.setItem("userInfo",result);
+        },
+        error : function() {
+            console.log("请求失败");
+        }
+    })
+	//console.log(userInfo.userName);
+/*alert(userInfo.userName)
+	localStorage.setItem("userInfo",JSON.stringify(userInfo));*/
 
 	
 });
