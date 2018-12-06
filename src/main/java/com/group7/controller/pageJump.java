@@ -75,6 +75,15 @@ public class pageJump {
         return "frontEnd/Account";
     }
 
+    /**
+     * 测试招标审核
+     * @return
+     */
+    @RequestMapping("/toLoanAudit")
+    public String toLoanAudit(){
+        return "backStage/LoanAudit";
+    }
+
 
     /**
      * 跳转投资页面
