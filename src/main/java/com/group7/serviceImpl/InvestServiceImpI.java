@@ -91,17 +91,24 @@ public class InvestServiceImpI implements InvestService {
 
     /**
      * 查询投资信息  不能重复投资
-     * @param userId
+     * @param userName
      * @param loansId
      * @return
      */
     @Override
-    public Map investmentVerify(@Param("userId") Integer userId,@Param("loansId") Integer loansId) {
-        return investDao.investmentVerify(userId,loansId);
+    public Map investmentVerify(@Param("userName") String userName,@Param("loansId") Integer loansId) {
+        return investDao.investmentVerify(userName,loansId);
     }
 
     @Override
     public int investmentMoeny(InvestmentAmount invest) {
         return investDao.investmentMoeny(invest);
     }
+
+    @Override
+    public List<Map> investmentInformation(Integer loansId) {
+        return investDao.investmentInformation(loansId);
+    }
+
+
 }

@@ -14,7 +14,7 @@
 
     <!--根据登陆人 显示左列表树-->
     <select id="getPowersByUserId" resultType="treeNode">
-        select powerId as id, powerName as text, parentId, state, incoCls, url, remark from tb_limit where powerId in (select powerid from tb_role_power where roleid=(select roleid from tb_account where account_Id = (select account_Id from tb_account where userName = #{userName} )))
+        select powerId as id, powerName as text, parentId, state, incoCls, url, remark from tb_limit where powerId in (select powerid from tb_role_power where roleid=(select roleid from tb_account where account_Id = (select account_Id from tb_account where userName = #{userName} ))) order by powerId
     </select>
 
 
@@ -66,7 +66,7 @@
 
     <!--获取所有数列表-->
     <select id="getPowerCheckedTree" resultType="treeNode">
-        select powerId as id, powerName as text, parentId, state, incoCls, url, remark from tb_limit
+        select powerId as id, powerName as text, parentId, state, incoCls, url, remark from tb_limit order by powerId
     </select>
 
     <!--获取该角色拥有的权限集合-->

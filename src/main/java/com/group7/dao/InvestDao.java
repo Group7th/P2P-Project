@@ -48,11 +48,10 @@ public interface InvestDao {
 
     /**
      * 查询投资信息  不能重复投资
-     * @param userId
      * @param loansId
      * @return
      */
-    Map investmentVerify(@Param("userId") Integer userId, @Param("loansId") Integer loansId);
+    Map investmentVerify(@Param("userName") String userName, @Param("loansId") Integer loansId);
 
     /**
      * 投资金额 添加到 投资表 总投资金额中
@@ -61,4 +60,12 @@ public interface InvestDao {
      */
     int investmentMoeny(InvestmentAmount invest);
 
-}
+    /**
+     * 查看贷款 投资信息
+     * @param loansId
+     * @return
+     */
+    List<Map> investmentInformation(Integer loansId);
+
+
+    }

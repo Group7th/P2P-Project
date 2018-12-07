@@ -13,6 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class pageJump {
 
     /**
+     * 身份证验证界面
+     * @return
+     */
+    @RequestMapping("/toIdentity")
+    public String toIdentity(){
+        return "backStage/IDCardIdentity";
+    }
+
+    /**
      * 支付密码界面
      * @return
      */
@@ -66,6 +75,15 @@ public class pageJump {
         return "frontEnd/Account";
     }
 
+    /**
+     * 测试招标审核
+     * @return
+     */
+    @RequestMapping("/toLoanAudit")
+    public String toLoanAudit(){
+        return "backStage/LoanAudit";
+    }
+
 
     /**
      * 跳转投资页面
@@ -116,10 +134,10 @@ public class pageJump {
      * 个人中心首页
      * @return
      */
-//    @RequestMapping("toGeRenZhongXinShouYe")
-//    public String toGeRenZhongXinShouYe(){
-//        return "yirenbaopage/GRZX";
-//    }
+   /* @RequestMapping("toGeRenZhongXinShouYe")
+    public String toGeRenZhongXinShouYe(){
+        return "yirenbaopage/GRZX.html";
+    }*/
 
     /**
      * 个人中心充值
@@ -197,14 +215,6 @@ public class pageJump {
     }
 
 
-    /**
-     * 账号设置
-     * @return
-     */
-    @RequestMapping("toGRZXZhangHao")
-    public String toGRZXZhangHao(){
-        return "yirenbaopage/个人中心-账户设置.html";
-    }
 
     /**
      * 资金纪录
@@ -216,22 +226,50 @@ public class pageJump {
     }
 
 
-    @RequestMapping("tojinNang")
-    public String tojinNang(){
-        return "frontEnd/jinNang";
+    /**
+     * 权限管理  角色信息
+     * @return
+     */
+    @RequestMapping("/permission")
+    public String permission(){
+        return "permission/authorityManagement";
+    }
+
+    /**
+     * 修改权限树
+     * @return
+     */
+    @RequestMapping("/updatePermission")
+    public String updatePermission(){
+        return "permission/updatePermission";
+    }
+
+    /**
+     * 账户管理
+     * @return
+     */
+    @RequestMapping("/accountManagement")
+    public String accountManagement(){
+        return "permission/accountManagement";
     }
 
 
-    @RequestMapping("tojinNangXinXi")
-    public String tojinNangXinXi(){
-        return "frontEnd/jinNangXinxi";
+    /**
+     * 后台登陆
+     * @return
+     */
+    @RequestMapping("/loginTo")
+    public String Login(){
+        return "permission/toLogin";
     }
 
-    @RequestMapping("toHead")
-    public String toHead(){
-        return "frontEnd/head";
+
+    /**
+     * 投资支付密码
+     * @return
+     */
+    @RequestMapping("/investmentPassword")
+    public String investmentPassword(){
+        return "backStage/investmentPassword";
     }
-
-
-
 }

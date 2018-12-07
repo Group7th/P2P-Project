@@ -1,6 +1,5 @@
 package com.group7.controller;
 
-import com.group7.entity.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
@@ -54,18 +53,4 @@ public class LoginController {
 		}
 		return null;
 	}
-		/**
-		 * 用户注销，跳转到登陆页面
-		 * @param request
-		 * @return
-		 */
-		@RequestMapping("UserExit")
-		public String UserExit(HttpServletRequest request) {
-			HttpSession session = request.getSession();
-			session.removeAttribute("userSession");
-			String s =(String) session.getAttribute("userSession");
-			System.out.println("-------------------"+s);
-			return "frontEnd/login";
-		}
 }
-
