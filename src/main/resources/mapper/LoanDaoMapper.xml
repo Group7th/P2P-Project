@@ -26,11 +26,11 @@
     <!--贷款类型是房屋抵押贷的存到数据库中-->
     <insert id="houseLoans" >
       insert into tb_loanstype (loanstype,loansid,loanstypename,houseproperty,appraisalreport,globalvalue) values
-        (#{type},#{loansid},'房屋抵押贷',#{houseproperty},#{appraisalreport},#{globalvalue})
+        (#{type},#{loansid},'房屋抵押贷',#{houseproperty},#{appraisalreport},#{globalvalue}*10000)
     </insert>
     <!--贷款类型是车辆抵押贷的存到数据库中-->
     <insert id="carLoans">
         insert into tb_loanstype (loanstype,loansid,loanstypename,carinformation,appraisalreport,globalvalue) values
-        (#{type},#{loansid},'车辆抵押贷',#{carinfo},#{appraisalreport},#{globalvalue})
+        (#{type},#{loansid},'车辆抵押贷',#{carinfo},#{appraisalreport},#{globalvalue}*10000)
     </insert>
 </mapper>

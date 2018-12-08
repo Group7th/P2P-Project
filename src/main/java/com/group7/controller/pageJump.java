@@ -84,6 +84,14 @@ public class pageJump {
         return "backStage/LoanAudit";
     }
 
+    /**
+     * 跳转逾期审核
+     * @return
+     */
+    @RequestMapping("/toOverdueAudit")
+    public String toOverdueAudit(){
+        return "backStage/OverdueAudit";
+    }
 
     /**
      * 跳转投资页面
@@ -262,4 +270,6 @@ public class pageJump {
     public String Login(){
         return "permission/toLogin";
     }
+
+    
 }

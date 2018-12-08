@@ -5,6 +5,7 @@ import com.group7.service.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -48,4 +49,14 @@ public class LoanServiceImpl implements LoanService {
     public int creditLoans(Map map) {
         return loanDao.creditLoans(map);
     }*/
+
+    @Override
+    public List<Map> getOverdueInfo(Map map) {
+        return loanDao.getOverdueInfo(map);
+    }
+
+    @Override
+    public int getPageCount(Map map) {
+        return loanDao.getPageCount(map);
+    }
 }

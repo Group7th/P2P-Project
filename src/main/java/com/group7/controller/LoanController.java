@@ -8,6 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -77,4 +79,17 @@ public class LoanController {
         return i;
     }
 
+    /**
+     * 查询逾期的信息列表
+     * @param map
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/OverdueInfo")
+    public Map OverdueInfo(@RequestBody Map map){
+        Map tempMap = new HashMap();
+        tempMap.put("page",loanService.getOverdueInfo(map));
+        tempMap.put("totel",loanService.getPageCount(map));
+        return tempMap;
+    }
 }
