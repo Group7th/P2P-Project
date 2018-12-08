@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.group7.dao.JinNangDao">
+    <select id="getId" resultType="map">
+        select ID  from TB_USER where username=#{userName}
+    </select>
+
+    <insert id="addJInNang">
+        INSERT INTO TB_JINNANG(ISSUER_ID,ID,HEADLINE,CONTENT,PRAISE) VALUES (#{userId},seq_tb_jinnang.nextval,#{headline},#{content},0)
+    </insert>
+
+    <select id="getJinNangListMap" resultType="map">
+        select  a.*,b.username,c.HEADPORTRAIT from tb_jinnang  a,tb_user b,tb_userinformation c where a.issuer_id=b.id and a.issuer_id=c.userid
+            <if test="type==2">
+               and a.ID=#{id}
+            </if>
+    </select>
+</mapper>

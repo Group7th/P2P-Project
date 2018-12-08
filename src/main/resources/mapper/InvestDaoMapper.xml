@@ -121,9 +121,10 @@
 
     <!--查询贷款和个人信息-->
     <select id="investment" resultType="map">
-        select a.*,to_char(BEGINTIME,'yyyy-MM-dd') as ABEGINTIME,to_char(TDATE,'yyyy-MM-dd') as ATDATE  from tb_loans a
+        select a.*,c.*,d.*,b.USERNAME as NAME,to_char(BEGINTIME,'yyyy-MM-dd') as ABEGINTIME,to_char(TDATE,'yyyy-MM-dd') as ATDATE  from tb_loans a
         join tb_user b on a.userId=b.id
         join tb_userinformation c on b.id=c.userid
+        join tb_loanstype d on d.loansId=a.loansId
         <where>
             <if test="loansId!=null">
                 and a.loansId=#{loansId}
@@ -134,18 +135,23 @@
 
     <!--添加投资信息-->
     <insert id="investmentAmount"  >
-          insert into tb_investment values(seq_tb_investment_id.nextval,#{userId},#{loansId},#{investmentMoney},sysdate,#{interestrate})
+          insert into tb_investment values(seq_tb_investment_id.nextval,(select id from  tb_user where userName = #{userName}),#{loansId},#{investmentMoney},sysdate,#{interestrate})
     </insert>
 
     <!--查询投资人 不能重复投资-->
     <select id="investmentVerify" resultType="map">
-        select investmentId  from tb_investment where userId = #{userId} and loansId = #{loansId}
+        select investmentId  from tb_investment where userId =(select id from  tb_user where userName = #{userName}) and loansId = #{loansId}
     </select>
 
 
     <!--修该投资表投资金额-->
     <update id="investmentMoeny" >
-        update tb_loans set investmentamount = #{investmentamount}+ #{investmentMoney} where userId = #{userId} and loansId = #{loansId}
+        update tb_loans set investmentamount = #{investmentamount}+ #{investmentMoney} where  loansId = #{loansId}
     </update>
+
+    <!--查询贷款 投资信息-->
+    <select id="investmentInformation" resultType="map">
+        select a.*,(select userName from tb_user where id=a.userid) as userName  from tb_investment a join tb_user b on b.id=a.userid where loansId = #{loansId}
+    </select>
 
 </mapper>

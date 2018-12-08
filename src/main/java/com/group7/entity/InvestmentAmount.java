@@ -18,6 +18,7 @@ public class InvestmentAmount  {
     investmentdate  TIMESTAMP(6),
     interestrate*/
 
+    private String userName;        //当前登陆用户名
     private Integer investmentId;  //投资ID
     private Integer userId;        //用户ID
     private Integer loansId;       //贷款ID
@@ -27,18 +28,16 @@ public class InvestmentAmount  {
     private Integer investmentamount;  //投资总金额
     private Integer loansmoney; //贷款总金额
 
-    @Override
-    public String toString() {
-        return "InvestmentAmount{" +
-                "investmentId=" + investmentId +
-                ", userId=" + userId +
-                ", loansId=" + loansId +
-                ", investmentMoney=" + investmentMoney +
-                ", investmentDate=" + investmentDate +
-                ", interestrate=" + interestrate +
-                ", investmentamount=" + investmentamount +
-                ", loansmoney=" + loansmoney +
-                '}';
+
+    public InvestmentAmount() {
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public Integer getInvestmentId() {
@@ -105,10 +104,23 @@ public class InvestmentAmount  {
         this.loansmoney = loansmoney;
     }
 
-    public InvestmentAmount() {
+    @Override
+    public String toString() {
+        return "InvestmentAmount{" +
+                "userName='" + userName + '\'' +
+                ", investmentId=" + investmentId +
+                ", userId=" + userId +
+                ", loansId=" + loansId +
+                ", investmentMoney=" + investmentMoney +
+                ", investmentDate=" + investmentDate +
+                ", interestrate=" + interestrate +
+                ", investmentamount=" + investmentamount +
+                ", loansmoney=" + loansmoney +
+                '}';
     }
 
-    public InvestmentAmount(Integer investmentId, Integer userId, Integer loansId, Integer investmentMoney, Data investmentDate, Integer interestrate, Integer investmentamount, Integer loansmoney) {
+    public InvestmentAmount(String userName, Integer investmentId, Integer userId, Integer loansId, Integer investmentMoney, Data investmentDate, Integer interestrate, Integer investmentamount, Integer loansmoney) {
+        this.userName = userName;
         this.investmentId = investmentId;
         this.userId = userId;
         this.loansId = loansId;

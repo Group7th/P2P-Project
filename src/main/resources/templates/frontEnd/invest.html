@@ -309,8 +309,7 @@
                                     var a = "满标";
                                     var b = "立即投资";
                                     for (var i = 0; i < data.inves.length; i++) {
-
-                                        if(data.inves[i].LOANSTYPE==1){
+                                        if(Number(data.inves[i].LOANSTYPE)==3){
                                             LOANSTYPE="信用"
                                         }else{
                                             LOANSTYPE="抵押"

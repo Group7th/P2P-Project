@@ -270,6 +270,4 @@ public class pageJump {
     public String Login(){
         return "permission/toLogin";
     }
-
-    
 }

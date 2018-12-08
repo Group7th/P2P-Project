@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +29,9 @@ public class InvestController {
     @Autowired  //依赖注入
     private InvestService investService;
 
+    @Autowired
+    private HttpSession session;
+
 
     /**
      * 投资选择页面
@@ -42,6 +47,7 @@ public class InvestController {
         Map invesCount = investService.getInvesCount(map);  //获取页码信息
         tempMap.put("inves",inves);
         tempMap.put("invesCount",invesCount);
+        //System.out.println(inves);
         return tempMap;
     }
 
@@ -54,6 +60,7 @@ public class InvestController {
     @RequestMapping("/investment")
     public Object investment(@RequestParam Map map){
         Map investment = investService.investment(map);
+        System.out.println(investment);
         return investment;
     }
 
@@ -75,17 +82,37 @@ public class InvestController {
 
     /**
      * 查询投资信息  不能重复投资
-     * @param userId
      * @param loansId
      * @return
      */
     @ResponseBody
     @RequestMapping("/investmentVerify")
-    public Object investmentVerify(@RequestParam Integer userId,Integer loansId){
-        //System.out.println(userId+","+loansId);
-        Map map = investService.investmentVerify(userId, loansId);
+    public Object investmentVerify(Integer loansId){
+        Object userSession = session.getAttribute("userSession");
+        String userName =userSession+"";
+        Map map = investService.investmentVerify(userName, loansId);
         return map;
     }
+
+    /**
+     * 查询投资信息  不能重复投资
+     * @param loansId
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/investmentInformation")
+    public Object investmentInformation(Integer loansId){
+        System.out.println(loansId);
+        List<Map> maps = investService.investmentInformation(loansId);
+        System.out.println(maps);
+        return maps;
+    }
+
+
+
+
+
+
 
 
 
