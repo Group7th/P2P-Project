@@ -66,6 +66,15 @@ public class pageJump {
         return "frontEnd/Account";
     }
 
+    /**
+     * 测试招标审核
+     * @return
+     */
+    @RequestMapping("/toLoanAudit")
+    public String toLoanAudit(){
+        return "backStage/LoanAudit";
+    }
+
 
     /**
      * 跳转投资页面
@@ -216,10 +225,15 @@ public class pageJump {
     }
 
 
-    @RequestMapping("tojinNang")
-    public String tojinNang(){
-        return "frontEnd/jinNang";
+    /**
+     * 权限管理  角色信息
+     * @return
+     */
+    @RequestMapping("/permission")
+    public String permission(){
+        return "permission/authorityManagement";
     }
+
 
 
     @RequestMapping("tojinNangXinXi")
@@ -237,6 +251,10 @@ public class pageJump {
         return"frontEnd/SSCW";
     }
 
+    @RequestMapping("tojinNang")
+    public String tojinNang(){
+        return "frontEnd/jinNang";
+    }
 
     /**
      * 修改权限树

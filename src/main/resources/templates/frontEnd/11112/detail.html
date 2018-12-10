@@ -240,7 +240,7 @@
                                 </dl>
                             </div>
                                    <!-- 抵押物信息 -->
-                                     <h2 class="det_proone_tit" id="DYWXX"></h2>
+                                     <h2 class="det_proone_tit" id="DYWXX">信用贷款</h2>
                                      <div class="det_dywxx_ul">
 										 <span id="DYWZJ"></span> &nbsp;&nbsp;&nbsp;&nbsp;
 										 <span id="DYPG"></span>
@@ -586,12 +586,11 @@
             dataType: "json",
             data: {loansId:loansId},
             success: function (data) {
-                alert(data[0].USERNAME)
 				if(data!=null&&data!=''){
                     var str = "";
                     for (var i = 0; i < data.length; i++) {
                         str +="<tr>"+
-							    "<td>"+data[i].USERNAME+"</td>"+
+							    "<td>"+(data[i].USERNAME.substr(0,1)+"****")+"</td>"+
                             	"<td>"+data[i].INVESTMENTMONEY+"</td>"+
                             	"<td>"+data[i].INVESTMENTDATE+"</td>"+
 							 	"<td>"+'手动投标'+"</td>"+
@@ -669,10 +668,8 @@
 
 							}
 
-
-
 						//判断是否满标
-						if(data.NAME==username){
+						if(data.TONAME==username){
                             $(".financing").hide();
                             $(".one").show();
                             $(".one").html("立即投资");

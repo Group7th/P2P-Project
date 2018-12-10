@@ -9,33 +9,70 @@
 <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="js/all.js"></script>
 <title>中兴财富首页</title>
-
-
 </head>
 
 <body>
 <!--top--------------------------------------------------------------------------------------------------------------->
-		<div id="head">
-			<script>
-                $(document).ready(function(){
-                    $("#head").load("toHead");
-                });
-			</script>
+
+	<div class="zxcf_top_wper">
+		<div class="zxcf_top px1000 clearfix">
+			 <div class="zxcf_top_l fl">
+			    <img src="images/zxcf_phone.png" alt="">
+			    400-027-0101(工作时间9:00-17:30)
+			    <a href="#"><img src="images/zxcf_weixin.png" alt=""></a>
+			    <a href="#"><img src="images/zxcf_sina.png" alt=""></a>
+			    <a href="#"><img src="images/zxcf_qq.png" alt=""></a>
+			 </div>
+			 <div class="zxcf_top_r fr">
+			 	<a href="toLogin" class="curspan">立即登录</a>
+			 	<span>|</span>
+			 	<a href="toRegister">免费注册</a>
+			 	<span>|</span>
+			 	<a href="toproblem">常见问题</a>
+			 </div>
 		</div>
+	</div>
+	<!-- end top -->
+	<div class="zxcf_nav_wper">
+		<div class="zxcf_nav clearfix px1000">
+			 <div class="zxcf_nav_l fl"><img src="images/zxcf_logo.png" alt=""></div>
+			 <div class="zxcf_nav_r fr">
+			 	<img src="images/zxcf_perinfo.png" alt="">
+			 	<span>我的账户
+			 	<img src="images/zxcf_icon01.png" alt=""></span>
+			 	<ul class="zxcf_perinfo" style="display:none;">
+			 		<li ><a href="#" style="color: #6cd159">切换账号</a></li>
+			 		<li ><a href="logout"  style="color: red">注销</a></li>
+
+			 	</ul>
+			 </div>
+		</div>
+	</div>
+	<div class="zxcf_menu_wper">
+		<div class="zxcf_menu px1000">
+			  <a href="toIndex" class="zm_cura">首页</a>
+			  <a href="toInvest">我要投资</a>
+			  <a href="toBorrow">我要借款</a>
+			  <a href="#">实时财务</a>
+			  <a href="toGeRenZhongXinShouYe">账户信息</a>
+			  <a href="#" style="margin-right:0;">关于我们</a>
+		</div>
+	</div>
+<!--banner------------------------------------------------------------------------------------------------------------>
+	<div class="banner" id="banner">
+    	<a href="#" class="focus">
+       	<div class="left" id="left" onclick="left()"></div>
+       	<ul>
+            	<li><em id="em1" onclick="Focus1()" style="background-color:#888"></em></li>
+                <li><em id="em2" onclick="Focus2()"></em></li>
+                <li><em id="em3" onclick="Focus3()"></em></li>
+                <li style="margin-right:0px;"><em id="em4" onclick="Focus4()"></em></li>
+            </ul>
+            <div class="right" id="right" onclick="right()"></div>
+        </a>
+    </div>
 <!--announcement------------------------------------------------------------------------------------------------------>
-<div class="banner" id="banner">
-    <a href="#" class="focus">
-        <div class="left" id="left" onclick="left()"></div>
-        <ul>
-            <li><em id="em1" onclick="Focus1()" style="background-color:#888"></em></li>
-            <li><em id="em2" onclick="Focus2()"></em></li>
-            <li><em id="em3" onclick="Focus3()"></em></li>
-            <li style="margin-right:0px;"><em id="em4" onclick="Focus4()"></em></li>
-        </ul>
-        <div class="right" id="right" onclick="right()"></div>
-    </a>
-</div>
-<div class="announcement">
+	<div class="announcement">
     	<p>最新公告</p>
         <a href="#"><span>关于中国民生银行P2P网络资金存管系统部分时间段无法使用的重要通知</span></a>
 		<script type="text/javascript" src="http://z1-pcok6.kuaishangkf.com/bs/ks.j?cI=245561&fI=128126" charset="utf-8"></script>
@@ -88,7 +125,7 @@
 			<a href="#">更多</a>
         </div>
         <div class="pocket">
-        	<a class="pocket-thear" href="tojinNang">
+        	<a class="pocket-thear" href="toDetail">
             	<ol>
                 	<li>大咖云集</li>
                     <li>见微知著</li>
@@ -97,7 +134,7 @@
                 </ol>
             </a>
             <ul>
-            	<a href="tojinNang" style="border-right:solid 1px #E5E5E5; border-bottom:solid 1px #E5E5E5;">
+            	<a href="#" style="border-right:solid 1px #E5E5E5; border-bottom:solid 1px #E5E5E5;">
                 	<article>
                     	<img src="image/icon-zplay.png"/>
                         <figcaption>锦 小 囊</figcaption>
@@ -119,7 +156,7 @@
                         <h3>阅读1104&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;赞97&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;评论189</h3>
                     </aside>
                 </a>
-                <a href="tojinNang" style="border-right:solid 1px #E5E5E5;;">
+                <a href="#" style="border-right:solid 1px #E5E5E5;;">
                 	<article>
                     	<img src="image/icon-yplan.png"/>
                         <figcaption>一叶知秋</figcaption>
@@ -130,7 +167,7 @@
                         <h3>阅读1721&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;赞142&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;评论8</h3>
                     </aside>
                 </a>
-                <a href="tojinNang" style="">
+                <a href="#" style="">
                 	<article>
                     	<img src="image/icon-zplay.png"/>
                         <figcaption>锦 小 囊</figcaption>
@@ -221,8 +258,6 @@
     </div>
 <script type="text/javascript">
     $(function(){
-
-
         $.ajax({
             url : "indexInformation",
             type : "POST",
@@ -253,7 +288,8 @@
 
 
                         str+="<li  style='background-image:url("+url+")'>"+
-							    " <a href='#' style='color: #ff7512;font-size: 5px'>"+name+"先生正在进行征信贷款</a>"+
+                                 " <a href='#' style='color: #ff7512;font-size: 5px'>"+name+"先生正在进行征信贷款</a>"+
+
                                 "<p>"+data[i].REFUNDWAY+"</p>"+
                                 "<meter max=\"1\" min=\"0\" value="+mvalue+" high=\"200\" low=\"33\" optimum=\"1\" style='width: 180px;height: 10px' ></meter>"+
                                 "<figcaption>"+data[i].LOANSMONEY/10000+"万/"+data[i].INVESTMENTAMOUNT/10000+
