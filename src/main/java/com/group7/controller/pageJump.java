@@ -262,6 +262,15 @@ public class pageJump {
     }
 
     /**
+     * 网站头部
+     * @return
+     */
+    @RequestMapping("toHead")
+    public String toHead(){
+        return"frontEnd/head";
+    }
+
+    /**
      * 账户管理
      * @return
      */
@@ -283,5 +292,14 @@ public class pageJump {
     @RequestMapping("/loginTo")
     public String Login(){
         return "permission/toLogin";
+    }
+
+    /**
+     * 投资支付密码
+     * @return
+     */
+    @RequestMapping("/investmentPassword")
+    public String investmentPassword(){
+        return "backStage/investmentPassword";
     }
 }
