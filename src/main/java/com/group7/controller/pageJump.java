@@ -13,15 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class pageJump {
 
     /**
-     * 身份证验证界面
-     * @return
-     */
-    @RequestMapping("/toIdentity")
-    public String toIdentity(){
-        return "backStage/IDCardIdentity";
-    }
-
-    /**
      * 支付密码界面
      * @return
      */
@@ -75,23 +66,6 @@ public class pageJump {
         return "frontEnd/Account";
     }
 
-    /**
-     * 测试招标审核
-     * @return
-     */
-    @RequestMapping("/toLoanAudit")
-    public String toLoanAudit(){
-        return "backStage/LoanAudit";
-    }
-
-    /**
-     * 跳转逾期审核
-     * @return
-     */
-    @RequestMapping("/toOverdueAudit")
-    public String toOverdueAudit(){
-        return "backStage/OverdueAudit";
-    }
 
     /**
      * 跳转投资页面
@@ -232,7 +206,6 @@ public class pageJump {
         return "yirenbaopage/个人中心-账户设置.html";
     }
 */
-
     /**
      * 资金纪录
      * @return
@@ -243,14 +216,27 @@ public class pageJump {
     }
 
 
-    /**
-     * 权限管理  角色信息
-     * @return
-     */
-    @RequestMapping("/permission")
-    public String permission(){
-        return "permission/authorityManagement";
+    @RequestMapping("tojinNang")
+    public String tojinNang(){
+        return "frontEnd/jinNang";
     }
+
+
+    @RequestMapping("tojinNangXinXi")
+    public String tojinNangXinXi(){
+        return "frontEnd/jinNangXinxi";
+    }
+
+    @RequestMapping("toHead")
+    public String toHead(){
+        return "frontEnd/head";
+    }
+
+    @RequestMapping("toSSCW")
+    public String toSSCW(){
+        return"frontEnd/SSCW";
+    }
+
 
     /**
      * 修改权限树
@@ -270,11 +256,6 @@ public class pageJump {
         return "permission/accountManagement";
     }
 
-    @RequestMapping("toSSCW")
-    public String toSSCW(){
-        return"frontEnd/SSCW";
-    }
-
 
     /**
      * 后台登陆
@@ -284,4 +265,29 @@ public class pageJump {
     public String Login(){
         return "permission/toLogin";
     }
+
+
+    /**
+     * 投资支付密码
+     * @return
+     */
+    @RequestMapping("/investmentPassword")
+    public String investmentPassword(){
+        return "backStage/investmentPassword";
+    }
+
+    /**
+     * 满标一审信息表
+     * @return
+     */
+    @RequestMapping("/toIoansAccomplishAudit")
+    public String toIoansAccomplishAudit(){
+        return "backStage/IoansAccomplishAudit";
+    }
+
+
+
+
+
+
 }
