@@ -17,7 +17,7 @@ import java.util.Map;
 
 /**
  * className:InvestController
- * discriptoin:
+ * discriptoin:     投资页面显示 和 投资信息
  * author:ZHEN
  * createTime:2018-11-23 21:12
  */
@@ -74,8 +74,10 @@ public class InvestController {
     public Object investmentAmount(@RequestBody InvestmentAmount invest){
         System.out.println(invest.toString());
         int i = investService.investmentAmount(invest);//添加投资信息
+        System.out.println(i);
         if(i>0){
-            investService.investmentMoeny(invest);//修该投资表投资金额
+            int i1 = investService.investmentMoeny(invest);//修该投资表投资金额
+            System.out.println(i1+"------------");
         }
         return i;
     }
@@ -102,9 +104,9 @@ public class InvestController {
     @ResponseBody
     @RequestMapping("/investmentInformation")
     public Object investmentInformation(Integer loansId){
-        System.out.println(loansId);
+       // System.out.println(loansId);
         List<Map> maps = investService.investmentInformation(loansId);
-        System.out.println(maps);
+      //  System.out.println(maps);
         return maps;
     }
 

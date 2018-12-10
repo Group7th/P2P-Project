@@ -53,18 +53,17 @@ public class LoginController {
 		}
 		return null;
 	}
-
-	/**
-	 * 用户注销，跳转到登陆页面
-	 * @param request
-	 * @return
-	 */
-	@RequestMapping("UserExit")
-	public String UserExit(HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		session.removeAttribute("userSession");
-		String s =(String) session.getAttribute("userSession");
-		System.out.println("-------------------"+s);
-		return "frontEnd/login";
-	}
+		/**
+		 * 用户注销，跳转到登陆页面
+		 * @param request
+		 * @return
+		 */
+		@RequestMapping("UserExit")
+		public String UserExit(HttpServletRequest request) {
+			HttpSession session = request.getSession();
+			session.removeAttribute("userSession");
+			String s =(String) session.getAttribute("userSession");
+			System.out.println("-------------------"+s);
+			return "frontEnd/login";
+		}
 }

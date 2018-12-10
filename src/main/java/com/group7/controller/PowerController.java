@@ -24,12 +24,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 /**
- * 权限树
- *@className:PowerController.java
- *@scription:
- *@author:zz
- *@createTime:2018-9-20下午3:37:02
- *@version:1.0.0
+ * className:InvestController
+ * discriptoin:   权限树 和 后台登陆
+ * author:ZHEN
+ * createTime:2018-11-23 21:12
  */
 
 @Controller

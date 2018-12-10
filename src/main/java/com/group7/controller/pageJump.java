@@ -252,6 +252,24 @@ public class pageJump {
         return "permission/authorityManagement";
     }
 
+
+
+    @RequestMapping("tojinNangXinXi")
+    public String tojinNangXinXi(){
+        return "frontEnd/jinNangXinxi";
+    }
+
+
+    @RequestMapping("toSSCW")
+    public String toSSCW(){
+        return"frontEnd/SSCW";
+    }
+
+    @RequestMapping("tojinNang")
+    public String tojinNang(){
+        return "frontEnd/jinNang";
+    }
+
     /**
      * 修改权限树
      * @return
@@ -279,11 +297,6 @@ public class pageJump {
         return "permission/accountManagement";
     }
 
-    @RequestMapping("toSSCW")
-    public String toSSCW(){
-        return"frontEnd/SSCW";
-    }
-
 
     /**
      * 后台登陆
@@ -294,6 +307,7 @@ public class pageJump {
         return "permission/toLogin";
     }
 
+
     /**
      * 投资支付密码
      * @return
@@ -302,4 +316,19 @@ public class pageJump {
     public String investmentPassword(){
         return "backStage/investmentPassword";
     }
+
+    /**
+     * 满标一审信息表
+     * @return
+     */
+    @RequestMapping("/toIoansAccomplishAudit")
+    public String toIoansAccomplishAudit(){
+        return "backStage/IoansAccomplishAudit";
+    }
+
+
+
+
+
+
 }
