@@ -142,10 +142,10 @@ public class pageJump {
      * 个人中心首页
      * @return
      */
-   /* @RequestMapping("toGeRenZhongXinShouYe")
-    public String toGeRenZhongXinShouYe(){
-        return "yirenbaopage/GRZX.html";
-    }*/
+//    @RequestMapping("toGeRenZhongXinShouYe")
+//    public String toGeRenZhongXinShouYe(){
+//        return "yirenbaopage/GRZX";
+//    }
 
     /**
      * 个人中心充值
@@ -223,6 +223,15 @@ public class pageJump {
     }
 
 
+    /**
+     * 账号设置
+     * @return
+     */
+   /* @RequestMapping("toGRZXZhangHao")
+    public String toGRZXZhangHao(){
+        return "yirenbaopage/个人中心-账户设置.html";
+    }
+*/
 
     /**
      * 资金纪录
@@ -259,6 +268,11 @@ public class pageJump {
     @RequestMapping("/accountManagement")
     public String accountManagement(){
         return "permission/accountManagement";
+    }
+
+    @RequestMapping("toSSCW")
+    public String toSSCW(){
+        return"frontEnd/SSCW";
     }
 
 

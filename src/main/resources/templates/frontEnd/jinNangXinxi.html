@@ -13,6 +13,7 @@
         EvPNG.fix('div, ul, img, li, input,span, p');
     </script>
     <![endif]-->
+    <link rel="stylesheet" type="text/css" href="style/style.css"/>
     <script type="text/javascript" src="js/vue.js"></script>
     <script type="text/javascript" src="js/axios.min.js"></script>
     <!-- 引入样式 -->
@@ -85,60 +86,13 @@
 
 <div id="xinxi">
 
-
+    </div>
+    <div id="pinglunxinxi">
 
     </div>
-
-    <div style="margin-left: 120px;">
-        <img  style=" border-radius:50px; width: 30px;height: 30px" src="image/icon-zplay.png"/>
-        <span style="color:#ff6600">锦 小 囊</span><br>
-        <h3>啊发撒解放军就爱上了大家放假啊说了句拉睡觉了吉拉斯的<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|回复</a></h3>
-        <p style="color: #999999">----------------------------</p>
-    </div>
-    <div style="margin-left: 120px;">
-        <img  style=" border-radius:50px; width: 30px;height: 30px" src="image/icon-zplay.png"/>
-        <span style="color:#ff6600">锦 小 囊</span><br>
-        <h3>啊发撒解放军就爱上了大家放假啊说了句拉睡觉了吉拉斯的<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|回复</a></h3>
-        <p style="color: #999999">----------------------------</p>
-    </div>
-    <div style="margin-left: 120px;">
-        <img  style=" border-radius:50px; width: 30px;height: 30px" src="image/icon-zplay.png"/>
-        <span style="color:#ff6600">锦 小 囊</span><br>
-        <h3>啊发撒解放军就爱上了大家放假啊说了句拉睡觉了吉拉斯的<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|回复</a></h3>
-        <p style="color: #999999">----------------------------</p>
-    </div>
-
 </div>
 </div>
-<script type="text/javascript">
 
-    var vm = new Vue({
-        el:'.notic_con',
-        data:{
-            dialogVisible: false
-        },
-        methods: {
-            handleClose:function () {
-
-            },
-            tiJiao:function () {
-                var biaoTi=$("#biaoTi").val()
-                var neiRong=$("#neiRong").val()
-                var searchForm = {
-                    'headline':biaoTi,
-                    'content': neiRong,
-                };
-                axios.post('faBuJinNang', searchForm).then(function (response) {
-                    console.log("toJinNang")
-                })
-            }
-        }
-
-
-    });
-
-
-</script>
 <script type="text/javascript">
     $(function(){
         /* 用途: 接收地直栏参数 取id=1 根据ID的值 */
@@ -150,14 +104,16 @@
         var newsid=newsids[1];//得到参数值
 
 
+
         $.ajax({
-            url : "getJinNangXinXi?id="+newsid,
+            url : "getJinNangXinXi?ID="+newsid,
             type : "POST",
             dataType : "json",
             success : function(data){
                 var str="";
                 var imge="/p2p/showFtp?fileName="+data[0].HEADPORTRAIT;
                 if(data!=''){
+
                     var zSize=data[0].PRAISE
                     str+="<div style=\"margin-left: 50px\">\n" +
                         "        <img  style=' border-radius:50px;width: 60px;height: 60px' src="+imge+">" +
@@ -173,13 +129,13 @@
                         "            <span class='likeCount' id='likeCount2' style='height: 40px;width: 30px;'>"+zSize+"</span>" +
                         "        </div>\n" +
                         "        <div class=\"right\" style=\"float:left;margin-left:100px;\">\n" +
-                        "            <img src=\"images/pinglun.png\">\n" +
-                        "            <a href=\"#\">(500)</a>\n" +
+                        "            <img style='border-radius:50px' src=\"images/pinglun.png\">\n" +
+                        "            <a href='#'>("+data[1].commentCount+")</a>" +
                         "        </div>\n" +
                         "    </div>\n" +
                         "    <div style=\"margin-left: 120px;\">\n" +
                         "        <h3>发表评论:</h3><input id=\"pinglun\" type=\"text\" style=\"width: 500px\">\n" +
-                        "        <input id=\"tiJiao\" type=\"button\" value=\"提交\">\n" +
+                        "        <input id='tiJiao' type=\"button\" value=\"提交\">\n" +
                         "    </div><br>"
 
                 }
@@ -188,6 +144,33 @@
         })
     })
 
+
+
+
+
+
+    $("#xinxi").on("click","#tiJiao",function () {
+        var urlinfo=window.location.href; //获取当前页面的url
+        var len=urlinfo.length;//获取url的长度
+        var offset=urlinfo.indexOf("?");//设置参数字符串开始的位置
+        var newsidinfo=urlinfo.substr(offset,len);//取出参数字符串 这里会获得类似“id=1”这样的字符串
+        var newsids=newsidinfo.split("=");//对获得的参数字符串按照“=”进行分割
+        var newsid=newsids[1];//得到参数值
+        var prame={
+            "content":$("#pinglun").val(),
+            "jinnangid":newsid
+        }
+        $.ajax({
+            type: "post",
+            url:"addComment",
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            data: JSON.stringify(prame),
+            success : function(data){
+                window.location.reload();
+            }
+        });
+    });
 
 </script>
 <script>
@@ -223,5 +206,89 @@
 
     });
 </script>
+<script>
+    $(function(){
+        /* 用途: 接收地直栏参数 取id=1 根据ID的值 */
+        var urlinfo=window.location.href; //获取当前页面的url
+        var len=urlinfo.length;//获取url的长度
+        var offset=urlinfo.indexOf("?");//设置参数字符串开始的位置
+        var newsidinfo=urlinfo.substr(offset,len);//取出参数字符串 这里会获得类似“id=1”这样的字符串
+        var newsids=newsidinfo.split("=");//对获得的参数字符串按照“=”进行分割
+        var newsid=newsids[1];//得到参数值
+        $.ajax({
+            url : "getCommentList?jinnangid="+newsid,
+            type : "POST",
+            dataType : "json",
+            success : function(data){
+                var str="";
+                if(data!=''){
+                    for(var i=0;i<data.length;i++){
+                        var imge="/p2p/showFtp?fileName="+data[i].HEADPORTRAIT;
+                        str+="<div style=\"margin-left: 120px;\">\n" +
+                            "        <img  style=' border-radius:50px; width: 30px;height: 30px' src="+imge+">" +
+                            "        <span style='color:#ff6600'>"+data[i].USERNAME+"</span><br>" +
+                            "        <h3>"+data[i].CONTENT+"<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|回复</a></h3>\n" +
+                            "        <p style=\"color: #999999\">----------------------------</p>\n" +
+                            "    </div>"
+                    }
+
+                }
+                $("#pinglunxinxi").append(str)
+            }
+        })
+
+
+    })
+
+</script>
+
+<div class="content-wrap">
+    <div class="c-wrap">
+        <h1>合作机构</h1>
+        <div id="tby"></div>
+        <div class="scroll">
+            <a href="###" class="left2" onclick="left2()"></a>
+            <div>
+                <img id="roll1" src="image/wrap-广发基金.gif" />
+                <img id="roll2" src="image/wrap-华夏基金.gif" />
+                <img id="roll3" src="image/wrap-建信基金.gif" />
+                <img id="roll4" src="image/wrap-汇添富基金.gif" />
+                <img id="roll5" src="image/wrap-鹏华基金.gif" />
+                <img id="roll6" src="image/wrap-工银瑞信.gif" />
+            </div>
+            <a href="###" class="right2" onclick="right2()"></a>
+        </div>
+    </div>
+</div>
+<!--footer------------------------------------------------------------------------------------------------------------>
+<div class="footer">
+    <div class="foot">
+        <article>
+            <div class="friend">
+                <a href="#">关于我们</a>
+                <span></span>
+                <a href="#">法律声明</a>
+                <span></span>
+                <a href="#">媒体报道</a>
+                <span></span>
+                <a href="#">团队介绍</a>
+                <span></span>
+                <a href="#">帮助中心</a>
+                <span></span>
+                <a href="#">友情链接</a>
+            </div>
+            <figure></figure>
+            <p>© 2016 北京乐融多源信息技术有限公司 京ICP证12049103号-3 京公网安备11010502025440</p>
+            <div class="certificate"></div>
+        </article>
+        <aside>
+            <p>联系我们 <span>9:00 - 21:00</span> </p>
+            <h1>400-068-1176</h1>
+            <div class="customer"><a href="#">在线客服</a></div>
+            <div class="customer"><a href="#">客服邮箱</a></div>
+        </aside>
+    </div>
+
+</div>
 </body>
 </html>

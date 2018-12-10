@@ -13,6 +13,7 @@
         EvPNG.fix('div, ul, img, li, input,span, p');
     </script>
     <![endif]-->
+    <link rel="stylesheet" type="text/css" href="style/style.css"/>
     <script type="text/javascript" src="js/vue.js"></script>
     <script type="text/javascript" src="js/axios.min.js"></script>
     <!-- 引入样式 -->
@@ -95,32 +96,9 @@
 
 
         <div id="rq">
-            <div class="jinNang" style="font-size: 15px"  >
-                <div style="margin-left: 25px">
-                    <img style="border-radius:50px" src="image/icon-zplay.png"/>
-                    <span style="color:#ff6600">锦 小 囊</span>
-                </div>
-                <div style="background-color: white;width: 80%;margin:0 auto;border-radius:20px">
-                    <a style="color: black" href="">
-                        <br>
-                        不同的钱做不同的事，这是理财的一个基本常识..........
-                        不同的钱做不同的事，这是理财的一个基本常识..........
-                        不同的钱做不同的事，这是理财的一个基本常识..........
-                        <br>&nbsp;
 
-                    </a>
-                </div><br>
-                <div class="feed" id="feed2" style="width: 200px;height:60px;margin-bottom: 10px;">
-                    <div class="heart" id="like2" rel="like" style=" height: 40px;float:left;">
-                        <span class="likeCount" id="likeCount2" style="height: 40px;width: 30px;">10</span>
-                    </div>
-                    <div class="right" style="float:left;margin-left:100px;">
-                        <img style="border-radius:50px" src="images/pinglun.png">
-                        <a href="#">(500)</a>
-                    </div>
-                </div>
 
-            </div>
+
 
         </div>
 
@@ -146,7 +124,7 @@
                     'content': neiRong,
                 };
                 axios.post('faBuJinNang', searchForm).then(function (response) {
-                    console.log("toJinNang")
+                    window.location.reload();
                 })
             }
         }
@@ -165,6 +143,7 @@
             if(data!=''){
                 var str="";
                 for(var i =0;i<data.length;i++){
+
                     var imge="/p2p/showFtp?fileName="+data[i].HEADPORTRAIT;
 
 
@@ -173,22 +152,23 @@
                         "               <img style='border-radius:50px;width: 50px;height: 50px' src="+imge+">" +
                         "               <span style='color:#ff6600'>"+data[i].USERNAME+"</span>\n" +
                         "        </div>"+
-                        "       <div style=\"background-color: white;width: 80%;margin:0 auto;border-radius:20px\">\n" +
-                        "           <a style='color: black' href='tojinNangXinXi?id="+data[i].ID+"'><br>"+data[i].HEADLINE+" <br>&nbsp;</a>" +
+                        "       <div style=\"background-color: white;width: 80%;margin:0 auto;border-radius:20px;text-align: center\">\n" +
+                        "           <h2 style='color: black;' href='tojinNangXinXi?id="+data[i].ID+"'><br>"+data[i].HEADLINE+" <br>&nbsp;</h2>" +
                         "       </div><br>"+
                         "       <div class='feed' id='feed2' style='width: 200px;height:60px;margin-bottom: 10px;'>" +
                         "             <div class='heart' id='like2' rel='like' style='height: 40px;float:left;'>" +
                         "       </div>" +
                         "       <div class='right' style='float:left;margin-left:100px;'>" +
                         "            <img style='border-radius:50px' src='images/pinglun.png'>" +
-                        "           <a href='tojinNangXinXi?id="+data[i].ID+"'>(500)</a>" +
+                        "           <a href='tojinNangXinXi?ID="+data[i].ID+"'>("+data[i].commentCount+")</a>" +
                         "        </div>" +
                         "    </div>" +
                         " </div>"
 
-
+                    $(".heart").addClass("heartAnimation").attr("rel","unlike");
                 }
                 $("#rq").append(str)
+                $(".heart").addClass("heartAnimation").attr("rel","unlike");
             }
         }
     })
@@ -205,7 +185,7 @@
             var messageID=B[1];
             var C=parseInt($("#likeCount"+messageID).html());
             $(this).css("background-position","")
-            var D=$(this).attr("rel");
+            var D=$(this).attr("left");
 
             if(D === 'like')
             {
@@ -226,5 +206,54 @@
 
     });
 </script>
+
+<div class="content-wrap">
+    <div class="c-wrap">
+        <h1>合作机构</h1>
+        <div id="tby"></div>
+        <div class="scroll">
+            <a href="###" class="left2" onclick="left2()"></a>
+            <div>
+                <img id="roll1" src="image/wrap-广发基金.gif" />
+                <img id="roll2" src="image/wrap-华夏基金.gif" />
+                <img id="roll3" src="image/wrap-建信基金.gif" />
+                <img id="roll4" src="image/wrap-汇添富基金.gif" />
+                <img id="roll5" src="image/wrap-鹏华基金.gif" />
+                <img id="roll6" src="image/wrap-工银瑞信.gif" />
+            </div>
+            <a href="###" class="right2" onclick="right2()"></a>
+        </div>
+    </div>
+</div>
+<!--footer------------------------------------------------------------------------------------------------------------>
+<div class="footer">
+    <div class="foot">
+        <article>
+            <div class="friend">
+                <a href="#">关于我们</a>
+                <span></span>
+                <a href="#">法律声明</a>
+                <span></span>
+                <a href="#">媒体报道</a>
+                <span></span>
+                <a href="#">团队介绍</a>
+                <span></span>
+                <a href="#">帮助中心</a>
+                <span></span>
+                <a href="#">友情链接</a>
+            </div>
+            <figure></figure>
+            <p>© 2016 北京乐融多源信息技术有限公司 京ICP证12049103号-3 京公网安备11010502025440</p>
+            <div class="certificate"></div>
+        </article>
+        <aside>
+            <p>联系我们 <span>9:00 - 21:00</span> </p>
+            <h1>400-068-1176</h1>
+            <div class="customer"><a href="#">在线客服</a></div>
+            <div class="customer"><a href="#">客服邮箱</a></div>
+        </aside>
+    </div>
+
+</div>
 </body>
 </html>

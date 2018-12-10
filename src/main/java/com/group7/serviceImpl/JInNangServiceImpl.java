@@ -31,4 +31,40 @@ public class JInNangServiceImpl implements JinNangService {
     public List<Map> getJinNangListMap(Map map) {
         return jinNangDao.getJinNangListMap(map);
     }
+
+    @Override
+    public int addComment(Map map) {
+        return jinNangDao.addComment(map);
+    }
+
+    @Override
+    public List<Map> commentList(Map map) {
+        return jinNangDao.commentList(map);
+    }
+
+    @Override
+    public int getCommentCount(Map map) {
+        int cont =Integer.valueOf(jinNangDao.getCommentCount(map).get(0).get("CONT")+"") ;
+        return cont;
+    }
+
+    @Override
+    public List<Map> getTouZiCWFenXi(int id) {
+        return jinNangDao.getTouZiCWFenXi(id);
+    }
+
+    @Override
+    public List<Map> getJieKuanCWFenXi(int id) {
+        return jinNangDao.getJieKuanCWFenXi(id);
+    }
+
+    @Override
+    public List<Map> getTouZiLieXingFenXi(int id) {
+        return jinNangDao.getTouZiLieXingFenXi(id);
+    }
+
+    @Override
+    public List<Map> getJieKuanLieXingFenXi(int id) {
+        return jinNangDao.getJieKuanLieXingFenXi(id);
+    }
 }
