@@ -1,0 +1,235 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>锦囊列表</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- <link rel="stylesheet/less" type="text/css" href="css/style.less" /> -->
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="js/all.js"></script>
+    <!--[if IE 6]>
+    <script src="./js/iepng.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        EvPNG.fix('div, ul, img, li, input,span, p');
+    </script>
+    <![endif]-->
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript" src="js/axios.min.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <!--点赞特效-->
+    <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="css/dianzan.css">
+
+</head>
+<body>
+<style>
+    .jinNang{
+        width:780px;
+        margin:20px auto;
+        border-radius:20px;
+        background-color: #DCEB9C;
+        box-shadow: darkgrey 10px 10px 30px 5px ;
+    }
+
+
+     .item {
+         margin-top: 10px;
+         margin-right: 40px;
+     }
+    input,textarea{
+        border: 1px solid #ccc;
+        padding: 7px 0px;
+        border-radius: 6px;
+        padding-left:5px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+        -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+        -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
+    }
+
+    input:focus{
+        border-color: red;
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+    }
+    textarea:focus{
+        border-color: #0aaae1;
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+    }
+
+</style>
+<!-- header start -->
+<div id="head">
+    <script>
+        $(document).ready(function(){
+            $("#head").load("toHead");
+        });
+    </script>
+</div>
+<!-- end  -->
+<div class="notic_con_wper">
+    <div class="notic_con px1000" style="background-color: white">
+
+
+        <el-button type="text" @click="dialogVisible = true">发布锦囊</el-button>
+        <el-dialog
+                title="锦囊"
+                    :visible.sync="dialogVisible"
+            width="30%"
+            :before-close="handleClose">
+            <span>标题</span><br><input id="biaoTi" type="text" style="width: 95%"><br>
+            <span>内容</span><br><textarea id="neiRong" style="height: 300px;width:95%"></textarea>
+
+            <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="tiJiao(dialogVisible = false)">提交</el-button>
+      </span>
+        </el-dialog>
+
+
+ <div id="rq">
+        <div class="jinNang" style="font-size: 15px"  >
+                            <div style="margin-left: 25px">
+                                    <img style="border-radius:50px" src="image/icon-zplay.png"/>
+                                    <span style="color:#ff6600">锦 小 囊</span>
+                            </div>
+                            <div style="background-color: white;width: 80%;margin:0 auto;border-radius:20px">
+                            <a style="color: black" href="">
+                                <br>
+                                不同的钱做不同的事，这是理财的一个基本常识..........
+                                不同的钱做不同的事，这是理财的一个基本常识..........
+                                不同的钱做不同的事，这是理财的一个基本常识..........
+                                <br>&nbsp;
+
+                            </a>
+                            </div><br>
+                            <div class="feed" id="feed2" style="width: 200px;height:60px;margin-bottom: 10px;">
+                                <div class="heart" id="like2" rel="like" style=" height: 40px;float:left;">
+                                    <span class="likeCount" id="likeCount2" style="height: 40px;width: 30px;">10</span>
+                                </div>
+                                <div class="right" style="float:left;margin-left:100px;">
+                                    <img style="border-radius:50px" src="images/pinglun.png">
+                                    <a href="#">(500)</a>
+                                </div>
+                            </div>
+
+                        </div>
+
+ </div>
+
+
+    </div>
+</div>
+<script type="text/javascript">
+
+    var vm = new Vue({
+        el:'.notic_con',
+        data:{
+            dialogVisible: false
+        },
+        methods: {
+            handleClose:function () {
+
+            },
+            tiJiao:function () {
+                var biaoTi=$("#biaoTi").val()
+                var neiRong=$("#neiRong").val()
+                var searchForm = {
+                    'headline':biaoTi,
+                    'content': neiRong,
+                };
+                axios.post('faBuJinNang', searchForm).then(function (response) {
+                        console.log("toJinNang")
+                })
+            }
+        }
+
+
+    });
+
+
+</script>
+<script type="text/javascript">
+    $.ajax({
+        url : "getJinNangListMap",
+        type : "POST",
+        dataType : "json",
+        success : function(data){
+            if(data!=''){
+                var str="";
+                for(var i =0;i<data.length;i++){
+                    var imge="image/icon-zplay.png";
+
+                    str+=" <div class=\"jinNang\" style=\"font-size: 15px\">"+
+                        "         <div style=\"margin-left: 25px\">\n" +
+                        "               <img style='border-radius:50px' src="+imge+">" +
+                        "               <span style='color:#ff6600'>"+data[i].USERNAME+"</span>\n" +
+                        "        </div>"+
+                        "       <div style=\"background-color: #EEEEEE;width: 80%;margin:0 auto;border-radius:20px\">\n" +
+                        "           <a style='color: black' href=''>"+data[i].HEADLINE+"</a>" +
+                        "       </div><br>"+
+                        "       <div class='feed' id='feed2' style='width: 200px;height:60px;margin-bottom: 10px;'>" +
+                        "             <div class='heart' id='like2' rel='like' style='height: 40px;float:left;'>" +
+                        "              <span class='likeCount' id='likeCount2' style='height: 40px;width: 30px;'>10</span>" +
+                        "       </div>" +
+                        "       <div class='right' style='float:left;margin-left:100px;'>" +
+                        "            <img src='images/pinglun.png'>" +
+                        "           <a href=''>(500)</a>" +
+                        "        </div>" +
+                        "    </div>" +
+                        " </div>"
+
+
+                }
+                $("#rq").append(str)
+            }
+        }
+    })
+</script>
+
+<script>
+  $(function () {
+      $("#like2").addClass("heartAnimation").attr("rel","unlike");
+  })
+
+    $(document).ready(function()
+    {
+
+        $('body').on("click",'.heart',function()
+        {
+
+            var A=$(this).attr("id");
+            var B=A.split("like");
+            var messageID=B[1];
+            var C=parseInt($("#likeCount"+messageID).html());
+            $(this).css("background-position","")
+            var D=$(this).attr("rel");
+
+            if(D === 'like')
+            {
+                $("#likeCount"+messageID).html(C+1);
+                $(this).addClass("heartAnimation").attr("rel","unlike");
+
+            }
+            else
+            {
+                $("#likeCount"+messageID).html(C-1);
+                $(this).removeClass("heartAnimation").attr("rel","like");
+                $(this).css("background-position","left");
+            }
+
+
+        });
+
+
+    });
+</script>
+</body>
+</html>

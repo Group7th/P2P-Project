@@ -3,11 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.group7.dao.BorrowingInformationDao">
-    <!--配置文件加这个Redis-->
-    <cache type="org.mybatis.caches.redis.RedisCache" blocking="false"
-           flushInterval="0" readOnly="true" size="1024" eviction="FIFO"/>
-    <select id="accountInfo" resultType="map">
+    <select id="getBorrowingList" resultType="map">
         select * from TB_LOANS WHERE LOANSTYPE=#{type}
     </select>
-
 </mapper>

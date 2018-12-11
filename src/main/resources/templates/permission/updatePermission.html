@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>修改树</title>
+    <script src="./new-easyui/jquery.min.js"></script>
+    <script src="./new-easyui/jquery.easyui.min.js"></script>
+    <link rel="stylesheet" href="./new-easyui/insdep.easyui.min.css">
+    <link rel="stylesheet" href="./new-easyui/insdep.theme_default.css">
+    <link rel="stylesheet" href="./new-easyui/icon.css">
+    <link rel="stylesheet" href="./easyui/themes/icon.css">
+    <link rel="stylesheet" href="./easyui/themes/default/easyui.css">
+
+</head>
+
+<script th:inline="javascript" >
+    //获取地址url方法
+    function GetQueryString(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);//search,查询？后面的参数，并匹配正则
+        if(r!=null)
+            return  unescape(r[2]);
+        return null;
+    }
+    $(function () {
+        var roleId = GetQueryString("roleId");  //和获取 url 传的值
+        // easyui 树的显示 向后台传值  查询出 放入
+        $("#tt").tree({url:"/p2p/powerCheckedTree?roleId="+roleId});
+
+        $("#savePower").click(function () {
+            savePower(roleId)  //点击保存是 添加
+        })
+
+    })
+
+    function savePower(roleId){
+        var nodes = $('#tt').tree('getChecked');
+        var s = '';
+        for(var i=0; i<nodes.length; i++){  //取出所有选中的放入数组
+            if (s != '') s += ',';
+            s += nodes[i].id;
+        }
+        $.ajax({
+            url:'/p2p/saveRolePower',
+            type:'post',
+            data:{"roleId":roleId,"powerIds":s},
+            success:function(data){
+                if(data==-1){
+                    alert("保存失败");
+                    parent.location.reload();
+                }else{
+                    alert("保存成功");
+                    parent.location.reload();
+                }
+            }
+        })//ajax结束
+    }
+</script>
+<body>
+
+<div class="easyui-panel" style="padding:5px">
+    <ul id="tt" class="easyui-tree" data-options="method:'get',animate:true,checkbox:true"></ul>
+</div>
+<center style="margin-top: 20px;"><input type="button" class="input" id="savePower" value="保存" style="width: 120px;height: 30px;color:white;background: #ca4949"  /></center>
+
+</body>
+</html>

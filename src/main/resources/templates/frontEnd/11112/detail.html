@@ -3,18 +3,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
 	<title>贷款信息页面</title>
-<link rel="stylesheet" type="text/css" href="11112/css/style.css">
-<!-- <link rel="stylesheet/less" type="text/css" href="css/style.less" /> -->
-<script type="text/javascript" src="11112/js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="11112/js/all.js"></script>
 
-<script src="./js/iepng.js" type="text/javascript"></script> 
-<script type="text/javascript">
-   EvPNG.fix('div, ul, img, li, input,span, p');
-</script>
-<![endif]-->
+	<script src="js/jquery3.3.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="11112/css/style.css">
+    <script type="text/javascript" src="11112/js/all.js"></script>
+	<script type="text/javascript" src="layui/layui.js"></script>
+	<link rel="stylesheet" type="text/css" href="layui/css/layui.css">
+
+
+
 </head>
 <body>
+
 <!-- header start -->
 <div class="zxcf_top_wper">
 	<div class="zxcf_top px1000 clearfix">
@@ -67,8 +67,9 @@
 	  	     	    <div class="detail_intro_l fl">
 	  	     	    	  <div class="detail_introl_tit clearfix">
 	  	     	    	  	  <div class="det_introl_tit_l fl">
-	  	     	    	  	  	   <span>抵押</span> 购车借款23万第2标13万
+	  	     	    	  	  	   <span id="LX"></span>
 	  	     	    	  	  </div>
+							  &nbsp;<span id="DKMC"></span>
 	  	     	    	  	  <!-- end l -->
 	  	     	    	  	  <div class="det_introl_tit_r fr">
 	  	     	    	  	  	  保障级别：A级 <img src="11112/images/det_wenhao.png" alt="">
@@ -116,13 +117,13 @@
 	  	     	    	  <!-- end text -->
 	  	     	    </div>
 	  	     	    <div class="detail_intro_r fr">
-						  <span id="touzijine" style="display:none"></span>  <!--投资总额-->
+						  <span class="touzijine" style="display:none"></span>  <!--投资总额-->
 	  	     	    	  <h2 class="det_intro_h2 clearfix"><span class="fl">投资进度:</span><em class="fr" id="bili"></em></h2>
 							 	<!--进度条-->
 							   <meter id="jindu" max="100" min="0" value="" low="100" optimum="1" style='width: 247px;height: 10px' ></meter>
-                          <p class="det_rzye clearfix"><span class="fl">剩余投标金额</span><em class="fr"><strong id="touzi"></strong>元</em></p>
+                          <p class="det_rzye clearfix"><span class="fl">剩余投标金额</span><em class="fr"><strong class="touzi"></strong>元</em></p>
                           <p class="det_input">
-                          	  <input type="text" placeholder="最低投资金额为1000元或1000的倍数 " id="financing">
+                          	  <input type="text" placeholder="投资金额为1000的倍数" id="financing">
                           </p>
 						  <p class="det_shouyi">每投资1万元收益  <strong id="shouyi"></strong></p>
                           <p><a href="#" class="pro_btn det_btn financing" >立即投资</a><a href="#" class="pro_btn det_btn one">已投资</a></p>
@@ -141,10 +142,10 @@
 	  	     	   	           <div class="det_l_box fl">
 
 	  	     	   	            <div class="det_proone_l">
-	  	     	   	            	   <h2 class="det_proone_tit">借款企业</h2>
+	  	     	   	            	   <h2 class="det_proone_tit">借款人信息</h2>
 	  	     	   	            	   <div class="det_clsj ">
-	  	     	   	            	   	   <p>成立时间：<strong>2012-05-02</strong></p>
-	  	     	   	            	   <p ><span style="margin-right:150px;">公司地址：<strong>云南省</strong ></span>所属行业：<strong>珠宝行业</strong>
+	  	     	   	            	   	   <p>借款人姓名：<strong id="JKRname"></strong></p>
+	  	     	   	            	   <p ><span style="margin-right:150px;">地址：<strong id="DZ"></strong ></span>所属行业：<strong>珠宝行业</strong>
 	  	     	   	            	   </p>
 	  	     	   	            	   </div>
 	  	     	   	            	   <div class="det_clsj ">
@@ -156,11 +157,16 @@
 	  	     	   	            	   <h2 class="det_proone_tit mt30">基本信息</h2>
 	  	     	   	            	    <div class="det_clsj ">
 	  	     	   	            	         <ul class="det_clsj_ul">
-	  	     	   	            	         	<li>融资企业：厦门食品有限公司</li>
+	  	     	   	            	         	<li>融资用途：<span id="yongtu"></span></li>
 	  	     	   	            	         	<li>
-	  	     	   	            	         		注册资金：人名币50万元整
+													融资金额：<span id="RZJE"></span>
 	  	     	   	            	         	</li>
-
+												 <li>
+													 手机号：<span id="SJH"></span>
+												 </li>
+												 <li>
+													 身份证号：<span id="SFZH"></span>
+												 </li>
 	  	     	   	            	         </ul>
 	  	     	   	            	    </div>
 
@@ -233,9 +239,12 @@
                                         <p>1、担保机构提供不可撤销的连带责任担保，对本息100%保障；</p><p>2、担保机构按规定计提30%的担保费作为风险保障金，由理财范与担保公司共同监管；</p><p>3、借款企业提供足值抵押物；</p><p>4、借款企业实际控制人向债权人提供连带保证；</p><p>5、北京***企业提供连带保证。</p><p><br></p>                                    </dd>
                                 </dl>
                             </div>
-                                   <!--  -->
-                                     <h2 class="det_proone_tit">抵押物信息</h2>
-                                     <div class="det_dywxx_ul">借款企业提供一处面积为6308.97平方米、评估价值2086.38万元的房产作抵押。</div>
+                                   <!-- 抵押物信息 -->
+                                     <h2 class="det_proone_tit" id="DYWXX">信用贷款</h2>
+                                     <div class="det_dywxx_ul">
+										 <span id="DYWZJ"></span> &nbsp;&nbsp;&nbsp;&nbsp;
+										 <span id="DYPG"></span>
+									 </div>
                                      <!-- end 抵押物信息 -->
                                      <h2 class="det_proone_tit">风险控制措施</h2>
                                      <ul class="det_dywxx_ul">
@@ -244,10 +253,7 @@
 											<li>3、北京***企业提供连带保证；</li>
 											<li>4、担保公司及理财范平台将执行严格的贷后管理制度。</li>
                                      </ul>
-                                     <!-- end 风险控制 -->
-                                      <h2 class="det_proone_tit">担保机构意见</h2>
-                                     <div class="det_dywxx_ul">借款企业提供一处面积为6308.97平方米、评估价值2086.38万元的房产作抵押。</div>
-                                     <!-- end 抵押物信息 -->
+
 	  	     	   	            </div>
 	  	     	   	            <!-- end fk -->
 	  	     	   	            <div class="det_proone_l" style="display:none;">
@@ -330,77 +336,19 @@
 	  	     	   	            <div class="det_proone_l" style="display:none;">
 	  	     	   	            	  <P class="det_tbjl_tit">
 	  	     	   	            	     <span class="mr30"><img src="11112/images/det_tbjl_pic01.png" alt="">
-	  	     	   	            	     目前总金额：￥21,122.00</span>
+	  	     	   	            	     目前总金额：<span class="touzijine"></span></span>
 	  	     	   	            	     <span><img src="11112/images/det_tbjl_pic02.png" alt="">
-	  	     	   	            	     剩余金额：￥123,123.00</span>
+	  	     	   	            	     剩余金额：<span class="touzi"></span></span>
 	  	     	   	            	  </P>
-	  	     	   	            	  <table class="det_table">
+	  	     	   	            	  <table class="det_table" id="TZJL">
 	  	     	   	            	  	  <tr class="det_table_head" style="height:40px;">
 	  	     	   	            	  	  	  <td>投资用户</td>
 	  	     	   	            	  	  	  <td>投资金额</td>
 	  	     	   	            	  	  	  <td class="det_w1160">投资时间</td>
 	  	     	   	            	  	  	  <td>状态</td>
 	  	     	   	            	  	  </tr>
-	  	     	   	            	  	  <tr>
-	  	     	   	            	  	  	  <td>0****</td>
-	  	     	   	            	  	  	  <td>10000.00元</td>
-	  	     	   	            	  	  	  <td>2015-07-08 18:08:05</td>
-	  	     	   	            	  	  	  <td>手动投标</td>
-	  	     	   	            	  	  </tr>
-                                          <tr>
-	  	     	   	            	  	  	  <td>0****</td>
-	  	     	   	            	  	  	  <td>10000.00元</td>
-	  	     	   	            	  	  	  <td>2015-07-08 18:08:05</td>
-	  	     	   	            	  	  	  <td>手动投标</td>
-	  	     	   	            	  	  </tr>
-                                          <tr>
-	  	     	   	            	  	  	  <td>0****</td>
-	  	     	   	            	  	  	  <td>10000.00元</td>
-	  	     	   	            	  	  	  <td>2015-07-08 18:08:05</td>
-	  	     	   	            	  	  	  <td>手动投标</td>
-	  	     	   	            	  	  </tr>
-                                          <tr>
-	  	     	   	            	  	  	  <td>0****</td>
-	  	     	   	            	  	  	  <td>10000.00元</td>
-	  	     	   	            	  	  	  <td>2015-07-08 18:08:05</td>
-	  	     	   	            	  	  	  <td>手动投标</td>
-	  	     	   	            	  	  </tr>
-                                          <tr>
-	  	     	   	            	  	  	  <td>0****</td>
-	  	     	   	            	  	  	  <td>10000.00元</td>
-	  	     	   	            	  	  	  <td>2015-07-08 18:08:05</td>
-	  	     	   	            	  	  	  <td>手动投标</td>
-	  	     	   	            	  	  </tr>
-                                          <tr>
-	  	     	   	            	  	  	  <td>0****</td>
-	  	     	   	            	  	  	  <td>10000.00元</td>
-	  	     	   	            	  	  	  <td>2015-07-08 18:08:05</td>
-	  	     	   	            	  	  	  <td>手动投标</td>
-	  	     	   	            	  	  </tr>
-                                          <tr>
-	  	     	   	            	  	  	  <td>0****</td>
-	  	     	   	            	  	  	  <td>10000.00元</td>
-	  	     	   	            	  	  	  <td>2015-07-08 18:08:05</td>
-	  	     	   	            	  	  	  <td>手动投标</td>
-	  	     	   	            	  	  </tr>
-                                          <tr>
-	  	     	   	            	  	  	  <td>0****</td>
-	  	     	   	            	  	  	  <td>10000.00元</td>
-	  	     	   	            	  	  	  <td>2015-07-08 18:08:05</td>
-	  	     	   	            	  	  	  <td>手动投标</td>
-	  	     	   	            	  	  </tr>
-                                          <tr>
-	  	     	   	            	  	  	  <td>0****</td>
-	  	     	   	            	  	  	  <td>10000.00元</td>
-	  	     	   	            	  	  	  <td>2015-07-08 18:08:05</td>
-	  	     	   	            	  	  	  <td>手动投标</td>
-	  	     	   	            	  	  </tr>
-                                          <tr>
-	  	     	   	            	  	  	  <td>0****</td>
-	  	     	   	            	  	  	  <td>10000.00元</td>
-	  	     	   	            	  	  	  <td>2015-07-08 18:08:05</td>
-	  	     	   	            	  	  	  <td>手动投标</td>
-	  	     	   	            	  	  </tr>
+
+
                                           
 	  	     	   	            	  </table>
 	  	     	   	            </div>
@@ -499,10 +447,17 @@
 <!-- footer end -->
 </body>
 <script>
-	$(function () {
-        var userId = GetQueryString("userId");  //获取url
-        var loansId = GetQueryString("loansId");
 
+    //layui监听
+    layui.use('layer', function(){
+        var layer = layui.layer;
+    });
+
+    $(function () {
+
+        var userId = GetQueryString("userId");  //获取url  账户ID
+        var loansId = GetQueryString("loansId");  // 贷款ID
+        var username = localStorage.getItem("userInfo");	 //获取当前登陆人 账户名
         //查询是否投资过  默认隐藏
         $(".one").hide();
         $(".two").hide();
@@ -511,7 +466,7 @@
             type: "post",
             url: "/p2p/investmentVerify",
             dataType: "json",
-            data: {userId:userId,loansId:loansId},
+            data: {loansId:loansId},
             success: function (data) {
                 //判断如果查询到已投资  则显示已投资  按钮失效
                 if(data!=null){
@@ -522,7 +477,7 @@
         })
 
 		//获取投资信息和投资人信息 放到页面
-        getInvest(loansId)  //初始化加载
+        getInvest(loansId,username); //初始化加载
 
 
 
@@ -531,9 +486,8 @@
 		$(".detail_intro_r").on("click",".financing",function() {
 			var financing = Number($("#financing").val()); //输入框输入金额
             var money = Number($("#money").html())*10000;    //总贷款金额
-			alert(money)
             var ratio = Number($("#ratio").html());     //获取利率
-			var investmentamount = Number($("#touzijine").html()); <!--投资总金额-->
+			var investmentamount = Number($(".touzijine").html()); <!--投资总金额-->
 
             if(financing!=null&&financing!=0){
                 var patrn = /^[0-9]*$/; //正则 必须为数字
@@ -561,21 +515,26 @@
 				}else {
                     conf=false;
 				}
-
-
-                var param = {  //拼JSON值
+              /*  var param = {  //拼JSON值
                     "userId":userId ,
                     "loansId":loansId,
-                    "investmentMoney":financing,
-                    "interestrate": ratio,
-					"investmentamount":investmentamount,
-					"loansmoney":money
-                }
-
+                    "investmentMoney":financing,  //输入框输入金额
+                    "interestrate": ratio,		//获取利率
+					"investmentamount":investmentamount,   //投资总金额
+					"loansmoney":money     //总贷款金额
+                }*/
 				if(falt){  //判断投资金额不得有误
-
 				    if(conf){  //判断是否确认投资
-                        $.ajax({
+                        layer.open({
+                            type: 2,
+                            title: '支付密码界面',
+                            shadeClose: true,
+                            shade: 0.8,
+                            anim: 2,
+                            area: ['600px', '360px'],
+                            content: '/p2p/investmentPassword?loansId='+loansId+"&userName="+username //iframe的url
+                        });
+                       /* $.ajax({
                             type: "post",
                             url: "/p2p/investmentAmount",
                             contentType: 'application/json; charset=UTF-8',
@@ -585,7 +544,7 @@
                                 if(data!=null&&data!=""){
 									if(Number(data)>0){
 										alert("投资成功,可以到个人账户查询");
-                                        getInvest(loansId); //获取投资信息和投资人信息 放到页面 调用刷新页面
+                                        getInvest(loansId,username); //获取投资信息和投资人信息 放到页面 调用刷新页面
                                         $(".financing").hide();  // 隐藏投资按钮
                                         $(".one").show();	    //显示已投资按钮
                                         $("#financing").val("");
@@ -595,9 +554,7 @@
 									}
                                 }
                             }
-                        })
-
-
+                        })*/
 					}else {
                         $(".det_shouyi").html("投资有风险，投资需谨慎。");
                     }
@@ -618,14 +575,38 @@
         })
 
 
-        $("#financing").blur(function(){
+        $("#financing").focus(function(){
 			$(".det_shouyi").html("");
 		})
+
+
+        $.ajax({
+            type: "post",
+            url: "/p2p/investmentInformation",
+            dataType: "json",
+            data: {loansId:loansId},
+            success: function (data) {
+				if(data!=null&&data!=''){
+                    var str = "";
+                    for (var i = 0; i < data.length; i++) {
+                        str +="<tr>"+
+							    "<td>"+(data[i].USERNAME.substr(0,1)+"****")+"</td>"+
+                            	"<td>"+data[i].INVESTMENTMONEY+"</td>"+
+                            	"<td>"+data[i].INVESTMENTDATE+"</td>"+
+							 	"<td>"+'手动投标'+"</td>"+
+                              "</tr>"
+                    }
+
+                    $("#TZJL").append(str);
+				}
+            }
+        })
+
 
     })
 
 	//获取投资信息和投资人信息 放到页面
-    function getInvest(loansId){
+    function getInvest(loansId,username){
         $.ajax({
             type: "post",
             url: "/p2p/investment",
@@ -645,15 +626,61 @@
                         $("#hTime").html(data.ATDATE);		//还款日期
                         $("#bili").html(Math.floor(data.INVESTMENTAMOUNT / data.LOANSMONEY * 100) + "%");  //进度比例
                         $("#jindu").val(data.INVESTMENTAMOUNT / data.LOANSMONEY * 100);  //进度条
-                        $("#touzi").html(data.LOANSMONEY - data.INVESTMENTAMOUNT);      //贷款剩余金额
+                        $(".touzi").html(data.LOANSMONEY - data.INVESTMENTAMOUNT);      //贷款剩余金额
                         $("#shouyi").html(Math.floor(money * data.REFUNDDEADLINE * (data.LOANSINTERESTRATE / 100) / 12));  //算出投资10000的收益  本金*期数*利率/12
-                        $("#touzijine").html(data.INVESTMENTAMOUNT);  //投资金额
+                        $(".touzijine").html(data.INVESTMENTAMOUNT);  //投资金额
+                        $("#JKRname").html(data.USERNAME.slice(0,1)+"先生");      // 借款人姓名
+                        $("#DZ").html(data.SITE.slice(0,3)+"*****");   //地址
+                        $("#SJH").html(data.USERPHONE.slice(0,3)+"***********"); // 手机号
+                        $("#SFZH").html(data.IDENTITYCARD.slice(0,6)+"***********"); //省份在号
+                        $("#yongtu").html(data.LOANSUSED);    //融资用途
+                        $("#RZJE").html(data.LOANSMONEY+"元");  //融资金额
+                        if(Number(data.LOANSTYPE)==3){    //类型 和 贷款名称
+                            $("#LX").html("信用");
+                            $("#DKMC").html(data.USERNAME.slice(0,1)+"先生"+"发起的信用贷款");
+                        }else if(Number(data.LOANSTYPE)==2){
+                            $("#LX").html("抵押");
+                            $("#DKMC").html(data.USERNAME.slice(0,1)+"先生"+"发起的车辆抵押贷款");
+                        }else if(Number(data.LOANSTYPE)==1){
+                            $("#LX").html("抵押");
+                            $("#DKMC").html(data.USERNAME.slice(0,1)+"先生"+"发起的房屋抵押贷款");
+                        }
+
+
+                  			if(Number(data.LOANSTYPE)!=3){
+
+                                $("#DYWXX").html("抵押物信息");
+                                $("#DYWZP").attr("src",Ipath);
+                                var pre="/p2p/showFtp?fileName=";
+                                var Ipath=pre+data.APPRAISALREPORT;
+                                $("#DYPG").html("评估证明:<img  src=\""+Ipath+"\" height=\"100px;\" width=\"100px;\" >");
+
+                                if(Number(data.LOANSTYPE)==2){
+                                    var pre="/p2p/showFtp?fileName=";
+                                    //将请求回调回来的图片名称和ftp请求图片方法拼接一起赋给图片的src属性
+                                    var Ipath=pre+data.CARINFORMATION;
+                                    $("#DYWZJ").html("抵押物证件:<img  src=\""+Ipath+"\" height=\"100px;\" width=\"100px;\" >");
+                                }else if(Number(data.LOANSTYPE)==1){
+                                    var pre="/p2p/showFtp?fileName=";
+                                    var Ipath=pre+data.HOUSEPROPERTY;
+                                    $("#DYWZJ").html("抵押物证件:<img  src=\""+Ipath+"\" height=\"100px;\" width=\"100px;\" >");
+								}
+
+							}
+
 						//判断是否满标
-						if(Number(data.LOANSMONEY) - Number(data.INVESTMENTAMOUNT)==0){
-							$(".financing").hide();
+						if(data.TONAME==username){
+                            $(".financing").hide();
+                            $(".one").show();
+                            $(".one").html("立即投资");
+                            $(".one").css("background","gray");
+						}else if(Number(data.LOANSMONEY) - Number(data.INVESTMENTAMOUNT)==0){
+                            $(".financing").hide();
                             $(".one").show();
                             $(".one").html("满标");
-						}
+                        }
+
+
                     }
                 }
             }

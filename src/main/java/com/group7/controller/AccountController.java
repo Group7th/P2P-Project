@@ -27,7 +27,6 @@ import java.util.Map;
  */
 
 @Controller
-//@Api
 @SuppressWarnings("all")
 public class AccountController {
 

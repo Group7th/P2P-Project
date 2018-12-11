@@ -2,7 +2,7 @@
 <html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>贷款初审</title>
+    <title>招标审核</title>
     <!-- 引入样式 -->
     <script type="text/javascript" src="/p2p/js/vue.js"></script>
     <script type="text/javascript" src="/p2p/js/axios.min.js"></script>
@@ -10,13 +10,18 @@
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <!-- 引入组件库 -->
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script type="text/javascript" src="js/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="js/dist/sweetalert.css">
     <style type="text/css">
-        .c1{padding-left: 15px}
-        .c2{
-            background-color:lightgoldenrodyellow;
+        .c1 {
+            padding-left: 15px
+        }
+
+        .c2 {
+            background-color: lightgoldenrodyellow;
             font-size: 25px;
-            margin-bottom:45px;
-            padding-left:35px;
+            margin-bottom: 45px;
+            padding-left: 35px;
             height: 45px;
             line-height: 45px
         }
@@ -24,9 +29,10 @@
 </head>
 <body>
 <div id="app">
-    <p v-bind:class="{c1:isShow}"><img src="/p2p/images/zxcf_logo.png" height="77" width="400"/>
+   <!-- <p v-bind:class="{c1:isShow}"><img src="/p2p/images/zxcf_logo.png" height="77" width="400"/>
+    </p>-->
+    <p v-bind:class="{c2:isShowA}"><span><img src="/p2p/images/block_pic02.png" height="22" width="22"/></span>&nbsp;&nbsp;&nbsp;&nbsp;招标审核
     </p>
-    <p v-bind:class="{c2:isShowA}"><span><img src="/p2p/images/block_pic02.png" height="22" width="22"/></span>&nbsp;&nbsp;&nbsp;&nbsp;招标审核</p>
 
 </div>
 <div id="tableView">
@@ -50,70 +56,73 @@
             <el-form-item>
                 <el-button type="primary" icon="search" @click="searchClick">查询</el-button>
             </el-form-item>
+            <el-button type="success" icon="plus" @click="toFlush">刷新</el-button>
         </el-form>
     </el-row>
     <!--列表-->
     <el-row>
         <el-table
-            :data="tableData"
-            v-loading.body="loading"
-            border
-            style="width:100%">
+                :data="tableData"
+                v-loading.body="loading"
+                border
+                style="width:100%">
             <!--选中-->
             <el-table-column
-                type="selection"
-                width="80">
+                    type="selection"
+                    width="80">
             </el-table-column>
             <el-table-column
-                prop="LOANSID"
-                label="贷款编号"
-                width="150">
+                    prop="LOANSID"
+                    label="贷款编号"
+                    width="150">
             </el-table-column>
             <el-table-column
-                prop="USERNAME"
-                label="贷款人"
-                width="150">
+                    prop="USERNAME"
+                    label="贷款人"
+                    width="150">
             </el-table-column>
             <el-table-column
-                prop="LOANSMONEY"
-                label="贷款金额(￥)"
-                width="200">
+                    prop="LOANSMONEY"
+                    label="贷款金额(￥)"
+                    width="200">
             </el-table-column>
             <el-table-column
-                prop="LOANSINTERESTRATE"
-                label="贷款利率(%)"
-                width="150">
+                    prop="LOANSINTERESTRATE"
+                    label="贷款利率(%)"
+                    width="150">
             </el-table-column>
             <el-table-column
-                prop="REFUNDDEADLINE"
-                label="还款期限(月)"
-                width="150">
+                    prop="REFUNDDEADLINE"
+                    label="还款期限(月)"
+                    width="150">
             </el-table-column>
             <el-table-column
-                label="贷款类型"
-                width="200">
+                    label="贷款类型"
+                    width="200">
                 <template slot-scope="scope">
                     <el-tag :type="scope.row.LOANSTYPE | statusFilter">{{scope.row.LOANSTYPE | formatStata}}</el-tag>
                 </template>
             </el-table-column>
             <el-table-column
-                label="贷款状态"
-                width="200">
+                    label="贷款状态"
+                    width="200">
                 <template slot-scope="scope">
-                    <el-tag >{{scope.row.LOANSSTATE | formatState}}</el-tag>
+                    <el-tag type="danger">{{scope.row.LOANSSTATE | formatState}}</el-tag>
                 </template>
             </el-table-column>
             <el-table-column
-                label="操作">
+                    label="操作">
                 <template slot-scope="scope">
-                    <el-button :plain="true" type="danger" size="small" icon="edit" @click="editClick(scope.row)">查看详情</el-button>
+                    <el-button :plain="true" type="primary" size="small" icon="edit" @click="editClick(scope.row)">
+                        查看详情
+                    </el-button>
                 </template>
             </el-table-column>
         </el-table>
     </el-row>
     <!--列表底部工具和分页符-->
     <el-row style="margin-top: 20px" type="flex" justify="end">
-        <el-col :span="18" >
+        <el-col :span="18">
             <el-pagination
                     style="float: right"
                     @size-change="pageSizeChange"
@@ -128,37 +137,71 @@
     </el-row>
     <!--编辑页面-->
     <el-dialog title="贷款详情" :visible.sync="editFormVisible" :close-on-click-modal="false">
-        <el-form :model="editForm" label-width="80px" :ref="editForm">
-            <el-form-item ladel="贷款编号">
-                <el-input v-model="editForm.LOANSID" auto-complete="off"></el-input>
+        <el-form :model="editForm" label-width="150px" :ref="editForm" inline="true" class="demo-form-inline">
+            <el-form-item label="贷款编号">
+                <el-input v-model="editForm.LOANSID" readonly="rd"></el-input>
             </el-form-item>
-            <el-form-item ladel="贷款人">
-                <el-input v-model="editForm.USERNAME"></el-input>
+            <el-form-item label="贷款人">
+                <el-input v-model="editForm.USERNAME" readonly="rd"></el-input>
             </el-form-item>
-            <el-form-item ladel="贷款金额">
-                <el-input v-model="editForm.LOANSMONEY"></el-input>
+            <el-form-item label="贷款金额(￥)">
+                <el-input v-model="editForm.LOANSMONEY" readonly="rd"></el-input>
             </el-form-item>
-            <el-form-item ladel="贷款利率">
-                <el-input v-model="editForm.LOANSINTERESTRATE"></el-input>
+            <el-form-item label="还款方式">
+                <el-input v-model="editForm.REFUNDWAY" readonly="rd"></el-input>
             </el-form-item>
-            <el-form-item ladel="还款期限">
-                <el-input v-model="editForm.REFUNDDEADLINE" ></el-input>
+            <el-form-item label="还款期限(月)">
+                <el-input v-model="editForm.REFUNDDEADLINE" readonly="rd"></el-input>
             </el-form-item>
-            <el-form-item ladel="贷款类型">
-                <el-input v-model="editForm.LOANSTYPE"></el-input>
+            <el-form-item label="招标时间">
+                <el-date-picker
+                        type="date"
+                        v-model="editForm.BEGINTIME"
+                        readonly="rd">
+                </el-date-picker>
             </el-form-item>
-            <el-form-item ladel="贷款状态">
-                <el-input v-model="editForm.LOANSSTATE"></el-input>
+            <el-form-item label="贷款用途">
+                <el-input v-model="editForm.LOANSUSED" readonly="readonly"></el-input>
             </el-form-item>
-            <el-form-item ladel="驳回理由">
-                <el-input type="textarea"  v-mode="editForm.REASON" placeholder="贷款驳回需要填写驳回理由"></el-input>
+            <el-form-item label="手机号">
+                <el-input v-model="editForm.UP" readonly="readonly"></el-input>
+            </el-form-item>
+            <el-form-item label="身份证">
+                <el-input v-model="editForm.CARD" readonly="readonly"></el-input>
+            </el-form-item>
+            <el-form-item label="银行卡号">
+                <el-input v-model="editForm.BANKCARD" readonly="readonly"></el-input>
+            </el-form-item>
+            <el-form-item label="家庭住址">
+                <el-input v-model="editForm.SITE" readonly="readonly"></el-input>
+            </el-form-item>
+            <el-form-item label="抵押价值(￥)" v-if="editForm.LOANSTYPE==3?false:true">
+                <el-input v-model="editForm.VALUE" readonly="readonly"></el-input>
+            </el-form-item>
+            <el-form-item label="证明凭证" v-if="editForm.LOANSTYPE==3?false:true">
+                <template solt-scope="scope">
+                    <a :href="editForm.LOANSTYPE==1?editForm.tHOUSE:editForm.tCAR" target="_blank"><img
+                            :src="editForm.LOANSTYPE==1?editForm.HOUSE:editForm.CAR" min-width="120" height="180"></a>
+                </template>
+                <!--<el-input v-model="editForm.LOANSTYPE==1?editForm.HOUSE:editForm.CAR" readonly="readonly"></el-input>-->
+            </el-form-item>
+            <el-form-item label="评估报告" v-if="editForm.LOANSTYPE==3?false:true">
+                <template>
+                    <a :href="editForm.tPORT"><img :src="editForm.PORT" min-width="100" height="200"></a>
+                </template>
+                <!--<el-input v-model="editForm.PORT" readonly="readonly"></el-input>-->
+            </el-form-item>
+            <el-form-item label="驳回理由">
+                <el-input type="textarea" v-model="editForm.REASON" placeholder="贷款驳回需要填写驳回理由"></el-input>
             </el-form-item>
         </el-form>
-        <div solt="footer" class="dialog-footer">
-            <el-button @click.native="editFormVisible = false">取消</el-button>
-            <el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
+        <div solt="footer" class="dialog-footer" style="text-align: center">
+            <el-button type="info" @click="editFormVisible = false">关闭</el-button>
+            <el-button type="primary" @click="Submit">通过</el-button>
+            <el-button type="danger" @click="reject">驳回</el-button>
         </div>
     </el-dialog>
+
 </div>
 <script type="text/javascript">
     /**
@@ -166,10 +209,10 @@
      * @type {*|Vue}
      */
     var app = new Vue({
-        el:"#app",
-        data:{
-            isShow:true,
-            isShowA:true,
+        el: "#app",
+        data: {
+            isShow: true,
+            isShowA: true,
         }
     });
     var tableView = new Vue({
@@ -195,96 +238,193 @@
             deleteVisible: false,
             //编辑界面是否显示
             editFormVisible: false,
-
+            //input只读
+            readonly: true,
+            ftpUrl: 'ftp://ftpadmin:yanhaotian@39.96.8.65/images/',
             //编辑界面数据
             editForm: {
-                LOANSID: 0,
+                LOANSID: '',
                 USERNAME: '',
                 LOANSMONEY: '',
-                LOANSINTERESTRATE: '',
+                REFUNDWAY: '',
                 REFUNDDEADLINE: '',
+                BEGINTIME: '',
                 LOANSTYPE: '',
-                LOANSSTATE: '',
-                REASON: ''
+                LOANSUSED: '',
+                UP: '',
+                CARD: '',
+                SITE: '',
+                VALUE: '',
+                HOUSE: '',
+                CAR: '',
+                PORT: '',
+                REASON: '',
+                tPORT: '',
+                tHOUSE: '',
+                tCAR: ''
             },
-    },
-    created: function(){
-        //在 then的内部不能使用Vue的实例化的this, 因为在内部 this 没有被绑定。
-        var self = this;
-        var start = (this.currentPage-1)*this.pageSize;
-        var end = this.currentPage*this.pageSize+1;
-        axios.post('/p2p/Audit/list',{'start':start,'end':end}).then(function(response){
-                self.total = response.data.total;
-               // alert(JSON.stringify(response.data.page));
-                self.tableData = response.data.page;
-
-            })
-
-    },
-    filters: {
-        // el-tag类型转换
-        statusFilter:function(status) {
-            const statusMap = { 1: 'success', 2: 'warning', 3: 'danger',4: 'info'
-            }
-            return statusMap[status] },
-
-    // 状态显示转换
-        formatStata:function(status) {
-             const statusMap = { 1: '房产抵押贷', 2: '车辆抵押贷', 3: '信用贷'
-             };
-             return statusMap[status]
-         },
-        formatState:function(status) {
-            const statusMap = { 1: '待审核'
-            };
-            return statusMap[status]
-        }
         },
-    methods: {
-        loadingData: function () {
-            var _self = this;
-            _self.loading = true;
+        created: function () {
+            //在 then的内部不能使用Vue的实例化的this, 因为在内部 this 没有被绑定。
             var self = this;
             var start = (this.currentPage - 1) * this.pageSize;
             var end = this.currentPage * this.pageSize + 1;
-            var searchForm = {
-                'start': start,
-                'end': end,
-                'loansId': this.searchForm.loansId,
-                'userName': this.searchForm.userName,
-                'loansType': this.searchForm.loansType
-            };
-            //alert(JSON.stringify(searchForm));
-            axios.post('/p2p/Audit/list', searchForm).then(function (response) {
-                _self.total = response.data.total;
-                _self.tableData = response.data.page;
+            axios.post('/p2p/Audit/list', {'start': start, 'end': end}).then(function (response) {
+                self.total = response.data.total;
+                // alert(JSON.stringify(response.data.page));
+                self.tableData = response.data.page;
+                //alert(JSON.stringify(response.data.page));
             })
-            setTimeout(function () {
-                //console.info("加载数据成功");
-                _self.loading = false;
-            }, 300);
+
+
         },
-        //查询事件
-        searchClick: function () {
-            this.loadingData();//重新加载数据
+        filters: {
+            // el-tag类型转换
+            statusFilter: function (status) {
+                const statusMap = {
+                    1: 'success', 2: 'warning', 3: 'info', 4: 'danger'
+                }
+                return statusMap[status]
+            },
+
+            // 状态显示转换
+            formatStata: function (status) {
+                const statusMap = {
+                    1: '房产抵押贷', 2: '车辆抵押贷', 3: '信用贷'
+                };
+                return statusMap[status]
+            },
+            formatState: function (status) {
+                const statusMap = {
+                    1: '待审核'
+                };
+                return statusMap[status]
+            }
         },
-        //分页大小修改事件
-        pageSizeChange: function (val) {
-            this.pageSize = val;
-            //var _self = this;
-            this.loadingData();//重新加载数据
-        },
-        //当前页数修改事件
-        currentPageChange:function(val) {
-            this.currentPage = val;
-            //console.log('当前页: ' + val);
-            //var _self = this;
-            this.loadingData();//重新加载数据
-        },
-        editLoading:function(){
+        methods: {
+            loadingData: function () {
+                var _self = this;
+                _self.loading = true;
+                var self = this;
+                var start = (this.currentPage - 1) * this.pageSize;
+                var end = this.currentPage * this.pageSize + 1;
+                var searchForm = {
+                    'start': start,
+                    'end': end,
+                    'loansId': this.searchForm.loansId,
+                    'userName': this.searchForm.userName,
+                    'loansType': this.searchForm.loansType
+                };
+                //alert(JSON.stringify(searchForm));
+                axios.post('/p2p/Audit/list', searchForm).then(function (response) {
+                    _self.total = response.data.total;
+                    _self.tableData = response.data.page;
+                });
+                setTimeout(function () {
+                    //console.info("加载数据成功");
+                    _self.loading = false;
+                }, 50);
+            },
+            //表格弹出 查看详情
+            editClick: function (row) {
+                this.goUrl = "/p2p/Audit/list";
+                this.editFormVisible = true;
+                this.editForm = Object.assign({}, row);
+                this.editForm.tPORT = this.ftpUrl + this.editForm.PORT;//取ftp图片 路径评估报告
+                this.editForm.tHOUSE = this.ftpUrl + this.editForm.HOUSE;//取ftp图片 房屋证明
+                this.editForm.tCAR = this.ftpUrl + this.editForm.CAR;//取ftp图片 车辆证明
+                this.editForm.PORT = "showFtp?fileName=" + this.editForm.PORT;//评估报告
+                this.editForm.HOUSE = "showFtp?fileName=" + this.editForm.HOUSE;//房屋证明
+                this.editForm.CAR = "showFtp?fileName=" + this.editForm.CAR;//车辆证明
+                this.editForm.REASON = "";
+
+            },
+            //查询事件
+            searchClick: function () {
+                this.loadingData();//重新加载数据
+            },
+            //分页大小修改事件
+            pageSizeChange: function (val) {
+                this.pageSize = val;
+                //var _self = this;
+                this.loadingData();//重新加载数据
+            },
+            //当前页数修改事件
+            currentPageChange: function (val) {
+                this.currentPage = val;
+                this.loadingData();//重新加载数据
+            },
+            //刷新
+            toFlush:function () {
+               this. searchForm= {
+                        loansId: '',
+                        userName: '',
+                        loansType: ''
+                },
+                this.loadingData();//重新加载数据
+            },
+            //通过
+            Submit: function () {
+                this.$confirm('此操作将通过招标审核, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    this.$message({
+                    type: 'success',
+                    message: '已通过审核!'
+                });
+                this.pass();
+                this.loadingData();//重新加载数据
+                setTimeout(function () {
+                    location.href = location.href
+                }, 3000);
+            }).catch(() => {
+                    this.$message({
+                    type: 'info',
+                    message: '已取消操作!'
+                });
+            });
+            },
+            //驳回
+            reject: function () {
+                if (this.editForm.REASON == '') {
+                    sweetAlert("没有检测到驳回理由！","请输入驳回理由！", "info");
+                } else {
+                    this.rejectA();
+                    sweetAlert("操作成功！","贷款已经驳回！", "success");
+                    setTimeout(function () {
+                        location.href = location.href
+                    }, 3000);
+                }
+
+            },
+            /**
+             * 通过提交方法
+             */
+            pass: function () {
+                var editForm = {
+                    'LOANSID': this.editForm.LOANSID
+                };
+                axios.post('/p2p/Audit/update', editForm).then(function (response) {
+
+                });
+
+            },
+            /**
+             * 驳回 存入驳回理由
+             */
+            rejectA: function () {
+                var editForm = {
+                    'LOANSID': this.editForm.LOANSID,
+                    'REASON': this.editForm.REASON
+                };
+                axios.post('/p2p/Audit/reject', editForm).then(function () {
+
+                });
+            }
 
         }
-    }
     });
 </script>
 </body>

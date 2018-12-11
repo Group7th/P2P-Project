@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.group7.dao.JinNangDao">
+    <select id="getId" resultType="map">
+        select ID  from TB_USER where username=#{userName}
+    </select>
+
+    <insert id="addJInNang">
+        INSERT INTO TB_JINNANG(ISSUER_ID,ID,HEADLINE,CONTENT,PRAISE) VALUES (#{userId},seq_tb_jinnang.nextval,#{headline},#{content},0)
+    </insert>
+
+    <select id="getJinNangListMap" resultType="map">
+        select  a.*,b.username,c.HEADPORTRAIT from tb_jinnang  a,tb_user b,tb_userinformation c where a.issuer_id=b.id and a.issuer_id=c.userid
+            <if test="type==2">
+               and a.ID=#{ID}
+            </if>
+    </select>
+
+    <insert id="addComment">
+        INSERT INTO tb_comment(COMMENTID,JINNANGID,USERID,CONTENT)VALUES (seq_tb_comment_id.nextval,#{jinnangid},#{userId},#{content})
+    </insert>
+
+    <select id="commentList" resultType="map">
+        select a.content,b.headline,c.username,d.headportrait from TB_COMMENT a,tb_jinnang b,tb_user c,tb_userinformation d where a.jinnangid=b.id and a.userid=c.id and  a.userid=d.userid and a.jinnangid=#{jinnangid}
+    </select>
+
+    <select id="getCommentCount" resultType="map">
+        select count(*) as cont from TB_COMMENT where jinnangid=#{ID}
+    </select>
+
+    <select id="getTouZiCWFenXi" resultType="map">
+           select sum(a.INVESTMENTMONEY) as money,TO_CHAR(b.month,'yyyy-mm') as yuefen from (select * from TB_INVESTMENT where userid=2 ) a right join  tb_yue b on
+            TO_CHAR(b.month,'yyyy-mm')=TO_CHAR(a.INVESTMENTDATE,'yyyy-mm')
+           group by TO_CHAR(b.month,'yyyy-mm') order by TO_CHAR(b.month,'yyyy-mm') desc
+    </select>
+
+    <select id="getJieKuanCWFenXi" resultType="map">
+             select sum(a.loansmoney) as money,TO_CHAR(b.month,'yyyy-mm') as yuefen from (select * from TB_LOANS where userid=2 ) a right join  tb_yue b on
+           TO_CHAR(b.month,'yyyy-mm')=TO_CHAR(a.begintime,'yyyy-mm')
+         group by TO_CHAR(b.month,'yyyy-mm') order by TO_CHAR(b.month,'yyyy-mm') desc
+    </select>
+
+    <select id="getTouZiLieXingFenXi" resultType="map">
+         select sum(loansmoney) as money ,loanstype from TB_LOANS where userid=2  group by loanstype
+    </select>
+
+    <select id="getJieKuanLieXingFenXi" resultType="map">
+         select sum(a.investmentmoney) as money,b.loanstype from  tb_investment a,tb_loans b where a.loansid=b.loansid and a.userid=2 group by b.loanstype
+    </select>
+</mapper>

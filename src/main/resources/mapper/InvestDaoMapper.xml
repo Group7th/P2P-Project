@@ -5,13 +5,14 @@
 
 <mapper namespace="com.group7.dao.InvestDao">
 
-    <cache type="org.mybatis.caches.redis.RedisCache" blocking="false"
-           flushInterval="0" readOnly="true" size="1024" eviction="FIFO"/>
 
     <!--多条件筛选 查询分页-->
     <select id="getInves" resultType="map">
          select * from
           (select rownum rn,t.* from (select * from tb_loans <where>
+
+        <!--所有借款 前台获取值为4  2代表 招标中 5：满标 7：贷款成功 11:贷款结束 还玩款的-->
+            AND  LOANSSTATE in(2,5,7,11)
 
         <!--项目期限-->
             <if test="month != null ">
@@ -26,10 +27,7 @@
                 </if>
             </if>
         <!--项目状态-->
-            <if test="state != null ">
-                <if test="state == 4 "><!--所有借款 前台获取值为4  2代表 招标中 5：满标 7：贷款成功 11:贷款结束 还玩款的-->
-                    AND  LOANSSTATE in(2,5,7,11)
-                </if>
+            <if test="state != null ">  <!--所有借款 前台获取值为4  2代表 招标中 5：满标 7：贷款成功 11:贷款结束 还玩款的-->
                 <if test="state == 5 "><!--正在招标的借款  -->
                     AND  LOANSSTATE in(2)
                 </if>
@@ -55,10 +53,10 @@
         <!--项目类型-->
             <if test="type != null ">
                 <if test="type == 11 "><!-- 信用标  信用贷款 -->
-                    AND  LOANSTYPE in(1)
+                    AND  LOANSTYPE in(3)
                 </if>
                 <if test="type == 12 "><!--抵押标  车辆抵押  房产抵押  -->
-                    AND  LOANSTYPE in(2,3)
+                    AND  LOANSTYPE in(2,1)
                 </if>
             </if>
       </where>) t where rownum &lt; #{end}) a
@@ -69,7 +67,8 @@
     <select id="getInvesCount" resultType="int">
         select count(1) as con from tb_loans
         <where>
-
+            <!--所有借款 前台获取值为4  2代表 招标中 5：满标 7：贷款成功 11:贷款结束 还玩款的-->
+            AND  LOANSSTATE in(2,5,7,11)
             <!--项目期限-->
             <if test="month != null ">
                 <if test="month == 1 "> <!-- 1-3个月 前台获取值为1 代表 1月 2月 3月 -->
@@ -84,9 +83,6 @@
             </if>
             <!--项目状态-->
             <if test="state != null ">
-                <if test="state == 4 "><!--所有借款 前台获取值为4  2代表 招标中 5：满标 7：贷款成功 11:贷款结束 还玩款的-->
-                    AND  LOANCASE in(2,5,7,11)
-                </if>
                 <if test="state == 5 "><!--正在招标的借款  -->
                     AND  LOANCASE in(2)
                 </if>
@@ -112,10 +108,10 @@
             <!--项目类型-->
             <if test="type != null ">
                 <if test="type == 11 "><!-- 信用标  信用贷款 -->
-                    AND  LOANSTYPE in(1)
+                    AND  LOANSTYPE in(3)
                 </if>
                 <if test="type == 12 "><!--抵押标  车辆抵押  房产抵押  -->
-                    AND  LOANSTYPE in(2,3)
+                    AND  LOANSTYPE in(2,1)
                 </if>
             </if>
         </where>
@@ -123,9 +119,10 @@
 
     <!--查询贷款和个人信息-->
     <select id="investment" resultType="map">
-        select a.*,to_char(BEGINTIME,'yyyy-MM-dd') as ABEGINTIME,to_char(TDATE,'yyyy-MM-dd') as ATDATE  from tb_loans a
+        select a.*,c.*,d.*,b.USERNAME as TONAME,to_char(BEGINTIME,'yyyy-MM-dd') as ABEGINTIME,to_char(TDATE,'yyyy-MM-dd') as ATDATE  from tb_loans a
         join tb_user b on a.userId=b.id
         join tb_userinformation c on b.id=c.userid
+        join tb_loanstype d on d.loansId=a.loansId
         <where>
             <if test="loansId!=null">
                 and a.loansId=#{loansId}
@@ -136,18 +133,23 @@
 
     <!--添加投资信息-->
     <insert id="investmentAmount"  >
-          insert into tb_investment values(seq_tb_investment_id.nextval,#{userId},#{loansId},#{investmentMoney},sysdate,#{interestrate})
+          insert into tb_investment values(seq_tb_investment_id.nextval,(select id from  tb_user where userName = #{userName}),#{loansId},#{investmentMoney},sysdate,#{interestrate})
     </insert>
 
     <!--查询投资人 不能重复投资-->
     <select id="investmentVerify" resultType="map">
-        select investmentId  from tb_investment where userId = #{userId} and loansId = #{loansId}
+        select investmentId  from tb_investment where userId =(select id from  tb_user where userName = #{userName}) and loansId = #{loansId}
     </select>
 
 
     <!--修该投资表投资金额-->
     <update id="investmentMoeny" >
-        update tb_loans set investmentamount = #{investmentamount}+ #{investmentMoney} where userId = #{userId} and loansId = #{loansId}
+        update tb_loans set investmentamount = investmentamount+ #{investmentMoney} where  loansId = #{loansId}
     </update>
+
+    <!--查询贷款 投资信息-->
+    <select id="investmentInformation" resultType="map">
+        select investmentmoney,to_char(investmentdate,'yyyy-mm-dd hh24:mi:ss') as investmentdate,(select userName from tb_user where id=a.userid) as userName  from tb_investment a join tb_user b on b.id=a.userid where loansId = #{loansId}
+    </select>
 
 </mapper>

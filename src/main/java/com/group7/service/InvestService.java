@@ -43,11 +43,11 @@ public interface InvestService {
 
     /**
      * 查询投资信息  不能重复投资
-     * @param userId
+     * @param userName
      * @param loansId
      * @return
      */
-    Map investmentVerify(Integer userId,Integer loansId);
+    Map investmentVerify(String userName,Integer loansId);
 
     /**
      * 投资金额 添加到 投资表 总投资金额中
@@ -55,5 +55,13 @@ public interface InvestService {
      * @return
      */
     int investmentMoeny(InvestmentAmount invest);
+
+
+    /**
+     * 查看贷款 投资信息
+     * @param loansId
+     * @return
+     */
+    List<Map> investmentInformation(Integer loansId);
 
 }

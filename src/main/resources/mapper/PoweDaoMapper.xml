@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.group7.dao.PowerDao">
+
+    <select id="toLogin" resultType="int">
+       select count(1) from tb_account  where username = #{username} and password = #{password}
+    </select>
+
+
+    <!--//////////////////////上方是后台登陆////////////////////////////////////-->
+
+    <!--根据登陆人 显示左列表树-->
+    <select id="getPowersByUserId" resultType="treeNode">
+        select powerId as id, powerName as text, parentId, state, incoCls, url, remark from tb_limit where powerId in (select powerid from tb_role_power where roleid=(select roleid from tb_account where account_Id = (select account_Id from tb_account where userName = #{userName} ))) order by powerId
+    </select>
+
+
+    <!--//////////////////////上方是左侧树显示////////////////////////////////////-->
+
+    <!--查询角色列表 -->
+    <select id="getList" resultType="map">
+        select roleId,roleName,roleDesc,roleFlag from
+            (select rownum rn,t.* from (select * from t_role
+                 <where>
+                    <if test="roleId!=null and roleId!='' ">
+                        and roleId = #{roleId}
+                    </if>
+                    <if test="roleName!=null and roleName!=''">
+                        and roleName like '%'||#{roleName}||'%'
+                    </if>
+                 </where>) t
+            where rownum &lt; #{end}) a
+        where a.rn &gt; #{start}
+    </select>
+
+    <!--角色总条数-->
+    <select id="getPageCount" resultType="int">
+        select count(1) from t_role
+        <where>
+            <if test="roleId!=null and roleId!=''">
+                and roleId = #{roleId}
+            </if>
+            <if test="roleName!=null and roleName!=''">
+                and roleName = #{roleName}
+            </if>
+        </where>
+    </select>
+
+    <!--修改角色信息-->
+    <update id="up">
+        update t_role set roleName=#{roleName},roleDesc = #{roleDesc},roleFlag = #{roleFlag} where roleId =#{roleId}
+    </update>
+    <!--删除角色信息-->
+    <delete id="de">
+        delete from t_role where roleId = #{roleId}
+    </delete>
+    <!--添加角色信息-->
+    <insert id="add">
+        insert into t_role(roleId,roleName,roleDesc,roleFlag) values(seq_t_role_id.nextval,#{roleName},#{roleDesc},#{roleFlag})
+    </insert>
+
+    <!--//////////////////////以上   角色列表增删该查////////////////////////////////////-->
+
+    <!--获取所有数列表-->
+    <select id="getPowerCheckedTree" resultType="treeNode">
+        select powerId as id, powerName as text, parentId, state, incoCls, url, remark from tb_limit order by powerId
+    </select>
+
+    <!--获取该角色拥有的权限集合-->
+    <select id="getPowerCheckedTreeA" resultType="map">
+        select powerid from tb_role_power where roleid=#{roleId}
+    </select>
+
+
+    <!--添加权限  批量添加角色和权限关联-->
+    <insert id="addRolePower">
+      insert into tb_role_power values(seq_tb_role_power_id.nextval,#{roleId},#{powerId},sysdate)
+    </insert>
+    <!--删除原来关联的所有权限-->
+    <delete id="delPowersByRoleId">
+        delete from tb_role_power where roleid=#{roleId}
+    </delete>
+
+
+    <!--//////////////////////以上  修改权限树////////////////////////////////////-->
+
+
+    <!--//////////////////////以下  账户表信息 增删改查///////////////////////////////////-->
+    <!--账户信息列表-->
+    <select id="accountList" resultType="map">
+        select account_Id,userName,roleId,account_name,to_char(create_date,'YYYY-MM-DD HH24:MI:SS') as create_date,post,passWord from
+        (select rownum rn,t.* from (select * from tb_account
+        <where>
+            <if test="roleId!=null and roleId!='' ">
+                and roleId = #{roleId}
+            </if>
+            <if test="userName!=null and userName!=''">
+                and userName like '%'||#{userName}||'%'
+            </if>
+        </where>) t
+        where rownum &lt; #{end}) a
+        where a.rn &gt; #{start}
+    </select>
+    <!--账户信息 总条数-->
+    <select id="accountListCount" resultType="int">
+          select count(1) from tb_account
+        <where>
+            <if test="roleId!=null and roleId!='' ">
+                and roleId = #{roleId}
+            </if>
+            <if test="userName!=null and userName!=''">
+                and userName like '%'||#{userName}||'%'
+            </if>
+        </where>
+    </select>
+
+    <!--添加账号-->
+    <insert id="accountAdd">
+        insert into tb_account values(seq_tb_account_id.nextval,#{username},#{password},#{roleid},#{account_name},sysdate,#{post})
+    </insert>
+
+    <!--修改账号-->
+    <update id="accountUpdate">
+          update tb_account set userName=#{username},roleId = #{roleid},account_name = #{account_name},post =#{post},passWord = #{password} where account_id =#{account_id}
+    </update>
+    <!--删除账号-->
+    <delete id="accountDelete">
+        delete from tb_account where account_id = #{account_id}
+    </delete>
+</mapper>
