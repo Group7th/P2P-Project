@@ -1,5 +1,7 @@
 package com.group7.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.group7.entity.User;
 import com.group7.service.UserService;
 import com.group7.util.ShowApiRequest;
@@ -35,9 +37,21 @@ public class RegisterController {
     @RequestMapping("/register")
     @ResponseBody
     public Map<String,String> register(User user){
-        System.out.println(user.toString());
+        System.out.println("经过方法前"+user.toString());
+        user.setPassword("123456");
+        System.out.println("set密码后："+user.toString());
         int i = userService.register(user);
-        System.out.println(i);
+        String password = user.getPassword();
+        System.out.println(password+"------------------------------222222222");
+
+        System.out.println("经过方法后"+user.toString());
+        //注册同时要给该账号赋予普通角色的权限
+        int role = userService.registerRole(user.getId());
+        System.out.println(i+"--授予权限是否成功："+role);
+        //查找到userinformationId
+        int registerUserinformationid = userService.registerUserinformationid(user.getId());
+        //向useraccount表插入用户账户accountid和userinformationid生成默认信息
+        userService.registerAccountInfo(registerUserinformationid);
         Map<String,String> map = new HashMap<>();
         if(i>0){
             map.put("msg","success");
@@ -55,9 +69,11 @@ public class RegisterController {
     @RequestMapping("/checkUserName")
     @ResponseBody
     public Map<String,String> checkUserName(@RequestParam String userName) {
+        System.out.println("前台传过来的名字"+userName);
         String s = userService.checkRepeat(userName);
+        System.out.println("是否有重复的名字"+s);
         Map<String,String> map = new HashMap<>();
-        if(s!=null&&s!=""){
+        if(s!=null){
             map.put("msg","fail");
         }else{
             map.put("msg","success");
@@ -75,7 +91,7 @@ public class RegisterController {
     public Map<String,String> checkPhone(@RequestParam String phone) {
         String s = userService.checkRepeatPhone(phone);
         Map<String,String> map = new HashMap<>();
-        if(s!=null&&s!=""){
+        if(s!=null){
             map.put("msg","fail");
         }else{
             map.put("msg","success");
@@ -86,14 +102,20 @@ public class RegisterController {
 
 
         /***
+         * 411523199507192014
          * 身份证接口测试
          */
     @RequestMapping("/getIdCard")
     @ResponseBody
-    public String getIdCard(){
+    public Object getIdCard(){
         String s = (new ShowApiRequest("http://route.showapi.com/25-3", "76850", "3ae9b0a4bcb346dabeca64447a7406f4"))
-                .addTextPara("id","411523199507192014")
+                .addTextPara("id", "410325199803100023")
                 .post();
+        JSONObject jsStr = JSONObject.parseObject(s);
+        JSONObject showapi_res_body=jsStr.getJSONObject("showapi_res_body");
+        JSONObject retData = showapi_res_body.getJSONObject("retData");
+        String address = retData.getString("address");
+        String sex = retData.getString("sex");
         return s;
     }
 
@@ -211,6 +233,5 @@ public class RegisterController {
                 .post();
         return res;
     }
-
 
 }

@@ -3,6 +3,7 @@ package com.group7.controller;
 import com.group7.service.AccountService;
 import com.group7.util.FileUtil.FileUpAndDown;
 import com.group7.util.MapUtil.MapUtil;
+import com.group7.util.getInfoByIdCard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
@@ -42,19 +43,33 @@ public class AccountController {
     @javax.annotation.Resource
     private FileUpAndDown fileUpAndDown;
 
+    @javax.annotation.Resource
+    private getInfoByIdCard getInfoByIdCard;
+
     /**
      * 账号信息页面
      * @return
      */
     @RequestMapping("/toGeRenZhongXinShouYe")
-    public String accountList(){
+    public String accountList(Model model){
         Object userSession = session.getAttribute("userSession");
         String userName = userSession+"";
+        System.out.println("打印用户名字："+userName);
         //获取账户总揽页面所需要的信息
         Map accountList = accountService.accountInfo(userName);
         //获取账户设置页面所需要的信息
         Map accountSet = accountService.accountSet(userName);
-        System.out.println(accountList);
+        //自动拆箱
+        int userAccountId = Integer.valueOf(accountList.get("USERACCOUNTID")+"");
+        //根据账户id查找用户信息id
+        int userInformatioId = accountService.getUserInformatioId(userAccountId);
+        //获取用户的认证状态
+        int state = accountService.getState(userInformatioId);
+        System.out.println("身份证的状态"+state);
+        System.out.println("accountList的值："+accountList);
+        //放入model中实时取值
+        model.addAttribute("state",state);
+        accountList.put("state",state);
         accountList.put("userName",userName);
         //调用map合并工具类将两个map合并成一个map
         Map<String,Object> resultMap = MapUtil.mergeMaps(new Map[]{accountList,accountSet});
@@ -124,7 +139,9 @@ public class AccountController {
     @RequestMapping("/charge")
     @ResponseBody
     public int charge(@RequestParam Integer dollar){
-        System.out.println(session.getAttribute("accountList"));
+        Object userSession = session.getAttribute("userSession");
+        //获取用户名
+        String userName = userSession+"";
         //从session中获取用户的账户信息 是一个map
         Object accountList = session.getAttribute("accountList");
         //将object转回成map
@@ -132,10 +149,22 @@ public class AccountController {
         //获取userinformationid
         Object o = tempAccount.get("USERINFORMATIONID");
         Integer userinformationid = Integer.valueOf(o  + "");
+        //根据用户名获取用户的id
+        int id = accountService.getIdByUserName(userName);
         Map tempMap = new HashMap();
         tempMap.put("money",dollar);
         tempMap.put("userinformationid",userinformationid);
         int charge = accountService.charge(tempMap);
+        Map recordMap = new HashMap();
+        //交易金额
+        recordMap.put("watercoursemoney",dollar);
+        //userid
+        recordMap.put("userid",id);
+        //根据userinformationid查询用户交易后的余额
+        double availMoney = accountService.getAvailMoney(userinformationid);
+        //余额
+        recordMap.put("balance",availMoney);
+        accountService.addChargeRecord(recordMap);
         return charge;
     }
 
@@ -199,10 +228,18 @@ public class AccountController {
 //        Map accountList = accountService.accountInfo(userName);
         //获取账户设置页面所需要的信息
         Map accountSet = accountService.accountSet(userName);
+        Map accountList =(Map)session.getAttribute("accountList");
+        //将从session中取出的userinformationid转换成integer类型
+        Integer o = Integer.valueOf(accountList.get("USERINFORMATIONID")+"");
+        int state = accountService.getState(o);
         String phone=accountSet.get("USERPHONE")+"";
         String password=accountSet.get("PASSWORD")+"";
+        String bankcardnumbers=accountSet.get("BANKCARDNUMBERS")+"";
+        System.out.println("银行卡号为"+bankcardnumbers);
         model.addAttribute("phone",phone);
         model.addAttribute("password",password);
+        model.addAttribute("state",state);
+        model.addAttribute("bankcardnumbers",bankcardnumbers);
 //        System.out.println(accountList);
 //        accountList.put("userName",userName);
         //调用map合并工具类将两个map合并成一个map
@@ -282,8 +319,165 @@ public class AccountController {
             //密码正确 更新成功
             tempMap.put("msg","success");
             System.out.println("成功");
-
         }
         return tempMap;
     }
+
+    /**
+     * 绑定银行卡号
+     * @param bankNum
+     * @return
+     */
+    @RequestMapping("/addBankNumbers")
+    @ResponseBody
+    public Map<String,String> bankCardNums(@RequestParam String bankNum){
+        //从session中获取用户的账户信息 是一个map
+        Object accountList = session.getAttribute("accountList");
+        //将object转回成map
+        Map tempAccount = (Map) session.getAttribute("accountList");
+        //获取userinformationid
+        Object o = tempAccount.get("USERINFORMATIONID");
+        //将userinformationid从Object转换为integer类型
+        Integer userinformationid = Integer.valueOf(o+"");
+        int i = accountService.addBankNums(bankNum, userinformationid);
+        Map msgMap = new HashMap();
+        if(i>0){
+            msgMap.put("msg","success");
+        }else {
+            msgMap.put("msg","fail");
+        }
+        return msgMap;
+    }
+
+    /**
+     * 身份证验证方法(省略了OCR接口验证)
+     * @param realName
+     * @param idNum
+     * @param front
+     * @param behind
+     * @return
+     */
+    @RequestMapping("/identityIdCard")
+    //@ResponseBody
+    public String IdCard(@RequestParam String realName,String idNum,MultipartFile front,MultipartFile behind,Model model) {
+        //OCR身份证识别
+//        String res=new ShowApiRequest("http://route.showapi.com/1429-1","76850","3ae9b0a4bcb346dabeca64447a7406f4")
+//                .addTextPara("imgData","")
+//                .addTextPara("type","")
+//                .post();
+        System.out.println(idNum+"..........."+realName);
+        //从session中获取用户的账户信息 是一个map
+        Object accountList = session.getAttribute("accountList");
+        //将object转回成map
+        Map tempAccount = (Map) session.getAttribute("accountList");
+        //获取userinformationid
+        Object o = tempAccount.get("USERINFORMATIONID");
+        //将userinformationid从Object转换为integer类型
+        Integer userinformationid = Integer.valueOf(o+"");
+        //调用身份证查询方法 根据身份证号识别籍贯性别等信息
+        Map<String, Object> idCardMap = getInfoByIdCard.getIdCard(idNum);
+        //接口方法返回来的性别  1男 2女
+        int sex = Integer.valueOf(idCardMap.get("sex")+"");
+        System.out.println(sex+"性别......");
+        String address = idCardMap.get("address")+"";
+//       Object birthday = idCardMap.get("birthday");出生年月日信息
+        System.out.println("地址：---------"+address);
+        accountService.addIdCardNum(realName,sex,idNum,address,userinformationid);
+        //创建一个tempMap当返回值带参
+        Map tempMap = new HashMap();
+        //创建一个imgMap传入方法中 将图片地址插入数据库
+        Map imgMap = new HashMap();
+        //创建一个stateMap传入更新状态方法中
+        Map stateMap = new HashMap();
+        //将传过来的身份证图片正反面上传到远程ftp服务器
+        String frontImgName = FileUpAndDown.getInstance().upLoad(front);
+        String behindImgName = FileUpAndDown.getInstance().upLoad(behind);
+        //将3个参数传入imgMap中执行mybatis的sql语句
+        imgMap.put("userinformationid",userinformationid);
+        imgMap.put("frontImgName",frontImgName);
+        imgMap.put("behindImgName",behindImgName);
+        stateMap.put("userinformationid",userinformationid);
+        //将身份证图片路径添加到数据库
+        int i = accountService.addIdCard(imgMap);
+
+        //将性别、身份证号码和家庭地址存入到数据库
+//        accountService.addIdCardNum(realName,sex,idNum,address,userinformationid);
+        String msg="";
+        if(1>0) {
+            msg="success";
+            tempMap.put("msg","success");
+            //认证通过更新状态码
+            accountService.changeState(stateMap);
+        }else{
+            msg="fail";
+            tempMap.put("msg","fail");
+        }
+        model.addAttribute("msg",msg);
+        return "backStage/IDCardIdentity";
+    }
+
+    /**
+     * 提现
+     * @param actualMoney
+     * @return
+     */
+    @RequestMapping("/withdraw")
+    @ResponseBody
+    public Map<String,String> withdraw(@RequestParam double actualMoney,double costMoney){
+        Object userSession = session.getAttribute("userSession");
+        //获取用户名
+        String userName = userSession+"";
+        //从session中获取用户的账户信息 是一个map
+        Object accountList = session.getAttribute("accountList");
+        //将object转回成map
+        Map tempAccount = (Map) session.getAttribute("accountList");
+        //获取userinformationid
+        Object o = tempAccount.get("USERINFORMATIONID");
+        //将userinformationid从Object转换为integer类型
+        Integer userinformationid = Integer.valueOf(o+"");
+        int i = accountService.withdraw(actualMoney,costMoney,userinformationid);
+        //new一个记录表的map
+        Map recordMap = new HashMap();
+        //根据用户名获取用户id
+        int id = accountService.getIdByUserName(userName);
+        //用户id
+        recordMap.put("userid",id);
+        //交易金额=提现费用+手续费
+        double watercoursemoney = actualMoney+costMoney;
+        //交易金额放入记录表的map中
+        recordMap.put("watercoursemoney",watercoursemoney);
+        //余额 根据userinformationid查询余额
+        double availMoney = accountService.getAvailMoney(userinformationid);
+        recordMap.put("balance",availMoney);
+        accountService.withdrawRecord(recordMap);
+        Map msgMap = new HashMap();
+        if(i>0){
+            msgMap.put("msg","success");
+        }else{
+            msgMap.put("msg","fail");
+        }
+        return msgMap;
+    }
+
+    /**
+     * 提现页面
+     * @param model
+     * @return
+     */
+    @RequestMapping("toGRZXTiXian1")
+    public String toGRZXTiXian1(Model model){
+        //从session中获取用户的账户信息 是一个map
+        Object accountList = session.getAttribute("accountList");
+        //将object转回成map
+        Map tempAccount = (Map) session.getAttribute("accountList");
+        //获取userinformationid
+        Object o = tempAccount.get("USERINFORMATIONID");
+        //将userinformationid从Object转换为integer类型
+        Integer userinformationid = Integer.valueOf(o+"");
+        //查询用户的可用余额
+        double availMoney = accountService.getAvailMoney(userinformationid);
+        model.addAttribute("availMoney",availMoney);
+        return "yirenbaopage/个人中心-提现";
+    }
+
 }

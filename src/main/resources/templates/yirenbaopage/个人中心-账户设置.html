@@ -75,11 +75,10 @@
     <div class="credit-ad"><img src="yirenbao/images/clist1.jpg" width="1200" height="96"></div>
     <div id="personal-left" class="personal-left">
       <ul>
-        <li><span><a href="toGeRenZhongXinShouYe"><i class="dot dot1"></i>账户总览</a></span></li>
-        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXZiJin">资金记录</a></span></li>
-        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXTouZi">投资记录</a></span></li>
-        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXHuiKuan">回款计划</a></span></li>
-        <li class=""><span><a href="toGRZXKaiTong1"><i class="dot dot02"></i>开通第三方</a> </span> </li>
+        <li><span><a href="toGeRenZhongXinShouYe"><i class="dot dot01"></i>账户总览</a></span></li>
+        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXZiJin"><i class="dot dot02"></i>资金记录</a></span></li>
+        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXTouZi"><i class="dot dot05"></i>投资记录</a></span></li>
+        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXHuiKuan"><i class="dot dot06"></i>回款计划</a></span></li>
         <li><span><a href="toGRZXChongZhi1"><i class="dot dot03"></i>充值</a></span></li>
         <li class=""><span><a href="toGRZXTiXian1"><i class="dot dot04"></i>提现</a></span></li>
         <li style="position:relative;"> <span> <a href="toGRZXXiTongXiaoXi"><i class="dot dot08"></i>系统信息 </a> </span> </li>
@@ -315,28 +314,130 @@
 			    	});
 		         }
 				//$("#activeEmail\\:activeEmailemail").attr({"readOnly":"true"});
-				"";
 			});
 			//]]>
 			</script>
     <div class="personal-main">
       <div class="personal-zhsz">
         <h3><i>账户设置</i></h3>
-        <div class="personal-level"> <span class="wzd">您的账户完整度</span><i class="grzxbg level3" style="border: none; margin: 37px 0px 0px 20px; height: 17px; background-position: 0px -550px;"></i><span class="state">[中]</span> <i id="zhwzd" class="markicon fl mt35"></i><span class="arrow-personal">请尽快完成账户安全设置，以确保您的账户安全</span><span class="grzxbg icon-personal"></span> </div>
+        <div class="personal-level"> <span class="wzd">您的账户完整度</span><i class="grzxbg level3" id="accountLevel" style="border: none; margin: 37px 0px 0px 20px; height: 17px; background-position: 0px -530px;"></i><span class="state" id="levelLogo">[低]</span> <i id="zhwzd" class="markicon fl mt35"></i><span class="arrow-personal">请尽快完成账户安全设置，以确保您的账户安全</span><span class="grzxbg icon-personal"></span> </div>
         <ul>
           <li><i class="grzxbg p-right"></i><span class="zhsz-span1">手机号</span><span class="zhsz-span2" id="telphone" th:text="${phone}">150****0139</span><span class="zhsz-span3"><a href="javascript:void(0)" onclick="showSpan('alert-checkOldMobile')">更改</a></span></li>
           <input type="hidden" value="false" id="authenticationMobile">
-          <li><i class="grzxbg p-danger"></i><span class="zhsz-span1">身份认证</span><span class="zhsz-span2">未认证</span><span class="zhsz-span3"><a href="#">认证</a></span></li>
+          <li><i class="grzxbg p-danger" id="yhkBand"></i><span class="zhsz-span1">银行卡绑定</span><span class="zhsz-span2" th:text="${bankcardnumbers=='null'?'未绑定':'已绑定'}">未绑定</span><span class="zhsz-span3"><a href="javascript:void(0)" onclick="doBanding()" id="rzBank">更改</a></span></li>
+          <li><i class="grzxbg p-danger" id="sfrz"></i><span class="zhsz-span1">身份认证</span><span class="zhsz-span2" th:text="${state==1?'已认证':'未认证'}">未认证</span><span class="zhsz-span3"><a href="/p2p/toIdentity" id="rz">认证</a></span></li>
           <li><i class="grzxbg p-right"></i><span class="zhsz-span1">登录密码</span><span class="zhsz-span2"></span><span class="zhsz-span3"><a href="javascript:void(0)" onclick="showSpan('alert-updatePass')">更改</a></span></li>
         </ul>
       </div>
     </div>
+    <script th:inline="javascript">
+        //根据信息完整度调整完整度条
+        var stateNum = [[${state}]];
+        var bankcardnumbers = [[${bankcardnumbers}]];
+        console.log("银行卡号为:"+bankcardnumbers+"身份证状态"+stateNum);
+        if(bankcardnumbers=='null'){
+            $("#rzBank").text("立即绑定");
+        }
+
+        if(bankcardnumbers!='null'&&stateNum==0){
+            $("#yhkBand").prop("class","grzxbg p-right");
+            $("#accountLevel").css("background-position","0px -550px");
+            $("#levelLogo").text("[中]");
+
+        }
+        // if(stateNum==1){
+        //     $("#sfrz").prop("class","grzxbg p-right");
+        //     $("#rz").prop("href","javascript:(0)");
+        //     $("#rz").text("已认证");
+        //     $("#accountLevel").css("background-position","0px -550px");
+        //     $("#levelLogo").text("[中]");
+        // }
+
+        if(stateNum==1&&(bankcardnumbers=='null')){
+            $("#sfrz").prop("class","grzxbg p-right");
+            $("#rz").prop("href","javascript:(0)");
+            $("#rz").text("已认证");
+            $("#accountLevel").css("background-position","0px -550px");
+            $("#levelLogo").text("[中]");
+        }
+        if(stateNum==1&&bankcardnumbers!='null'){
+            $("#yhkBand").prop("class","grzxbg p-right");
+            $("#sfrz").prop("class","grzxbg p-right");
+            $("#rz").prop("href","javascript:(0)");
+            $("#rz").text("已认证");
+            $("#accountLevel").css("background-position","0px -570px");
+            $("#levelLogo").text("[高]");
+        }
+    </script>
+    <!-- 编辑框弹出模板-->
+    <script type="text/html" id="bankBangding">
+        <div class="layui-form-item" style="margin-top: 30px;">
+          <label class="layui-form-label">银行卡号</label>
+          <div class="layui-input-inline">
+            <input type="text" name="bankNums" id="bankNum" required lay-verify="required" placeholder="请输入银行卡号" class="layui-input">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">手机号</label>
+          <div class="layui-input-inline">
+            <input type="text" name="bankPhone" id="savePhone" required lay-verify="required" placeholder="请输入您的银行预留手机号" class="layui-input">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <button class="layui-btn layui-btn-normal" id="sbtOnce">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+          </div>
+        </div>
+    </script>
     <script type="text/javascript">
         //layui监听
         layui.use('layer', function(){
             var layer = layui.layer;
         });
 
+        console.log("6228482399519775674");
+        /**
+         * 银行卡更换
+         */
+        function doBanding(){
+            layer.open({
+                title: '绑定银行卡信息'
+                , type: 1
+                , area: ['450px', '256px']
+                , anim: 1
+                , content: $("#bankBangding").html()
+                ,success:function(layero,index){
+                    $("#sbtOnce").click(function(){
+                        if($("#bankNum").val().trim()==""){
+                            layer.msg('请输入您的银行卡号！', {icon: 7});
+                            return;
+                        }
+                        if($("#savePhone").val().trim()==""){
+                            layer.msg('请输入您的银行预留手机号！', {icon: 7});
+                            return;
+                        }
+                        console.log("进入到了绑定银行卡方法中");
+                        $.ajax({
+                            type:"post",
+                            url:"/p2p/addBankNumbers",
+                            data:{bankNum:$("#bankNum").val()},
+                            dataType:"json",
+                            success:function (data) {
+                                if(data.msg=="success"){
+                                    layer.close(index);
+                                    layer.msg('绑定成功', {icon: 6});
+                                    setTimeout(parent.location.href=parent.location.href,3000);
+                                }else{
+                                    layer.msg('绑定失败', {icon: 5});
+                                }
+                            }
+
+                        })
+                    });
+                }
+            })
+        }
 			//<![CDATA[
 			           //验证手机号是否为空
 			           function checkCheckMobileFormMoible()

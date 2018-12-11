@@ -66,4 +66,59 @@ public class AccountServiceImpl implements AccountService {
     public int changePwd(Map map) {
         return accountInfoDao.changePwd(map);
     }
+
+    @Override
+    public int addIdCard(Map map) {
+        return accountInfoDao.addIdCard(map);
+    }
+
+    @Override
+    public int addIdCardNum(String realName, int sex, String idNum, String address, int userinformationid) {
+        return accountInfoDao.addIdCardNum(realName,sex,idNum,address,userinformationid);
+    }
+
+    @Override
+    public int addBankNums(String bankCardNums, int userinformationid) {
+        return accountInfoDao.addBankNums(bankCardNums,userinformationid);
+    }
+
+    @Override
+    public int changeState(Map map) {
+        return accountInfoDao.changeState(map);
+    }
+
+    @Override
+    public int getState(int userinformationid) {
+        return accountInfoDao.getState(userinformationid);
+    }
+
+    @Override
+    public int getUserInformatioId(int accountId) {
+        return accountInfoDao.getUserInformatioId(accountId);
+    }
+
+    @Override
+    public int withdraw(double withdraw, double costMoney, int userinformationid) {
+        return accountInfoDao.withdraw(withdraw, costMoney, userinformationid);
+    }
+
+    @Override
+    public double getAvailMoney(int userinformationid) {
+        return accountInfoDao.getAvailMoney(userinformationid);
+    }
+
+    @Override
+    public int getIdByUserName(String userName) {
+        return accountInfoDao.getIdByUserName(userName);
+    }
+
+    @Override
+    public int addChargeRecord(Map map) {
+        return accountInfoDao.addChargeRecord(map);
+    }
+
+    @Override
+    public int withdrawRecord(Map map) {
+        return accountInfoDao.withdrawRecord(map);
+    }
 }

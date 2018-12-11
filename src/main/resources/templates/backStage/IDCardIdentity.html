@@ -1,91 +1,5 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-    <!--<meta charset="UTF-8">-->
-    <!--<title>身份证认证界面</title>-->
-    <!--<link href="yirenbao/css/common.css" rel="stylesheet" />-->
-    <!--<link rel="stylesheet" type="text/css" href="yirenbao/css/user.css" />-->
-    <!--<link rel="stylesheet" type="text/css" href="style/style.css"/>-->
-    <!--<link rel="stylesheet" type="text/css" href="css/style.css">-->
-    <!--<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>-->
-    <!--<script type="text/javascript" src="js/all.js"></script>-->
-    <!--<script src="js/jquery.form.js"></script>-->
-<!--</head>-->
-<!--<body>-->
-<!--<span id="clickHeadImage" class="head-img" title="点击更换头像">-->
-    <!--<form method="post" action="/p2p/fileUpload" enctype="multipart/form-data" id="form1" onsubmit="return sbt();">-->
-        <!--<div style="border: 1px solid #0C0C0C; float: left;width: 370px;height: 230px;">-->
-
-        <!--</div>-->
-        <!--<div style="border: 1px solid #0C0C0C; float: left;width: 370px;height: 230px;">-->
-
-        <!--</div>-->
-
-    <!--</form>-->
-<!--</span>-->
-
-
-
-
-
-
-<!--&lt;!&ndash;<input type="hidden" name="userPhotoUploadForm" value="userPhotoUploadForm">&ndash;&gt;-->
-<!--&lt;!&ndash;<span id="userPhotoUploadForm:photo"><img id="userPhotoUploadForm:photoImage" name="portrait" src="/p2p/showFtp?fileName=036eaa22-04ae-41fb-a1dc-ca772ad44f99.png" alt="用户头像" style="width:88px;height:88px;z-index:0;"> <i class="headframe" style="z-index:0;"></i>- &ndash;&gt;-->
-              <!--&lt;!&ndash;<div id="userPhotoUploadForm:shangchuan-btn" class="ui-fileupload ui-widget" style="z-index:0;">&ndash;&gt;-->
-                <!--&lt;!&ndash;<div class="ui-fileupload-buttonbar ui-corner-top"><span class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left ui-fileupload-choose" role="button"><span class="ui-button-icon-left ui-icon ui-c ui-icon-plusthick"></span><span class="ui-button-text ui-c"></span>&ndash;&gt;-->
-                    <!--&lt;!&ndash;&lt;!&ndash;更换头像&ndash;&gt;&ndash;&gt;-->
-                  <!--&lt;!&ndash;<input type="file" id="changeHeadImg" name="file" onchange="xmTanUploadImg(this)" style="z-index:0;display:none;">&ndash;&gt;-->
-                  <!--&lt;!&ndash;</span></div>&ndash;&gt;-->
-                <!--&lt;!&ndash;<div class="ui-fileupload-content ui-widget-content ui-corner-bottom">&ndash;&gt;-->
-                  <!--&lt;!&ndash;<table class="ui-fileupload-files">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<tbody>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</tbody>&ndash;&gt;-->
-                  <!--&lt;!&ndash;</table>&ndash;&gt;-->
-                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-              <!--&lt;!&ndash;</div>&ndash;&gt;-->
-<!--&lt;!&ndash;</span>&ndash;&gt;-->
-<!--<script type="text/javascript">-->
-    <!--//选择图片，马上预览-->
-    <!--function xmTanUploadImg(obj) {-->
-        <!--var file = obj.files[0];-->
-        <!--console.log(obj);-->
-        <!--console.log(file);-->
-        <!--// console.log("file.size = " + file.size);-->
-        <!--var reader = new FileReader();-->
-        <!--reader.onloadstart = function (e) {-->
-            <!--console.log("开始读取....");-->
-        <!--};-->
-        <!--reader.onprogress = function (e) {-->
-            <!--console.log("正在读取中....");-->
-        <!--};-->
-        <!--reader.onabort = function (e) {-->
-            <!--console.log("中断读取....");-->
-        <!--};-->
-        <!--reader.onerror = function (e) {-->
-            <!--console.log("读取异常....");-->
-        <!--};-->
-        <!--reader.onload = function (e) {-->
-            <!--console.log("成功读取....");-->
-            <!--var img = document.getElementById("userPhotoUploadForm:photoImage");-->
-            <!--img.src = e.target.result;-->
-        <!--};-->
-        <!--reader.readAsDataURL(file);-->
-        <!--$("#form1").ajaxSubmit(function (message) {-->
-            <!--//对于表单提交成功后处理，message为提交页面/p2p/fileUpload的返回内容-->
-            <!--console.log(message + "回调ajax的form表单");-->
-            <!--var param = {imgName: message};-->
-            <!--$.post('/p2p/addImg', param, function (data) {-->
-                <!--console.log(data.msg);-->
-            <!--});-->
-
-        <!--});-->
-        <!--return false;-->
-    <!--}-->
-<!--</script>-->
-<!--</body>-->
-<!--</html>-->
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="Generator" content="EditPlus®">
@@ -226,27 +140,30 @@
         }
     </style>
     <script type="text/javascript" src="js/jquery3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.form.js"></script>
+    <script type="text/javascript" src="js/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="js/dist/sweetalert.css">
 </head>
 <body>
-<form action="" onsubmit="return checkForm()">
+<form id="form1" action="/p2p/identityIdCard"  method="post" enctype="multipart/form-data" onsubmit="return checkForm()">
     <div class="info_list">
         <div class="list_left">真实姓名：</div>
-        <div class="list_right">
-            <input type="text" class="edit" id="real_name" placeholder="请输入您的真实姓名"/>
+        <div class="list_right" >
+            <input type="text" name="realName"  class="edit" id="real_name" placeholder="请输入您的真实姓名"/>
         </div>
     </div>
     <div class="info_list">
         <div class="list_left">身份证号码：</div>
         <div class="list_right">
-            <input type="text" class="edit" id="card_no" placeholder="请输入您的身份证号码"/>
+            <input type="text" name="idNum" class="edit" id="card_no" placeholder="请输入您的身份证号码"/>
         </div>
     </div>
     <div class="info_list" style="border-bottom:none;">
         <div class="list_left2">身份证上传<span>(请上传身份证正反面，图片保持清晰)</span></div>
     </div>
     <div class="id_img_wp">
-        <input type="file" accept="image/*" onchange="getzImg(this)" style="display:none" value="" id="img_z"/>
-        <input type="file" accept="image/*" onchange="getfImg(this)" value="" id="img_f" style="display:none"/>
+        <input type="file" accept="image/*" name="front" onchange="getzImg(this)" style="display:none" value="" id="img_z"/>
+        <input type="file" accept="image/*" name="behind" onchange="getfImg(this)" value="" id="img_f" style="display:none"/>
         <div class="img_wp" onclick="zhengmian()">
             <img src="images/defaultImg.gif" id="zmz" style="height: 295.078px;visibility: visible;" />
             <p class="img_intro">身份证正面照</p>
@@ -259,12 +176,29 @@
         <div class="cf"></div>
     </div>
     <p style="text-align:center;">
-        <input type="submit" value="确认申请" class="save_btn"/>
+        <input type="submit" value="提交认证" class="save_btn"/>
     </p>
 </form>
 
 <script>
     $(function(){
+        var  msg='[[${msg}]]';
+        if(msg!=''){
+            if(msg=='success') {
+                swal({
+                    title: "恭喜您！",
+                    text: "请您耐心等待审核",
+                    timer: 1000,
+                    showConfirmButton: false,
+                    type: "success"
+                }, function () {
+                    location.href = "/p2p/toGRZXZhangHao";
+                });
+            } else{
+                alert("系统繁忙，请稍后再试!");
+            }
+        }
+
         $('.img_wp img').height($('.img_wp img').width()*0.6);
         $(window).resize(function(){
             $('.img_wp img').height($('.img_wp img').width()*0.6);
@@ -317,7 +251,30 @@
             alert('请上传身份证反面照！');
             return false;
         }
-        //提交表单
+        alert(cardNo.val());
+
+       /* //提交表单
+        $("#form1").ajaxSubmit(function (message) {
+            //对于表单提交成功后处理，message为提交页面/p2p/fileUpload的返回内容
+            console.log(message.frontImgName+"回调身份证正面图片的名字");
+            console.log(message.behindImgName+"回调身份证背面图片的名字");
+            if(message.msg=="success"){
+                swal({
+                    title: "恭喜您！",
+                    text: "请您耐心等待审核",
+                    timer: 1000,
+                    showConfirmButton: false,
+                    type:"success"
+                },function () {
+                    location.href="/p2p/toGRZXZhangHao";
+                });
+            }else{
+                alert("系统繁忙，请稍后再试!");
+            }
+
+
+        });*/
+        //return false;
     }
 </script>
 </body>

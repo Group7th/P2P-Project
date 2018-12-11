@@ -1,0 +1,413 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>p2p网贷平台</title>
+
+  <meta name="description" content="" />
+  <link href="yirenbao/css/common.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="yirenbao/css/user.css" />
+  <script type="text/javascript" src="yirenbao/script/jquery.min.js"></script>
+  <script src="yirenbao/script/user.js" type="text/javascript"></script>
+  <!------------------->
+  <link rel="stylesheet" type="text/css" href="style/style.css"/>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="js/all.js"></script>
+  <!-- 引入样式 -->
+  <script type="text/javascript" src="/p2p/js/vue.js"></script>
+  <script type="text/javascript" src="/p2p/js/axios.min.js"></script>
+  <!-- 引入样式 -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <!-- 引入组件库 -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script type="text/javascript" src="js/moment.min.js"></script>
+  <script type="text/javascript">
+      $(function () {
+      //     $.ajax({
+      //         url:"record/moneyList",
+      //         type:"post",
+      //         data:{pageNo:1,pageSize:8},
+      //         success:function (data) {
+      //             console.log(data.data);
+      //             for(var i=0;i<data.data.length;i++){
+      //                 var WATERCOURSETIME=new Date(data.data[i].WATERCOURSETIME).toJSON();
+      //                 //格式化浏览器时间
+      //                 var dateTime = new Date(+new Date(WATERCOURSETIME)+8*3600*1000).toISOString().replace(/T/g,' ').replace(/\.[\d]{3}Z/,'');
+      //                 var liTemp ='<li>' +'<span class="pmain-title1 pmain-height">'+dateTime+'</span>'+
+      //                     '<span class="pmain-title1 pmain-height" style=\"padding-left:40px\">'+data.data[i].WATERCOURSETYPE+'</span>'+
+      //                     '<span class="pmain-title1 pmain-height" style="padding-left:55px">'+data.data[i].WATERCOURSEMONEY+'</span>'+
+      //                     '<span class="pmain-title1 pmain-height" style="padding-left:0px">'+data.data[i].BALANCE+'</span>'+
+      //                     '<span class="pmain-title1 pmain-height" style="padding-left:0px">'+data.data[i].CHARGEWAY+'</span>'+
+      //                     '</li>';
+      //                 $("#ulList").append(liTemp);
+      //             }
+      //         }
+      //     });
+      // })
+      //
+      // function getList(pageNoTemp,pageSizeTemp){
+      //     $("#ulList").empty();
+      //     $.ajax({
+      //         url:"record/moneyList",
+      //         type:"post",
+      //         data:{pageNo:pageNoTemp,pageSize:pageSizeTemp},
+      //         success:function (data) {
+      //             console.log(data.data);
+      //             for(var i=0;i<data.data.length;i++){
+      //                 var WATERCOURSETIME=new Date(data.data[i].WATERCOURSETIME).toJSON();
+      //                 //格式化浏览器时间
+      //                 var dateTime = new Date(+new Date(WATERCOURSETIME)+8*3600*1000).toISOString().replace(/T/g,' ').replace(/\.[\d]{3}Z/,'')
+      //                 var liTemp ='<li>' +'<span class="pmain-title1 pmain-height">'+dateTime+'</span>'+
+      //                     '<span class="pmain-title1 pmain-height" style=\"padding-left:40px\">'+data.data[i].WATERCOURSETYPE+'</span>'+
+      //                     '<span class="pmain-title1 pmain-height" style="padding-left:55px">'+data.data[i].WATERCOURSEMONEY+'</span>'+
+      //                     '<span class="pmain-title1 pmain-height" style="padding-left:0px">'+data.data[i].BALANCE+'</span>'+
+      //                     '<span class="pmain-title1 pmain-height" style="padding-left:0px">'+data.data[i].CHARGEWAY+'</span>'+
+      //                     '</li>';
+      //                 $("#ulList").append(liTemp);
+      //             }
+      //         }
+      //     });
+      });
+  </script>
+</head>
+<body>
+
+<div class="zxcf_top_wper">
+  <div class="zxcf_top px1000 clearfix">
+    <div class="zxcf_top_l fl">
+      <img src="images/zxcf_phone.png" alt="">
+      400-027-0101(工作时间9:00-17:30)
+      <a href="#"><img src="images/zxcf_weixin.png" alt=""></a>
+      <a href="#"><img src="images/zxcf_sina.png" alt=""></a>
+      <a href="#"><img src="images/zxcf_qq.png" alt=""></a>
+    </div>
+    <div class="zxcf_top_r fr">
+      <a href="toLogin" class="curspan">立即登录</a>
+      <span>|</span>
+      <a href="toRegister">免费注册</a>
+      <span>|</span>
+      <a href="toproblem">常见问题</a>
+    </div>
+  </div>
+</div>
+<!-- end top -->
+
+</div>
+<!-- end top -->
+<div class="zxcf_nav_wper">
+  <div class="zxcf_nav clearfix px1000">
+    <div class="zxcf_nav_l fl"><img src="images/zxcf_logo.png" alt=""></div>
+    <div class="zxcf_nav_r fr">
+      <img src="images/zxcf_perinfo.png" alt="">
+      <span>我的账户
+		 	<img src="images/zxcf_icon01.png" alt=""></span>
+      <ul class="zxcf_perinfo" style="display:none;">
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="zxcf_menu_wper">
+  <div class="zxcf_menu px1000">
+    <a href="toIndex" class="zm_cura">首页</a>
+    <a href="toInvest">我要投资</a>
+    <a href="toBorrow">我要借款</a>
+    <a href="#">实时财务</a>
+    <a href="toGeRenZhongXinShouYe">账户信息</a>
+    <a href="#" style="margin-right:0;">关于我们</a>
+  </div>
+</div>
+<!--个人中心-->
+<div class="wrapper wbgcolor">
+  <div class="w1200 personal">
+    <div class="credit-ad"><img src="yirenbao/images/clist1.jpg" width="1200" height="96"></div>
+    <div id="personal-left" class="personal-left">
+      <ul>
+        <li><span><a href="toGeRenZhongXinShouYe"><i class="dot dot01"></i>账户总览</a></span></li>
+        <li class="pleft-cur"><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXZiJin"><i class="dot dot02"></i>资金记录</a></span></li>
+        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXTouZi"><i class="dot dot05"></i>投资记录</a></span></li>
+        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXHuiKuan"><i class="dot dot06"></i>回款计划</a></span></li>
+        <li><span><a href="toGRZXChongZhi1"><i class="dot dot03"></i>充值</a></span></li>
+        <li class=""><span><a href="toGRZXTiXian1"><i class="dot dot04"></i>提现</a></span></li>
+        <li style="position:relative;"> <span> <a href="toGRZXXiTongXiaoXi"><i class="dot dot08"></i>系统信息 </a> </span> </li>
+        <li><span><a href="toGRZXZhangHao"><i class="dot dot09"></i>账户设置</a></span></li>
+      </ul>
+    </div>
+    <div class="personal-main">
+      <div class="personal-money" style="width: 950px">
+        <h3><i>资金记录</i></h3>
+            <!--<div id="typeboxstyle" class="select-date"> <span class="select-title" style="display:inline-block;height:25px;line-height:20px;">全部</span>-->
+              <!--<ul>-->
+                <!--<li>全部</li>-->
+                <!--<li value="ti_balance">转入到余额</li>-->
+                <!--<li value="to_balance">从余额转出</li>-->
+                <!--<li value="to_frozen">从冻结金额中转出</li>-->
+                <!--<li value="freeze">冻结</li>-->
+                <!--<li value="unfreeze">解冻</li>-->
+              <!--</ul>-->
+
+
+              <!--<el-form-item label="操作类型">-->
+                <!--<el-select v-model="options" clearable placeholder="全部">-->
+                  <!--<el-option  v-for="item in options"  :key="item.value" :label="item.label" :value="item.value"></el-option>-->
+                <!--</el-select>-->
+              <!--</el-form-item>-->
+
+
+            <!--</div>-->
+            <!--<span class="money-date2">查询时间</span>-->
+            <!--<div id="select-date" class="select-date"> <span class="select-title" style="display:inline-block;height:25px;line-height:20px;">全部</span>-->
+              <!--<ul>-->
+                <!--<li value="0d">今天</li>-->
+                <!--<li value="1w">最近一周</li>-->
+                <!--<li value="1m">一个月</li>-->
+                <!--<li value="6m">六个月</li>-->
+                <!--<li>全部</li>-->
+              <!--</ul>-->
+            <!--</div>-->
+            <!--<button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only btn-sx"><span class="ui-button-text ui-c">筛选</span></button>-->
+            <!--<button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only btn-dc"><span class="ui-button-text ui-c">导出</span></button>-->
+
+  <div id="list">
+    <div class="money-choose"> <span class="money-date1" style="margin-top: 8px;">操作类型</span></div>
+      <el-form :inline="true" :model="searchForm" class="form-inline">
+        <el-form-item>
+          <el-select v-model="searchForm.handleType" clearable placeholder="全部" @change="getValue">
+            <el-option label="全部" value=""></el-option>
+            <el-option label="提现" value="提现"></el-option>
+            <el-option label="充值" value="充值"></el-option>
+            <el-option label="还款" value="还款"></el-option>
+            <el-option label="投资" value="投资"></el-option>
+          </el-select>
+        </el-form-item>
+       <div style="display: inline-block;margin-top: 8px;margin-right: 10px" ><span class="money-date1" style="margin-top: 8px;">查询时间</span></div>
+        <el-form-item>
+          <el-select v-model="searchForm.handleDate" clearable placeholder="全部" @change="getDate">
+            <el-option label="全部" value=""></el-option>
+            <el-option label="今天" value="to_char(watercoursetime,'yyyy-mm-dd')=to_char(sysdate,'yyyy-mm-dd')"></el-option>
+            <el-option label="最近一周" value="watercoursetime &gt;= sysdate-7"></el-option>
+            <el-option label="一个月" value="watercoursetime &gt;= add_months(sysdate,-1)"></el-option>
+            <el-option label="六个月" value="watercoursetime &gt;= add_months(sysdate,-6)"></el-option>
+          </el-select>
+        </el-form-item>
+      </el-form>
+
+          <el-table
+                  :data="tableData"
+                  style="width:100%"
+                  :default-sort = "{prop: 'WATERCOURSETIME', order: 'descending'}"
+          >
+            <!--<el-table-column-->
+            <!--多选框-->
+                    <!--type="selection">-->
+            <!--</el-table-column>-->
+            <el-table-column
+                    prop="WATERCOURSETIME"
+                    label="交易时间"
+                    :formatter="dateFormat"
+                    sortable
+                    fit="true">
+            </el-table-column>
+            <el-table-column
+                    prop="WATERCOURSETYPE"
+                    label="交易类型"
+                    sortable
+                    fit="true">
+            </el-table-column>
+            <el-table-column
+                    prop="WATERCOURSEMONEY"
+                    label="交易金额"
+                    fit="true">
+            </el-table-column>
+            <el-table-column
+                    prop="BALANCE"
+                    label="余额"
+                    >
+            </el-table-column>
+            <el-table-column
+                    prop="CHARGEWAY"
+                    label="交易方式"
+                    >
+            </el-table-column>
+            <el-table-column
+                    fixed="right"
+                    label="操作"
+                    width="120">
+              <template slot-scope="scope">
+                <el-button
+                        @click="deleteRow(scope.row)"
+                        type="danger"
+                        size="small">
+                  删除
+                </el-button>
+              </template>
+            </el-table-column>
+          </el-table>
+
+    <!--底部分页-->
+      <div class="inline" style="text-align: center;margin-top: 13px">
+          <el-pagination
+                  @size-change="pageSizeChange"
+                  @current-change="currentPageChange"
+                  :current-page="currentPage"
+                  :page-sizes="[10,20, 30, 40]"
+                  :page-size="pageSize"
+                  layout="total, sizes, prev, pager, next, jumper"
+                  :total="tableTotal">
+          </el-pagination>
+      </div>
+
+  </div>
+  <script>
+    new Vue({
+        el: "#list",
+        data:{
+            tableData: [],
+            tableTotal:100,
+            pageSize:10,
+            currentPage:1,
+            //搜索
+            searchForm: {
+                handleType: '',
+                handleDate: ''
+            }
+        },
+        created: function(){
+            //在 then的内部不能使用Vue的实例化的this, 因为在内部 this 没有被绑定。
+            var _self = this;
+            var start = (this.currentPage-1)*this.pageSize;
+            var end = this.currentPage*this.pageSize+1;
+            var searchForm = {
+                'start': start,
+                'end': end,
+              //  'loansId': this.searchForm.loansId,
+             //   'userName': this.searchForm.userName,
+               // 'loansType': this.searchForm.loansType
+            };
+            axios.post('record/moneyList',searchForm).then(function(res){
+                _self.tableData = res.data.data;
+                _self.tableTotal = res.data.total;
+            })
+        },
+        methods: {
+        //时间格式化
+        dateFormat:function(row, column) {
+                var date = row[column.property];
+                if (date == undefined) {
+                    return "";
+                }
+                return moment(date).format("YYYY-MM-DD HH:mm:ss");
+            },
+        loadingData: function () {
+            var _this = this;  //很重要！！
+            var start = (this.currentPage - 1) * this.pageSize;
+            var end = this.currentPage * this.pageSize+1;
+            console.log(start);
+            console.log(end);
+            var operationType = this.handleType;
+            var operationDate = this.handleDate;
+            var searchForm = {
+                'start': start,
+                'end': end,
+                //  'loansId': this.searchForm.loansId,
+                //   'userName': this.searchForm.userName,
+                'watercoursetype': operationType,
+                'watercoursetime': operationDate
+            };
+                axios.post('record/moneyList',searchForm)
+                .then(function (res) {
+                    console.log(res);
+                    _this.tableData = res.data.data;
+                    _this.tableTotal = res.data.total;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
+            //删除事件
+        deleteRow:function(row){
+            var _self = this;
+            this.$confirm("确认删除吗？","提示",{
+                type:'warning'
+            }).then(function () {
+                var url="record/deleteRows/"+row.MONEYRECORD;
+                axios.get(url).then(function (res) {
+                    console.log(res.data.msg);
+                    if(res.data.msg=="success"){
+                        _self.$message({
+                           message:row.MONEYRECORD + '删除成功',
+                           type:'success'
+                        });
+                        _self.loadingData();//重新加载数据
+                    }
+                });
+            }).catch(function (e) {
+                if(e!="cancel")
+                    console.log("出现错误"+e);
+            });
+        },
+        //分页大小修改事件
+        pageSizeChange: function (val) {
+            this.pageSize = val;
+            //var _self = this;
+            this.loadingData();//重新加载数据
+        },
+        //当前页数修改事件
+        currentPageChange:function(val) {
+            this.currentPage = val;
+            //console.log('当前页: ' + val);
+            //var _self = this;
+            this.loadingData();//重新加载数据
+          },
+            //下拉框改变监听
+        getValue:function (val) {
+            console.log(val);
+            //将选中的值赋给参数带回动态sql中查询
+            this.handleType = val;
+            this.loadingData();//重新加载数据
+        },
+        getDate:function (val) {
+            this.handleDate = val;
+            this.loadingData();//重新加载数据
+        }
+        }
+    })
+  </script>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+<!--网站底部-->
+<div class="footer">
+  <div class="foot">
+    <article>
+      <div class="friend">
+        <a href="#">关于我们</a>
+        <span></span>
+        <a href="#">法律声明</a>
+        <span></span>
+        <a href="#">媒体报道</a>
+        <span></span>
+        <a href="#">团队介绍</a>
+        <span></span>
+        <a href="#">帮助中心</a>
+        <span></span>
+        <a href="#">友情链接</a>
+      </div>
+      <figure></figure>
+      <p>© 2016 北京乐融多源信息技术有限公司 京ICP证12049103号-3 京公网安备11010502025440</p>
+      <div class="certificate"></div>
+    </article>
+    <aside>
+      <p>联系我们 <span>9:00 - 21:00</span> </p>
+      <h1>400-068-1176</h1>
+      <div class="customer"><a href="#">在线客服</a></div>
+      <div class="customer"><a href="#">客服邮箱</a></div>
+    </aside>
+  </div>
+
+</div>
+</body>
+</html>
+

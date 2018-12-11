@@ -16,7 +16,7 @@ import java.util.zip.ZipFile;
 /**
  * 压缩工具类。
  */
-public   class ZipUtils {
+public  class ZipUtils {
 
 	private static final Set<String> CONTENT_TYPES = new HashSet<String>();
 	private static final Pattern REGEX_FILE_NAME = Pattern.compile("attachment;filename=\"([\\w\\-]+)\"");
