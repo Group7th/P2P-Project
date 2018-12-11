@@ -43,4 +43,18 @@ public interface LoanAuditService {
 	 * @return
 	 */
 	int reject(String REASON,Integer LOANSSTATE,Integer LOANSID);
+
+	/**
+	 * 通过消息
+	 * @param LOANSID
+	 * @return
+	 */
+	int passReason(Integer LOANSID);
+
+	/**
+	 * 驳回消息
+	 * @param LOANSID
+	 * @return
+	 */
+	int rejectReson(Integer LOANSID);
 }

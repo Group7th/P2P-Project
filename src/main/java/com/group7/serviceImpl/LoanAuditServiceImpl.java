@@ -66,4 +66,24 @@ public class LoanAuditServiceImpl implements LoanAuditService{
 	public int reject(String REASON, Integer LOANSSTATE, Integer LOANSID) {
 		return loanAuditDao.reject(REASON,LOANSSTATE,LOANSID);
 	}
+
+	/**
+	 * 通过理由
+	 * @param LOANSID
+	 * @return
+	 */
+	@Override
+	public int passReason(Integer LOANSID) {
+		return loanAuditDao.passReason(LOANSID);
+	}
+
+	/**
+	 * 驳回消息
+	 * @param LOANSID
+	 * @return
+	 */
+	@Override
+	public int rejectReson(Integer LOANSID) {
+		return loanAuditDao.rejectReson(LOANSID);
+	}
 }

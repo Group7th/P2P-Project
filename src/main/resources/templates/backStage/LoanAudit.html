@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <!-- 引入组件库 -->
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script type="text/javascript" src="js/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="js/dist/sweetalert.css">
     <style type="text/css">
         .c1 {
             padding-left: 15px
@@ -27,8 +29,8 @@
 </head>
 <body>
 <div id="app">
-    <p v-bind:class="{c1:isShow}"><img src="/p2p/images/zxcf_logo.png" height="77" width="400"/>
-    </p>
+   <!-- <p v-bind:class="{c1:isShow}"><img src="/p2p/images/zxcf_logo.png" height="77" width="400"/>
+    </p>-->
     <p v-bind:class="{c2:isShowA}"><span><img src="/p2p/images/block_pic02.png" height="22" width="22"/></span>&nbsp;&nbsp;&nbsp;&nbsp;招标审核
     </p>
 
@@ -54,6 +56,7 @@
             <el-form-item>
                 <el-button type="primary" icon="search" @click="searchClick">查询</el-button>
             </el-form-item>
+            <el-button type="success" icon="plus" @click="toFlush">刷新</el-button>
         </el-form>
     </el-row>
     <!--列表-->
@@ -134,7 +137,7 @@
     </el-row>
     <!--编辑页面-->
     <el-dialog title="贷款详情" :visible.sync="editFormVisible" :close-on-click-modal="false">
-        <el-form :model="editForm" label-width="120px" :ref="editForm" inline="true" class="demo-form-inline">
+        <el-form :model="editForm" label-width="150px" :ref="editForm" inline="true" class="demo-form-inline">
             <el-form-item label="贷款编号">
                 <el-input v-model="editForm.LOANSID" readonly="rd"></el-input>
             </el-form-item>
@@ -147,7 +150,7 @@
             <el-form-item label="还款方式">
                 <el-input v-model="editForm.REFUNDWAY" readonly="rd"></el-input>
             </el-form-item>
-            <el-form-item label="还款期限(天)">
+            <el-form-item label="还款期限(月)">
                 <el-input v-model="editForm.REFUNDDEADLINE" readonly="rd"></el-input>
             </el-form-item>
             <el-form-item label="招标时间">
@@ -172,12 +175,12 @@
             <el-form-item label="家庭住址">
                 <el-input v-model="editForm.SITE" readonly="readonly"></el-input>
             </el-form-item>
-            <el-form-item label="抵押价值(￥)">
+            <el-form-item label="抵押价值(￥)" v-if="editForm.LOANSTYPE==3?false:true">
                 <el-input v-model="editForm.VALUE" readonly="readonly"></el-input>
             </el-form-item>
             <el-form-item label="证明凭证" v-if="editForm.LOANSTYPE==3?false:true">
                 <template solt-scope="scope">
-                    <a :href="editForm.LOANSTYPE==1?editForm.tHOUSE:editForm.tCAR"><img
+                    <a :href="editForm.LOANSTYPE==1?editForm.tHOUSE:editForm.tCAR" target="_blank"><img
                             :src="editForm.LOANSTYPE==1?editForm.HOUSE:editForm.CAR" min-width="120" height="180"></a>
                 </template>
                 <!--<el-input v-model="editForm.LOANSTYPE==1?editForm.HOUSE:editForm.CAR" readonly="readonly"></el-input>-->
@@ -250,7 +253,6 @@
                 LOANSUSED: '',
                 UP: '',
                 CARD: '',
-                BANKCARD: '',
                 SITE: '',
                 VALUE: '',
                 HOUSE: '',
@@ -352,6 +354,15 @@
                 this.currentPage = val;
                 this.loadingData();//重新加载数据
             },
+            //刷新
+            toFlush:function () {
+               this. searchForm= {
+                        loansId: '',
+                        userName: '',
+                        loansType: ''
+                },
+                this.loadingData();//重新加载数据
+            },
             //通过
             Submit: function () {
                 this.$confirm('此操作将通过招标审核, 是否继续?', '提示', {
@@ -378,18 +389,10 @@
             //驳回
             reject: function () {
                 if (this.editForm.REASON == '') {
-                    this.$confirm('请输入驳回理由', '提示', {
-                        confirmButtonText: '确定',
-                        cancelButtonText: '取消',
-                        type: 'warning'
-                    });
+                    sweetAlert("没有检测到驳回理由！","请输入驳回理由！", "info");
                 } else {
-                    alert("您确定要驳回贷款吗？驳回后不可更改！");
                     this.rejectA();
-                    this.$confirm('贷款已经驳回', '提示', {
-                        confirmButtonText: '确定',
-                        type: 'success'
-                    });
+                    sweetAlert("操作成功！","贷款已经驳回！", "success");
                     setTimeout(function () {
                         location.href = location.href
                     }, 3000);
