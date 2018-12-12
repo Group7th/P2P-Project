@@ -38,5 +38,26 @@ public interface UserDao {
      * @return
      */
     int addPhone(@Param("userPhone") String userPhone, @Param("userId")Integer userId);
+
+    /**
+     * 注册时赋予用户普通角色
+     * @param userid
+     * @return
+     */
+    int registerRole(int userid);
+
+    /**
+     * 注册时添加用户默认账户信息
+     * @param userinformationid
+     * @return
+     */
+    int registerAccountInfo (int userinformationid);
+
+    /**
+     * 根据id查找用户userinformationId
+     * @param id
+     * @return
+     */
+    int registerUserinformationid(int id);
 }
 

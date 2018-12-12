@@ -35,7 +35,22 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String checkRepeatPhone(String userPhone) {
-        return null;
+        return userDao.checkRepeatPhone(userPhone);
+    }
+
+    @Override
+    public int registerRole(int userid) {
+        return userDao.registerRole(userid);
+    }
+
+    @Override
+    public int registerAccountInfo(int userinformationid) {
+        return userDao.registerAccountInfo(userinformationid);
+    }
+
+    @Override
+    public int registerUserinformationid(int id) {
+        return userDao.registerUserinformationid(id);
     }
 
 }

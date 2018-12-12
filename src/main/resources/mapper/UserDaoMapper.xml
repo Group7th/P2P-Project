@@ -4,8 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.group7.dao.UserDao">
     <!--配置文件加这个Redis-->
-    <cache type="org.mybatis.caches.redis.RedisCache" blocking="false"
-           flushInterval="0" readOnly="true" size="1024" eviction="FIFO"/>
+    <!--<cache type="org.mybatis.caches.redis.RedisCache" blocking="false"-->
+           <!--flushInterval="0" readOnly="true" size="1024" eviction="FIFO"/>-->
 
     <!--useGeneratedKeys="true" keyProperty="id" keyColumn="id"-->
 
@@ -14,8 +14,23 @@
         <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Integer">
             select seq_tb_user_id.nextval from dual
         </selectKey>
-          insert into tb_user values (#{id},#{userName},#{password},1)
+          insert into tb_user values (#{id},#{userName},#{password},1,null)
     </insert>
+
+    <!--给注册用户赋予普通用户的角色-->
+    <insert id="registerRole" parameterType="int">
+          insert into TB_USER_ROLE values (#{userid},3)
+    </insert>
+
+    <!--注册时添加用户默认账户信息-->
+    <insert id="registerAccountInfo" parameterType="int">
+          insert into tb_useraccount (useraccountid,userinformationid) values (seq_tb_useraccount_id.nextval,#{userinformationid})
+    </insert>
+
+    <!--根据注册userid查找信息表userinformationid-->
+    <select id="registerUserinformationid" parameterType="int" resultType="int">
+        select userinformationid from tb_userinformation where userid=#{id}
+    </select>
 
     <!--用户名查重-->
     <select id="checkRepeat" resultType="String">
@@ -29,7 +44,7 @@
 
     <!--手机号插入用户信息表-->
     <insert id="addPhone" >
-        insert into tb_userinformation (userinformation,userid,userPhone,state) values(seq_tb_userinformation_id.nextval,#{userId},#{userPhone},1)
+        insert into tb_userinformation (userinformationid,userid,userPhone,state) values(seq_tb_userinformation_id.nextval,#{userId},#{userPhone},1)
     </insert>
 
 </mapper>

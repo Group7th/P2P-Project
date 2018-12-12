@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>p2p网贷平台</title>
@@ -17,6 +17,10 @@
   <!-- <link rel="stylesheet/less" type="text/css" href="css/style.less" /> -->
   <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
   <script type="text/javascript" src="js/all.js"></script>
+  <script type="text/javascript" src="js/jquery.form.js"></script>
+  <script type="text/javascript" src="js/dist/sweetalert.min.js"></script>
+  <link rel="stylesheet" href="js/dist/sweetalert.css">
+  <script src="js/vue.js"></script>
 </head>
 <body>
 
@@ -70,11 +74,10 @@
     <div class="credit-ad"><img src="yirenbao/images/clist1.jpg" width="1200" height="96"></div>
     <div id="personal-left" class="personal-left">
       <ul>
-        <li><span><a href="toGeRenZhongXinShouYe"><i class="dot dot1"></i>账户总览</a></span></li>
-        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXZiJin">资金记录</a></span></li>
-        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXTouZi">投资记录</a></span></li>
-        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXHuiKuan">回款计划</a></span></li>
-        <li class=""><span><a href="toGRZXKaiTong1"><i class="dot dot02"></i>开通第三方</a> </span> </li>
+        <li><span><a href="toGeRenZhongXinShouYe"><i class="dot dot01"></i>账户总览</a></span></li>
+        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXZiJin"><i class="dot dot02"></i>资金记录</a></span></li>
+        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXTouZi"><i class="dot dot05"></i>投资记录</a></span></li>
+        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXHuiKuan"><i class="dot dot06"></i>回款计划</a></span></li>
         <li><span><a href="toGRZXChongZhi1"><i class="dot dot03"></i>充值</a></span></li>
         <li class="pleft-cur"><span><a href="toGRZXTiXian1"><i class="dot dot04"></i>提现</a></span></li>
         <li style="position:relative;"> <span> <a href="toGRZXXiTongXiaoXi"><i class="dot dot08"></i>系统信息 </a> </span> </li>
@@ -151,9 +154,14 @@
 				{
 					$(actualMessage).hide();
 				}
-				var balance=Number("0.0");
-				//提现金额小于余额 
-				var legalFlag=(actualMoney-balance).toFixed(2)<=0;
+				// var balance=Number("0.0");
+                //可用金额
+                var balance =document.getElementById("form:blance").innerText;
+				//提现费用
+                var costMoney=document.getElementById("form:fee").innerText;
+				//提现金额小于余额
+				var legalFlag=(costMoney+actualMoney-balance).toFixed(4)<=0;
+				console.log(legalFlag);
 				if(!legalFlag)
 				{
 					$(actualMessage).text("余额不足");
@@ -187,25 +195,26 @@
     <div class="personal-main">
       <div class="personal-deposit">
         <h3><i>提现</i></h3>
-        <form id="form" name="form" method="post" action="/user/withdraw" enctype="application/x-www-form-urlencoded" target="_blank">
+        <form id="form" name="form" method="post" action="/p2p/withdraw" enctype="application/x-www-form-urlencoded" target="_blank">
           <input type="hidden" name="form" value="form">
           <div class="deposit-form" style="margin-top:0px;border-top:0px none;">
             <h6>填写提现金额</h6>
-            <ul>
+            <ul id="vue-app">
               <li> <span class="deposit-formleft">可用金额</span> <span class="deposit-formright"> <i>
-                <label id="form:blance"> 0.00</label>
+                <label id="form:blance" th:text="${availMoney}">0.00</label>
                 </i>元 </span> </li>
               <li> <span class="deposit-formleft">提现金额</span> <span class="deposit-formright">
-                <input id="form:actualMoney" type="text" name="form:actualMoney" class="deposite-txt" maxlength="10">
+                <input id="form:actualMoney" type="text" name="actualMoney" class="deposite-txt" maxlength="10" ref="money" v-model="money">
                 元 </span> <span id="actualMoneyErrorDiv"><span id="actualMoney_message" style="display:none" class="error"></span></span> </li>
               <li> <span class="deposit-formleft">提现费用</span> <em id="txfy" class="markicon fl"></em> <span class="deposit-formright deposit-formright1"> <i>
-                <label id="form:fee"> 0.00</label>
+                <label id="form:fee">{{money*0.001|number}}</label>
                 </i>元 </span> <span class="txarrow-show">提现金额的0.1%，最低不低于2元，最高100元封顶</span><span class="txicon-show"></span> </li>
               <li><span class="deposit-formleft">实际到账金额</span> <em id="dzje" class="markicon fl"></em> <span class="deposit-formright deposit-formright1"> <i>
-                <label id="form:cashFine"> 0.00</label>
+                <label id="form:cashFine">{{money-money*0.001}}</label>
                 </i> 元</span> <span class="dzarrow-show">提现金额 - 提现费用</span><span class="dzicon-show"></span> </li>
               <li>
-                <input type="submit" name="form:j_idt78" value="提现" class="btn-depositok" onclick="return checkActualMoney()">
+                <input type="text" id="costMoney" name="costMoney" style="display: none;">
+                <input type="button" name="form:j_idt78" value="提现" class="btn-depositok" id="sendMoney">
               </li>
             </ul>
           </div>
@@ -219,11 +228,49 @@
         </div>
       </div>
     </div>
+    <script>
+        new Vue({
+            el:"#vue-app",
+            data:{
+                money:""
+            },
+            filters:{
+                number:function(value) {
+                    var toFixedNum = Number(value).toFixed(4);
+                    var realVal = toFixedNum.substring(0, toFixedNum.toString().length - 1);
+                    return realVal;
+                }
+            }
+        });
+    </script>
     <script type="text/javascript">
+            $("#sendMoney").click(function () {
+                if(checkActualMoney()) {
+                    $("#form").ajaxSubmit(function (message) {
+                        //对于表单提交成功后处理，message为提交页面/p2p/fileUpload的返回内容
+                        console.log(message.msg + "回调ajax的form表单");
+                        if (message.msg == "success") {
+                            sweetAlert({
+                                title: "恭喜您",
+                                text: "提现成功",
+                                timer: 900,
+                                type: "success"
+                            }, function () {
+                                location.href = "/p2p/toGRZXTiXian1";
+                            });
+                        } else {
+                            alert("当前提现人数过多，请稍后再试!");
+                        }
+                    });
+                }
+            });
+
+
+
 			$("#form\\:actualMoney").focus(
 					   function(){
 						   	$(this).css({"font-size":"24px","font-weight":"bold","font-family":"Arial","border":"1px solid #0caffe"});
-						   if($("#form\\:actualMoney").val() == value) { 
+						   if($("#form\\:actualMoney").val() == 100) {
 							   	$("#form\\:actualMoney").val("")
 								$(this).css({"font-size":"24px","font-weight":"bold","font-family":"Arial"});
 						   }
@@ -233,7 +280,10 @@
 						   if($("#form\\:actualMoney").val() == "") {
 							  	$(this).css({"color":"#D0D0D0","font-size":"14px","font-weight":"normal"});
 					}
-				})
+//--------------------------这里有一个隐藏赋值事件------------------------------------------------------------------
+                          var formfee = document.getElementById("form:fee").innerText;
+                            $("#costMoney").val(formfee);
+				});
 				
 				function keyUpcheck()
 				{

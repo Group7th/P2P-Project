@@ -1,6 +1,5 @@
 package com.group7.service;
 
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -64,4 +63,86 @@ public interface AccountService {
      * @return
      */
     int changePwd(Map map);
+
+    /**
+     * 插入身份证验证信息
+     * @param map
+     * @return
+     */
+    int addIdCard(Map map);
+
+    /**
+     * 插入姓名、用户性别、身份证和家庭地址
+     * @param realName
+     * @param sex
+     * @param idNum
+     * @param address
+     * @param userinformationid
+     * @return
+     */
+    int addIdCardNum(String realName,int sex,String idNum,String address,int userinformationid);
+
+    /**
+     * 添加银行卡号
+     * @param bankCardNums
+     * @param userinformationid
+     * @return
+     */
+    int addBankNums(String bankCardNums,int userinformationid);
+
+    /**
+     * 实名认证通过后更新状态
+     * @param map
+     * @return
+     */
+    int changeState(Map map);
+
+    /**
+     * 获取实名认证的状态
+     * @return
+     */
+    int getState(int userinformationid);
+
+    /**
+     * 根据accountId朝赵informationId
+     * @param accountId
+     * @return
+     */
+    int getUserInformatioId(int accountId);
+
+    /**
+     * 提现
+     * @param withdraw
+     * @param userinformationid
+     * @return
+     */
+    int withdraw(double withdraw,double costMoney,int userinformationid);
+
+    /**
+     * 查询用户可用余额
+     * @param userinformationid
+     * @return
+     */
+    double getAvailMoney(int userinformationid);
+
+    /**
+     * 根据用户名查找用户ID
+     * @param userName
+     * @return
+     */
+    int getIdByUserName(String userName);
+
+    /**
+     * 添加充值记录
+     * @param map
+     * @return
+     */
+    int addChargeRecord(Map map);
+
+    /**
+     * 添加提现记录
+     * @param map
+     * @return
+     */
+    int withdrawRecord(Map map);
 }

@@ -1,5 +1,6 @@
 package com.group7.dao;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -67,6 +68,7 @@ public interface LoanAuditDao {
 
 	/**
 	 * 招标审核驳回 修改状态 存入驳回理由
+	 * Test21-WebChat
 	 * @param REASON
 	 * @param LOANSSTATE
 	 * @param LOANSID
@@ -77,4 +79,27 @@ public interface LoanAuditDao {
 			+"</script>"})
 	int reject(@Param("rs") String REASON,@Param("lt") Integer LOANSSTATE,@Param("ls") Integer LOANSID  );
 
+	/**
+	 * 通过消息
+	 * @param LOANSID
+	 * @return
+	 */
+	@Insert("<script>"
+			+"insert into tb_message(messageid,messagecontent,messagestate,sendtime,userid,messagetype)"
+			+" values(seq_tb_message_id.nextval,'招标审核已经通过,正在招标中','0',sysdate,"
+			+"(select userid from tb_loans where LOANSID=#{ls}),'招标审核通过')"
+			+"</script>")
+	int passReason(@Param("ls") Integer LOANSID);
+
+	/**
+	 * 驳回消息
+	 * @param LOANSID
+	 * @return
+	 */
+	@Insert("<script>"
+			+"insert into tb_message(messageid,messagecontent,messagestate,sendtime,userid,messagetype)"
+			+" values(seq_tb_message_id.nextval,'招标审核被驳回,请参考驳回理由认真修改','0',sysdate,"
+			+"(select userid from tb_loans where LOANSID=#{ls}),'招标审核驳回')"
+			+"</script>")
+	int rejectReson(@Param("ls") Integer LOANSID);
 }

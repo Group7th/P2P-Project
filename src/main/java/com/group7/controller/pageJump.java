@@ -199,19 +199,19 @@ public class pageJump {
      * 投资纪录
      * @return
      */
-    @RequestMapping("toGRZXTouZi")
-    public String toGRZXTouZi(){
-        return "yirenbaopage/个人中心-投资记录.html";
-    }
+//    @RequestMapping("toGRZXTouZi")
+//    public String toGRZXTouZi(){
+//        return "yirenbaopage/个人中心-投资记录.html";
+//    }
 
     /**
      * 提现
      * @return
      */
-    @RequestMapping("toGRZXTiXian1")
-    public String toGRZXTiXian1(){
-        return "yirenbaopage/个人中心-提现.html";
-    }
+//    @RequestMapping("toGRZXTiXian1")
+//    public String toGRZXTiXian1(){
+//        return "yirenbaopage/个人中心-提现.html";
+//    }
 
     /**
      * 系统消息
@@ -236,10 +236,11 @@ public class pageJump {
     /**
      * 资金纪录
      * @return
+     * @return
      */
     @RequestMapping("toGRZXZiJin")
     public String toGRZXZiJin(){
-        return "yirenbaopage/个人中心-资金记录 .html";
+        return "yirenbaopage/个人中心-资金记录";
     }
 
 
