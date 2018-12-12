@@ -335,10 +335,10 @@
                                 </div>
                                 <div class="mt15">
                                     <label>*借款情况</label>
-                                    <input type="radio" class="input3" value ="3" name = "loanscase" checked = "checked">
-                                    普通借款
-                                    <input type="radio" class="input3"value = "5" name = "loanscase">
-                                    紧急借款
+                                    <select name="loanscase" class="loanscase">
+                                        <option value="3">普通贷款</option>
+                                        <option value="5">紧急贷款</option>
+                                    </select>
                                 </div>
                                 <div class="mt15">
                                     <label>手机号</label>
@@ -466,10 +466,10 @@
                                     </div>
                                     <div class="mt15">
                                         <label>*借款情况</label>
-                                        <input type="radio" class="input3" value ="1" name = "loanscase" checked = "checked">
-                                        普通借款
-                                        <input type="radio" class="input3"value = "2" name = "loanscase">
-                                        紧急借款
+                                        <select name="loanscase" class="loanscase">
+                                            <option value="3">普通贷款</option>
+                                            <option value="5">紧急贷款</option>
+                                        </select>
                                     </div>
                                     <div class="mt15">
                                         <label>手机号</label>
@@ -580,10 +580,10 @@
                                         </div>
                                         <div class="mt15">
                                             <label>*借款情况</label>
-                                            <input type="radio" class="input3" value ="1" name = "loanscase" checked = "checked">
-                                            普通借款
-                                            <input type="radio" class="input3"value = "2" name = "loanscase">
-                                            紧急借款
+                                            <select name="loanscase" class="loanscase">
+                                                <option value="3">普通贷款</option>
+                                                <option value="5">紧急贷款</option>
+                                            </select>
                                         </div>
                                         <div class="mt15">
                                             <label>手机号</label>
@@ -783,7 +783,7 @@
                 url: "/p2p/selectLoans",
                 type: "POST",
                 dataType: "json",
-                data: {username: user.userName},
+                data: {username: username},
                 success: function (data) {
                     if (data != null) {
                         sweetAlert({
@@ -853,7 +853,7 @@
                                     "refundway":$("#form1 .refundway").val(),
                                     "loansused":$("#form1 .loansUsed").val(),
                                     "describe":$("#form1 .describe").val(),
-                                    "loanscase":$("#form1 .input3").val(),
+                                    "loanscase":$("#form1 .loanscase").val(),
                                     "userphone":$("#form1 .userphone").val(),
                                 }
                                 $.ajax({
@@ -897,7 +897,7 @@
                 type: "POST",
                 //contentType : "application/json",
                 dataType: "json",
-                data: {username: user.userName},
+                data: {username: username},
                 success: function (data) {
                     if (data != null) {
                         sweetAlert({
@@ -967,7 +967,7 @@
                                     "refundway":$("#form2 .refundway").val(),//还款方式
                                     "loansused":$("#form2 .loansUsed").val(),//贷款用途
                                     "describe":$("#form2 .describe").val(),//描述
-                                    "loanscase":$("#form2 .input3").val(),//贷款情况
+                                    "loanscase":$("#form2 .loanscase").val(),//贷款情况
                                     "userphone":$("#form2 .userphone").val(),//手机号码
                                 }
 
@@ -1012,7 +1012,7 @@
                 type: "POST",
                 //contentType : "application/json",
                 dataType: "json",
-                data: {username: user.userName},
+                data: {username: username},
                 success: function (data) {
                     if (data != null) {
                         sweetAlert({
@@ -1077,7 +1077,7 @@
                                     "refundway":$("#form3 .refundway").val(),//还款方式
                                     "loansused":$("#form3 .loansUsed").val(),//贷款用途
                                     "describe":$("#form3 .describe").val(),//描述
-                                    "loanscase":$("#form3 .input3").val(),//贷款情况
+                                    "loanscase":$("#form3 .loanscase").val(),//贷款情况
                                     "userphone":$("#form3 .userphone").val(),//手机号码
                                 }
                                 $.ajax({
