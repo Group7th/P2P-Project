@@ -34,6 +34,8 @@ public interface UserInfoDao {
 	 * @return
 	 */
 	List<String> selectPermission(String userName);
+
+
 }
 
 
