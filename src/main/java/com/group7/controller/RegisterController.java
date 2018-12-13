@@ -31,8 +31,6 @@ public class RegisterController {
 
     @Autowired
     private UserService userService;
-    @Autowired
-    private MyShiroRealm myShiroRealm;
 
     /**
      * 注册方法
