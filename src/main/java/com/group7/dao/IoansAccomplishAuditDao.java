@@ -23,10 +23,11 @@ public interface IoansAccomplishAuditDao {
     @Select({"<script>" +
             "select * from"
                     +"(select rownum rn,t.* from "
-                            +"(select * from tb_loans a "
+                            +"(select a.loansid,a.username,a.loansmoney,a.loansinterestrate,a.refunddeadline,a.loansstate,a.investmentamount,a.refundway,a.begintime,a.loansused,a.loanstype,c.userphone,c.identitycard,c.bankcardnumbers,c.site,b.globalvalue,b.appraisalreport,b.carinformation,b.houseproperty,"
+                            +"(select count(*) from tb_investment q join tb_loans w on q.loansid=w.loansid where  q.loansid = a.loansid) as con from tb_loans a "
                             + "join  tb_loanstype b on a.loansid=b.loansid "
                             + "join tb_userinformation c on a.userid = c.userid "
-                            + "where loansmoney = investmentamount and  loansstate = 2 "
+                            + "where a.loansmoney = a.investmentamount and  a.loansstate = 2 "
                             +"<if test=\"loansId!=null and loansId!=''\"> and a.LOANSID like '%'||#{loansId}||'%' </if> "
                             +"<if test=\"userName!=null and userName!=''\">and a.USERNAME like '%'||#{userName}||'%'</if> "
                             +"<if test=\"loansType!=null and loansType!=0\">and a.LOANSTYPE=#{loansType}</if> "
@@ -51,6 +52,44 @@ public interface IoansAccomplishAuditDao {
             +"</where>"
             +"</script>"})
     int getPageCount(Map map);
+
+    /**
+     * 查询 所有满标贷款信息  进行审核
+     * @param map
+     * @return
+     */
+    @Select({"<script>" +
+            "select * from"
+            +"(select rownum rn,t.* from "
+            +"(select a.loansid,a.username,a.loansmoney,a.loansinterestrate,a.refunddeadline,a.loansstate,a.investmentamount,a.refundway,a.begintime,a.loansused,a.loanstype,c.userphone,c.identitycard,c.bankcardnumbers,c.site,b.globalvalue,b.appraisalreport,b.carinformation,b.houseproperty,"
+            +"(select count(*) from tb_investment q join tb_loans w on q.loansid=w.loansid where  q.loansid = a.loansid) as con from tb_loans a "
+            + "join  tb_loanstype b on a.loansid=b.loansid "
+            + "join tb_userinformation c on a.userid = c.userid "
+            + "where a.loansstate = 3 "
+            +"<if test=\"loansId!=null and loansId!=''\"> and a.LOANSID like '%'||#{loansId}||'%' </if> "
+            +"<if test=\"userName!=null and userName!=''\">and a.USERNAME like '%'||#{userName}||'%'</if> "
+            +"<if test=\"loansType!=null and loansType!=0\">and a.LOANSTYPE=#{loansType}</if> "
+            + " ) t "
+            + "where rownum &lt; #{end} ) a "
+            +"where a.rn &gt; #{start} "
+            +"</script>"})
+    List<Map> getFailureLoans(Map map);
+
+    /**
+     * 查询 所有满标贷款信息 条数
+     * @param map
+     * @return
+     */
+    @Select({"<script>"
+            +"select count(1) from tb_loans "
+            +"<where>"
+            +"<if test=\"loansId!=null and loansId!=''\"> and LOANSID=#{loansId} </if>"
+            +"<if test=\"userName!=null and userName!=''\">and USERNAME like '%'||#{userName}||'%'</if>"
+            +"<if test=\"loansType!=null and loansType!=0\">and LOANSTYPE=#{loansType}</if>"
+            +"and loansmoney = investmentamount and loansstate = 3"
+            +"</where>"
+            +"</script>"})
+    int getFailureLoansCount(Map map);
 
 
     /**

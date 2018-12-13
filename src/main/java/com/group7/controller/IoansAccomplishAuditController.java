@@ -24,15 +24,35 @@ public class IoansAccomplishAuditController {
     @Autowired
     private IoansAccomplishAuditService ioansService;
 
-
+    /**
+     * 查询满表审核表信息
+     * @param map
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/IoansAccomplishAudit")
     public Object getList(@RequestBody Map map){
-       // System.out.println(map);
+        // System.out.println(map);
         Map tempMap = new HashMap();
         tempMap.put("page",ioansService.getList(map));
         tempMap.put("total",ioansService.getPageCount(map));
-        //System.out.println(tempMap);
+        System.out.println(tempMap);
+        return tempMap;
+    }
+
+    /**
+     * 查询流标贷款信息
+     * @param map
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/getFailureLoans")
+    public Object getFailureLoans(@RequestBody Map map){
+        // System.out.println(map);
+        Map tempMap = new HashMap();
+        tempMap.put("page",ioansService.getFailureLoans(map));
+        tempMap.put("total",ioansService.getFailureLoansCount(map));
+        System.out.println(tempMap);
         return tempMap;
     }
 
@@ -48,4 +68,13 @@ public class IoansAccomplishAuditController {
         System.out.println(i+"...................");
         return i;
     }
+
+    @ResponseBody
+    @RequestMapping("/testa")
+    public Object testa(@RequestBody Map map){
+        System.out.println(map);
+        return null;
+    }
+
+
 }
