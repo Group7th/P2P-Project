@@ -78,9 +78,9 @@
     <div id="personal-left" class="personal-left">
       <ul>
         <li><span><a href="toGeRenZhongXinShouYe"><i class="dot dot01"></i>账户总览</a></span></li>
-        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXZiJin"><i class="dot dot02"></i>资金记录</a></span></li>
-        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXTouZi"><i class="dot dot05"></i>投资记录</a></span></li>
-        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXHuiKuan"><i class="dot dot06"></i>回款计划</a></span></li>
+        <li><span><a href="toGRZXZiJin"><i class="dot dot02"></i>资金记录</a></span></li>
+        <li><span><a href="toGRZXTouZi"><i class="dot dot05"></i>投资记录</a></span></li>
+        <!--<li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXHuiKuan"><i class="dot dot06"></i>回款计划</a></span></li>-->
         <li class="pleft-cur"><span><a href="toGRZXChongZhi1"><i class="dot dot03"></i>充值</a></span></li>
         <li class=""><span><a href="toGRZXTiXian1"><i class="dot dot04"></i>提现</a></span></li>
         <li style="position:relative;"> <span> <a href="toGRZXXiTongXiaoXi"><i class="dot dot08"></i>系统信息 </a> </span> </li>
@@ -460,103 +460,8 @@
                 <div class="bank-check" id="bank-check2"> <b class="selected" id="bankProtocol1"></b><span class="bank-agree">我同意并接受<a href="#" target="_blank">《中兴财富投资咨询与管理服务电子协议》</a></span> <span class="error" id="bankProtocol_message" style="display:none;margin-top:-3px;">请同意协议内容！</span> </div>
                 <input type="button" name="" value="充值" class="btn-paycz" onclick="getShowPayVal1()">
               </div>
-              <!--<div class="fr bank-info">-->
-                <!--<p class="bank-tit">快捷支付支持银行：</p>-->
-                <!--<div class="bank-pic"></div>-->
-              <!--</div>-->
             </div>
           </form>
-          <!--<div class="online-main" style="display:none;">-->
-            <!--<form id="recharge" name="recharge" method="post" action="#" target="_blank">-->
-              <!--<div class="online-mar">-->
-                <!--<div class="quick-info quick-info-width">-->
-                  <!--<div class="info-1"> <span class="info-tit">充值金额</span> <span class="info1-input">-->
-                    <!--<input id="recharge:actualMoney" type="text" name="recharge:actualMoney" class="pay-money-txt" maxlength="10" onblur="checkRecharge()" onkeydown="amount(this);keyUpcheck()" onkeyup="amount(this);keyUpcheck()">-->
-                    <!--<em>元</em> </span> <span id="actualMoneyErrorDiv" class="quick-error2"> </span> </div>-->
-                <!--</div>-->
-              <!--</div>-->
-              <!--<div> <span><font style=" color:#848484;font-weight:bold; margin-left:80px; height:32px; line-height:32px; font-size:12px;">亿人宝提醒您：充值前，请核实您的可用支付额度！</font></span> </div>-->
-              <!--<div class="pay-bank" id="pay-bank">-->
-                <!--<h6>请选择充值银行</h6>-->
-                <!--<span id="showpay" style="display:none;">icbc</span>-->
-                <!--<ul id="paysSpan" style="height:150px;">-->
-                  <!--<li><img src="images/bank_002.gif" property1="icbc" class="on"><em></em><i></i></li>-->
-                  <!--<li><img src="images/bank_006.gif" property1="abc"><em></em></li>-->
-                  <!--<li><img src="images/bank_001.gif" property1="boc"><em></em></li>-->
-                  <!--<li><img src="images/bank_004.gif" property1="ccb"><em></em></li>-->
-                  <!--<li><img src="images/bank_008.gif" property1="hxb"><em></em></li>-->
-                  <!--<li><img src="images/bank_007.gif" property1="comm"><em></em></li>-->
-                  <!--<li><img src="images/bank_003.gif" property1="cmb"><em></em></li>-->
-                  <!--<li><img src="images/bank_011.gif" property1="ceb"><em></em></li>-->
-                  <!--<li><img src="images/bank_015.gif" property1="cncb"><em></em></li>-->
-                  <!--<li><img src="images/bank_010.gif" property1="cmsb"><em></em></li>-->
-                  <!--<li><img src="images/bank_012.gif" property1="cgb"><em></em></li>-->
-                  <!--<li><img src="images/bank_bos.gif" property1="shb"><em></em></li>-->
-                  <!--<li><img src="images/bccb.gif" property1="bjb"><em></em></li>-->
-                  <!--<li><img src="images/bank-nsyh.gif" property1="rcb"><em></em></li>-->
-                  <!--<li><img src="images/bank-xyyh.gif" property1="cib"><em></em></li>-->
-                <!--</ul>-->
-                <!--<span class="pay-other"><span class="paytxt">选择其他银行卡</span><i class="paydown"></i></span> </div>-->
-              <!--<div class="pay-bankstate"> <span class="bankstate-head"><i class="fl">请关注您的充值金额是否超限：</i><i class="fr" id="show-pay-hotLine">工商银行客服热线：95588</i></span>-->
-                <!--<table>-->
-                  <!--<tbody>-->
-                    <!--<tr>-->
-                      <!--<td>单笔限额（元）</td>-->
-                      <!--<td>每日限额（元）</td>-->
-                      <!--<td>需要满足条件</td>-->
-                      <!--<td>备注</td>-->
-                    <!--</tr>-->
-                    <!--<tr>-->
-                      <!--<td width="15%">5000</td>-->
-                      <!--<td width="15%">5000</td>-->
-                      <!--<td width="20%">工银e支付</td>-->
-                      <!--<td width="50%" rowspan="5">请到中国工商银行各营业网点办理成为个人网上银行客户并开通网上支付功能（静态密码用户进行网上支付如超过累计金额请直接到营业网点申领电子口令卡或USB Key）；</td>-->
-                    <!--</tr>-->
-                    <!--<tr>-->
-                      <!--<td>500</td>-->
-                      <!--<td>1000</td>-->
-                      <!--<td>电子口令卡</td>-->
-                    <!--</tr>-->
-                    <!--<tr>-->
-                      <!--<td>2000</td>-->
-                      <!--<td>5000</td>-->
-                      <!--<td>短信认证</td>-->
-                    <!--</tr>-->
-                    <!--<tr>-->
-                      <!--<td>50万</td>-->
-                      <!--<td>100万</td>-->
-                      <!--<td>电子密码</td>-->
-                    <!--</tr>-->
-                    <!--<tr>-->
-                      <!--<td>100万</td>-->
-                      <!--<td>100万</td>-->
-                      <!--<td>U盾</td>-->
-                    <!--</tr>-->
-                  <!--</tbody>-->
-                <!--</table>-->
-              <!--</div>-->
-              <!--<div class="bank-check" id="bank-check"> <b class="selected" id="bankProtocol"></b><span class="bank-agree">我同意并接受<a href="/node/Candyprivacypolicy/candyprivacypolicy_tzzxyglfwdzxy" target="_blank">《亿人宝金融投资咨询与管理服务电子协议》</a></span> <span class="error" id="bankProtocol_message" style="display:none;margin-top:-3px;">请同意协议内容！</span> </div>-->
-              <!--<input type="submit" name="recharge:j_idt96" value="充值" class="btn-paycz" onclick="return getShowPayVal()">-->
-              <!--<input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState">-->
-            <!--</form>-->
-          <!--</div>-->
-          <!--<div class="pay-tipcon" style="display:none;"> <b>充值提示：</b><br>-->
-            <!--1．亿人宝充值过程免费，不向用户收取任何手续费。<br>-->
-            <!--2．为了您的账户安全，请在充值前进行身份认证、手机绑定以及交易密码设置。<br>-->
-            <!--3．您的账户资金将通过丰付支付第三方平台进行充值。<br>-->
-            <!--4．请注意您的银行卡充值限制，以免造成不便。<br>-->
-            <!--5．如果充值金额没有及时到账，请联系客服—400-999-8850 </div>-->
-          <!--<div class="pay-tipcon2"> <b>温馨提示：</b><br>-->
-            <!--1. 投资人充值过程全程免费，不收取任何手续费。<br>-->
-            <!--2. 为防止套现，所充资金必须经投标回款后才能提现。<br>-->
-            <!--3. 使用快捷支付进行充值，可能会受到不同银行的限制，如需大额充值请使用网银充值进行操作。<br>-->
-            <!--4. 充值/提现必须为银行借记卡，不支持存折、信用卡充值。<br>-->
-            <!--5. 严禁利用充值功能进行信用卡套现、转账、洗钱等行为，一经发现，将封停账号30天。<br>-->
-            <!--6. 充值期间，请勿关闭浏览器，待充值成功并返回首页后，所充资金才能入账，如有疑问，请联系客服。<br>-->
-            <!--7. 充值需开通银行卡网上支付功能，如有疑问请咨询开户行客服。<br>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
       <div class="alert-450 alert-h220" id="alert-rechargeFailture" style="display:none;">
         <div class="alert-title">
           <h3 id="ceshi">登录网上银行充值</h3>
@@ -679,6 +584,7 @@
     <div class="clear"></div>
   </div>
 </div>
+  </div>
 <!--网站底部-->
 <div class="footer">
   <div class="foot">
@@ -707,7 +613,7 @@
       <div class="customer"><a href="#">客服邮箱</a></div>
     </aside>
   </div>
-
+</div>
 </div>
 </body>
 </html>
