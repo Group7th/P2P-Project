@@ -2,12 +2,9 @@ package com.group7.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.group7.config.MyShiroRealm;
 import com.group7.entity.User;
 import com.group7.service.UserService;
 import com.group7.util.ShowApiRequest;
-import com.group7.util.other.MD5;
-import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,10 +38,6 @@ public class RegisterController {
     @ResponseBody
     public Map<String,String> register(User user){
         System.out.println("经过方法前"+user.toString());
-        //加密
-        String password = user.getPassword();
-        String psw = MD5.md5(password);
-        user.setPassword(psw);
         int i = userService.register(user);
         System.out.println("经过方法后"+user.toString());
         //注册同时要给该账号赋予普通角色的权限

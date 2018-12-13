@@ -8,7 +8,7 @@ import java.util.Map;
 
 /**
  * className:IoansAccomplishAuditDao
- * discriptoin:
+ * discriptoin:满表审核
  * author:ZHEN
  * createTime:2018-12-08 15:13
  */
@@ -51,4 +51,12 @@ public interface IoansAccomplishAuditDao {
             +"</where>"
             +"</script>"})
     int getPageCount(Map map);
+
+
+    /**
+     * 贷款审核
+     * @param map
+     * @return
+     */
+    Integer loanReview(Map map);
 }

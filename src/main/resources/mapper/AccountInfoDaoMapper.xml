@@ -100,4 +100,9 @@
     <insert id="withdrawRecord" parameterType="map">
         insert into tb_moneyrecord values(seq_tb_moneyrecord_id.nextval,sysdate,'提现',#{watercoursemoney},'银行卡',#{userid},#{balance})
     </insert>
+
+    <!--将提现的手续费添加到资金池-->
+    <update id="addFeeToPool" parameterType="double">
+        update tb_money set money=money+#{costMoney}
+    </update>
 </mapper>

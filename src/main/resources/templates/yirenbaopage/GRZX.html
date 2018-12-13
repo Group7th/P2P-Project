@@ -71,9 +71,9 @@
     <div id="personal-left" class="personal-left">
       <ul>
         <li class="pleft-cur"><span><a href="toGeRenZhongXinShouYe"><i class="dot dot01"></i>账户总览</a></span></li>
-        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXZiJin"><i class="dot dot02"></i>资金记录</a></span></li>
-        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXTouZi"><i class="dot dot05"></i>投资记录</a></span></li>
-        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXHuiKuan"><i class="dot dot06"></i>回款计划</a></span></li>
+        <li><span><a href="toGRZXZiJin"><i class="dot dot02"></i>资金记录</a></span></li>
+        <li><span><a href="toGRZXTouZi"><i class="dot dot05"></i>投资记录</a></span></li>
+        <!--<li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXHuiKuan"><i class="dot dot06"></i>回款计划</a></span></li>-->
         <li><span><a href="toGRZXChongZhi1"><i class="dot dot03"></i>充值</a></span></li>
         <li class=""><span><a href="toGRZXTiXian1"><i class="dot dot04"></i>提现</a></span></li>
         <li style="position:relative;"> <span> <a href="toGRZXXiTongXiaoXi"><i class="dot dot08"></i>系统信息 </a> </span> </li>
@@ -135,6 +135,7 @@
             <li><span><em>待收本金</em><i id="dsbj" class="markicon"></i><span class="arrow-show4" style="display: none;">已到账的投资收益+未到账的投资收益</span><span class="icon-show4" style="display: none;"></span></span> <span class="truemoney"><i class="f26 fb" th:text="${session.accountList.AWAITMONEY}" id="capital"> </i>元</span> </li>
             <li><span><em>待还金额</em><i id="dhje" class="markicon"></i><span class="arrow-show5" style="display: none;">已到账的投资收益+未到账的投资收益</span><span class="icon-show5" style="display: none;"></span></span> <span class="truemoney"><i class="f26 fb " th:text="${session.accountList.MONEY}" id="bepaid"></i>元</span> </li>
             <li><span><em>信用额度</em><i id="xyed" class="markicon"></i><span class="arrow-show7" style="display: none;">已到账的投资收益+未到账的投资收益</span><span class="icon-show7" style="display: none;"></span></span> <span class="truemoney"><i class="f26 fb " th:text="${session.accountList.LINEOFCREDIT}" id="creditline"></i>元</span> </li>
+            <li><span><em>冻结资金</em><i id="djzj" class="markicon"></i><span class="arrow-show7" style="display: none;">已到账的投资收益+未到账的投资收益</span><span class="icon-show7" style="display: none;"></span></span> <span class="truemoney"><i class="f26 fb " th:text="${session.accountList.FROZENCAPITAL}"></i>元</span> </li>
           </ul>
         </div>
       </div>

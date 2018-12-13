@@ -2,7 +2,7 @@
 <html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>满标审核</title>
+    <title>流标审核</title>
     <!-- 引入样式 -->
     <script type="text/javascript" src="/p2p/js/vue.js"></script>
     <script type="text/javascript" src="/p2p/js/axios.min.js"></script>
@@ -29,7 +29,7 @@
 </head>
 <body>
 <div id="app">
-    <p v-bind:class="{c2:isShowA}"><span><img src="/p2p/images/block_pic02.png" height="22" width="22"/></span>&nbsp;&nbsp;&nbsp;&nbsp;满标审核
+    <p v-bind:class="{c2:isShowA}"><span><img src="/p2p/images/block_pic02.png" height="22" width="22"/></span>&nbsp;&nbsp;&nbsp;&nbsp;流标审核
     </p>
 </div>
 <div id="tableView">
@@ -394,7 +394,7 @@
                     'state':1                    //状态  1 为通过
                 };
                 axios.post('/p2p/loanReview', editForm).then(function (response) {
-                   alert(response.data)
+                  // alert(response.data)
                     if(response.data==1){
                         sweetAlert("操作成功！","贷款已经通过！", "success");
                     }else{
