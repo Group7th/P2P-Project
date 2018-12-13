@@ -100,6 +100,16 @@
                 </template>
             </el-table-column>
             <el-table-column
+                    prop="INVESTMENTAMOUNT"
+                    label="总投标金额"
+                    width="160">
+            </el-table-column>
+            <el-table-column
+                    prop="CON"
+                    label="投标人数"
+                    width="160">
+            </el-table-column>
+            <el-table-column
                     label="贷款状态"
                     width="200">
                 <template slot-scope="scope">
@@ -110,7 +120,10 @@
                     label="操作">
                 <template slot-scope="scope">
                     <el-button :plain="true" type="primary" size="small" icon="edit" @click="editClick(scope.row)">
-                        查看详情
+                        贷款详情
+                    </el-button>
+                    <el-button :plain="true" type="primary" size="small" icon="edit" @click="loansClick(scope.row)">
+                        投资详情
                     </el-button>
                 </template>
             </el-table-column>
@@ -197,7 +210,27 @@
             <el-button type="danger" @click="reject">驳回</el-button>
         </div>
     </el-dialog>
+</div>
 
+<div id="loansView">
+    <!--列表-->
+    <el-row>
+        <el-table-column
+                prop="LOANSID"
+                label="贷款编号"
+                width="150">
+        </el-table-column>
+        <el-table-column
+                prop="USERNAME"
+                label="贷款人"
+                width="150">
+        </el-table-column>
+        <el-table-column
+                prop="LOANSMONEY"
+                label="贷款金额(￥)"
+                width="200">
+        </el-table-column>
+    </el-row>
 </div>
 <script type="text/javascript">
     /**
@@ -272,8 +305,6 @@
                 self.tableData = response.data.page;
                 //alert(JSON.stringify(response.data.page));
             })
-
-
         },
         filters: {
             // el-tag类型转换
@@ -293,7 +324,7 @@
             },
             formatState: function (status) {
                 const statusMap = {
-                    2: '待审核'
+                    2: '满标'
                 };
                 return statusMap[status]
             }
@@ -335,6 +366,27 @@
                 this.editForm.CAR = "showFtp?fileName=" + this.editForm.CARINFORMATION;//车辆证明
                 this.editForm.REASON = "";
 
+            },
+            loansClick: function (row) {
+                alert(123456)
+                var loansView = new Vue({
+                    el: "#loansView",
+                    data: {
+                        //列表数据
+                        tableData: [],
+                        //显示样式
+                        loading: false
+                    },
+                    created: function () {
+                        //在 then的内部不能使用Vue的实例化的this, 因为在内部 this 没有被绑定。
+                        axios.post('/p2p/', {'state':127}).then(function (response) {
+                            self.total = response.data.total;
+                            //alert(JSON.stringify(response.data.page));
+                            self.tableData = response.data.page;
+                            //alert(JSON.stringify(response.data.page));
+                        })
+                    },
+                })
             },
             //查询事件
             searchClick: function () {
