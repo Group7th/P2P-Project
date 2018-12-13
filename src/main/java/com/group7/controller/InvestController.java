@@ -22,7 +22,7 @@ import java.util.Map;
  * createTime:2018-11-23 21:12
  */
 //扫描控制层
-@Transactional
+@Transactional  //事务
 @Controller
 public class InvestController {
 
@@ -60,7 +60,7 @@ public class InvestController {
     @RequestMapping("/investment")
     public Object investment(@RequestParam Map map){
         Map investment = investService.investment(map);
-        System.out.println(investment);
+       // System.out.println(investment);
         return investment;
     }
 
@@ -73,11 +73,17 @@ public class InvestController {
     @RequestMapping("/investmentAmount")
     public Object investmentAmount(@RequestBody InvestmentAmount invest){
         System.out.println(invest.toString());
-        int i = investService.investmentAmount(invest);//添加投资信息
-        System.out.println(i);
+        int  i = investService.investmentAmount(invest);//添加投资信息
+
         if(i>0){
-            int i1 = investService.investmentMoeny(invest);//修该投资表投资金额
-            System.out.println(i1+"------------");
+            int changeMoeny = investService.changeMoeny(invest);// 投资完成 改变账户可用金额
+            int moeny = investService.moeny(invest);  // 投资金额添加到 公司账户
+            if(changeMoeny>0&&moeny>0){
+                int moneyRecord = investService.moneyRecord(invest);//投标成功 添加资金记录
+                int message = investService.message(invest); //投标成功  添加 发送系统消息提示客户
+                int moneyCorporation = investService.moneyCorporation(invest); //投资成功 添加公司资金记录
+            }
+            int investmentMoeny = investService.investmentMoeny(invest);//修该投资表投资金额
         }
         return i;
     }
@@ -92,12 +98,18 @@ public class InvestController {
     public Object investmentVerify(Integer loansId){
         Object userSession = session.getAttribute("userSession");
         String userName =userSession+"";
-        Map map = investService.investmentVerify(userName, loansId);
-        return map;
+        Map earnings = investService.earnings(userName);
+        Integer verify = investService.investmentVerify(userName, loansId);
+        //System.out.println(verify);
+        Map tempMap = new HashMap();
+        tempMap.put("earnings",earnings);
+        tempMap.put("verify",verify);
+
+        return tempMap;
     }
 
     /**
-     * 查询投资信息  不能重复投资
+     * 查询贷款 投资信息
      * @param loansId
      * @return
      */

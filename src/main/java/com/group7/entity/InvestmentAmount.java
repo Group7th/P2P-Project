@@ -27,9 +27,38 @@ public class InvestmentAmount  {
     private Integer interestrate;  //利率
     private Integer investmentamount;  //投资总金额
     private Integer loansmoney; //贷款总金额
+    private Integer earnings; //本次收益
 
+    @Override
+    public String toString() {
+        return "InvestmentAmount{" +
+                "userName='" + userName + '\'' +
+                ", investmentId=" + investmentId +
+                ", userId=" + userId +
+                ", loansId=" + loansId +
+                ", investmentMoney=" + investmentMoney +
+                ", investmentDate=" + investmentDate +
+                ", interestrate=" + interestrate +
+                ", investmentamount=" + investmentamount +
+                ", loansmoney=" + loansmoney +
+                ", earnings=" + earnings +
+                '}';
+    }
 
     public InvestmentAmount() {
+    }
+
+    public InvestmentAmount(String userName, Integer investmentId, Integer userId, Integer loansId, Integer investmentMoney, Data investmentDate, Integer interestrate, Integer investmentamount, Integer loansmoney, Integer earnings) {
+        this.userName = userName;
+        this.investmentId = investmentId;
+        this.userId = userId;
+        this.loansId = loansId;
+        this.investmentMoney = investmentMoney;
+        this.investmentDate = investmentDate;
+        this.interestrate = interestrate;
+        this.investmentamount = investmentamount;
+        this.loansmoney = loansmoney;
+        this.earnings = earnings;
     }
 
     public String getUserName() {
@@ -104,30 +133,11 @@ public class InvestmentAmount  {
         this.loansmoney = loansmoney;
     }
 
-    @Override
-    public String toString() {
-        return "InvestmentAmount{" +
-                "userName='" + userName + '\'' +
-                ", investmentId=" + investmentId +
-                ", userId=" + userId +
-                ", loansId=" + loansId +
-                ", investmentMoney=" + investmentMoney +
-                ", investmentDate=" + investmentDate +
-                ", interestrate=" + interestrate +
-                ", investmentamount=" + investmentamount +
-                ", loansmoney=" + loansmoney +
-                '}';
+    public Integer getEarnings() {
+        return earnings;
     }
 
-    public InvestmentAmount(String userName, Integer investmentId, Integer userId, Integer loansId, Integer investmentMoney, Data investmentDate, Integer interestrate, Integer investmentamount, Integer loansmoney) {
-        this.userName = userName;
-        this.investmentId = investmentId;
-        this.userId = userId;
-        this.loansId = loansId;
-        this.investmentMoney = investmentMoney;
-        this.investmentDate = investmentDate;
-        this.interestrate = interestrate;
-        this.investmentamount = investmentamount;
-        this.loansmoney = loansmoney;
+    public void setEarnings(Integer earnings) {
+        this.earnings = earnings;
     }
 }

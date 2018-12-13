@@ -2,6 +2,7 @@ package com.group7.config;
 
 import com.group7.entity.UserInfo;
 import com.group7.service.UserInfoService;
+import com.group7.util.other.MD5;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;

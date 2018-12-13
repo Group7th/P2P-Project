@@ -1,5 +1,6 @@
 package com.group7.controller;
 
+import com.group7.util.other.MD5;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
@@ -28,7 +29,7 @@ public class LoginController {
 		String passWord = request.getParameter("passWord");
 		Subject subject = SecurityUtils.getSubject();
 		if(userName!=null&&!"".equals(userName)) {
-			UsernamePasswordToken token = new UsernamePasswordToken(userName, passWord);
+			UsernamePasswordToken token = new UsernamePasswordToken(userName, MD5.md5(passWord));
 			try {
 				subject.login(token);
 				return "redirect:/toIndex";
@@ -63,7 +64,7 @@ public class LoginController {
 			HttpSession session = request.getSession();
 			session.removeAttribute("userSession");
 			String s =(String) session.getAttribute("userSession");
-			System.out.println("-------------------"+s);
+			//System.out.println("-------------------"+s);
 			return "frontEnd/login";
 		}
 }

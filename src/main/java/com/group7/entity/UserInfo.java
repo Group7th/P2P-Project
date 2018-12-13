@@ -69,4 +69,5 @@ public class UserInfo implements Serializable {
 	public void setSalt(String salt) {
 		this.salt = salt;
 	}
+
 }
