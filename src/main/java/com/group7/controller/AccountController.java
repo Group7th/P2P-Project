@@ -451,6 +451,8 @@ public class AccountController {
         accountService.withdrawRecord(recordMap);
         Map msgMap = new HashMap();
         if(i>0){
+            //提现成功后将手续费添加到资金池
+            accountService.addFeeToPool(costMoney);
             msgMap.put("msg","success");
         }else{
             msgMap.put("msg","fail");

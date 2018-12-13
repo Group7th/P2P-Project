@@ -121,4 +121,9 @@ public class AccountServiceImpl implements AccountService {
     public int withdrawRecord(Map map) {
         return accountInfoDao.withdrawRecord(map);
     }
+
+    @Override
+    public int addFeeToPool(double costMoney) {
+        return accountInfoDao.addFeeToPool(costMoney);
+    }
 }

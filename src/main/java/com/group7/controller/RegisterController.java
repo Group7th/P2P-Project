@@ -38,12 +38,7 @@ public class RegisterController {
     @ResponseBody
     public Map<String,String> register(User user){
         System.out.println("经过方法前"+user.toString());
-        user.setPassword("123456");
-        System.out.println("set密码后："+user.toString());
         int i = userService.register(user);
-        String password = user.getPassword();
-        System.out.println(password+"------------------------------222222222");
-
         System.out.println("经过方法后"+user.toString());
         //注册同时要给该账号赋予普通角色的权限
         int role = userService.registerRole(user.getId());

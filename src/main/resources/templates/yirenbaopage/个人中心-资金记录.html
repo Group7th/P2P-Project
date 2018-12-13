@@ -124,9 +124,9 @@
     <div id="personal-left" class="personal-left">
       <ul>
         <li><span><a href="toGeRenZhongXinShouYe"><i class="dot dot01"></i>账户总览</a></span></li>
-        <li class="pleft-cur"><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXZiJin"><i class="dot dot02"></i>资金记录</a></span></li>
-        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXTouZi"><i class="dot dot05"></i>投资记录</a></span></li>
-        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXHuiKuan"><i class="dot dot06"></i>回款计划</a></span></li>
+        <li class="pleft-cur"><span><a href="toGRZXZiJin"><i class="dot dot02"></i>资金记录</a></span></li>
+        <li><span><a href="toGRZXTouZi"><i class="dot dot05"></i>投资记录</a></span></li>
+        <!--<li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXHuiKuan"><i class="dot dot06"></i>回款计划</a></span></li>-->
         <li><span><a href="toGRZXChongZhi1"><i class="dot dot03"></i>充值</a></span></li>
         <li class=""><span><a href="toGRZXTiXian1"><i class="dot dot04"></i>提现</a></span></li>
         <li style="position:relative;"> <span> <a href="toGRZXXiTongXiaoXi"><i class="dot dot08"></i>系统信息 </a> </span> </li>
@@ -284,7 +284,7 @@
              //   'userName': this.searchForm.userName,
                // 'loansType': this.searchForm.loansType
             };
-            axios.post('record/moneyList',searchForm).then(function(res){
+            axios.post('moneyList',searchForm).then(function(res){
                 _self.tableData = res.data.data;
                 _self.tableTotal = res.data.total;
             })
@@ -314,7 +314,7 @@
                 'watercoursetype': operationType,
                 'watercoursetime': operationDate
             };
-                axios.post('record/moneyList',searchForm)
+                axios.post('moneyList',searchForm)
                 .then(function (res) {
                     console.log(res);
                     _this.tableData = res.data.data;
@@ -330,12 +330,12 @@
             this.$confirm("确认删除吗？","提示",{
                 type:'warning'
             }).then(function () {
-                var url="record/deleteRows/"+row.MONEYRECORD;
+                var url="deleteRows/"+row.MONEYRECORD;
                 axios.get(url).then(function (res) {
                     console.log(res.data.msg);
                     if(res.data.msg=="success"){
                         _self.$message({
-                           message:row.MONEYRECORD + '删除成功',
+                           message:'删除成功',
                            type:'success'
                         });
                         _self.loadingData();//重新加载数据
