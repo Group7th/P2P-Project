@@ -10,7 +10,7 @@ import java.util.Map;
 
 /**
  * className:IoansAccomplishAuditServiceImpI
- * discriptoin:
+ * discriptoin: 满表审核
  * author:ZHEN
  * createTime:2018-12-08 15:13
  */
@@ -28,5 +28,13 @@ public class IoansAccomplishAuditServiceImpI implements IoansAccomplishAuditServ
     @Override
     public int getPageCount(Map map) {
         return ioansDao.getPageCount(map);
+    }
+
+    @Override
+    public int loanReview(Map map) {
+        ioansDao.loanReview(map);
+        //System.out.println(map.get("refundinfo")+"----");
+       //System.out.println(Integer.valueOf(""+map.get("REFUNDINFO")));
+        return Integer.valueOf(""+map.get("refundinfo"));
     }
 }

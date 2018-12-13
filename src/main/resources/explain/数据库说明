@@ -19,11 +19,11 @@ tb_moneyRecord  资金记录表          seq_tb_moneyRecord_id   序列
 	public static final int BID_PROGRESS = 2;// 招标中
 	public static final int BID_FAIL = 3;// 流标
 	public static final int BID_REPAY_PROGRESS = 4;// 还款中
-	public static final int BID_FULL = 5;//满标
-	public static final int BID_AUDIT_FIRST = 6;// 一次审核通过
-	public static final int BID_AUDIT_SECOND = 7;// 二次审核通过  或  贷款成功
-	public static final int BID_AUDIT_FAIL = 8;// 一次审核审核失败
-	public static final int BID_AUDIT_SECOND_FAIL = 9;// 二次审核审核失败
+	public static final int BID_FULL = 5;//满标审核通过
+	public static final int BID_AUDIT_FIRST = 6;// 满标审核失败
+	public static final int BID_AUDIT_SECOND = 7;//
+	public static final int BID_AUDIT_FAIL = 8;//
+	public static final int BID_AUDIT_SECOND_FAIL = 9;//
 	public static final int BID_REPAY_EXCEED = 10;// 逾期
 	public static final int BID_REPAY_FINASH = 11;// 还款结束
 	public static final int BID_REPAY_HASREPAY = 12;// 本期已还款

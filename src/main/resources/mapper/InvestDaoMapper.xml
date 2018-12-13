@@ -133,17 +133,17 @@
 
     <!--添加投资信息-->
     <insert id="investmentAmount"  >
-          insert into tb_investment values(seq_tb_investment_id.nextval,(select id from  tb_user where userName = #{userName}),#{loansId},#{investmentMoney},sysdate,#{interestrate})
+          insert into tb_investment values(seq_tb_investment_id.nextval,(select id from  tb_user where userName = #{userName}),#{loansId},#{investmentMoney},sysdate,#{interestrate},#{earnings})
     </insert>
 
     <!--查询投资人 不能重复投资-->
-    <select id="investmentVerify" resultType="map">
+    <select id="investmentVerify" resultType="int">
         select investmentId  from tb_investment where userId =(select id from  tb_user where userName = #{userName}) and loansId = #{loansId}
     </select>
 
 
     <!--修该投资表投资金额-->
-    <update id="investmentMoeny" >
+    <update id="investmentMoeny">
         update tb_loans set investmentamount = investmentamount+ #{investmentMoney} where  loansId = #{loansId}
     </update>
 
@@ -151,5 +151,42 @@
     <select id="investmentInformation" resultType="map">
         select investmentmoney,to_char(investmentdate,'yyyy-mm-dd hh24:mi:ss') as investmentdate,(select userName from tb_user where id=a.userid) as userName  from tb_investment a join tb_user b on b.id=a.userid where loansId = #{loansId}
     </select>
+
+    <!--查询信息是否完整-->
+    <select id="earnings" resultType="map">
+        select b.certification,b.availmoney from  tb_userinformation a join  tb_useraccount b on a.userinformationid = b.userinformationid where a.userid = (select id from tb_user where userName = #{userName} )
+    </select>
+
+    <!--投资完成 改变账户可用金额-->
+    <delete id="changeMoeny">
+       update tb_useraccount set availmoney = availmoney - #{investmentMoney},frozenCapital = frozenCapital + #{investmentMoney}
+       where userinformationid = (select userinformationid from tb_userinformation
+                                    where userid = (select id from tb_user where userName = #{userName} ) )
+    </delete>
+
+    <!--投资金额添加到 公司账户-->
+    <update id="moeny">
+        update tb_money set money = money + #{investmentMoney}
+    </update>
+
+    <!--投资成功 添加资金记录-->
+    <insert id="moneyRecord">
+        insert into tb_moneyrecord(moneyrecord,watercoursetime,watercoursetype,watercoursemoney,chargeway,userid,balance)
+              values(seq_tb_moneyrecord_id.nextval,sysdate,'投资',#{investmentMoney},'银行卡',(select id from tb_user where userName = #{userName}),(select b.availmoney from  tb_userinformation a join  tb_useraccount b on a.userinformationid = b.userinformationid where a.userid = ( select id from tb_user where userName = #{userName})))
+    </insert>
+
+    <!--投资成功 添加公司资金记录-->
+    <insert id="moneyCorporation">
+       insert into tb_company_money_record(recordid,loansid,moneychangetype,changemoney,changetime,availmoney)
+           values(seq_tb_moneypool_id.nextval,#{loansId},2,#{investmentMoney},sysdate,(select money from tb_money))
+    </insert>
+
+    <!--投资成功  添加 发送系统消息提示客户-->
+    <insert id="message">
+       insert into tb_message(messageid,messagecontent,messagestate,sendtime,userid,messagetype)
+               values(seq_tb_message_id.nextval,'尊敬的客户，您好,您的编号为'||(select investmentId from  tb_investment  a join tb_loans b on  a.loansid = b.loansid  where a.userid = (select id from tb_user where userName = #{userName}) and a.loansid = #{loansId} )||'的'||#{investmentMoney}||'元投资成功,投标金额划入冻结资金。如此贷款项目成功会提醒您,请耐心等待。如有疑问，请联系我们，我们一定为您解答',0,sysdate,( select id from tb_user where userName = #{userName} ),'投资')
+    </insert>
+
+
 
 </mapper>

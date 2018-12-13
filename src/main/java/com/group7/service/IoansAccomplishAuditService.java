@@ -6,7 +6,7 @@ import java.util.Map;
 
 /**
  * className:IoansAccomplishAuditService
- * discriptoin:
+ * discriptoin:满表审核
  * author:ZHEN
  * createTime:2018-12-08 15:13
  */
@@ -25,4 +25,11 @@ public interface IoansAccomplishAuditService {
      * @return
      */
     int getPageCount(Map map);
+
+    /**
+     * 贷款审核
+     * @param map
+     * @return
+     */
+    int loanReview(Map map);
 }
