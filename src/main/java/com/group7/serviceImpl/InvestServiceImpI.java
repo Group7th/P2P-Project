@@ -96,18 +96,83 @@ public class InvestServiceImpI implements InvestService {
      * @return
      */
     @Override
-    public Map investmentVerify(@Param("userName") String userName,@Param("loansId") Integer loansId) {
+    public Integer investmentVerify(@Param("userName") String userName,@Param("loansId") Integer loansId) {
         return investDao.investmentVerify(userName,loansId);
     }
-
+    /**
+     * 投资金额 添加到 投资表 总投资金额中
+     * @param invest
+     * @return
+     */
     @Override
     public int investmentMoeny(InvestmentAmount invest) {
         return investDao.investmentMoeny(invest);
     }
-
+    /**
+     * 查看贷款 投资信息
+     * @param loansId
+     * @return
+     */
     @Override
     public List<Map> investmentInformation(Integer loansId) {
         return investDao.investmentInformation(loansId);
+    }
+    /**
+     * 查询是否实名制
+     * @param userName
+     * @return
+     */
+    @Override
+    public Map earnings(String userName) {
+        return investDao.earnings(userName);
+    }
+    /**
+     * 投资完成 改变账户可用金额
+     * @param invest
+     * @return
+     */
+    @Override
+    public int changeMoeny(InvestmentAmount invest) {
+        return investDao.changeMoeny(invest);
+    }
+
+    /**
+     * 投资金额添加到 公司账户
+     * @param invest
+     * @return
+     */
+    @Override
+    public int moeny(InvestmentAmount invest) {
+        return investDao.moeny(invest);
+    }
+
+    /**
+     * 投资成功 (把资金转入公司账户) 添加公司资金记录
+     * @param invest
+     * @return
+     */
+    @Override
+    public int moneyCorporation(InvestmentAmount invest) {
+        return investDao.moneyCorporation(invest);
+    }
+
+    /**
+     * 投资成功  添加 发送系统消息提示客户
+     * @param invest
+     * @return
+     */
+    @Override
+    public int message(InvestmentAmount invest) {
+        return investDao.message(invest);
+    }
+    /**
+     * 投资成功 添加资金记录
+     * @param invest
+     * @return
+     */
+    @Override
+    public int moneyRecord(InvestmentAmount invest) {
+        return investDao.moneyRecord(invest);
     }
 
 

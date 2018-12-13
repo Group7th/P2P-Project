@@ -9,7 +9,8 @@
     <script type="text/javascript" src="11112/js/all.js"></script>
 	<script type="text/javascript" src="layui/layui.js"></script>
 	<link rel="stylesheet" type="text/css" href="layui/css/layui.css">
-
+	<script type="text/javascript" src="js/dist/sweetalert.min.js"></script>
+	<link rel="stylesheet" href="js/dist/sweetalert.css">
 
 
 </head>
@@ -81,13 +82,13 @@
 	  	     	    	  	    	<li>
 	  	     	    	  	    		 年化收益<br>
 	  	     	    	  	    		 <span style="color:#ff7112;">
-	  	     	    	  	    		 	 <strong id="deadline"></strong>% 年化
+	  	     	    	  	    		 	 <strong id="ratio"></strong>% 年化
 	  	     	    	  	    		 </span>
 	  	     	    	  	    	</li>
 	  	     	    	  	    	<li>
 	  	     	    	  	    		 贷款期限<br>
 										<span style="color:#ff7112;">
-	  	     	    	  	    		 	 <strong id="ratio"></strong>个月
+	  	     	    	  	    		 	 <strong id="deadline"></strong>个月
 	  	     	    	  	    		 </span>
 	  	     	    	  	    	</li>
                                     <li>
@@ -118,6 +119,7 @@
 	  	     	    </div>
 	  	     	    <div class="detail_intro_r fr">
 						  <span class="touzijine" style="display:none"></span>  <!--投资总额-->
+						  <span id="ZHJE"></span>  <!--当前账户金额-->
 	  	     	    	  <h2 class="det_intro_h2 clearfix"><span class="fl">投资进度:</span><em class="fr" id="bili"></em></h2>
 							 	<!--进度条-->
 							   <meter id="jindu" max="100" min="0" value="" low="100" optimum="1" style='width: 247px;height: 10px' ></meter>
@@ -125,7 +127,7 @@
                           <p class="det_input">
                           	  <input type="text" placeholder="投资金额为1000的倍数" id="financing">
                           </p>
-						  <p class="det_shouyi">每投资1万元收益  <strong id="shouyi"></strong></p>
+						  <span class="det_shouyi">每投资1万元收益</span> <span id="shouyi" style="color: red"></span><span id="shouyi1" style="display:none"></span>
                           <p><a href="#" class="pro_btn det_btn financing" >立即投资</a><a href="#" class="pro_btn det_btn one">已投资</a></p>
 	  	     	    </div>
 	  	     </div>
@@ -468,11 +470,24 @@
             dataType: "json",
             data: {loansId:loansId},
             success: function (data) {
+				//alert(data.earnings.AVAILMONEY)
+				$("#ZHJE").html(data.earnings.AVAILMONEY);
                 //判断如果查询到已投资  则显示已投资  按钮失效
-                if(data!=null){
+                if(data.verify!=null){
                     $(".one").show();
                     $(".financing").hide();
                 }
+                if(data.earnings.CERTIFICATION==0){
+                    sweetAlert({
+                        title: "提示信息",
+                        text: "基本信息未完善，请前往账户中心补全信息，5秒后自动跳转到账户中心",
+                        timer: 5000,
+                        type: "error",
+                        showConfirmButton: false
+                    }, function () {
+                        location.href = "/p2p/toGeRenZhongXinShouYe";
+                    });
+				}
             }
         })
 
@@ -483,12 +498,13 @@
 
         var conf = false;
 		var falt = false;
+		var zh   = false;
 		$(".detail_intro_r").on("click",".financing",function() {
 			var financing = Number($("#financing").val()); //输入框输入金额
             var money = Number($("#money").html())*10000;    //总贷款金额
             var ratio = Number($("#ratio").html());     //获取利率
 			var investmentamount = Number($(".touzijine").html()); <!--投资总金额-->
-
+			var ZHJE = Number($("#ZHJE").html());
             if(financing!=null&&financing!=0){
                 var patrn = /^[0-9]*$/; //正则 必须为数字
                 if(money<financing){   //校验
@@ -515,6 +531,11 @@
 				}else {
                     conf=false;
 				}
+
+				if(ZHJE>=financing){
+                    zh=true;
+				}
+
               /*  var param = {  //拼JSON值
                     "userId":userId ,
                     "loansId":loansId,
@@ -525,16 +546,17 @@
                 }*/
 				if(falt){  //判断投资金额不得有误
 				    if(conf){  //判断是否确认投资
-                        layer.open({
-                            type: 2,
-                            title: '支付密码界面',
-                            shadeClose: true,
-                            shade: 0.8,
-                            anim: 2,
-                            area: ['600px', '360px'],
-                            content: '/p2p/investmentPassword?loansId='+loansId+"&userName="+username //iframe的url
-                        });
-                       /* $.ajax({
+						if(zh) {
+                            layer.open({
+                                type: 2,
+                                title: '支付密码界面',
+                                shadeClose: true,
+                                shade: 0.8,
+                                anim: 2,
+                                area: ['600px', '360px'],
+                                content: '/p2p/investmentPassword?loansId=' + loansId + "&userName=" + username //iframe的url
+                            });
+                            /* $.ajax({
                             type: "post",
                             url: "/p2p/investmentAmount",
                             contentType: 'application/json; charset=UTF-8',
@@ -555,19 +577,26 @@
                                 }
                             }
                         })*/
+                        }else {
+                            sweetAlert("账户资金不足！","请及时充值！", "info");
+                            $("#shouyi").html("");
+                            $(".det_shouyi").html("");
+						}
 					}else {
+                        $("#shouyi").html("");
                         $(".det_shouyi").html("投资有风险，投资需谨慎。");
                     }
-
-
 				}else {
                     falt = false;
                     $("#financing").val("");
+                    $("#shouyi").html("");
                     $(".det_shouyi").html("金额输入有误！");
 					$(".det_shouyi").css("color","red");
+
 				}
 			}else {
                 falt = false;
+                $("#shouyi").html("");
                 $(".det_shouyi").html("请输入您要投资的金额");
                 $(".det_shouyi").css("color","red");
             }
@@ -576,7 +605,9 @@
 
 
         $("#financing").focus(function(){
-			$(".det_shouyi").html("");
+            $(".det_shouyi").css("color","#000");
+			$(".det_shouyi").html("每投资1万元收益");
+            $("#shouyi").html($("#shouyi1").html());
 		})
 
 
@@ -596,7 +627,6 @@
 							 	"<td>"+'手动投标'+"</td>"+
                               "</tr>"
                     }
-
                     $("#TZJL").append(str);
 				}
             }
@@ -614,12 +644,12 @@
             data: {loansId:loansId},
             success: function (data) {
                 if(data.error=="1"){
-                    alert("页面有误，请联系客服解决！谢谢")
+                    sweetAlert("页面有误！","请联系客服解决！谢谢", "info");
                 }else {
                     if (data != null && data != "") {
                         var money = 10000;
-                        $("#deadline").html(data.LOANSINTERESTRATE); // 贷款利息比例
-                        $("#ratio").html(data.REFUNDDEADLINE);   //贷款期数
+                        $("#ratio").html(data.LOANSINTERESTRATE); // 贷款利息比例
+                        $("#deadline").html(data.REFUNDDEADLINE);   //贷款期数
                         $("#money").html(data.LOANSMONEY/money);		//贷款金额
                         $("#fTime").html(data.ABEGINTIME);		//发布日期
                         $("#type").html(data.REFUNDWAY);		//还款方式
@@ -628,7 +658,8 @@
                         $("#jindu").val(data.INVESTMENTAMOUNT / data.LOANSMONEY * 100);  //进度条
                         $(".touzi").html(data.LOANSMONEY - data.INVESTMENTAMOUNT);      //贷款剩余金额
                         $("#shouyi").html(Math.floor(money * data.REFUNDDEADLINE * (data.LOANSINTERESTRATE / 100) / 12));  //算出投资10000的收益  本金*期数*利率/12
-                        $(".touzijine").html(data.INVESTMENTAMOUNT);  //投资金额
+                        $("#shouyi1").html(Math.floor(money * data.REFUNDDEADLINE * (data.LOANSINTERESTRATE / 100) / 12));
+						$(".touzijine").html(data.INVESTMENTAMOUNT);  //投资金额
                         $("#JKRname").html(data.USERNAME.slice(0,1)+"先生");      // 借款人姓名
                         $("#DZ").html(data.SITE.slice(0,3)+"*****");   //地址
                         $("#SJH").html(data.USERPHONE.slice(0,3)+"***********"); // 手机号
@@ -645,7 +676,6 @@
                             $("#LX").html("抵押");
                             $("#DKMC").html(data.USERNAME.slice(0,1)+"先生"+"发起的房屋抵押贷款");
                         }
-
 
                   			if(Number(data.LOANSTYPE)!=3){
 

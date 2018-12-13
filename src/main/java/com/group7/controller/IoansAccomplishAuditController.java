@@ -28,12 +28,24 @@ public class IoansAccomplishAuditController {
     @ResponseBody
     @RequestMapping("/IoansAccomplishAudit")
     public Object getList(@RequestBody Map map){
-        System.out.println(map);
+       // System.out.println(map);
         Map tempMap = new HashMap();
         tempMap.put("page",ioansService.getList(map));
         tempMap.put("total",ioansService.getPageCount(map));
-        System.out.println(tempMap);
+        //System.out.println(tempMap);
         return tempMap;
     }
 
+    /**
+     * 贷款(满标)审核
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/loanReview")
+    public  Object loanReview(@RequestBody Map map){
+        System.out.println(map);
+        int  i =ioansService.loanReview(map);
+        System.out.println(i+"...................");
+        return i;
+    }
 }
