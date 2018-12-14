@@ -28,6 +28,16 @@ public interface JinNangService {
      */
     List<Map> getJinNangListMap(Map map);
 
+    int getJinNangCount();
+
+    /**
+     * 很具id或取锦囊
+     * @param map
+     * @return
+     */
+    List<Map> getJinNangById(Map map);
+
+
     /**
      * 添加评论
      * @param map
@@ -76,5 +86,9 @@ public interface JinNangService {
      * @return
      */
     List<Map> getJieKuanLieXingFenXi(int id);
+
+    int deleteJinNang(Integer ID);
+
+    int deleteJinNangS(String[] ids);
 
 }

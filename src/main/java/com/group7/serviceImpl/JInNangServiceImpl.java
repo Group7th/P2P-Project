@@ -33,6 +33,16 @@ public class JInNangServiceImpl implements JinNangService {
     }
 
     @Override
+    public int getJinNangCount() {
+        return jinNangDao.getJinNangCount();
+    }
+
+    @Override
+    public List<Map> getJinNangById(Map map) {
+        return jinNangDao.getJinNangById(map);
+    }
+
+    @Override
     public int addComment(Map map) {
         return jinNangDao.addComment(map);
     }
@@ -66,5 +76,15 @@ public class JInNangServiceImpl implements JinNangService {
     @Override
     public List<Map> getJieKuanLieXingFenXi(int id) {
         return jinNangDao.getJieKuanLieXingFenXi(id);
+    }
+
+    @Override
+    public int deleteJinNang(Integer ID) {
+        return jinNangDao.deleteJinNang(ID);
+    }
+
+    @Override
+    public int deleteJinNangS(String[] ids) {
+        return jinNangDao.deleteJinNangS(ids);
     }
 }

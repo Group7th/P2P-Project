@@ -194,25 +194,25 @@ public class pageJump {
     public String toGRZXHongBao(){
         return "yirenbaopage/个人中心-我的红包.html";
     }
-
-    /**
+/*
+    *//**
      * 投资纪录
      * @return
-     */
-//    @RequestMapping("toGRZXTouZi")
-//    public String toGRZXTouZi(){
-//        return "yirenbaopage/个人中心-投资记录.html";
-//    }
+     *//*
+    @RequestMapping("toGRZXTouZi")
+    public String toGRZXTouZi(){
+        return "yirenbaopage/个人中心-投资记录.html";
+    }*/
 
-    /**
+   /* *//**
      * 提现
      * @return
-     */
-//    @RequestMapping("toGRZXTiXian1")
-//    public String toGRZXTiXian1(){
-//        return "yirenbaopage/个人中心-提现.html";
-//    }
-
+     *//*
+    @RequestMapping("toGRZXTiXian1")
+    public String toGRZXTiXian1(){
+        return "yirenbaopage/个人中心-提现.html";
+    }
+*/
     /**
      * 系统消息
      * @return
@@ -236,11 +236,10 @@ public class pageJump {
     /**
      * 资金纪录
      * @return
-     * @return
      */
     @RequestMapping("toGRZXZiJin")
     public String toGRZXZiJin(){
-        return "yirenbaopage/个人中心-资金记录";
+        return "yirenbaopage/个人中心-资金记录 .html";
     }
 
 
@@ -319,7 +318,7 @@ public class pageJump {
     }
 
     /**
-     * 满标审核信息表
+     * 满标一审信息表
      * @return
      */
     @RequestMapping("/toIoansAccomplishAudit")
@@ -329,13 +328,23 @@ public class pageJump {
 
 
     /**
-     * 流标审核
+     * 公告管理
      * @return
      */
-    @RequestMapping("/toLoseABidAudit")
-    public String toLoseABidAudit(){
-        return "backStage/lose_a_bidAudit";
+    @RequestMapping("/tonoticeGuanLi")
+    public String tonoticeGuanLi(){
+        return "permission/noticeGuanLi";
     }
+
+    /**
+     * 锦囊管理
+     * @return
+     */
+    @RequestMapping("/tojinnangGuanLi")
+    public String tojinnangGuanLi(){
+        return "permission/jinnangGuanLi";
+    }
+
 
 
 

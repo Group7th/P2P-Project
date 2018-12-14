@@ -5,10 +5,7 @@ import com.group7.service.JinNangService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.mail.MailProperties;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -50,14 +47,16 @@ public class JinNangController {
      */
     @ResponseBody
     @RequestMapping("getJinNangListMap")
-    public Object getJinNangListMap(@RequestParam Map map){
+    public Object getJinNangListMap(@RequestBody Map map){
         map.put("type",1);
-        List<Map> jinNangListMap = jinNangService.getJinNangListMap(map);
-        Map map3 = new HashMap();
-        for (Map map2 :jinNangListMap) {
 
+        List<Map> jinNangListMap = jinNangService.getJinNangListMap(map);
+        int jinNangCount = jinNangService.getJinNangCount();
+        System.out.println(jinNangCount);
+        for (Map map2 :jinNangListMap) {
             int commentCount = jinNangService.getCommentCount(map2);
             map2.put("commentCount",commentCount);
+            map2.put("jinNangCount",jinNangCount);
         }
         return jinNangListMap;
     }
@@ -69,10 +68,8 @@ public class JinNangController {
     @ResponseBody
     @RequestMapping("getJinNangXinXi")
     public Object getJinNangXinXi(@RequestParam Map map){
-        map.put("type",2);
         int commentCount = jinNangService.getCommentCount(map);
-
-        List<Map> jinNangListMap = jinNangService.getJinNangListMap(map);
+        List<Map> jinNangListMap = jinNangService.getJinNangById(map);
         map.put("commentCount",commentCount);
         jinNangListMap.add(map);
         return jinNangListMap;
@@ -173,6 +170,42 @@ public class JinNangController {
         dataListMap.add(touZiMapLieXing);
         dataListMap.add(JieKuanMapLieXing);
         return dataListMap;
+    }
+
+    /**
+     * 锦囊管理
+     * @param map
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("getJinNangGUanLi")
+    public Object getJinNangGUanLi(@RequestBody Map map){
+        Map maps = new HashMap();
+        maps.put("data",jinNangService.getJinNangListMap(map));
+        maps.put("total",jinNangService.getJinNangCount());
+        return maps;
+    }
+
+    /**
+     * 删除
+     * @param ID
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/deleteJinNang")
+    public Object delectJinNang(@RequestParam Integer ID){
+        return jinNangService.deleteJinNang(ID);
+    }
+
+    /**
+     * 批量删除锦囊
+     * @param ids
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/deleteJinNangSS/{ids}")
+    public Object deleteJinNangSS(@PathVariable("ids") String[] ids){
+        return jinNangService.deleteJinNangS(ids);
     }
 }
 
