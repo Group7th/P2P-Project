@@ -24,11 +24,15 @@ public class IoansAccomplishAuditController {
     @Autowired
     private IoansAccomplishAuditService ioansService;
 
-
+    /**
+     * 查询满表审核表信息
+     * @param map
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/IoansAccomplishAudit")
     public Object getList(@RequestBody Map map){
-       // System.out.println(map);
+        // System.out.println(map);
         Map tempMap = new HashMap();
         tempMap.put("page",ioansService.getList(map));
         tempMap.put("total",ioansService.getPageCount(map));
@@ -37,15 +41,47 @@ public class IoansAccomplishAuditController {
     }
 
     /**
-     * 贷款(满标)审核
+     * 查询流标贷款信息
+     * @param map
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/getFailureLoans")
+    public Object getFailureLoans(@RequestBody Map map){
+        // System.out.println(map);
+        Map tempMap = new HashMap();
+        tempMap.put("page",ioansService.getFailureLoans(map));
+        tempMap.put("total",ioansService.getFailureLoansCount(map));
+       // System.out.println(tempMap);
+        return tempMap;
+    }
+
+    /**
+     * 贷款(满标/流标)审核
      * @return
      */
     @ResponseBody
     @RequestMapping("/loanReview")
     public  Object loanReview(@RequestBody Map map){
-        System.out.println(map);
+        //System.out.println(map);
         int  i =ioansService.loanReview(map);
-        System.out.println(i+"...................");
+       // System.out.println(i+"...................");
         return i;
     }
+
+    /**
+     * 每个贷款的 投标记录
+     * @param map
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/InvestmentRecord")
+    public Object InvestmentRecord(@RequestBody Map map){
+        //System.out.println(map);
+        List<Map> maps = ioansService.InvestmentRecord(map);
+        //System.out.println(maps);
+        return maps;
+    }
+
+
 }

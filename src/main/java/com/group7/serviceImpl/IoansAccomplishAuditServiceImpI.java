@@ -31,10 +31,25 @@ public class IoansAccomplishAuditServiceImpI implements IoansAccomplishAuditServ
     }
 
     @Override
+    public List<Map> getFailureLoans(Map map) {
+        return ioansDao.getFailureLoans(map);
+    }
+
+    @Override
+    public int getFailureLoansCount(Map map) {
+        return ioansDao.getFailureLoansCount(map);
+    }
+
+    @Override
     public int loanReview(Map map) {
         ioansDao.loanReview(map);
         //System.out.println(map.get("refundinfo")+"----");
        //System.out.println(Integer.valueOf(""+map.get("REFUNDINFO")));
         return Integer.valueOf(""+map.get("refundinfo"));
+    }
+
+    @Override
+    public List<Map> InvestmentRecord(Map map) {
+        return ioansDao.InvestmentRecord(map);
     }
 }

@@ -17,6 +17,27 @@
   <!-- <link rel="stylesheet/less" type="text/css" href="css/style.less" /> -->
   <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
   <script type="text/javascript" src="js/all.js"></script>
+  <!-- 引入样式 -->
+  <script type="text/javascript" src="/p2p/js/vue.js"></script>
+  <script type="text/javascript" src="/p2p/js/axios.min.js"></script>
+  <!-- 引入样式 -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <!-- 引入组件库 -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script type="text/javascript" src="js/moment.min.js"></script>
+  <style>
+    .item {
+      margin-left:15px;
+    }
+
+    .item2{
+      margin-left:513px;
+    }
+
+    .button3{
+      margin-left:15px;
+    }
+  </style>
 </head>
 <body>
 
@@ -71,9 +92,9 @@
     <div id="personal-left" class="personal-left">
       <ul>
         <li><span><a href="toGeRenZhongXinShouYe"><i class="dot dot01"></i>账户总览</a></span></li>
-        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXZiJin"><i class="dot dot02"></i>资金记录</a></span></li>
-        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXTouZi"><i class="dot dot05"></i>投资记录</a></span></li>
-        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXHuiKuan"><i class="dot dot06"></i>回款计划</a></span></li>
+        <li><span><a href="toGRZXZiJin"><i class="dot dot02"></i>资金记录</a></span></li>
+        <li><span><a href="toGRZXTouZi"><i class="dot dot05"></i>投资记录</a></span></li>
+        <!--<li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXHuiKuan"><i class="dot dot06"></i>回款计划</a></span></li>-->
         <li><span><a href="toGRZXChongZhi1"><i class="dot dot03"></i>充值</a></span></li>
         <li class=""><span><a href="toGRZXTiXian1"><i class="dot dot04"></i>提现</a></span></li>
         <li style="position:relative;" class="pleft-cur"> <span> <a href="toGRZXXiTongXiaoXi"><i class="dot dot08"></i>系统信息 </a> </span> </li>
@@ -84,66 +105,240 @@
     <div class="personal-main">
       <div class="personal-xtxx">
         <h3><i>系统消息</i></h3>
-        <form id="form" name="form" method="post" action="">
-          <input type="hidden" name="form" value="form">
-          <span id="form:dataTable">
-          <script type="text/javascript">
-								//<![CDATA[
-									$(function(){
-										$("#pxtxx-list li").click(function(){
-											var changeStatusTag = false;
-											if($(this).children("span").hasClass("pxtxx-newmail")){
-												$(this).children("span").removeClass("fb");
-												$(this).children("span.pxtxx-newmail").removeClass("pxtxx-newmail").addClass("pxtxx-mail");	
-												changeStatusTag = true;
-											}
-											$(this).children(".pxtxx-notice").show();
-											/*var displayValue = $(this).children(".pxtxx-notice").css("display");
-											if("block"==displayValue || "inline"==displayValue){
-												$(this).css("background-color","#fff");
-												$(this).mouseover(function(){
-													$(this).css("background-color","#fff");
-												});
-												$(this).mouseout(function(){
-													$(this).css("background-color","#fff");
-												});
-											}else if("none"==$(this).children(".pxtxx-notice").css("display")){
-												$(this).css("background-color","#F8F8F8");
-												$(this).mouseover(function(){
-													$(this).css("background-color","#F8F8F8");
-												});
-												$(this).mouseout(function(){
-													$(this).css("background-color","#fff");
-												});
-												
-											}*/
-											$(this).siblings().children(".pxtxx-notice").css("display","none");
-											if(changeStatusTag){
-												$(this).children("a").click();
-												$(this).click();
-											}
-										});
-									});
-									
-								//]]>
-								</script>
-          <div id="pxtxx-tab" class="pxtxx-tab">
-            <ul>
-              <li class="on"><a  href="#" style="color:#fff;padding:5px 22px;display:block;" title="全部">全部</a> </li>
-              <li><a href="#" style="padding:5px 22px;display:block;" title="未读">未读</a> </li>
-              <li><a href="#" style="padding:5px 22px;display:block;" title="已读">已读</a> </li>
-            </ul>
-            <span class="xxsz" style="display:none;">消息设置</span> </div>
-          <div class="pxtxx-title"> <span class="pxtxx-type ml46">消息类型</span><span class="pxtxx-con">内容</span><span class="pxxtx-date">发送时间</span> </div>
-          <div id="pxtxx-list" class="pxtxx-list">
-            <ul>
-              <li><span class="pxtxx-type ml46">公司公告</span><span class="pxtxx-con">热烈祝贺阳光易贷新平台上线</span><span class="pxxtx-date">2015-10-1</span></li>
-              <li><span class="pxtxx-type ml46">公司公告</span><span class="pxtxx-con">热烈祝贺阳光易贷新平台上线</span><span class="pxxtx-date">2015-10-1</span></li>
-              <li><span class="pxtxx-type ml46">公司公告</span><span class="pxtxx-con">热烈祝贺阳光易贷新平台上线</span><span class="pxxtx-date">2015-10-1</span></li>
-            </ul>
+
+        <div id="list">
+
+          <el-row style="margin-top: 30px">
+            <el-button  :type="button1" @click="all" >全部</el-button>
+            <el-badge :value="messageNum" class="item" :hidden="hid" :max="99">
+              <el-button  :type="button2" @click="unread">未读</el-button>
+            </el-badge>
+            <el-button  :type="button3" @click="read" class="button3">已读</el-button>
+            <el-button @click="openMessage" :style="{display: active1}" type="success" icon="el-icon-check" class="item2" circle></el-button>
+          </el-row>
+          <el-table
+                  :data="tableData"
+                  style="width:120%">
+            <!--:default-sort = "{prop:'SENDTIME', order:'descending'}"-->
+            <!--<el-table-column-->
+            <!--多选框-->
+            <!--type="selection">-->
+            <!--</el-table-column>-->
+            <el-table-column
+                    label="消息类型"
+                    width="100px"
+                    sortable>
+              <template slot-scope="scope">
+                <el-badge is-dot class="item" :hidden="hide"></el-badge>
+                <el-tag :type="scope.row.MESSAGETYPE | statusFilter">{{scope.row.MESSAGETYPE}}</el-tag>
+              </template>
+            </el-table-column>
+            <el-table-column
+                    prop="MESSAGECONTENT"
+                    label="内容"
+                    width="450px">
+            </el-table-column>
+            <el-table-column
+                    prop="SENDTIME"
+                    label="发送时间"
+                    sortable
+                    :formatter="dateFormat">
+            </el-table-column>
+            <el-table-column
+                    fixed="right"
+                    label="操作"
+                    width="120">
+              <template slot-scope="scope">
+                <el-button
+                        @click="deleteRow(scope.row)"
+                        type="danger"
+                        size="small"
+                        icon="el-icon-delete" circle>
+                </el-button>
+              </template>
+            </el-table-column>
+          </el-table>
+
+          <!--底部分页-->
+          <div class="inline" style="text-align: center;margin-top: 13px">
+            <el-pagination
+                    @size-change="pageSizeChange"
+                    @current-change="currentPageChange"
+                    :current-page="currentPage"
+                    :page-sizes="[5,10, 15, 20]"
+                    :page-size="pageSize"
+                    layout="total, sizes, prev, pager, next, jumper"
+                    :total="tableTotal">
+            </el-pagination>
           </div>
-          </span>
-        </form>
+        </div>
+        <script>
+            new Vue({
+                el: "#list",
+                data:{
+                    tableData: [],
+                    tableTotal:100,
+                    pageSize:5,
+                    currentPage:1,
+                    button1:'primary',
+                    button2:'',
+                    button3:'',
+                    messagestate:"",
+                    hid:false,
+                    hide:false,
+                    messageNum:0,
+                    active1:'none'
+                },
+                created: function(){
+                    //在 then的内部不能使用Vue的实例化的this, 因为在内部 this 没有被绑定。
+                    var _self = this;
+                    var start = (this.currentPage-1)*this.pageSize;
+                    var end = this.currentPage*this.pageSize+1;
+                    var searchForm = {
+                        'start': start,
+                        'end': end,
+                    };
+                    axios.post('messageList',searchForm).then(function(res){
+                        _self.tableData = res.data.data;
+                        _self.tableTotal = res.data.total;
+                        _self.messageNum = res.data.unread;
+                        if(_self.messageNum==0){
+                            _self.hid=true;
+                            _self.hide=true;
+                        }
+                    })
+                },
+                filters: {
+                    // el-tag类型转换
+                    statusFilter: function (status) {
+                        const statusMap = {
+                            '还款': 'success', '贷款': 'warning', '回款': 'info', '流标': 'danger' , '投资': 'info'
+                        };
+                        return statusMap[status]
+                    }
+                },
+                methods: {
+                    //时间格式化
+                    dateFormat:function(row, column) {
+                        var date = row[column.property];
+                        if (date == undefined) {
+                            return "";
+                        }
+                        return moment(date).format("YYYY-MM-DD HH:mm:ss");
+                    },
+                    loadingData: function (messagestate) {
+                        var _this = this;  //很重要！！
+                        var start = (this.currentPage - 1) * this.pageSize;
+                        var end = this.currentPage * this.pageSize+1;
+                        console.log(start);
+                        console.log(end);
+                        var searchForm = {
+                            'start': start,
+                            'end': end,
+                            'messagestate':messagestate
+                        };
+                        axios.post('messageList',searchForm)
+                            .then(function (res) {
+                                console.log(res);
+                                _this.tableData = res.data.data;
+                                _this.tableTotal = res.data.total;
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            });
+                    },
+                    //删除事件
+                    deleteRow:function(row){
+                        var _self = this;
+                        this.$confirm("确认删除吗？","提示",{
+                            type:'warning'
+                        }).then(function () {
+                            var url="deleteMessage/"+row.MESSAGEID;
+                            axios.get(url).then(function (res) {
+                                console.log(res.data.msg);
+                                if(res.data.msg=="success"){
+                                    _self.$message({
+                                        message:'删除成功',
+                                        type:'success'
+                                    });
+                                    _self.loadingData(this.messagestate);//重新加载数据
+                                }
+                            });
+                        }).catch(function (e) {
+                            if(e!="cancel")
+                                console.log("出现错误"+e);
+                        });
+                    },
+                    //分页大小修改事件
+                    pageSizeChange: function (val) {
+                        this.pageSize = val;
+                        //var _self = this;
+                        this.loadingData(this.messagestate);//重新加载数据
+                    },
+                    //当前页数修改事件
+                    currentPageChange:function(val) {
+                        this.currentPage = val;
+                        //var _self = this;
+                        this.loadingData(this.messagestate);//重新加载数据
+                    },
+                    all:function () {
+                        this.button1='primary';
+                        this.button2='';
+                        this.button3='';
+                        this.active1='';
+                        this.messagestate='';
+                        this.loadingData();
+                    },
+                    unread:function () {
+                        this.button1='';
+                        this.button2='primary';
+                        this.button3='';
+                        this.active1='';
+                        this.messagestate=1;
+                        this.loadingData(1);
+                    },
+                    read:function () {
+                        this.button1='';
+                        this.button2='';
+                        this.button3='primary';
+                        this.active1='none';
+                        this.messagestate=2;
+                        this.loadingData(2);
+                    },
+                    handdle:function (row, event, column) {
+                        console.log(row);
+                        console.log(row,event,column);
+
+                    },
+                    //消息提示
+                    openMessage:function () {
+                        var _self=this;
+                        axios.post("changeMessageState",{"messagestate":2}).then(function (res) {
+                            console.log(res.data.msg+"-----------");
+                            if(res.data.msg=="success"){
+                                _self.$notify({
+                                    title: '全部已读',
+                                    message: '没有消息了',
+                                    type: 'success'
+                                });
+                            }
+                        });
+                        _self.hid=true;
+                        _self.hide=true;
+                        if(this.button1=="primary"){
+                            this.hid=true;
+                            this.loadingData();//重新加载数据
+                        }else{
+                          //重置未读消息数量
+                          this.messageNum=0;
+                          this.messagestate=2;
+                          this.loadingData(2);//重新加载数据
+                        }
+                    }
+                }
+            })
+        </script>
+
       </div>
     </div>
     <div class="clear"></div>

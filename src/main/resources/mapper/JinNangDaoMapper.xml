@@ -12,11 +12,14 @@
     </insert>
 
     <select id="getJinNangListMap" resultType="map">
-        select  a.*,b.username,c.HEADPORTRAIT from tb_jinnang  a,tb_user b,tb_userinformation c where a.issuer_id=b.id and a.issuer_id=c.userid
-            <if test="type==2">
-               and a.ID=#{ID}
-            </if>
+        select * from  ( select  rownum rn,a.*,b.username,c.HEADPORTRAIT from tb_jinnang  a,tb_user b,tb_userinformation c where a.issuer_id=b.id and a.issuer_id=c.userid
+        <if test="HEADLINE!=null and HEADLINE!=''"> and a.HEADLINE like '%'||#{HEADLINE}||'%'</if>
+        <if test="USERNAME!=null and USERNAME!=''"> and b.USERNAME like '%'||#{USERNAME}||'%'</if>
+         and rownum &lt; #{end}) a where a.rn &gt; #{start}
+
     </select>
+
+
 
     <insert id="addComment">
         INSERT INTO tb_comment(COMMENTID,JINNANGID,USERID,CONTENT)VALUES (seq_tb_comment_id.nextval,#{jinnangid},#{userId},#{content})

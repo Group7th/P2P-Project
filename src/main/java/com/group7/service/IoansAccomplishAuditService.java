@@ -27,9 +27,30 @@ public interface IoansAccomplishAuditService {
     int getPageCount(Map map);
 
     /**
+     * 查询 所有流标贷款信息  进行审核
+     * @param map
+     * @return
+     */
+    List<Map> getFailureLoans(Map map);
+
+    /**
+     * 查询 所有流标贷款信息 条数
+     * @param map
+     * @return
+     */
+    int getFailureLoansCount(Map map);
+
+    /**
      * 贷款审核
      * @param map
      * @return
      */
     int loanReview(Map map);
+
+
+    /**
+     * 每个贷款的投资记录
+     * @return
+     */
+    List<Map> InvestmentRecord(Map map);
 }

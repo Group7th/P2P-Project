@@ -100,6 +100,16 @@
                 </template>
             </el-table-column>
             <el-table-column
+                    prop="INVESTMENTAMOUNT"
+                    label="总投标金额"
+                    width="160">
+            </el-table-column>
+            <el-table-column
+                    prop="CON"
+                    label="投标人数"
+                    width="160">
+            </el-table-column>
+            <el-table-column
                     label="贷款状态"
                     width="200">
                 <template slot-scope="scope">
@@ -110,7 +120,10 @@
                     label="操作">
                 <template slot-scope="scope">
                     <el-button :plain="true" type="primary" size="small" icon="edit" @click="editClick(scope.row)">
-                        查看详情
+                        贷款详情
+                    </el-button>
+                    <el-button :plain="true" type="primary" size="small" icon="edit" @click="loansClick(scope.row)">
+                        投资详情
                     </el-button>
                 </template>
             </el-table-column>
@@ -198,7 +211,44 @@
         </div>
     </el-dialog>
 
+
+    <el-dialog title="贷款详情" :visible.sync="insVisible" :close-on-click-modal="false">
+        <!--列表-->
+        <el-table
+                :data="tableDataA"
+                border
+                style="width:100%">
+            <el-table-column
+                    prop="INVESTMENTID"
+                    label="投资编号"
+                    width="160">
+            </el-table-column>
+            <el-table-column
+                    prop="USERNAME"
+                    label="投资账户名"
+                    width="150">
+            </el-table-column>
+            <el-table-column
+                    prop="NAME"
+                    label="投资人姓名"
+                    width="200">
+            </el-table-column>
+            <el-table-column
+                    prop="INVESTMENTMONEY"
+                    label="投资金额(￥)"
+                    width="200">
+            </el-table-column>
+            <el-table-column
+                    prop="INVESTMENTDATE"
+                    label="投资时间"
+                    width="207">
+            </el-table-column>
+        </el-table>
+    </el-dialog>
+
+
 </div>
+
 <script type="text/javascript">
     /**
      * title
@@ -214,8 +264,12 @@
     var tableView = new Vue({
         el: "#tableView",
         data: {
+            //投资详情弹窗关闭
+            insVisible:false,
             //列表数据
             tableData: [],
+            //弹出列表数据
+            tableDataA:[],
             //显示样式
             loading: false,
             //搜索
@@ -272,8 +326,6 @@
                 self.tableData = response.data.page;
                 //alert(JSON.stringify(response.data.page));
             })
-
-
         },
         filters: {
             // el-tag类型转换
@@ -293,7 +345,7 @@
             },
             formatState: function (status) {
                 const statusMap = {
-                    2: '待审核'
+                    2: '满标'
                 };
                 return statusMap[status]
             }
@@ -335,6 +387,14 @@
                 this.editForm.CAR = "showFtp?fileName=" + this.editForm.CARINFORMATION;//车辆证明
                 this.editForm.REASON = "";
 
+            },
+            loansClick: function (row) {
+                this.insVisible=true;
+                var self =this;
+                axios.post('/p2p/InvestmentRecord', {'loansId':row.LOANSID}).then(function (response) {
+                   // _self.total = response.data.total;
+                    self.tableDataA = response.data;
+                });
             },
             //查询事件
             searchClick: function () {

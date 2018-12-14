@@ -148,4 +148,11 @@ public interface AccountInfoDao {
      * @return
      */
     int withdrawRecord(Map map);
+
+    /**
+     * 将提现的手续费添加到资金池
+     * @param costMoney
+     * @return
+     */
+    int addFeeToPool(double costMoney);
 }

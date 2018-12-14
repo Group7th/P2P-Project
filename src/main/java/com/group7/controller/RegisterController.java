@@ -2,12 +2,10 @@ package com.group7.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.group7.config.MyShiroRealm;
 import com.group7.entity.User;
 import com.group7.service.UserService;
 import com.group7.util.ShowApiRequest;
 import com.group7.util.other.MD5;
-import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,8 +29,6 @@ public class RegisterController {
 
     @Autowired
     private UserService userService;
-    @Autowired
-    private MyShiroRealm myShiroRealm;
 
     /**
      * 注册方法
@@ -173,11 +169,11 @@ public class RegisterController {
     public Map sendMessage(@RequestParam String phone, HttpSession session){
         int randomNum = (int)((Math.random()*9+1)*100000);
         Map tempMap = new HashMap();
-//        String res = (new ShowApiRequest("http://route.showapi.com/28-1","76850","3ae9b0a4bcb346dabeca64447a7406f4"))
-//                .addTextPara("mobile",phone)
-//                .addTextPara("content","{\"name\":\"严浩天\",\"code\":\""+randomNum+"\",\"minute\":\"3\"}")
-//                .addTextPara("tNum","T170317003567")
-//                .post();
+        String res = (new ShowApiRequest("http://route.showapi.com/28-1","76850","3ae9b0a4bcb346dabeca64447a7406f4"))
+                .addTextPara("mobile",phone)
+                .addTextPara("content","{\"name\":\"严浩天\",\"code\":\""+randomNum+"\",\"minute\":\"3\"}")
+                .addTextPara("tNum","T170317003567")
+                .post();
         String attrName = "vcode";
         session.setAttribute("vcode",randomNum);
 //        session.setAttribute("vcode","123456");
@@ -237,5 +233,6 @@ public class RegisterController {
                 .post();
         return res;
     }
+    //asdasd
 
 }

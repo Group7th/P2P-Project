@@ -39,4 +39,54 @@ public class RecordInfoServiceImpl implements RecordInfoService {
     public int getId(String userName) {
         return recordInfoDao.getId(userName);
     }
+
+    @Override
+    public int getUserIdByUserinformationId(int userinformationid) {
+        return recordInfoDao.getUserIdByUserinformationId(userinformationid);
+    }
+
+    @Override
+    public Integer getSumInvestment(int userid) {
+        return recordInfoDao.getSumInvestment(userid);
+    }
+
+    @Override
+    public Map getSumIncome(int userinformationid) {
+        return recordInfoDao.getSumIncome(userinformationid);
+    }
+
+    @Override
+    public List<Map> investList(Map map) {
+        return recordInfoDao.investList(map);
+    }
+
+    @Override
+    public int investListCount(Map map) {
+        return recordInfoDao.investListCount(map);
+    }
+
+    @Override
+    public List<Map> systemMessageList(Map map) {
+        return recordInfoDao.systemMessageList(map);
+    }
+
+    @Override
+    public int systemMessageListCount(Map map) {
+        return recordInfoDao.systemMessageListCount(map);
+    }
+
+    @Override
+    public int deleteMessageRecord(int messageid) {
+        return recordInfoDao.deleteMessageRecord(messageid);
+    }
+
+    @Override
+    public int changeMessageState(Map map) {
+        return recordInfoDao.changeMessageState(map);
+    }
+
+    @Override
+    public int getUnreadCount(int userid) {
+        return recordInfoDao.getUnreadCount(userid);
+    }
 }

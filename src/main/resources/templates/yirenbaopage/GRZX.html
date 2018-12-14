@@ -71,9 +71,9 @@
     <div id="personal-left" class="personal-left">
       <ul>
         <li class="pleft-cur"><span><a href="toGeRenZhongXinShouYe"><i class="dot dot01"></i>账户总览</a></span></li>
-        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXZiJin"><i class="dot dot02"></i>资金记录</a></span></li>
-        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXTouZi"><i class="dot dot05"></i>投资记录</a></span></li>
-        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXHuiKuan"><i class="dot dot06"></i>回款计划</a></span></li>
+        <li><span><a href="toGRZXZiJin"><i class="dot dot02"></i>资金记录</a></span></li>
+        <li><span><a href="toGRZXTouZi"><i class="dot dot05"></i>投资记录</a></span></li>
+        <!--<li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="toGRZXHuiKuan"><i class="dot dot06"></i>回款计划</a></span></li>-->
         <li><span><a href="toGRZXChongZhi1"><i class="dot dot03"></i>充值</a></span></li>
         <li class=""><span><a href="toGRZXTiXian1"><i class="dot dot04"></i>提现</a></span></li>
         <li style="position:relative;"> <span> <a href="toGRZXXiTongXiaoXi"><i class="dot dot08"></i>系统信息 </a> </span> </li>
@@ -135,6 +135,7 @@
             <li><span><em>待收本金</em><i id="dsbj" class="markicon"></i><span class="arrow-show4" style="display: none;">已到账的投资收益+未到账的投资收益</span><span class="icon-show4" style="display: none;"></span></span> <span class="truemoney"><i class="f26 fb" th:text="${session.accountList.AWAITMONEY}" id="capital"> </i>元</span> </li>
             <li><span><em>待还金额</em><i id="dhje" class="markicon"></i><span class="arrow-show5" style="display: none;">已到账的投资收益+未到账的投资收益</span><span class="icon-show5" style="display: none;"></span></span> <span class="truemoney"><i class="f26 fb " th:text="${session.accountList.MONEY}" id="bepaid"></i>元</span> </li>
             <li><span><em>信用额度</em><i id="xyed" class="markicon"></i><span class="arrow-show7" style="display: none;">已到账的投资收益+未到账的投资收益</span><span class="icon-show7" style="display: none;"></span></span> <span class="truemoney"><i class="f26 fb " th:text="${session.accountList.LINEOFCREDIT}" id="creditline"></i>元</span> </li>
+            <li><span><em>冻结资金</em><i id="djzj" class="markicon"></i><span class="arrow-show7" style="display: none;">已到账的投资收益+未到账的投资收益</span><span class="icon-show7" style="display: none;"></span></span> <span class="truemoney"><i class="f26 fb " th:text="${session.accountList.FROZENCAPITAL}"></i>元</span> </li>
           </ul>
         </div>
       </div>
@@ -244,54 +245,6 @@
 			       });
 			//]]>           
 		</script>
-      <div class="pmain-connent">
-        <div id="pmain-contab" class="pmain-contab">
-          <ul>
-            <li id="pmain-contab1" class="on">回款计划</li>
-            <li id="pmain-contab2">资金记录</li>
-            <li id="pmain-contab3">投资记录</li>
-            <li class="li-other"></li>
-          </ul>
-        </div>
-        <div class="pmain-conmain" id="pmain-conmain">
-          <div class="pmain-conmain1">
-            <div class="pmain-contitle"> <span class="pmain-titledate">计划回款时间</span><span class="pmain-titleproject">项目</span><span class="pmain-titletype">类型</span><span class="pmain-titlemoney">回款金额</span> </div>
-            <ul style="float:left;">
-              <li><span class="pmain-titledate">2015-10-20</span><span class="pmain-titleproject">宝马汽车借贷业务</span><span class="pmain-titletype">债权转让</span><span class="pmain-titlemoney">10.00</span></li>
-              <li><span class="pmain-titledate">2015-10-20</span><span class="pmain-titleproject">宝马汽车借贷业务</span><span class="pmain-titletype">债权转让</span><span class="pmain-titlemoney">10.00</span></li>
-              <li><span class="pmain-titledate">2015-10-20</span><span class="pmain-titleproject">宝马汽车借贷业务</span><span class="pmain-titletype">债权转让</span><span class="pmain-titlemoney">10.00</span></li>
-              <li><span class="pmain-titledate">2015-10-20</span><span class="pmain-titleproject">宝马汽车借贷业务</span><span class="pmain-titletype">债权转让</span><span class="pmain-titlemoney">10.00</span></li>
-              <li><span class="pmain-titledate">2015-10-20</span><span class="pmain-titleproject">宝马汽车借贷业务</span><span class="pmain-titletype">债权转让</span><span class="pmain-titlemoney">10.00</span></li>
-              <li><span class="pmain-titledate">2015-10-20</span><span class="pmain-titleproject">宝马汽车借贷业务</span><span class="pmain-titletype">债权转让</span><span class="pmain-titlemoney">10.00</span></li>
-              <!--<div style=" width:
-										760px;height:200px;padding-top:100px; text-align:center;color:#d4d4d4; font-size:16px;">
-										 <img src="images/nondata.png" width="60" height="60"><br><br>
-										   暂无回款计划</div>-->
-            </ul>
-            <div class="pmain-morebtn" style="border-top:0;margin-top:0"></div>
-          </div>
-          <div class="pmain-conmain2" style=" display:none;">
-            <div class="pmain-contitle"> <span class="pmain-titledate">交易时间</span><span class="pmain-w100">交易类型</span><span class="pmain-w120">交易金额</span><span class="pmain-w120">余额</span><span class="pmain-w200">备注</span> </div>
-            <ul style="float:left;">
-              <li><span class="pmain-titledate">2015-10-20</span><span class="pmain-w100">债权转让</span><span class="pmain-w120 pmain-money">10.00</span><span class="pmain-w120 pmain-money">10.00</span><span class="pmain-w200">备注</span></li>
-              <!--<div style=" width:760px;height:200px;padding-top:100px; text-align:center;color:#d4d4d4; font-size:16px;">
-										 <img src="images/nondata.png" width="60" height="60"><br><br>
-										   暂无资金记录</div>-->
-            </ul>
-            <div class="pmain-morebtn" style="border-top:0;margin-top:0"></div>
-          </div>
-          <div class="pmain-conmain3" style=" display:none;">
-            <div class="pmain-contitle"> <span class="pmain-titledate">交易时间</span><span class="pmain-w210">项目</span><span class="pmain-w80">状态</span><span class="pmain-whb200">我的投资</span><span class="pmain-whb110">我的收益</span> </div>
-            <ul style="float:left;">
-              <li><span class="pmain-titledate">2015-10-20</span><span class="pmain-w210">债权转让</span><span class="pmain-w80 pmain-money">10.00</span><span class="pmain-whb200 pmain-money">10.00</span><span class="pmain-whb110">备注</span></li>
-              <!--	<div style=" width:760px;height:200px;padding-top:100px; text-align:center;color:#d4d4d4; font-size:16px;">
-										    <img src="images/nondata.png" width="60" height="60"><br><br>
-										   暂无投资记录</div>-->
-            </ul>
-            <div class="pmain-morebtn" style="border-top:0;margin-top:0"></div>
-          </div>
-        </div>
-      </div>
     </div>
     <div class="clear"></div>
   </div>
