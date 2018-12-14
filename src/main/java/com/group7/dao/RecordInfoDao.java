@@ -150,8 +150,15 @@ public interface RecordInfoDao {
      * @param map
      * @return
      */
-    @Update("update tb_message set messagestate=#{messagestate} where messageid=#{messageid} and userid=#{userid}")
+    @Update("update tb_message set messagestate=#{messagestate} where userid=#{userid}")
     int changeMessageState(Map map);
+
+    /**
+     * 获取未读消息的数量
+     * @return
+     */
+    @Select("select count(*) from tb_message where messagestate=1 and userid=#{userid}")
+    int getUnreadCount(int userid);
 }
 
 

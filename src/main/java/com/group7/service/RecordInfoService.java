@@ -1,9 +1,6 @@
 package com.group7.service;
 
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Update;
-
 import java.util.List;
 import java.util.Map;
 
@@ -101,4 +98,10 @@ public interface RecordInfoService {
      * @return
      */
     int changeMessageState(Map map);
+
+    /**
+     * 获取未读消息的数量
+     * @return
+     */
+    int getUnreadCount(int userid);
 }

@@ -169,11 +169,11 @@ public class RegisterController {
     public Map sendMessage(@RequestParam String phone, HttpSession session){
         int randomNum = (int)((Math.random()*9+1)*100000);
         Map tempMap = new HashMap();
-//        String res = (new ShowApiRequest("http://route.showapi.com/28-1","76850","3ae9b0a4bcb346dabeca64447a7406f4"))
-//                .addTextPara("mobile",phone)
-//                .addTextPara("content","{\"name\":\"严浩天\",\"code\":\""+randomNum+"\",\"minute\":\"3\"}")
-//                .addTextPara("tNum","T170317003567")
-//                .post();
+        String res = (new ShowApiRequest("http://route.showapi.com/28-1","76850","3ae9b0a4bcb346dabeca64447a7406f4"))
+                .addTextPara("mobile",phone)
+                .addTextPara("content","{\"name\":\"严浩天\",\"code\":\""+randomNum+"\",\"minute\":\"3\"}")
+                .addTextPara("tNum","T170317003567")
+                .post();
         String attrName = "vcode";
         session.setAttribute("vcode",randomNum);
 //        session.setAttribute("vcode","123456");

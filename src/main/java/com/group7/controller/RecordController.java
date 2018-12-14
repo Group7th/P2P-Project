@@ -144,6 +144,7 @@ public class RecordController {
         Map rmap=new HashMap();
         rmap.put("data",recordInfoService.systemMessageList(map));
         rmap.put("total",recordInfoService.systemMessageListCount(map));
+        rmap.put("unread",recordInfoService.getUnreadCount(id));
         System.out.println(rmap);
         return rmap;
     }
@@ -168,7 +169,7 @@ public class RecordController {
 
 
     /**
-     * 资金记录列表
+     * 改变消息为已读状态
      * @param map
      * @return
      */
