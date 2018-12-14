@@ -210,28 +210,45 @@
             <el-button type="danger" @click="reject">驳回</el-button>
         </div>
     </el-dialog>
+
+
+    <el-dialog title="贷款详情" :visible.sync="insVisible" :close-on-click-modal="false">
+        <!--列表-->
+        <el-table
+                :data="tableDataA"
+                border
+                style="width:100%">
+            <el-table-column
+                    prop="INVESTMENTID"
+                    label="投资编号"
+                    width="160">
+            </el-table-column>
+            <el-table-column
+                    prop="USERNAME"
+                    label="投资账户名"
+                    width="150">
+            </el-table-column>
+            <el-table-column
+                    prop="NAME"
+                    label="投资人姓名"
+                    width="200">
+            </el-table-column>
+            <el-table-column
+                    prop="INVESTMENTMONEY"
+                    label="投资金额(￥)"
+                    width="200">
+            </el-table-column>
+            <el-table-column
+                    prop="INVESTMENTDATE"
+                    label="投资时间"
+                    width="207">
+            </el-table-column>
+        </el-table>
+    </el-dialog>
+
+
 </div>
 
-<div id="loansView">
-    <!--列表-->
-    <el-row>
-        <el-table-column
-                prop="LOANSID"
-                label="贷款编号"
-                width="150">
-        </el-table-column>
-        <el-table-column
-                prop="USERNAME"
-                label="贷款人"
-                width="150">
-        </el-table-column>
-        <el-table-column
-                prop="LOANSMONEY"
-                label="贷款金额(￥)"
-                width="200">
-        </el-table-column>
-    </el-row>
-</div>
 <script type="text/javascript">
     /**
      * title
@@ -247,8 +264,12 @@
     var tableView = new Vue({
         el: "#tableView",
         data: {
+            //投资详情弹窗关闭
+            insVisible:false,
             //列表数据
             tableData: [],
+            //弹出列表数据
+            tableDataA:[],
             //显示样式
             loading: false,
             //搜索
@@ -368,25 +389,12 @@
 
             },
             loansClick: function (row) {
-                alert(123456)
-                var loansView = new Vue({
-                    el: "#loansView",
-                    data: {
-                        //列表数据
-                        tableData: [],
-                        //显示样式
-                        loading: false
-                    },
-                    created: function () {
-                        //在 then的内部不能使用Vue的实例化的this, 因为在内部 this 没有被绑定。
-                        axios.post('/p2p/', {'state':127}).then(function (response) {
-                            self.total = response.data.total;
-                            //alert(JSON.stringify(response.data.page));
-                            self.tableData = response.data.page;
-                            //alert(JSON.stringify(response.data.page));
-                        })
-                    },
-                })
+                this.insVisible=true;
+                var self =this;
+                axios.post('/p2p/InvestmentRecord', {'loansId':row.LOANSID}).then(function (response) {
+                   // _self.total = response.data.total;
+                    self.tableDataA = response.data;
+                });
             },
             //查询事件
             searchClick: function () {

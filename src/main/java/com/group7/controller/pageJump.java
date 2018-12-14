@@ -308,6 +308,7 @@ public class pageJump {
     }
 
 
+
     /**
      * 投资支付密码
      * @return
@@ -318,12 +319,22 @@ public class pageJump {
     }
 
     /**
-     * 满标一审信息表
+     * 满标审核信息表
      * @return
      */
     @RequestMapping("/toIoansAccomplishAudit")
     public String toIoansAccomplishAudit(){
         return "backStage/IoansAccomplishAudit";
+    }
+
+
+    /**
+     * 流标审核
+     * @return
+     */
+    @RequestMapping("/toLoseABidAudit")
+    public String toLoseABidAudit(){
+        return "backStage/lose_a_bidAudit";
     }
 
 

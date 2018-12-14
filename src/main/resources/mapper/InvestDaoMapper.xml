@@ -11,8 +11,8 @@
          select * from
           (select rownum rn,t.* from (select * from tb_loans <where>
 
-        <!--所有借款 前台获取值为4  2代表 招标中 5：满标 7：贷款成功 11:贷款结束 还玩款的-->
-            AND  LOANSSTATE in(2,5,7,11)
+        <!--所有借款 前台获取值为4  2代表 招标中 5：满标审核通过  11:贷款结束 还玩款的-->
+            AND  LOANSSTATE in(2,5,11)
 
         <!--项目期限-->
             <if test="month != null ">
@@ -32,7 +32,7 @@
                     AND  LOANSSTATE in(2)
                 </if>
                 <if test="state == 6 "><!--已成功借款 -->
-                    AND  LOANSSTATE in(7)
+                    AND  LOANSSTATE in(5)
                 </if>
                 <if test="state == 7 "><!--已完成借款 -->
                     AND  LOANSSTATE in(11)
@@ -67,8 +67,8 @@
     <select id="getInvesCount" resultType="int">
         select count(1) as con from tb_loans
         <where>
-            <!--所有借款 前台获取值为4  2代表 招标中 5：满标 7：贷款成功 11:贷款结束 还玩款的-->
-            AND  LOANSSTATE in(2,5,7,11)
+            <!--所有借款 前台获取值为4  2代表 招标中 5：满标审核通过  11:贷款结束 还玩款的-->
+            AND  LOANSSTATE in(2,5,11)
             <!--项目期限-->
             <if test="month != null ">
                 <if test="month == 1 "> <!-- 1-3个月 前台获取值为1 代表 1月 2月 3月 -->

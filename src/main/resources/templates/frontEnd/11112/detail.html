@@ -137,7 +137,7 @@
 	  	     	   	   <span class="det_tit_curspan">项目描述</span>
 	  	     	   	   <span>风控信息</span>
 	  	     	   	   <span>贷后管理</span>
-	  	     	   	   <span>投标记录<i>10</i></span>
+	  	     	   	   <span>投标记录<i id="JL"></i></span>
 	  	     	   </h2>
 	  	     	   <div class="det_con_box">
 	  	     	   	      <div class="det_con_proone clearfix">
@@ -617,18 +617,20 @@
             dataType: "json",
             data: {loansId:loansId},
             success: function (data) {
+                var i ='';
 				if(data!=null&&data!=''){
                     var str = "";
-                    for (var i = 0; i < data.length; i++) {
+                    for (i = 0; i < data.length; i++) {
                         str +="<tr>"+
 							    "<td>"+(data[i].USERNAME.substr(0,1)+"****")+"</td>"+
                             	"<td>"+data[i].INVESTMENTMONEY+"</td>"+
                             	"<td>"+data[i].INVESTMENTDATE+"</td>"+
 							 	"<td>"+'手动投标'+"</td>"+
-                              "</tr>"
+                              "</tr>";
                     }
                     $("#TZJL").append(str);
 				}
+                $("#JL").html(i==''?0:i); //获取投资条数
             }
         })
 
