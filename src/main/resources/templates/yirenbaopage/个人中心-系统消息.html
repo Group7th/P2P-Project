@@ -27,8 +27,15 @@
   <script type="text/javascript" src="js/moment.min.js"></script>
   <style>
     .item {
-      margin-top: 10px;
-      margin-right: 40px;
+      margin-left:15px;
+    }
+
+    .item2{
+      margin-left:513px;
+    }
+
+    .button3{
+      margin-left:15px;
     }
   </style>
 </head>
@@ -103,15 +110,15 @@
 
           <el-row style="margin-top: 30px">
             <el-button  :type="button1" @click="all" >全部</el-button>
-            <el-badge :value="13" class="item" :max="99">
+            <el-badge :value="messageNum" class="item" :hidden="hid" :max="99">
               <el-button  :type="button2" @click="unread">未读</el-button>
             </el-badge>
-            <el-button  :type="button3" @click="read">已读</el-button>
+            <el-button  :type="button3" @click="read" class="button3">已读</el-button>
+            <el-button @click="openMessage" :style="{display: active1}" type="success" icon="el-icon-check" class="item2" circle></el-button>
           </el-row>
           <el-table
                   :data="tableData"
-                  style="width:120%"
-                  @row-click='handdle'>
+                  style="width:120%">
             <!--:default-sort = "{prop:'SENDTIME', order:'descending'}"-->
             <!--<el-table-column-->
             <!--多选框-->
@@ -122,7 +129,7 @@
                     width="100px"
                     sortable>
               <template slot-scope="scope">
-                <el-badge is-dot class="item" :hidden="hid"></el-badge>
+                <el-badge is-dot class="item" :hidden="hide"></el-badge>
                 <el-tag :type="scope.row.MESSAGETYPE | statusFilter">{{scope.row.MESSAGETYPE}}</el-tag>
               </template>
             </el-table-column>
@@ -145,8 +152,8 @@
                 <el-button
                         @click="deleteRow(scope.row)"
                         type="danger"
-                        size="small">
-                  删除
+                        size="small"
+                        icon="el-icon-delete" circle>
                 </el-button>
               </template>
             </el-table-column>
@@ -176,7 +183,11 @@
                     button1:'primary',
                     button2:'',
                     button3:'',
-                    messagestate:""
+                    messagestate:"",
+                    hid:false,
+                    hide:false,
+                    messageNum:0,
+                    active1:'none'
                 },
                 created: function(){
                     //在 then的内部不能使用Vue的实例化的this, 因为在内部 this 没有被绑定。
@@ -186,11 +197,15 @@
                     var searchForm = {
                         'start': start,
                         'end': end,
-                        'messagestate':""
                     };
                     axios.post('messageList',searchForm).then(function(res){
                         _self.tableData = res.data.data;
                         _self.tableTotal = res.data.total;
+                        _self.messageNum = res.data.unread;
+                        if(_self.messageNum==0){
+                            _self.hid=true;
+                            _self.hide=true;
+                        }
                     })
                 },
                 filters: {
@@ -270,6 +285,7 @@
                         this.button1='primary';
                         this.button2='';
                         this.button3='';
+                        this.active1='';
                         this.messagestate='';
                         this.loadingData();
                     },
@@ -277,6 +293,7 @@
                         this.button1='';
                         this.button2='primary';
                         this.button3='';
+                        this.active1='';
                         this.messagestate=1;
                         this.loadingData(1);
                     },
@@ -284,6 +301,7 @@
                         this.button1='';
                         this.button2='';
                         this.button3='primary';
+                        this.active1='none';
                         this.messagestate=2;
                         this.loadingData(2);
                     },
@@ -291,9 +309,32 @@
                         console.log(row);
                         console.log(row,event,column);
 
-
+                    },
+                    //消息提示
+                    openMessage:function () {
+                        var _self=this;
+                        axios.post("changeMessageState",{"messagestate":2}).then(function (res) {
+                            console.log(res.data.msg+"-----------");
+                            if(res.data.msg=="success"){
+                                _self.$notify({
+                                    title: '全部已读',
+                                    message: '没有消息了',
+                                    type: 'success'
+                                });
+                            }
+                        });
+                        _self.hid=true;
+                        _self.hide=true;
+                        if(this.button1=="primary"){
+                            this.hid=true;
+                            this.loadingData();//重新加载数据
+                        }else{
+                          //重置未读消息数量
+                          this.messageNum=0;
+                          this.messagestate=2;
+                          this.loadingData(2);//重新加载数据
+                        }
                     }
-
                 }
             })
         </script>

@@ -84,4 +84,9 @@ public class RecordInfoServiceImpl implements RecordInfoService {
     public int changeMessageState(Map map) {
         return recordInfoDao.changeMessageState(map);
     }
+
+    @Override
+    public int getUnreadCount(int userid) {
+        return recordInfoDao.getUnreadCount(userid);
+    }
 }
