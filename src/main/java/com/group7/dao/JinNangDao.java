@@ -1,5 +1,8 @@
 package com.group7.dao;
 
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Select;
+
 import java.util.List;
 import java.util.Map;
 
@@ -27,6 +30,42 @@ public interface JinNangDao {
      * @return
      */
     List<Map> getJinNangListMap(Map map);
+
+
+    /**
+     * 获取锦囊总数量
+     * @return
+     */
+    @Select({"<script>" +" select count(*) from tb_jinnang" +
+            " <if test=\"HEADLINE!=null and HEADLINE!=''\"> and a.HEADLINE like '%'||#{HEADLINE}||'%'</if>" +
+            " <if test=\"USERNAME!=null and USERNAME!=''\"> and b.USERNAME like '%'||#{USERNAME}||'%'</if>"
+            + "</script>"})
+    int getJinNangCount();
+
+    /**
+     * 删除公告
+     * asfsdlfsld
+     * @param ID
+     * @return
+     */
+    @Delete("delete from tb_jinnang where id=#{ID}")
+    int deleteJinNang(Integer ID);
+
+    @Delete("<script>" +
+            "delete from tb_jinnang where id in" +
+            "<foreach item=\"item\" index=\"index\" collection=\"array\" open=\"(\" separator=\",\" close=\")\">"+
+            "#{item}"+
+            "</foreach>"+
+            "</script>")
+    int deleteJinNangS(String[] ids);
+
+    /**
+     * 根据ID获取锦囊
+     * @param map
+     * @return
+     */
+    @Select({"<script>" +" select  a.*,b.username,c.HEADPORTRAIT from tb_jinnang  a,tb_user b,tb_userinformation c where a.issuer_id=b.id and a.issuer_id=c.userid and a.id=#{ID} " + "</script>"})
+    List<Map> getJinNangById(Map map);
 
     /**
      * 添加评论
@@ -78,6 +117,8 @@ public interface JinNangDao {
      * @return
      */
     List<Map> getJieKuanLieXingFenXi(int id);
+
+
 
 
 }

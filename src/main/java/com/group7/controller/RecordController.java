@@ -32,17 +32,22 @@ public class RecordController {
     @RequestMapping("/moneyList")
     @ResponseBody
     public Map page(@RequestBody Map map){
+        System.out.println(map+".......");
         Object userSession = session.getAttribute("userSession");
         String userName = userSession+"";
         int id = recordInfoService.getId(userName);
+        System.out.println("用户的id为："+id);
         map.put("userid",id);
+        //System.out.println(pageNo+"......."+pageSize);
        // PageHelper.startPage(Integer.valueOf(map.get("pageNo")+""),Integer.valueOf(map.get("pageSize")+""));
         // PageHelper.startPage(pageNo,pageSize);
        // PageInfo<Map> page =new PageInfo<>(recordInfoService.moneyRecordList());
         //int[] navigatepageNums = page.getNavigatepageNums();
+        // System.out.println(page.getTotal()+"........");
         Map rmap=new HashMap();
         rmap.put("data",recordInfoService.moneyRecordList(map));
         rmap.put("total",recordInfoService.moneyRecordListCount(map));
+        System.out.println(rmap);
         return rmap;
     }
 
@@ -80,16 +85,20 @@ public class RecordController {
         Integer userinformationid = Integer.valueOf(o+"");
         //根据userinformationid查找userid
         int userid = recordInfoService.getUserIdByUserinformationId(userinformationid);
+        System.out.println(userid+"---------?????");
         //累计投资
         Integer sumInvestment = recordInfoService.getSumInvestment(userid);
+        System.out.println("累计投资为什么报错?????????"+sumInvestment);
         //获取累计收益 待收本金  待收收益
         Map sumIncome = recordInfoService.getSumIncome(userinformationid);
+        System.out.println(sumIncome+"????????????????????");
         //累计收益
         Object accruedincome = sumIncome.get("ACCRUEDINCOME");
         //待收本金
         Object awaitmoney = sumIncome.get("AWAITMONEY");
         //待收收益
         Object awaitinterest = sumIncome.get("AWAITINTEREST");
+        System.out.println("累计投资"+sumInvestment+"累计收益"+accruedincome+"待收本金"+awaitmoney+"待收收益"+awaitinterest);
         model.addAttribute("sumInvestment",sumInvestment);
         model.addAttribute("accruedincome",accruedincome);
         model.addAttribute("awaitmoney",awaitmoney);
@@ -105,13 +114,16 @@ public class RecordController {
     @RequestMapping("/investList")
     @ResponseBody
     public Map investList(@RequestBody Map map){
+        System.out.println(map+".......");
         Object userSession = session.getAttribute("userSession");
         String userName = userSession+"";
         int id = recordInfoService.getId(userName);
+        System.out.println("用户的id为："+id);
         map.put("userid",id);
         Map rmap=new HashMap();
         rmap.put("data",recordInfoService.investList(map));
         rmap.put("total",recordInfoService.investListCount(map));
+        System.out.println(rmap);
         return rmap;
     }
 
@@ -123,14 +135,17 @@ public class RecordController {
     @RequestMapping("/messageList")
     @ResponseBody
     public Map messageList(@RequestBody Map map){
+        System.out.println(map+".......");
         Object userSession = session.getAttribute("userSession");
         String userName = userSession+"";
         int id = recordInfoService.getId(userName);
+        System.out.println("用户的id为："+id);
         map.put("userid",id);
         Map rmap=new HashMap();
         rmap.put("data",recordInfoService.systemMessageList(map));
         rmap.put("total",recordInfoService.systemMessageListCount(map));
         rmap.put("unread",recordInfoService.getUnreadCount(id));
+        System.out.println(rmap);
         return rmap;
     }
 
@@ -161,9 +176,11 @@ public class RecordController {
     @RequestMapping("/changeMessageState")
     @ResponseBody
     public Map changeMessageState(@RequestBody Map map){
+        System.out.println(map+".......");
         Object userSession = session.getAttribute("userSession");
         String userName = userSession+"";
         int id = recordInfoService.getId(userName);
+        System.out.println("用户的id为："+id);
         map.put("userid",id);
         //改变未读消息的状态为已读
         int i = recordInfoService.changeMessageState(map);

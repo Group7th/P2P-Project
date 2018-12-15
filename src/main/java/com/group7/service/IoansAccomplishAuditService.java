@@ -46,11 +46,4 @@ public interface IoansAccomplishAuditService {
      * @return
      */
     int loanReview(Map map);
-
-
-    /**
-     * 每个贷款的投资记录
-     * @return
-     */
-    List<Map> InvestmentRecord(Map map);
 }

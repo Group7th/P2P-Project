@@ -10,7 +10,7 @@ import java.util.Map;
 
 @Service
 public class JInNangServiceImpl implements JinNangService {
-
+    //
     @Autowired
     private JinNangDao jinNangDao;
 
@@ -30,6 +30,16 @@ public class JInNangServiceImpl implements JinNangService {
     @Override
     public List<Map> getJinNangListMap(Map map) {
         return jinNangDao.getJinNangListMap(map);
+    }
+
+    @Override
+    public int getJinNangCount() {
+        return jinNangDao.getJinNangCount();
+    }
+
+    @Override
+    public List<Map> getJinNangById(Map map) {
+        return jinNangDao.getJinNangById(map);
     }
 
     @Override
@@ -66,5 +76,15 @@ public class JInNangServiceImpl implements JinNangService {
     @Override
     public List<Map> getJieKuanLieXingFenXi(int id) {
         return jinNangDao.getJieKuanLieXingFenXi(id);
+    }
+
+    @Override
+    public int deleteJinNang(Integer ID) {
+        return jinNangDao.deleteJinNang(ID);
+    }
+
+    @Override
+    public int deleteJinNangS(String[] ids) {
+        return jinNangDao.deleteJinNangS(ids);
     }
 }

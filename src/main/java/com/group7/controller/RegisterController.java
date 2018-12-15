@@ -38,13 +38,16 @@ public class RegisterController {
     @RequestMapping("/register")
     @ResponseBody
     public Map<String,String> register(User user){
+        System.out.println("经过方法前"+user.toString());
         //加密
         String password = user.getPassword();
         String psw = MD5.md5(password);
         user.setPassword(psw);
         int i = userService.register(user);
+        System.out.println("经过方法后"+user.toString());
         //注册同时要给该账号赋予普通角色的权限
         int role = userService.registerRole(user.getId());
+        System.out.println(i+"--授予权限是否成功："+role);
         //查找到userinformationId
         int registerUserinformationid = userService.registerUserinformationid(user.getId());
         //向useraccount表插入用户账户accountid和userinformationid生成默认信息
@@ -66,7 +69,9 @@ public class RegisterController {
     @RequestMapping("/checkUserName")
     @ResponseBody
     public Map<String,String> checkUserName(@RequestParam String userName) {
+        System.out.println("前台传过来的名字"+userName);
         String s = userService.checkRepeat(userName);
+        System.out.println("是否有重复的名字"+s);
         Map<String,String> map = new HashMap<>();
         if(s!=null){
             map.put("msg","fail");
@@ -205,6 +210,7 @@ public class RegisterController {
     @ResponseBody
     public Map hasVcode(HttpSession session){
         Object vcode = session.getAttribute("vcode");
+        System.out.println(vcode);
         Map tempMap = new HashMap();
         if(vcode!=null){
             tempMap.put("msg","success");
