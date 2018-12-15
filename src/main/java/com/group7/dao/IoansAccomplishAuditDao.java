@@ -22,17 +22,17 @@ public interface IoansAccomplishAuditDao {
      */
     @Select({"<script>" +
             "select * from"
-                    +"(select rownum rn,t.* from "
-                            +"(select a.loansid,a.username,a.loansmoney,a.loansinterestrate,a.refunddeadline,a.loansstate,a.investmentamount,a.refundway,a.begintime,a.loansused,a.loanstype,c.userphone,c.identitycard,c.bankcardnumbers,c.site,b.globalvalue,b.appraisalreport,b.carinformation,b.houseproperty,"
-                            +"(select count(*) from tb_investment q join tb_loans w on q.loansid=w.loansid where  q.loansid = a.loansid) as con from tb_loans a "
-                            + "join  tb_loanstype b on a.loansid=b.loansid "
-                            + "join tb_userinformation c on a.userid = c.userid "
-                            + "where a.loansmoney = a.investmentamount and  a.loansstate = 2 "
-                            +"<if test=\"loansId!=null and loansId!=''\"> and a.LOANSID like '%'||#{loansId}||'%' </if> "
-                            +"<if test=\"userName!=null and userName!=''\">and a.USERNAME like '%'||#{userName}||'%'</if> "
-                            +"<if test=\"loansType!=null and loansType!=0\">and a.LOANSTYPE=#{loansType}</if> "
-                            + " ) t "
-                            + "where rownum &lt; #{end} ) a "
+            +"(select rownum rn,t.* from "
+            +"(select a.loansid,a.username,a.loansmoney,a.loansinterestrate,a.refunddeadline,a.loansstate,a.investmentamount,a.refundway,a.begintime,a.loansused,a.loanstype,c.userphone,c.identitycard,c.bankcardnumbers,c.site,b.globalvalue,b.appraisalreport,b.carinformation,b.houseproperty,"
+            +"(select count(*) from tb_investment q join tb_loans w on q.loansid=w.loansid where  q.loansid = a.loansid) as con from tb_loans a "
+            + "join  tb_loanstype b on a.loansid=b.loansid "
+            + "join tb_userinformation c on a.userid = c.userid "
+            + "where a.loansmoney = a.investmentamount and  a.loansstate = 2 "
+            +"<if test=\"loansId!=null and loansId!=''\"> and a.LOANSID like '%'||#{loansId}||'%' </if> "
+            +"<if test=\"userName!=null and userName!=''\">and a.USERNAME like '%'||#{userName}||'%'</if> "
+            +"<if test=\"loansType!=null and loansType!=0\">and a.LOANSTYPE=#{loansType}</if> "
+            + " ) t "
+            + "where rownum &lt; #{end} ) a "
             +"where a.rn &gt; #{start} "
             +"</script>"})
     List<Map> getList(Map map);
@@ -98,4 +98,10 @@ public interface IoansAccomplishAuditDao {
      * @return
      */
     Integer loanReview(Map map);
+
+    /**
+     * 每个贷款的投资记录
+     * @return
+     */
+    List<Map> InvestmentRecord(Map map);
 }
