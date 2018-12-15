@@ -72,7 +72,7 @@ public class InvestController {
     @ResponseBody
     @RequestMapping("/investmentAmount")
     public Object investmentAmount(@RequestBody InvestmentAmount invest){
-        System.out.println(invest.toString());
+        //System.out.println(invest.toString());
         int  i = investService.investmentAmount(invest);//添加投资信息
 
         if(i>0){
@@ -121,4 +121,23 @@ public class InvestController {
       //  System.out.println(maps);
         return maps;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

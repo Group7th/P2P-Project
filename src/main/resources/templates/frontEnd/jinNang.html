@@ -13,7 +13,7 @@
         EvPNG.fix('div, ul, img, li, input,span, p');
     </script>
     <![endif]-->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="style/style.css"/>
     <script type="text/javascript" src="js/vue.js"></script>
     <script type="text/javascript" src="js/axios.min.js"></script>
     <!-- 引入样式 -->
@@ -78,7 +78,6 @@
 <div class="notic_con_wper">
     <div class="notic_con px1000" style="background-color: white">
 
-<center>
 
         <el-button type="text" @click="dialogVisible = true">发布锦囊</el-button>
         <el-dialog
@@ -95,21 +94,7 @@
       </span>
         </el-dialog>
 
-        <el-row>
-            <el-form :inline="true" :model="searchForm" class="demo-form-inline">
-                <el-form-item label="标题">
-                    <el-input v-model="searchForm.HEADLINE" placeholder="锦囊标题"></el-input>
-                </el-form-item>
-                <el-form-item label="发布人">
-                    <el-input v-model="searchForm.USERNAME" placeholder="发布人"></el-input>
-                </el-form-item>
-                <el-form-item>
-                    <el-button type="primary" icon="search" @click="searchClick">查询</el-button>
 
-                </el-form-item>
-            </el-form>
-        </el-row>
-</center>
         <div id="rq">
 
 
@@ -117,21 +102,6 @@
 
         </div>
 
-        <el-row style="margin-top: 20px" type="flex" justify="end">
-
-            <el-col :span="18" >
-                <el-pagination
-                        style="float: right"
-                        @size-change="pageSizeChange"
-                        @current-change="currentPageChange"
-                        :current-page="currentPage"
-                        :page-sizes="[4, 10, 15]"
-                        :page-size="pageSize"
-                        layout="total, sizes, prev, pager, next, jumper"
-                        :total="total">
-                </el-pagination>
-            </el-col>
-        </el-row>
 
     </div>
 </div>
@@ -140,135 +110,21 @@
     var vm = new Vue({
         el:'.notic_con',
         data:{
-            dialogVisible: false,
-            //当前页
-            currentPage:1,
-            //分页大小
-            pageSize:4,
-            total:200,
-            //搜索表单
-            searchForm: {
-                HEADLINE: '',
-                USERNAME: ''
-
-            },
-
-        },  created:function(){
-            var self = this;
-            var start =(this.currentPage-1)*this.pageSize;
-            var end =this.currentPage*this.pageSize+1;
-            axios.post('/p2p/getJinNangListMap',{'start':start,'end':end}).then(function(fanhui){
-                console.log(fanhui.data[1].USERNAME)
-                var str="";
-                for(var i =0;i<fanhui.data.length;i++){
-
-                    var imge="/p2p/showFtp?fileName="+fanhui.data[i].HEADPORTRAIT;
-
-
-                    str+=" <div class=\"jinNang\" style=\"font-size: 15px\">"+
-                        "         <div style=\"margin-left: 25px\">\n" +
-                        "               <img style='border-radius:50px;width: 50px;height: 50px' src="+imge+">" +
-                        "               <span style='color:#ff6600'>"+fanhui.data[i].USERNAME+"</span>\n" +
-                        "        </div>"+
-                        "       <div style=\"background-color: white;width: 80%;margin:0 auto;border-radius:20px;text-align: center\">\n" +
-                        "           <h2 style='color: black;' href='tojinNangXinXi?id="+fanhui.data[i].ID+"'><br>"+fanhui.data[i].HEADLINE+" <br>&nbsp;</h2>" +
-                        "       </div><br>"+
-                        "       <div class='feed' id='feed2' style='width: 200px;height:60px;margin-bottom: 10px;'>" +
-                        "             <div class='heart' id='like2' rel='like' style='height: 40px;float:left;'>" +
-                        "       </div>" +
-                        "       <div class='right' style='float:left;margin-left:100px;'>" +
-                        "            <img style='border-radius:50px' src='images/pinglun.png'>" +
-                        "           <a href='tojinNangXinXi?ID="+fanhui.data[i].ID+"'>("+fanhui.data[i].commentCount+")</a>" +
-                        "        </div>" +
-                        "    </div>" +
-                        " </div>"
-
-                    $(".heart").addClass("heartAnimation").attr("rel","unlike");
-                    self.total=fanhui.data[i].jinNangCount;
-                }
-                $("#rq").append(str)
-                $(".heart").addClass("heartAnimation").attr("rel","unlike");
-
-            })
+            dialogVisible: false
         },
-
         methods: {
-            loadingData:function() {
-                $("#rq").empty()
-                var self = this;
-                var start =(this.currentPage-1)*this.pageSize;
-                var end =this.currentPage*this.pageSize+1;
-                axios.post('/p2p/getJinNangListMap',{'start':start,'end':end,'HEADLINE':this.searchForm.HEADLINE,'USERNAME':this.searchForm.USERNAME}).then(function(fanhui){
-
-
-                        var str="";
-                        for(var i =0;i<fanhui.data.length;i++){
-
-                            var imge="/p2p/showFtp?fileName="+fanhui.data[i].HEADPORTRAIT;
-
-
-                            str+=" <div class=\"jinNang\" style=\"font-size: 15px\">"+
-                                "         <div style=\"margin-left: 25px\">\n" +
-                                "               <img style='border-radius:50px;width: 50px;height: 50px' src="+imge+">" +
-                                "               <span style='color:#ff6600'>"+fanhui.data[i].USERNAME+"</span>\n" +
-                                "        </div>"+
-                                "       <div style=\"background-color: white;width: 80%;margin:0 auto;border-radius:20px;text-align: center\">\n" +
-                                "           <h2 style='color: black;' href='tojinNangXinXi?id="+fanhui.data[i].ID+"'><br>"+fanhui.data[i].HEADLINE+" <br>&nbsp;</h2>" +
-                                "       </div><br>"+
-                                "       <div class='feed' id='feed2' style='width: 200px;height:60px;margin-bottom: 10px;'>" +
-                                "             <div class='heart' id='like2' rel='like' style='height: 40px;float:left;'>" +
-                                "       </div>" +
-                                "       <div class='right' style='float:left;margin-left:100px;'>" +
-                                "            <img style='border-radius:50px' src='images/pinglun.png'>" +
-                                "           <a href='tojinNangXinXi?ID="+fanhui.data[i].ID+"'>("+fanhui.data[i].commentCount+")</a>" +
-                                "        </div>" +
-                                "    </div>" +
-                                " </div>"
-
-                            $(".heart").addClass("heartAnimation").attr("rel","unlike");
-                            self.total=fanhui.data[i].jinNangCount;
-                        }
-                        $("#rq").append(str)
-
-                        $(".heart").addClass("heartAnimation").attr("rel","unlike");
-                })
-            },
-            //表格查询事件
-            searchClick:function() {
-
-                var self = this;
-                self.loadingData();//重新加载数据
-            },
-            //分页大小修改事件
-            pageSizeChange:function(val) {
-                $("#rq").empty()
-                console.log('每页 ' + val +' 条');
-                this.pageSize = val;
-                var _self = this;
-                _self.loadingData();//重新加载数据
-            },
-            //当前页修改事件
-           currentPageChange:function(val) {
-               $("#rq").empty()
-
-                this.currentPage = val;
-                console.log('当前页: ' + val);
-                var _self = this;
-                _self.loadingData();//重新加载数据
-            },
             handleClose:function () {
 
             },
             tiJiao:function () {
                 var biaoTi=$("#biaoTi").val()
                 var neiRong=$("#neiRong").val()
-                var searchForms = {
+                var searchForm = {
                     'headline':biaoTi,
                     'content': neiRong,
                 };
-                axios.post('faBuJinNang', searchForms).then(function (response) {
+                axios.post('faBuJinNang', searchForm).then(function (response) {
                     window.location.reload();
-
                 })
             }
         }
@@ -279,7 +135,7 @@
 
 </script>
 <script type="text/javascript">
-    /*$.ajax({
+    $.ajax({
         url : "getJinNangListMap",
         type : "POST",
         dataType : "json",
@@ -315,7 +171,7 @@
                 $(".heart").addClass("heartAnimation").attr("rel","unlike");
             }
         }
-    })*/
+    })
 </script>
 <script>
     $(document).ready(function()
@@ -351,8 +207,53 @@
     });
 </script>
 
+<div class="content-wrap">
+    <div class="c-wrap">
+        <h1>合作机构</h1>
+        <div id="tby"></div>
+        <div class="scroll">
+            <a href="###" class="left2" onclick="left2()"></a>
+            <div>
+                <img id="roll1" src="image/wrap-广发基金.gif" />
+                <img id="roll2" src="image/wrap-华夏基金.gif" />
+                <img id="roll3" src="image/wrap-建信基金.gif" />
+                <img id="roll4" src="image/wrap-汇添富基金.gif" />
+                <img id="roll5" src="image/wrap-鹏华基金.gif" />
+                <img id="roll6" src="image/wrap-工银瑞信.gif" />
+            </div>
+            <a href="###" class="right2" onclick="right2()"></a>
+        </div>
+    </div>
+</div>
 <!--footer------------------------------------------------------------------------------------------------------------>
+<div class="footer">
+    <div class="foot">
+        <article>
+            <div class="friend">
+                <a href="#">关于我们</a>
+                <span></span>
+                <a href="#">法律声明</a>
+                <span></span>
+                <a href="#">媒体报道</a>
+                <span></span>
+                <a href="#">团队介绍</a>
+                <span></span>
+                <a href="#">帮助中心</a>
+                <span></span>
+                <a href="#">友情链接</a>
+            </div>
+            <figure></figure>
+            <p>© 2016 北京乐融多源信息技术有限公司 京ICP证12049103号-3 京公网安备11010502025440</p>
+            <div class="certificate"></div>
+        </article>
+        <aside>
+            <p>联系我们 <span>9:00 - 21:00</span> </p>
+            <h1>400-068-1176</h1>
+            <div class="customer"><a href="#">在线客服</a></div>
+            <div class="customer"><a href="#">客服邮箱</a></div>
+        </aside>
+    </div>
 
-
+</div>
 </body>
 </html>

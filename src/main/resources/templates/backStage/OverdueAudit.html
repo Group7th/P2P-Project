@@ -2,7 +2,7 @@
 <html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>招标审核</title>
+    <title>还款信息</title>
     <!-- 引入样式 -->
     <script type="text/javascript" src="/p2p/js/vue.js"></script>
     <script type="text/javascript" src="/p2p/js/axios.min.js"></script>
@@ -27,9 +27,8 @@
 </head>
 <body>
 <div id="app">
-    <p v-bind:class="{c1:isShow}"><img src="/p2p/images/zxcf_logo.png" height="77" width="400"/>
-    </p>
-    <p v-bind:class="{c2:isShowA}"><span><img src="/p2p/images/block_pic02.png" height="22" width="22"/></span>&nbsp;&nbsp;&nbsp;&nbsp;招标审核
+
+    <p v-bind:class="{c2:isShowA}"><span><img src="/p2p/images/block_pic02.png" height="22" width="22"/></span>&nbsp;&nbsp;&nbsp;&nbsp;还款信息
     </p>
 
 </div>
@@ -49,6 +48,13 @@
                     <el-option label="房产抵押贷款" value="1"></el-option>
                     <el-option label="车辆抵押贷款" value="2"></el-option>
                     <el-option label="信用贷款" value="3"></el-option>
+                </el-select>
+            </el-form-item>
+            <el-form-item>
+                <el-select v-model="searchForm.loansState" placeholder="还款状态">
+                    <el-option label="全部" value="0"></el-option>
+                    <el-option label="还款完成" value="11"></el-option>
+                    <el-option label="还款逾期" value="10"></el-option>
                 </el-select>
             </el-form-item>
             <el-form-item>
@@ -147,9 +153,6 @@
             <el-form-item label="还款方式">
                 <el-input v-model="editForm.REFUNDWAY" readonly="rd"></el-input>
             </el-form-item>
-            <el-form-item label="还款期限(月)">
-                <el-input v-model="editForm.REFUNDDEADLINE" readonly="rd"></el-input>
-            </el-form-item>
             <el-form-item label="贷款时间">
                 <el-date-picker
                         type="date"
@@ -157,8 +160,18 @@
                         readonly="rd">
                 </el-date-picker>
             </el-form-item>
-            <el-form-item label="逾期天数">
-                <el-input v-model="editForm.OVERDUERDAY" readonly="readonly"></el-input>
+            <el-form-item label="应还款时间">
+                <el-date-picker
+                        type="date"
+                        v-model="editForm.TDATE"
+                        readonly="rd">
+                </el-date-picker>
+            </el-form-item>
+            <el-form-item label="还款期限(月)" v-if="editForm.LOANSSTATE==10?true:false">
+                <el-input v-model="editForm.REFUNDDEADLINE" readonly="rd"></el-input>
+            </el-form-item>
+            <el-form-item label="逾期天数" v-if="editForm.LOANSSTATE==10?true:false">
+                <el-input v-model="editForm.OVERDUEDAY" readonly="readonly"></el-input>
             </el-form-item>
             <el-form-item label="贷款用途">
                 <el-input v-model="editForm.LOANSUSED" readonly="readonly"></el-input>
@@ -191,14 +204,11 @@
                 </template>
                 <!--<el-input v-model="editForm.PORT" readonly="readonly"></el-input>-->
             </el-form-item>
-            <el-form-item label="驳回理由">
-                <el-input type="textarea" v-model="editForm.REASON" placeholder="贷款驳回需要填写驳回理由"></el-input>
-            </el-form-item>
+
         </el-form>
         <div solt="footer" class="dialog-footer" style="text-align: center">
             <el-button type="info" @click="editFormVisible = false">关闭</el-button>
-            <el-button type="primary" @click="Submit">通过</el-button>
-            <el-button type="danger" @click="reject">驳回</el-button>
+
         </div>
     </el-dialog>
 
@@ -227,6 +237,7 @@
                 loansId: '',
                 userName: '',
                 loansType: '',
+                loansState: '',
             },
             //当前页
             currentPage: 1,
@@ -251,6 +262,7 @@
                 BEGINTIME: '',
                 LOANSTYPE: '',
                 LOANSUSED: '',
+                OVERDUEDAY:'',
                 UP: '',
                 CARD: '',
                 BANKCARD: '',
@@ -259,7 +271,6 @@
                 HOUSE: '',
                 CAR: '',
                 PORT: '',
-                REASON: '',
                 tPORT: '',
                 tHOUSE: '',
                 tCAR: ''
@@ -297,7 +308,8 @@
             },
             formatState: function (status) {
                 const statusMap = {
-                    10: '逾期'
+                    10: '还款逾期',
+                    11: '还款成功'
                 };
                 return statusMap[status]
             }
@@ -314,7 +326,8 @@
                     'end': end,
                     'loansId': this.searchForm.loansId,
                     'userName': this.searchForm.userName,
-                    'loansType': this.searchForm.loansType
+                    'loansType': this.searchForm.loansType,
+                    'loansState': this.searchForm.loansState
                 };
                 //alert(JSON.stringify(searchForm));
                 axios.post('/p2p/OverdueInfo', searchForm).then(function (response) {
@@ -355,74 +368,6 @@
                 this.currentPage = val;
                 this.loadingData();//重新加载数据
             },
-            //通过
-            Submit: function () {
-                this.$confirm('此操作将通过招标审核, 是否继续?', '提示', {
-                    confirmButtonText: '确定',
-                    cancelButtonText: '取消',
-                    type: 'warning'
-                }).then(() => {
-                    this.$message({
-                    type: 'success',
-                    message: '已通过审核!'
-                });
-                this.pass();
-                this.loadingData();//重新加载数据
-                setTimeout(function () {
-                    location.href = location.href
-                }, 3000);
-            }).catch(() => {
-                    this.$message({
-                    type: 'info',
-                    message: '已取消操作!'
-                });
-            });
-            },
-            //驳回
-            reject: function () {
-                if (this.editForm.REASON == '') {
-                    this.$confirm('请输入驳回理由', '提示', {
-                        confirmButtonText: '确定',
-                        cancelButtonText: '取消',
-                        type: 'warning'
-                    });
-                } else {
-                    alert("您确定要驳回贷款吗？驳回后不可更改！");
-                    this.rejectA();
-                    this.$confirm('贷款已经驳回', '提示', {
-                        confirmButtonText: '确定',
-                        type: 'success'
-                    });
-                    setTimeout(function () {
-                        location.href = location.href
-                    }, 3000);
-                }
-            },
-            /**
-             * 通过提交方法
-             */
-            pass: function () {
-                var editForm = {
-                    'LOANSID': this.editForm.LOANSID
-                };
-                axios.post('/p2p/Audit/update', editForm).then(function (response) {
-
-                });
-
-            },
-            /**
-             * 驳回 存入驳回理由
-             */
-            rejectA: function () {
-                var editForm = {
-                    'LOANSID': this.editForm.LOANSID,
-                    'REASON': this.editForm.REASON
-                };
-                axios.post('/p2p/Audit/reject', editForm).then(function () {
-
-                });
-            }
-
         }
     });
 </script>

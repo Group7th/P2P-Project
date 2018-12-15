@@ -2,7 +2,6 @@ package com.group7.controller;
 
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -85,7 +84,7 @@ public class pageJump {
     }
 
     /**
-     * 跳转逾期审核
+     * 跳转还款信息列表
      * @return
      */
     @RequestMapping("/toOverdueAudit")
@@ -300,28 +299,6 @@ public class pageJump {
     public String toLoseABidAudit(){
         return "backStage/lose_a_bidAudit";
     }
-
-
-    /**
-     * 公告管理
-     * @return
-     */
-    @RequestMapping("/tonoticeGuanLi")
-    public String tonoticeGuanLi(){
-        return "permission/noticeGuanLi";
-    }
-
-    /**
-     * 锦囊管理
-     * @return
-     */
-    @RequestMapping("/tojinnangGuanLi")
-    public String tojinnangGuanLi(){
-        return "permission/jinnangGuanLi";
-    }
-
-
-
 
 
 }

@@ -52,12 +52,12 @@ public class IoansAccomplishAuditController {
         Map tempMap = new HashMap();
         tempMap.put("page",ioansService.getFailureLoans(map));
         tempMap.put("total",ioansService.getFailureLoansCount(map));
-       // System.out.println(tempMap);
+        //System.out.println(tempMap);
         return tempMap;
     }
 
     /**
-     * 贷款(满标/流标)审核
+     * 贷款(满标)审核
      * @return
      */
     @ResponseBody
@@ -65,22 +65,15 @@ public class IoansAccomplishAuditController {
     public  Object loanReview(@RequestBody Map map){
         //System.out.println(map);
         int  i =ioansService.loanReview(map);
-       // System.out.println(i+"...................");
+        //System.out.println(i+"...................");
         return i;
     }
 
-    /**
-     * 每个贷款的 投标记录
-     * @param map
-     * @return
-     */
     @ResponseBody
-    @RequestMapping("/InvestmentRecord")
-    public Object InvestmentRecord(@RequestBody Map map){
+    @RequestMapping("/testa")
+    public Object testa(@RequestBody Map map){
         //System.out.println(map);
-        List<Map> maps = ioansService.InvestmentRecord(map);
-        //System.out.println(maps);
-        return maps;
+        return null;
     }
 
 

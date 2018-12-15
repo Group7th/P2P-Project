@@ -57,6 +57,8 @@ public class PowerController {
 		return i;
 	}
 
+	
+
 
 	/**
 	 * 左侧树
