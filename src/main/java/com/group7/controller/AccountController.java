@@ -53,7 +53,6 @@ public class AccountController {
     public String accountList(Model model){
         Object userSession = session.getAttribute("userSession");
         String userName = userSession+"";
-        System.out.println("打印用户名字："+userName);
         //获取账户总揽页面所需要的信息
         Map accountList = accountService.accountInfo(userName);
         //获取账户设置页面所需要的信息
@@ -64,15 +63,12 @@ public class AccountController {
         int userInformatioId = accountService.getUserInformatioId(userAccountId);
         //获取用户的认证状态
         int state = accountService.getState(userInformatioId);
-        System.out.println("身份证的状态"+state);
-        System.out.println("accountList的值："+accountList);
         //放入model中实时取值
         model.addAttribute("state",state);
         accountList.put("state",state);
         accountList.put("userName",userName);
         //调用map合并工具类将两个map合并成一个map
         Map<String,Object> resultMap = MapUtil.mergeMaps(new Map[]{accountList,accountSet});
-        System.out.println("测试合并后的map"+resultMap);
         session.setAttribute("accountList",resultMap);
         return "yirenbaopage/GRZX";
     }
@@ -98,7 +94,6 @@ public class AccountController {
      */
     @RequestMapping("/showFtp")
     public ResponseEntity showFtp(String fileName){
-        System.out.println(fileName);
         try {
             // 由于是读取本机的文件，file是一定要加上的， path是在application配置文件中的路径
             Resource resource = resourceLoader.getResource("ftp://ftpadmin:yanhaotian@39.96.8.65/images/"+fileName);
@@ -120,7 +115,6 @@ public class AccountController {
         String userName =userSession+"";
         //查找出来的用户支付密码
         int pwd = accountService.payPwd(userName);
-        System.out.println("用户的密码:"+pwd);
         Map tempMap = new HashMap();
         if(pwd==payPassword_rsainput){
             tempMap.put("msg","success");
@@ -176,10 +170,8 @@ public class AccountController {
     public Map<String,String> getHeadImg(){
         Object userSession = session.getAttribute("userSession");
         String userName =userSession+"";
-        System.out.println(userName+"用户名");
         //查找出来的用户支付密码
         String headPic = accountService.headPic(userName);
-        System.out.println("用户的头像:"+headPic);
         Map tempMap = new HashMap();
         if(headPic!=null&&headPic!=""){
             //如果取到了头像，说明用户修改过头像，直接把数据库中存的头像给他
@@ -199,7 +191,6 @@ public class AccountController {
     @RequestMapping("/addImg")
     @ResponseBody
     public Map<String,String> addHeadImg(@RequestParam String imgName){
-        System.out.println(imgName+"图片的名称传过来了");
         Map accountList =(Map)session.getAttribute("accountList");
         Integer o = Integer.valueOf(accountList.get("USERINFORMATIONID")+"");
         Map tempMap = new HashMap();
@@ -234,12 +225,10 @@ public class AccountController {
         String phone=accountSet.get("USERPHONE")+"";
         String password=accountSet.get("PASSWORD")+"";
         String bankcardnumbers=accountSet.get("BANKCARDNUMBERS")+"";
-        System.out.println("银行卡号为"+bankcardnumbers);
         model.addAttribute("phone",phone);
         model.addAttribute("password",password);
         model.addAttribute("state",state);
         model.addAttribute("bankcardnumbers",bankcardnumbers);
-//        System.out.println(accountList);
 //        accountList.put("userName",userName);
         //调用map合并工具类将两个map合并成一个map
 //        Map<String,Object> resultMap = MapUtil.mergeMaps(new Map[]{accountList,accountSet});
@@ -306,18 +295,14 @@ public class AccountController {
         //创建返回值的map
         Map tempMap = new HashMap();
         if(!oldPwd.equals(userPwd)){
-            System.out.println("输入的原来的密码："+oldPwd+"-----原来的密码："+userPwd);
             //输入的原密码错误
             tempMap.put("msg","fail");
-            System.out.println("错误");
         }else{
-            System.out.println("新密码"+newPwd);
             userMap.put("password",newPwd);
             userMap.put("userName",userName);
             accountService.changePwd(userMap);
             //密码正确 更新成功
             tempMap.put("msg","success");
-            System.out.println("成功");
         }
         return tempMap;
     }
@@ -364,7 +349,6 @@ public class AccountController {
 //                .addTextPara("imgData","")
 //                .addTextPara("type","")
 //                .post();
-        System.out.println(idNum+"..........."+realName);
         //从session中获取用户的账户信息 是一个map
         Object accountList = session.getAttribute("accountList");
         //将object转回成map
@@ -377,10 +361,8 @@ public class AccountController {
         Map<String, Object> idCardMap = getInfoByIdCard.getIdCard(idNum);
         //接口方法返回来的性别  1男 2女
         int sex = Integer.valueOf(idCardMap.get("sex")+"");
-        System.out.println(sex+"性别......");
         String address = idCardMap.get("address")+"";
 //       Object birthday = idCardMap.get("birthday");出生年月日信息
-        System.out.println("地址：---------"+address);
         accountService.addIdCardNum(realName,sex,idNum,address,userinformationid);
         //创建一个tempMap当返回值带参
         Map tempMap = new HashMap();

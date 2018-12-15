@@ -14,11 +14,5 @@
       #{refundinfo,mode=OUT,jdbcType=INTEGER}
       )
     </select>
-    <!--每个贷款的  投资信息-->
-    <select id="InvestmentRecord" resultType="map">
-       select b.investmentid,b.investmentmoney,to_char(b.investmentdate,'yyyy-mm-dd hh24:mi:ss') as investmentdate,(select q.username from tb_user q join tb_userinformation  w on w.userid = q.id where w.userid = b.userid) as username,(select w.name from tb_user q join tb_userinformation  w on w.userid = q.id where w.userid = b.userid) as name from tb_loans a
-              join tb_investment b on a.loansid=b.loansid
-               where  a.loansid = #{loansId}
-    </select>
 
 </mapper>
