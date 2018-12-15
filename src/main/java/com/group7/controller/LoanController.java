@@ -55,7 +55,7 @@ public class LoanController {
     @ResponseBody
     @RequestMapping("/selectLoans")
     public Object selectLoans(@RequestParam String username){
-        System.out.println(username);
+        //System.out.println(username);
         Map info = loanService.selectloans(username);
         return info;
     }
@@ -68,7 +68,7 @@ public class LoanController {
     @ResponseBody
     @RequestMapping("/applyForLoan")
     public Object applyForLoan(@RequestBody Map map){
-        System.out.println(map);
+        //System.out.println(map);
         int i = loanService.applyForLoad(map);
         map.put("loansid",map.get("loansid"));
         if(map.get("type").equals("1")){
@@ -79,17 +79,5 @@ public class LoanController {
         return i;
     }
 
-    /**
-     * 查询逾期的信息列表
-     * @param map
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping("/OverdueInfo")
-    public Map OverdueInfo(@RequestBody Map map){
-        Map tempMap = new HashMap();
-        tempMap.put("page",loanService.getOverdueInfo(map));
-        tempMap.put("totel",loanService.getPageCount(map));
-        return tempMap;
-    }
+
 }

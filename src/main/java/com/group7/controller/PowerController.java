@@ -36,6 +36,8 @@ public class PowerController {
 	@Autowired
 	private PowerService powerservice;
 
+	@Autowired
+	private HttpSession session;
 
 
 	/**
@@ -44,7 +46,7 @@ public class PowerController {
 	 */
 	@ResponseBody
 	@RequestMapping("/userLogin")
-	public int userLogin(@RequestParam Map map, HttpSession session){
+	public int userLogin(@RequestParam Map map){
 	//	System.out.println(map);
 		int i = powerservice.toLogin(map);
 		if(i>0){
@@ -55,6 +57,7 @@ public class PowerController {
 		return i;
 	}
 
+	
 
 
 	/**

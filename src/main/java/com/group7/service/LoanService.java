@@ -52,16 +52,5 @@ public interface LoanService {
      *//*
     int creditLoans(Map map);*/
 
-    /**
-     * 查询出还款逾期的信息
-     * @return
-     */
-    List<Map> getOverdueInfo(Map map);
 
-    /**
-     * 查询分页总数量
-     * @param map
-     * @return
-     */
-    int getPageCount(Map map);
 }
