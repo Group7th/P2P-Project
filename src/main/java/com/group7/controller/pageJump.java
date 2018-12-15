@@ -302,26 +302,4 @@ public class pageJump {
     }
 
 
-    /**
-     * 公告管理
-     * @return
-     */
-    @RequestMapping("/tonoticeGuanLi")
-    public String tonoticeGuanLi(){
-        return "permission/noticeGuanLi";
-    }
-
-    /**
-     * 锦囊管理
-     * @return
-     */
-    @RequestMapping("/tojinnangGuanLi")
-    public String tojinnangGuanLi(){
-        return "permission/jinnangGuanLi";
-    }
-
-
-
-
-
 }

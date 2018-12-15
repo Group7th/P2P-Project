@@ -47,9 +47,4 @@ public class IoansAccomplishAuditServiceImpI implements IoansAccomplishAuditServ
        //System.out.println(Integer.valueOf(""+map.get("REFUNDINFO")));
         return Integer.valueOf(""+map.get("refundinfo"));
     }
-
-    @Override
-    public List<Map> InvestmentRecord(Map map) {
-        return ioansDao.InvestmentRecord(map);
-    }
 }
