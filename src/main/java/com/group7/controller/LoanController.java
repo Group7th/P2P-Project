@@ -79,17 +79,5 @@ public class LoanController {
         return i;
     }
 
-    /**
-     * 查询逾期的信息列表
-     * @param map
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping("/OverdueInfo")
-    public Map OverdueInfo(@RequestBody Map map){
-        Map tempMap = new HashMap();
-        tempMap.put("page",loanService.getOverdueInfo(map));
-        tempMap.put("totel",loanService.getPageCount(map));
-        return tempMap;
-    }
+
 }
