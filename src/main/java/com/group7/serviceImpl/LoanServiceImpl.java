@@ -50,5 +50,13 @@ public class LoanServiceImpl implements LoanService {
         return loanDao.creditLoans(map);
     }*/
 
+    @Override
+    public List<Map> getOverdueInfo(Map map) {
+        return loanDao.getOverdueInfo(map);
+    }
 
+    @Override
+    public int getPageCount(Map map) {
+        return loanDao.getPageCount(map);
+    }
 }

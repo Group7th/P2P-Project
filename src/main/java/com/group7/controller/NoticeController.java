@@ -26,7 +26,7 @@ public class NoticeController {
     @ResponseBody
     @RequestMapping("getNoteceListMap")
     public Object getNoteceListMap(@RequestParam Map map){
-        //System.out.println(map.get("id"));
+        System.out.println(map.get("id"));
      return noticeService.getNotice(map);
     }
 }

@@ -2,6 +2,7 @@ package com.group7.controller;
 
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -84,7 +85,7 @@ public class pageJump {
     }
 
     /**
-     * 跳转还款信息列表
+     * 跳转逾期审核
      * @return
      */
     @RequestMapping("/toOverdueAudit")
@@ -137,6 +138,14 @@ public class pageJump {
         return "frontEnd/noticelist";
     }
 
+    /**
+     * 个人中心首页
+     * @return
+     */
+//    @RequestMapping("toGeRenZhongXinShouYe")
+//    public String toGeRenZhongXinShouYe(){
+//        return "yirenbaopage/GRZX";
+//    }
 
     /**
      * 个人中心充值
@@ -155,6 +164,7 @@ public class pageJump {
     @RequestMapping("toGRZXDuiHuan")
     public String toGRZXDuiHuan(){
         return "yirenbaopage/个人中心-兑换历史.html";
+
     }
 
     /**
@@ -184,8 +194,25 @@ public class pageJump {
     public String toGRZXHongBao(){
         return "yirenbaopage/个人中心-我的红包.html";
     }
+/*
+    *//**
+     * 投资纪录
+     * @return
+     *//*
+    @RequestMapping("toGRZXTouZi")
+    public String toGRZXTouZi(){
+        return "yirenbaopage/个人中心-投资记录.html";
+    }*/
 
-
+   /* *//**
+     * 提现
+     * @return
+     *//*
+    @RequestMapping("toGRZXTiXian1")
+    public String toGRZXTiXian1(){
+        return "yirenbaopage/个人中心-提现.html";
+    }
+*/
     /**
      * 系统消息
      * @return
@@ -197,13 +224,22 @@ public class pageJump {
 
 
     /**
-     * 资金纪录
+     * 账号设置
      * @return
+     */
+   /* @RequestMapping("toGRZXZhangHao")
+    public String toGRZXZhangHao(){
+        return "yirenbaopage/个人中心-账户设置.html";
+    }
+*/
+
+    /**
+     * 资金纪录
      * @return
      */
     @RequestMapping("toGRZXZiJin")
     public String toGRZXZiJin(){
-        return "yirenbaopage/个人中心-资金记录";
+        return "yirenbaopage/个人中心-资金记录 .html";
     }
 
 
@@ -282,7 +318,7 @@ public class pageJump {
     }
 
     /**
-     * 满标审核信息表
+     * 满标一审信息表
      * @return
      */
     @RequestMapping("/toIoansAccomplishAudit")
@@ -292,13 +328,25 @@ public class pageJump {
 
 
     /**
-     * 流标审核
+     * 公告管理
      * @return
      */
-    @RequestMapping("/toLoseABidAudit")
-    public String toLoseABidAudit(){
-        return "backStage/lose_a_bidAudit";
+    @RequestMapping("/tonoticeGuanLi")
+    public String tonoticeGuanLi(){
+        return "permission/noticeGuanLi";
     }
+
+    /**
+     * 锦囊管理
+     * @return
+     */
+    @RequestMapping("/tojinnangGuanLi")
+    public String tojinnangGuanLi(){
+        return "permission/jinnangGuanLi";
+    }
+
+
+
 
 
 }
