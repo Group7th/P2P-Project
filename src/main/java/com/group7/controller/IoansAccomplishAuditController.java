@@ -36,7 +36,7 @@ public class IoansAccomplishAuditController {
         Map tempMap = new HashMap();
         tempMap.put("page",ioansService.getList(map));
         tempMap.put("total",ioansService.getPageCount(map));
-        System.out.println(tempMap);
+        //System.out.println(tempMap);
         return tempMap;
     }
 
@@ -52,7 +52,7 @@ public class IoansAccomplishAuditController {
         Map tempMap = new HashMap();
         tempMap.put("page",ioansService.getFailureLoans(map));
         tempMap.put("total",ioansService.getFailureLoansCount(map));
-        System.out.println(tempMap);
+        //System.out.println(tempMap);
         return tempMap;
     }
 
@@ -63,16 +63,16 @@ public class IoansAccomplishAuditController {
     @ResponseBody
     @RequestMapping("/loanReview")
     public  Object loanReview(@RequestBody Map map){
-        System.out.println(map);
+        //System.out.println(map);
         int  i =ioansService.loanReview(map);
-        System.out.println(i+"...................");
+        //System.out.println(i+"...................");
         return i;
     }
 
     @ResponseBody
     @RequestMapping("/testa")
     public Object testa(@RequestBody Map map){
-        System.out.println(map);
+        //System.out.println(map);
         return null;
     }
 
