@@ -10,7 +10,7 @@ import java.util.Map;
 
 @Service
 public class JInNangServiceImpl implements JinNangService {
-
+    //
     @Autowired
     private JinNangDao jinNangDao;
 

@@ -63,7 +63,7 @@ public interface WebsiteGuanLiDao {
     /**
      * 删除公告
      * @param ID
-     * @return
+     * @return//
      */
     @Delete("delete from tb_notice where id=#{ID}")
     int delectNotice(Integer ID);

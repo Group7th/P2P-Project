@@ -23,7 +23,7 @@ public class JinNangController {
     private JinNangService jinNangService;
 
 
-    /**
+    /**dd
      * 添加一条锦囊
      * @param map
      * @param request
@@ -37,6 +37,7 @@ public class JinNangController {
         int userId = jinNangService.getId(userName);
         map.put("userName",userName);
         map.put("userId",userId);
+
         return jinNangService.addJInNang(map);
     }
 

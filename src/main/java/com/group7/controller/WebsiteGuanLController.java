@@ -46,7 +46,7 @@ public class WebsiteGuanLController {
     @RequestMapping("/addNotice")
     public Object addNotice(@RequestBody Map map,HttpServletRequest request){
         HttpSession session = request.getSession();
-        String userName = (String)session.getAttribute("userSession");
+        String userName = (String)session.getAttribute("userName");
         map.put("userName",userName);
 
         return websiteGuanLiService.addNotice(map);

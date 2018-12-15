@@ -34,7 +34,7 @@ public interface WebsiteGuanLiService {
     int addNotice(Map map);
 
     /**
-     * 修改公告
+     * 修改//公告
      * @param map
      * @return
      */

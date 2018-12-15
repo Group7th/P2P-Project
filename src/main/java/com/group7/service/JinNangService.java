@@ -30,7 +30,7 @@ public interface JinNangService {
 
     int getJinNangCount();
 
-    /**
+    /**d
      * 很具id或取锦囊
      * @param map
      * @return

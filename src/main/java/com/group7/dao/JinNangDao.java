@@ -44,6 +44,7 @@ public interface JinNangDao {
 
     /**
      * 删除公告
+     * asfsdlfsld
      * @param ID
      * @return
      */
