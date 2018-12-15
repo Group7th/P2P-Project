@@ -70,12 +70,12 @@
             <el-table-column
                     prop="LOANSID"
                     label="贷款编号"
-                    width="150">
+                    width="120">
             </el-table-column>
             <el-table-column
                     prop="USERNAME"
                     label="贷款人"
-                    width="150">
+                    width="120">
             </el-table-column>
             <el-table-column
                     prop="LOANSMONEY"
@@ -85,7 +85,7 @@
             <el-table-column
                     prop="LOANSINTERESTRATE"
                     label="贷款利率(%)"
-                    width="150">
+                    width="120">
             </el-table-column>
             <el-table-column
                     prop="REFUNDDEADLINE"
@@ -94,7 +94,7 @@
             </el-table-column>
             <el-table-column
                     label="贷款类型"
-                    width="200">
+                    width="150">
                 <template slot-scope="scope">
                     <el-tag :type="scope.row.LOANSTYPE | statusFilter">{{scope.row.LOANSTYPE | formatStata}}</el-tag>
                 </template>
@@ -102,16 +102,16 @@
             <el-table-column
                     prop="INVESTMENTAMOUNT"
                     label="总投标金额"
-                    width="160">
+                    width="150">
             </el-table-column>
             <el-table-column
                     prop="CON"
                     label="投标人数"
-                    width="160">
+                    width="150">
             </el-table-column>
             <el-table-column
                     label="贷款状态"
-                    width="200">
+                    width="120">
                 <template slot-scope="scope">
                     <el-tag type="danger">{{scope.row.LOANSSTATE | formatState}}</el-tag>
                 </template>
@@ -212,7 +212,7 @@
     </el-dialog>
 
 
-    <el-dialog title="贷款详情" :visible.sync="insVisible" :close-on-click-modal="false">
+    <el-dialog title="投资详情" :visible.sync="insVisible" :close-on-click-modal="false">
         <!--列表-->
         <el-table
                 :data="tableDataA"
@@ -221,7 +221,7 @@
             <el-table-column
                     prop="INVESTMENTID"
                     label="投资编号"
-                    width="160">
+                    width="120">
             </el-table-column>
             <el-table-column
                     prop="USERNAME"
@@ -231,17 +231,17 @@
             <el-table-column
                     prop="NAME"
                     label="投资人姓名"
-                    width="200">
+                    width="150">
             </el-table-column>
             <el-table-column
                     prop="INVESTMENTMONEY"
                     label="投资金额(￥)"
-                    width="200">
+                    width="187">
             </el-table-column>
             <el-table-column
                     prop="INVESTMENTDATE"
                     label="投资时间"
-                    width="207">
+                    width="200">
             </el-table-column>
         </el-table>
     </el-dialog>
