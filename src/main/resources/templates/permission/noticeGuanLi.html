@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <!-- 引入组件库 -->
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script type="text/javascript" src="/p2p/js/moment.min.js"></script>
     <style type="text/css">
         .c1 {
             padding-left: 15px
@@ -26,13 +27,12 @@
     </style>
 </head>
 <body>
-<!--<div id="app">
-    <p v-bind:class="{c1:isShow}"><img src="/p2p/images/zxcf_logo.png" height="77" width="400"/>
-    </p>
+<div id="app">
+
     <p v-bind:class="{c2:isShowA}"><span><img src="/p2p/images/block_pic02.png" height="22" width="22"/></span>&nbsp;&nbsp;&nbsp;&nbsp;公告管理
     </p>
 
-</div>-->
+</div>
 <div id="tableView">
     <!--列表顶部搜索和工具条-->
     <el-row>
@@ -71,11 +71,11 @@
                     label="内容"
                     width="300">
             </el-table-column>
-
             <el-table-column
                     prop="TIME"
                     label="发布时间"
-                    width="120">
+                    :formatter="dateFormat"
+                    width="150">
             </el-table-column>
             <el-table-column
                     prop="OPERATOR"
@@ -136,12 +136,13 @@
 
 </div>
 <script type="text/javascript">
-   /* var app = new Vue({
+    var app = new Vue({
         el: '#app',
         data: {
-            message: '公告列表'
+            isShow: true,
+            isShowA: true,
         }
-    });*/
+    });
 
     var tableView = new Vue({
         el: '#tableView',
@@ -188,7 +189,7 @@
             var end =this.currentPage*this.pageSize+1;
 
             axios.post('/p2p/getNoticeListMap',{'start':start,'end':end}).then(function(response){
-                console.log(response.data);
+                //console.log(response.data);
                 self.total=response.data.total;
                 self.tableData = response.data.data;
                 // self.multipleSelection=response.data.data;
@@ -222,6 +223,13 @@
                 this.goUrl="/p2p/updateNotice";
                 this.editFormVisible = true;
                 this.editForm = Object.assign({}, row);
+            },
+            dateFormat: function(row, column){
+                var date = row[column.property];
+                if (date === undefined) {
+                    return "";
+                }
+                return format(new Date(date), 'yyyy-MM-dd');
             },
             //表格删除事件
             deleteClick:function(row) {
@@ -285,6 +293,15 @@
                 }
                 this.multipleSelection = val;
                 console.info(val);
+            },
+            //时间格式化
+            dateFormat:function(row, column) {
+                var date = row[column.property];
+                if (date == undefined) {
+                    return "";
+                }
+               // return moment(date).format("YYYY-MM-DD");
+                    return moment(date).format("YYYY-MM-DD");
             },
             //删除所选，批量删除
             removeSelection:function() {
