@@ -87,6 +87,7 @@ public class LoanController {
     @ResponseBody
     @RequestMapping("/OverdueInfo")
     public Map OverdueInfo(@RequestBody Map map){
+        System.out.println(loanService.getOverdueInfo(map));
         Map tempMap = new HashMap();
         tempMap.put("page",loanService.getOverdueInfo(map));
         tempMap.put("totel",loanService.getPageCount(map));

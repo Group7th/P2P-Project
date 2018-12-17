@@ -6,69 +6,34 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * className:LoanService
- * discriptoin:贷款业务 dao层
+ * className:RefundInfoService
+ * discriptoin:还款
  * author:zz
- * createTime:2018-11-24 09:32
+ * createTime:2018-12-13 13:57
  */
-public interface LoanDao {
+public interface RefundInfoDao {
 
     /**
-     * 点击申请贷款，查询当前用户的信息
-     * @param map
+     *定时器调用还款的存储过程时返回的还款信息
      * @return
      */
-    Map getUserInfo(Map map);
+    String getRefundInfo(Map map);
 
     /**
-     * 申请贷款，把申请贷款的信息存到数据库
-     * @param map
-     * @return
-     */
-    int applyForLoad(Map map);
-
-    /**
-     * 申请贷款，把房屋抵押贷款类型的信息存到数据库
-     * @param map
-     * @return
-     */
-    int houseLoans(Map map);
-
-    /**
-     * 查询是否已经贷款了
-     * @return
-     */
-    Map selectloans(String username);
-
-    /**
-     * 申请贷款，把车辆抵押贷款类型的信息存到数据库
-     * @param map
-     * @return
-     */
-    int carLoans(Map map);
-
-    /**
-     * 申请贷款，把信用贷款类型的信息存到数据库
-     * @param map
-     * @return
-     */
-    /*int creditLoans(Map map);*/
-
-    /**
-     * 查询出还款逾期的信息
+     * 查询出还款的信息
      * @return
      */
     @Select({"<script>" +
-            " select * from (select rownum rn,t.LOANSID,t.USERID,t.USERNAME,t.LOANSMONEY,t.REFUNDWAY,t.TDATE,"
-            +" t.LOANSINTERESTRATE,t.REFUNDDEADLINE,t.TIME,round(sysdate-t.TIME) as OVERDUEDAY,t.LOANSTYPE,t.LOANSUSED,t.LOANSSTATE,t.REASON,"
+            " select * from (select rownum rn,t.LOANSID,t.USERID,t.USERNAME,t.LOANSMONEY,t.REFUNDWAY,"
+            +" t.LOANSINTERESTRATE,t.REFUNDDEADLINE,t.TIME,round(sysdate-t.TIME) as OVERDUEDAY,t.TDATE,t.LOANSTYPE,t.LOANSUSED,t.LOANSSTATE,t.REASON,"
             +" b.USERPHONE as up,b.IDENTITYCARD as CARD,"
             +" b.BANKCARDNUMBERS as BANKCARD,b.SITE as SITE,c.GLOBALVALUE as VALUE,c.HOUSEPROPERTY as HOUSE,"
-            +" c.CARINFORMATION as CAR,c.APPRAISALREPORT as PORT,d.MONEY,e.REFUNDMONEY FROM tb_loans t"
+            +" c.CARINFORMATION as CAR,c.APPRAISALREPORT as PORT,d.money as MONEY,e.REFUNDMONEY as REFUNDMONEY FROM tb_loans t"
             +" join tb_userinformation b on b.USERID = t.USERID"
             +" join tb_loanstype c on c.LOANSID = t.LOANSID"
-            +" join tb_useraccount d on b.userinformationid = d.userinformationid"
-            +" join tb_refund e on t.loansid = e.loansid"
-            +" where rownum &lt; #{end} and t.LOANSSTATE in(10,11)"
+            +" join tb_useraccount d on d.USERINFORMATIONID = b.USERINFORMATIONID"
+            +" join tb_refund e on e.LOANSID = t.LOANSID"
+            +" where rownum &lt; #{end} and t.LOANSSTATE in (10,11)"
             +"<if test=\"loansId!=null and loansId!=''\"> and t.LOANSID like '%'||#{loansId}||'%' </if>"
             +"<if test=\"userName!=null and userName!=''\">and t.USERNAME like '%'||#{userName}||'%'</if>"
             +"<if test=\"loansType!=null and loansType!=0\">and t.LOANSTYPE=#{loansType}</if>"

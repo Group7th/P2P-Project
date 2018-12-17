@@ -5,6 +5,7 @@ import com.group7.service.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -52,7 +53,19 @@ public class LoanServiceImpl implements LoanService {
 
     @Override
     public List<Map> getOverdueInfo(Map map) {
-        return loanDao.getOverdueInfo(map);
+        List<Map> overdueInfo = loanDao.getOverdueInfo(map);
+        List<Map> list = new ArrayList<>();
+        //System.out.println(overdueInfo);
+        if (overdueInfo.size()>0&&overdueInfo!=null){
+            for (Map map1 : overdueInfo) {
+                if (Integer.valueOf(map1.get("LOANSSTATE")+"")==10){
+                    map1.put("REFUNDMONEY",0);
+                }
+                list.add(map1);
+            }
+        }
+        //System.out.println(list);
+        return list;
     }
 
     @Override
