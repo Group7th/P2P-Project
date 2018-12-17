@@ -26,13 +26,7 @@
     </style>
 </head>
 <body>
-<div id="app">
-    <!-- <p v-bind:class="{c1:isShow}"><img src="/p2p/images/zxcf_logo.png" height="77" width="400"/>
-     </p>-->
-    <p v-bind:class="{c2:isShowA}"><span><img src="/p2p/images/block_pic02.png" height="22" width="22"/></span>&nbsp;&nbsp;&nbsp;&nbsp;锦囊管理
-    </p>
 
-</div>
 </div>
 <div id="tableView">
     <!--列表顶部搜索和工具条-->
@@ -111,13 +105,12 @@
 
 </div>
 <script type="text/javascript">
-    var app = new Vue({
-        el: '#app',
-        data: {
-            isShow: true,
-            isShowA: true,
-        }
-    });
+    /* var app = new Vue({
+         el: '#app',
+         data: {
+             message: '公告列表'
+         }
+     });*/
 
     var tableView = new Vue({
         el: '#tableView',
