@@ -1,12 +1,12 @@
 <!doctype html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>贷款信息页面</title>
 
 	<script src="js/jquery3.3.1.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="11112/css/style.css">
-    <script type="text/javascript" src="11112/js/all.js"></script>
+	<link rel="stylesheet" type="text/css" href="11112/css/style.css">
+	<script type="text/javascript" src="11112/js/all.js"></script>
 	<script type="text/javascript" src="layui/layui.js"></script>
 	<link rel="stylesheet" type="text/css" href="layui/css/layui.css">
 	<script type="text/javascript" src="js/dist/sweetalert.min.js"></script>
@@ -19,17 +19,17 @@
 <!-- header start -->
 <div class="zxcf_top_wper">
 	<div class="zxcf_top px1000 clearfix">
-		 <div class="zxcf_top_l fl">
-		    <img src="images/zxcf_phone.png" alt="">
-		    400-027-0101(工作时间9:00-17:30)
-		    <a href="#"><img src="11112/images/zxcf_weixin.png" alt=""></a>
-		    <a href="#"><img src="11112/images/zxcf_sina.png" alt=""></a>
-		    <a href="#"><img src="11112/images/zxcf_qq.png" alt=""></a>
-		 </div>
+		<div class="zxcf_top_l fl">
+			<img src="images/zxcf_phone.png" alt="">
+			400-027-0101(工作时间9:00-17:30)
+			<a href="#"><img src="11112/images/zxcf_weixin.png" alt=""></a>
+			<a href="#"><img src="11112/images/zxcf_sina.png" alt=""></a>
+			<a href="#"><img src="11112/images/zxcf_qq.png" alt=""></a>
+		</div>
 		<div class="zxcf_top_r fr">
-			<a href="toLogin" class="curspan">立即登录</a>
+			<a href="UserExit" class="curspan">注销登陆</a>
 			<span>|</span>
-			<a href="toRegister">免费注册</a>
+			<a href="UserExit">切换用户</a>
 			<span>|</span>
 			<a href="toproblem">常见问题</a>
 		</div>
@@ -38,17 +38,17 @@
 <!-- end top -->
 <div class="zxcf_nav_wper">
 	<div class="zxcf_nav clearfix px1000">
-		 <div class="zxcf_nav_l fl"><img src="images/zxcf_logo.png" alt=""></div>
-		 <div class="zxcf_nav_r fr">
-		 	<img src="11112/images/zxcf_perinfo.png" alt="">
-		 	<span>我的账户
+		<div class="zxcf_nav_l fl"><img src="images/zxcf_logo.png" alt=""></div>
+		<div class="zxcf_nav_r fr">
+			<img src="11112/images/zxcf_perinfo.png" alt="">
+			<span>我的账户
 		 	<img src="11112/images/zxcf_icon01.png" alt=""></span>
-		 	<ul class="zxcf_perinfo" style="display:none;">
-		 		<li><a href="#">111</a></li>
-		 		<li><a href="#">111</a></li>
-		 		<li><a href="#">111</a></li>
-		 	</ul>
-		 </div>
+			<ul class="zxcf_perinfo" style="display:none;">
+				<li><a href="#">111</a></li>
+				<li><a href="#">111</a></li>
+				<li><a href="#">111</a></li>
+			</ul>
+		</div>
 	</div>
 </div>
 <div class="zxcf_menu_wper">
@@ -63,387 +63,387 @@
 </div>
 <!-- end  -->
 <div class="zxcf_detail_wper">
-	  <div class="zxcf_detail px1000">
-	  	     <div class="detail_intro clearfix">
-	  	     	    <div class="detail_intro_l fl">
-	  	     	    	  <div class="detail_introl_tit clearfix">
-	  	     	    	  	  <div class="det_introl_tit_l fl">
-	  	     	    	  	  	   <span id="LX"></span>
-	  	     	    	  	  </div>
-							  &nbsp;<span id="DKMC"></span>
-	  	     	    	  	  <!-- end l -->
-	  	     	    	  	  <div class="det_introl_tit_r fr">
-	  	     	    	  	  	  保障级别：A级 <img src="11112/images/det_wenhao.png" alt="">
-	  	     	    	  	  </div>
-	  	     	    	  </div>
-	  	     	    	  <!-- end tit -->
-	  	     	    	  <div class="det_intro_text mr20">
-	  	     	    	  	    <ul class="det_intro_tul clearfix">
-	  	     	    	  	    	<li>
-	  	     	    	  	    		 年化收益<br>
-	  	     	    	  	    		 <span style="color:#ff7112;">
+	<div class="zxcf_detail px1000">
+		<div class="detail_intro clearfix">
+			<div class="detail_intro_l fl">
+				<div class="detail_introl_tit clearfix">
+					<div class="det_introl_tit_l fl">
+						<span id="LX"></span>
+					</div>
+					&nbsp;<span id="DKMC"></span>
+					<!-- end l -->
+					<div class="det_introl_tit_r fr">
+						保障级别：A级 <img src="11112/images/det_wenhao.png" alt="">
+					</div>
+				</div>
+				<!-- end tit -->
+				<div class="det_intro_text mr20">
+					<ul class="det_intro_tul clearfix">
+						<li>
+							年化收益<br>
+							<span style="color:#ff7112;">
 	  	     	    	  	    		 	 <strong id="ratio"></strong>% 年化
 	  	     	    	  	    		 </span>
-	  	     	    	  	    	</li>
-	  	     	    	  	    	<li>
-	  	     	    	  	    		 贷款期限<br>
-										<span style="color:#ff7112;">
+						</li>
+						<li>
+							贷款期限<br>
+							<span style="color:#ff7112;">
 	  	     	    	  	    		 	 <strong id="deadline"></strong>个月
 	  	     	    	  	    		 </span>
-	  	     	    	  	    	</li>
-                                    <li>
-	  	     	    	  	    		 贷款金额<br>
-										<span style="color:#ff7112;">
+						</li>
+						<li>
+							贷款金额<br>
+							<span style="color:#ff7112;">
 	  	     	    	  	    		 	 <strong id="money"></strong>万元
 	  	     	    	  	    		 </span>
-	  	     	    	  	    	</li>
+						</li>
 
-	  	     	    	  	    </ul>
-	  	     	    	  	    <!-- end  -->
-	  	     	    	  	    <ul class="det_intro_tul2 clearfix">
-	  	     	    	  	    	<li>
-	  	     	    	  	    		发布日期：<span id="fTime"></span>
-	  	     	    	  	    	</li>
-	  	     	    	  	    	<li>
-	  	     	    	  	    	    还款方式：<span id="type"></span>
-	  	     	    	  	    	</li>
-	  	     	    	  	    	<li>
-										还款日期：<span id="hTime"></span>
-	  	     	    	  	    	</li>
-	  	     	    	  	    	<li>
-	  	     	    	  	    		保障机构：北京国能小额贷款股份公司
-	  	     	    	  	    	</li>
-	  	     	    	  	    </ul>
-	  	     	    	  </div>
-	  	     	    	  <!-- end text -->
-	  	     	    </div>
-	  	     	    <div class="detail_intro_r fr">
-						  <span class="touzijine" style="display:none"></span>  <!--投资总额-->
-						  <span id="ZHJE" style="display:none" ></span>  <!--当前账户金额-->
-	  	     	    	  <h2 class="det_intro_h2 clearfix"><span class="fl">投资进度:</span><em class="fr" id="bili"></em></h2>
-							 	<!--进度条-->
-							   <meter id="jindu" max="100" min="0" value="" low="100" optimum="1" style='width: 247px;height: 10px' ></meter>
-                          <p class="det_rzye clearfix"><span class="fl">剩余投标金额</span><em class="fr"><strong class="touzi"></strong>元</em></p>
-                          <p class="det_input">
-                          	  <input type="text" placeholder="投资金额为1000的倍数" id="financing">
-                          </p>
-						  <span class="det_shouyi">每投资1万元收益</span> <span id="shouyi" style="color: red"></span><span id="shouyi1" style="display:none"></span>
-                          <p><a href="#" class="pro_btn det_btn financing" >立即投资</a><a href="#" class="pro_btn det_btn one">已投资</a></p>
-	  	     	    </div>
-	  	     </div>
-	  	     <!-- end block1 -->
-	  	     <div class="detail_con mt30">
-	  	     	   <h2 class="detail_con_tit clearfix">
-	  	     	   	   <span class="det_tit_curspan">项目描述</span>
-	  	     	   	   <span>风控信息</span>
-	  	     	   	   <span>贷后管理</span>
-	  	     	   	   <span>投标记录<i>10</i></span>
-	  	     	   </h2>
-	  	     	   <div class="det_con_box">
-	  	     	   	      <div class="det_con_proone clearfix">
-	  	     	   	           <div class="det_l_box fl">
+					</ul>
+					<!-- end  -->
+					<ul class="det_intro_tul2 clearfix">
+						<li>
+							发布日期：<span id="fTime"></span>
+						</li>
+						<li>
+							还款方式：<span id="type"></span>
+						</li>
+						<li>
+							还款日期：<span id="hTime"></span>
+						</li>
+						<li>
+							保障机构：北京国能小额贷款股份公司
+						</li>
+					</ul>
+				</div>
+				<!-- end text -->
+			</div>
+			<div class="detail_intro_r fr">
+				<span class="touzijine" style="display:none"></span>  <!--投资总额-->
+				<span id="ZHJE" style="display:none" ></span>  <!--当前账户金额-->
+				<h2 class="det_intro_h2 clearfix"><span class="fl">投资进度:</span><em class="fr" id="bili"></em></h2>
+				<!--进度条-->
+				<meter id="jindu" max="100" min="0" value="" low="100" optimum="1" style='width: 247px;height: 10px' ></meter>
+				<p class="det_rzye clearfix"><span class="fl">剩余投标金额</span><em class="fr"><strong class="touzi"></strong>元</em></p>
+				<p class="det_input">
+					<input type="text" placeholder="投资金额为1000的倍数" id="financing">
+				</p>
+				<span class="det_shouyi">每投资1万元收益</span> <span id="shouyi" style="color: red"></span><span id="shouyi1" style="display:none"></span>
+				<p><a href="#" class="pro_btn det_btn financing" >立即投资</a><a href="#" class="pro_btn det_btn one">已投资</a></p>
+			</div>
+		</div>
+		<!-- end block1 -->
+		<div class="detail_con mt30">
+			<h2 class="detail_con_tit clearfix">
+				<span class="det_tit_curspan">项目描述</span>
+				<span>风控信息</span>
+				<span>贷后管理</span>
+				<span>投标记录<i id="JL"></i></span>
+			</h2>
+			<div class="det_con_box">
+				<div class="det_con_proone clearfix">
+					<div class="det_l_box fl">
 
-	  	     	   	            <div class="det_proone_l">
-	  	     	   	            	   <h2 class="det_proone_tit">借款人信息</h2>
-	  	     	   	            	   <div class="det_clsj ">
-	  	     	   	            	   	   <p>借款人姓名：<strong id="JKRname"></strong></p>
-	  	     	   	            	   <p ><span style="margin-right:150px;">地址：<strong id="DZ"></strong ></span>所属行业：<strong>珠宝行业</strong>
-	  	     	   	            	   </p>
-	  	     	   	            	   </div>
-	  	     	   	            	   <div class="det_clsj ">
-	  	     	   	            	     <img src="11112/images/det_pic01.png" alt="">
-	  	     	   	            	   </div>
-	  	     	   	            	    <div class="det_clsj ">
-	  	     	   	            	     <img src="11112/images/det_pic02.png" alt="">
-	  	     	   	            	   </div>
-	  	     	   	            	   <h2 class="det_proone_tit mt30">基本信息</h2>
-	  	     	   	            	    <div class="det_clsj ">
-	  	     	   	            	         <ul class="det_clsj_ul">
-	  	     	   	            	         	<li>融资用途：<span id="yongtu"></span></li>
-	  	     	   	            	         	<li>
-													融资金额：<span id="RZJE"></span>
-	  	     	   	            	         	</li>
-												 <li>
-													 手机号：<span id="SJH"></span>
-												 </li>
-												 <li>
-													 身份证号：<span id="SFZH"></span>
-												 </li>
-	  	     	   	            	         </ul>
-	  	     	   	            	    </div>
+						<div class="det_proone_l">
+							<h2 class="det_proone_tit">借款人信息</h2>
+							<div class="det_clsj ">
+								<p>借款人姓名：<strong id="JKRname"></strong></p>
+								<p ><span style="margin-right:150px;">地址：<strong id="DZ"></strong ></span>所属行业：<strong>珠宝行业</strong>
+								</p>
+							</div>
+							<div class="det_clsj ">
+								<img src="11112/images/det_pic01.png" alt="">
+							</div>
+							<div class="det_clsj ">
+								<img src="11112/images/det_pic02.png" alt="">
+							</div>
+							<h2 class="det_proone_tit mt30">基本信息</h2>
+							<div class="det_clsj ">
+								<ul class="det_clsj_ul">
+									<li>融资用途：<span id="yongtu"></span></li>
+									<li>
+										融资金额：<span id="RZJE"></span>
+									</li>
+									<li>
+										手机号：<span id="SJH"></span>
+									</li>
+									<li>
+										身份证号：<span id="SFZH"></span>
+									</li>
+								</ul>
+							</div>
 
-	  	     	   	            </div>
-	  	     	   	            <!-- end 项目描述 -->
-	  	     	   	            <div class="det_proone_l" style="display:none;">
-	  	     	   	            	 <h2 class="det_proone_tit">项目评估</h2>
-	  	     	   	            	 <!--  -->
-	  	     	   	            	 <div class="company-msg-option ppd-company-option2 show">
-	  	     	   	            	 <div class="project-assess clearfix">
-                                <ul class="project-assess-pt1">
-                                    <li>
-                                        <div class="small-tit">基本信息</div>
-                                        <div class="progress-bar">
-                                            <div class="progress-bar-in" style="width:93%"></div>
-                                        </div>
-                                        <div class="progress-bar-txt">93分</div>
-                                    </li>
-                                    <li>
-                                        <div class="small-tit">财务实力</div>
-                                        <div class="progress-bar">
-                                            <div class="progress-bar-in" style="width:89%"></div>
-                                        </div>
-                                        <div class="progress-bar-txt">89分</div>
-                                    </li>
-                                    <li>
-                                        <div class="small-tit">经营情况</div>
-                                        <div class="progress-bar">
-                                            <div class="progress-bar-in" style="width:93%"></div>
-                                        </div>
-                                        <div class="progress-bar-txt">93分</div>
-                                    </li>
-                                    <li>
-                                        <div class="small-tit">偿还能力</div>
-                                        <div class="progress-bar">
-                                            <div class="progress-bar-in" style="width:95%"></div>
-                                        </div>
-                                        <div class="progress-bar-txt">95分</div>
-                                    </li>
-                                    <li>
-                                        <div class="small-tit">实际控制人</div>
-                                        <div class="progress-bar">
-                                            <div class="progress-bar-in" style="width:89%"></div>
-                                        </div>
-                                        <div class="progress-bar-txt">89分</div>
-                                    </li>
-                                </ul>
-                                <div class="project-assess-pt2" style=" color: #ff5a00;">
-                                    <p class="p1">92<span class="small-txt" style="font-size:12px;">分</span></p>
-                                    <p class="p2">综合信用评分</p>
-                                </div>
-                                <div class="project-assess-pt3" >
-                                    <p class="p1">AAA</p>
-                                    <p class="p2">综合信用等级</p>                                
-                                </div>
-                            </div>
-                            </div>
-                            <!--  -->
-                                   <h2 class="det_proone_tit">项目保障</h2>
-                                   <!--  -->
+						</div>
+						<!-- end 项目描述 -->
+						<div class="det_proone_l" style="display:none;">
+							<h2 class="det_proone_tit">项目评估</h2>
+							<!--  -->
+							<div class="company-msg-option ppd-company-option2 show">
+								<div class="project-assess clearfix">
+									<ul class="project-assess-pt1">
+										<li>
+											<div class="small-tit">基本信息</div>
+											<div class="progress-bar">
+												<div class="progress-bar-in" style="width:93%"></div>
+											</div>
+											<div class="progress-bar-txt">93分</div>
+										</li>
+										<li>
+											<div class="small-tit">财务实力</div>
+											<div class="progress-bar">
+												<div class="progress-bar-in" style="width:89%"></div>
+											</div>
+											<div class="progress-bar-txt">89分</div>
+										</li>
+										<li>
+											<div class="small-tit">经营情况</div>
+											<div class="progress-bar">
+												<div class="progress-bar-in" style="width:93%"></div>
+											</div>
+											<div class="progress-bar-txt">93分</div>
+										</li>
+										<li>
+											<div class="small-tit">偿还能力</div>
+											<div class="progress-bar">
+												<div class="progress-bar-in" style="width:95%"></div>
+											</div>
+											<div class="progress-bar-txt">95分</div>
+										</li>
+										<li>
+											<div class="small-tit">实际控制人</div>
+											<div class="progress-bar">
+												<div class="progress-bar-in" style="width:89%"></div>
+											</div>
+											<div class="progress-bar-txt">89分</div>
+										</li>
+									</ul>
+									<div class="project-assess-pt2" style=" color: #ff5a00;">
+										<p class="p1">92<span class="small-txt" style="font-size:12px;">分</span></p>
+										<p class="p2">综合信用评分</p>
+									</div>
+									<div class="project-assess-pt3" >
+										<p class="p1">AAA</p>
+										<p class="p2">综合信用等级</p>
+									</div>
+								</div>
+							</div>
+							<!--  -->
+							<h2 class="det_proone_tit">项目保障</h2>
+							<!--  -->
 
-                                    <div class="prject-guarantee">
-                                <dl class="dl1 clearfix">
-                                    <dt>担保方</dt>
-                                    <dd><em class="company-logo-sprite" style="background:url(https://dn-licaifan-upload.qbox.me/uploads/admin/e9fb6a4feac008a08ab67dc3dc2244a2.png)"></em><span><a href="/vouch/detail/8" target="_blank">金达融资担保有限责任公司</a></span></dd>
-                                </dl>
-                                <dl class="dl2 clearfix">
-                                    <dt style="height:200px;line-height:20px;">保障措施</dt>
-                                    <dd>
-                                        <p>1、担保机构提供不可撤销的连带责任担保，对本息100%保障；</p><p>2、担保机构按规定计提30%的担保费作为风险保障金，由理财范与担保公司共同监管；</p><p>3、借款企业提供足值抵押物；</p><p>4、借款企业实际控制人向债权人提供连带保证；</p><p>5、北京***企业提供连带保证。</p><p><br></p>                                    </dd>
-                                </dl>
-                            </div>
-                                   <!-- 抵押物信息 -->
-                                     <h2 class="det_proone_tit" id="DYWXX">信用贷款</h2>
-                                     <div class="det_dywxx_ul">
-										 <span id="DYWZJ"></span> &nbsp;&nbsp;&nbsp;&nbsp;
-										 <span id="DYPG"></span>
-									 </div>
-                                     <!-- end 抵押物信息 -->
-                                     <h2 class="det_proone_tit">风险控制措施</h2>
-                                     <ul class="det_dywxx_ul">
-                                     	 <li>1、借款企业提供足值的抵押物；</li>
-											<li>2、借款企业法人提供个人连带保证；</li>
-											<li>3、北京***企业提供连带保证；</li>
-											<li>4、担保公司及理财范平台将执行严格的贷后管理制度。</li>
-                                     </ul>
+							<div class="prject-guarantee">
+								<dl class="dl1 clearfix">
+									<dt>担保方</dt>
+									<dd><em class="company-logo-sprite" style="background:url(https://dn-licaifan-upload.qbox.me/uploads/admin/e9fb6a4feac008a08ab67dc3dc2244a2.png)"></em><span><a href="/vouch/detail/8" target="_blank">金达融资担保有限责任公司</a></span></dd>
+								</dl>
+								<dl class="dl2 clearfix">
+									<dt style="height:200px;line-height:20px;">保障措施</dt>
+									<dd>
+										<p>1、担保机构提供不可撤销的连带责任担保，对本息100%保障；</p><p>2、担保机构按规定计提30%的担保费作为风险保障金，由理财范与担保公司共同监管；</p><p>3、借款企业提供足值抵押物；</p><p>4、借款企业实际控制人向债权人提供连带保证；</p><p>5、北京***企业提供连带保证。</p><p><br></p>                                    </dd>
+								</dl>
+							</div>
+							<!-- 抵押物信息 -->
+							<h2 class="det_proone_tit" id="DYWXX">信用贷款</h2>
+							<div class="det_dywxx_ul">
+								<span id="DYWZJ"></span> &nbsp;&nbsp;&nbsp;&nbsp;
+								<span id="DYPG"></span>
+							</div>
+							<!-- end 抵押物信息 -->
+							<h2 class="det_proone_tit">风险控制措施</h2>
+							<ul class="det_dywxx_ul">
+								<li>1、借款企业提供足值的抵押物；</li>
+								<li>2、借款企业法人提供个人连带保证；</li>
+								<li>3、北京***企业提供连带保证；</li>
+								<li>4、担保公司及理财范平台将执行严格的贷后管理制度。</li>
+							</ul>
 
-	  	     	   	            </div>
-	  	     	   	            <!-- end fk -->
-	  	     	   	            <div class="det_proone_l" style="display:none;">
-	  	     	   	            	 <h2 class="det_proone_tit">放款通知</h2>
-	  	     	   	            	 <p class="dhgl_p1"><img src="" alt="">融资成功,企业正在还款</p>
-	  	     	   	            	 <h2 class="det_proone_tit">还款概况</h2>
-	  	     	   	            	 <ul  class="dhgl_ul">
-	  	     	   	            	 	 <li>
-	  	     	   	            	 	    <img src="" alt="">
-	  	     	   	            	 	    <span>应付利息</span>
-	  	     	   	            	 	    <span>123213.4元（12期）</span>
-	  	     	   	            	 	 </li>
-	  	     	   	            	 	 <li>
-	  	     	   	            	 	    &nbsp;<img src="" alt="">
-	  	     	   	            	 	    <span>应付利息</span>
-	  	     	   	            	 	    <span>123213.4元（12期）</span>
-	  	     	   	            	 	 </li>
-	  	     	   	            	 	 <li>
-	  	     	   	            	 	    &nbsp;<img src="" alt="">
-	  	     	   	            	 	    <span>应付利息</span>
-	  	     	   	            	 	    <span>123213.4元（12期）</span>
-	  	     	   	            	 	 </li>
-	  	     	   	            	 	 <li>
-	  	     	   	            	 	    <img src="" alt="">
-	  	     	   	            	 	    <span>应付利息</span>
-	  	     	   	            	 	    <span>123213.4元（12期）</span>
-	  	     	   	            	 	 </li>
+						</div>
+						<!-- end fk -->
+						<div class="det_proone_l" style="display:none;">
+							<h2 class="det_proone_tit">放款通知</h2>
+							<p class="dhgl_p1"><img src="" alt="">融资成功,企业正在还款</p>
+							<h2 class="det_proone_tit">还款概况</h2>
+							<ul  class="dhgl_ul">
+								<li>
+									<img src="" alt="">
+									<span>应付利息</span>
+									<span>123213.4元（12期）</span>
+								</li>
+								<li>
+									&nbsp;<img src="" alt="">
+									<span>应付利息</span>
+									<span>123213.4元（12期）</span>
+								</li>
+								<li>
+									&nbsp;<img src="" alt="">
+									<span>应付利息</span>
+									<span>123213.4元（12期）</span>
+								</li>
+								<li>
+									<img src="" alt="">
+									<span>应付利息</span>
+									<span>123213.4元（12期）</span>
+								</li>
 
-	  	     	   	            	 </ul>
-	  	     	   	            	 <h2 class="det_proone_tit">还款明细</h2>
-                                     <div class="pl20 pr20 pt20">
-                                       <table class="dhgl_table">
-	  	     	   	            	 	 <tr style="border-bottom:none;">
-	  	     	   	            	 	 	 <th>还款日期</th>
-	  	     	   	            	 	 	 <th>还款类型</th>
-	  	     	   	            	 	 	 <th>还款金额</th>
-	  	     	   	            	 	 	 <th>还款状态</th>
-	  	     	   	            	 	 </tr>
-	  	     	   	            	 	 <tr>
-	  	     	   	            	 	 	  <td>2015-11</td>
-	  	     	   	            	 	 	  <td>利息</td>
-	  	     	   	            	 	 	  <td>82333.23元</td>
-	  	     	   	            	 	 	  <td>未到期</td>
-	  	     	   	            	 	 </tr>
-	  	     	   	            	 	 <tr>
-	  	     	   	            	 	 	  <td>2015-11</td>
-	  	     	   	            	 	 	  <td>利息</td>
-	  	     	   	            	 	 	  <td>82333.23元</td>
-	  	     	   	            	 	 	  <td>未到期</td>
-	  	     	   	            	 	 </tr>
-	  	     	   	            	 	 <tr>
-	  	     	   	            	 	 	  <td>2015-11</td>
-	  	     	   	            	 	 	  <td>利息</td>
-	  	     	   	            	 	 	  <td>82333.23元</td>
-	  	     	   	            	 	 	  <td>未到期</td>
-	  	     	   	            	 	 </tr>
-	  	     	   	            	 	 <tr>
-	  	     	   	            	 	 	  <td>2015-11</td>
-	  	     	   	            	 	 	  <td>利息</td>
-	  	     	   	            	 	 	  <td>82333.23元</td>
-	  	     	   	            	 	 	  <td>未到期</td>
-	  	     	   	            	 	 </tr>
-	  	     	   	            	 	 <tr>
-	  	     	   	            	 	 	  <td>2015-11</td>
-	  	     	   	            	 	 	  <td>利息</td>
-	  	     	   	            	 	 	  <td>82333.23元</td>
-	  	     	   	            	 	 	  <td>未到期</td>
-	  	     	   	            	 	 </tr>
-	  	     	   	            	 	 <tr>
-	  	     	   	            	 	 	  <td>2015-11</td>
-	  	     	   	            	 	 	  <td>利息</td>
-	  	     	   	            	 	 	  <td>82333.23元</td>
-	  	     	   	            	 	 	  <td>未到期</td>
-	  	     	   	            	 	 </tr>
-	  	     	   	            	   </table>
-	  	     	   	            	 </div>
-	  	     	   	            	 
-	  	     	   	            </div>
-	  	     	   	            <!-- end dhgl -->
-	  	     	   	            <div class="det_proone_l" style="display:none;">
-	  	     	   	            	  <P class="det_tbjl_tit">
+							</ul>
+							<h2 class="det_proone_tit">还款明细</h2>
+							<div class="pl20 pr20 pt20">
+								<table class="dhgl_table">
+									<tr style="border-bottom:none;">
+										<th>还款日期</th>
+										<th>还款类型</th>
+										<th>还款金额</th>
+										<th>还款状态</th>
+									</tr>
+									<tr>
+										<td>2015-11</td>
+										<td>利息</td>
+										<td>82333.23元</td>
+										<td>未到期</td>
+									</tr>
+									<tr>
+										<td>2015-11</td>
+										<td>利息</td>
+										<td>82333.23元</td>
+										<td>未到期</td>
+									</tr>
+									<tr>
+										<td>2015-11</td>
+										<td>利息</td>
+										<td>82333.23元</td>
+										<td>未到期</td>
+									</tr>
+									<tr>
+										<td>2015-11</td>
+										<td>利息</td>
+										<td>82333.23元</td>
+										<td>未到期</td>
+									</tr>
+									<tr>
+										<td>2015-11</td>
+										<td>利息</td>
+										<td>82333.23元</td>
+										<td>未到期</td>
+									</tr>
+									<tr>
+										<td>2015-11</td>
+										<td>利息</td>
+										<td>82333.23元</td>
+										<td>未到期</td>
+									</tr>
+								</table>
+							</div>
+
+						</div>
+						<!-- end dhgl -->
+						<div class="det_proone_l" style="display:none;">
+							<P class="det_tbjl_tit">
 	  	     	   	            	     <span class="mr30"><img src="11112/images/det_tbjl_pic01.png" alt="">
 	  	     	   	            	     目前总金额：<span class="touzijine"></span></span>
-	  	     	   	            	     <span><img src="11112/images/det_tbjl_pic02.png" alt="">
+								<span><img src="11112/images/det_tbjl_pic02.png" alt="">
 	  	     	   	            	     剩余金额：<span class="touzi"></span></span>
-	  	     	   	            	  </P>
-	  	     	   	            	  <table class="det_table" id="TZJL">
-	  	     	   	            	  	  <tr class="det_table_head" style="height:40px;">
-	  	     	   	            	  	  	  <td>投资用户</td>
-	  	     	   	            	  	  	  <td>投资金额</td>
-	  	     	   	            	  	  	  <td class="det_w1160">投资时间</td>
-	  	     	   	            	  	  	  <td>状态</td>
-	  	     	   	            	  	  </tr>
+							</P>
+							<table class="det_table" id="TZJL">
+								<tr class="det_table_head" style="height:40px;">
+									<td>投资用户</td>
+									<td>投资金额</td>
+									<td class="det_w1160">投资时间</td>
+									<td>状态</td>
+								</tr>
 
 
-                                          
-	  	     	   	            	  </table>
-	  	     	   	            </div>
-	  	     	   	            <!-- end tbjl -->
-	  	     	   	           </div> 
-	  	     	   	            <!-- end l -->
 
-	  	     	   	      	    <div class="det_proone_r fl">
-	  	     	   	      	    	   <h3>项目资质审核</h3>
-	  	     	   	      	    	   <ul class="det_proone_rul">
-	  	     	   	      	    	   	   <li class="clearfix">
+							</table>
+						</div>
+						<!-- end tbjl -->
+					</div>
+					<!-- end l -->
+
+					<div class="det_proone_r fl">
+						<h3>项目资质审核</h3>
+						<ul class="det_proone_rul">
+							<li class="clearfix">
 	  	     	   	      	    	   	   	  <span class="fl mr15">
 	  	     	   	      	    	   	   	  	  <img src="11112/images/det_dbh01.png" alt=""><br><br>
 	  	     	   	      	    	   	   	  	  担保函
-	  	     	   	      	    	   	   	  	  
+
 	  	     	   	      	    	   	   	  </span>
-	  	     	   	      	    	   	   	   <span class="fl">
+								<span class="fl">
 	  	     	   	      	    	   	   	  	  <img src="11112/images/det_dbh02.png" alt=""><br><br>
 	  	     	   	      	    	   	   	  	  身份证
-	  	     	   	      	    	   	   	  	 
+
 	  	     	   	      	    	   	   	  </span>
-	  	     	   	      	    	   	   </li>
-	  	     	   	      	    	   	   <li class="clearfix">
+							</li>
+							<li class="clearfix">
 	  	     	   	      	    	   	   	  <span class="fl mr15">
 	  	     	   	      	    	   	   	  	  <img src="11112/images/det_dbh01.png" alt=""><br><br>
 	  	     	   	      	    	   	   	  	  担保函
-	  	     	   	      	    	   	   	  	  
+
 	  	     	   	      	    	   	   	  </span>
-	  	     	   	      	    	   	   	   <span class="fl">
+								<span class="fl">
 	  	     	   	      	    	   	   	  	  <img src="11112/images/det_dbh02.png" alt=""><br><br>
 	  	     	   	      	    	   	   	  	  身份证
-	  	     	   	      	    	   	   	  	 
-	  	     	   	      	    	   	   	  </span>
-	  	     	   	      	    	   	   </li>
-	  	     	   	      	    	   </ul>
-	  	     	   	      	    </div>
-	  	     	   	      	    <!-- end r -->
-	  	     	   	      </div>
-	  	     	   	      <!-- end 项目描述 -->
-	  	     	   	      
-	  	     	   </div>
-	  	     </div>
-	  	     <!-- end block2 -->
 
-	  </div>
+	  	     	   	      	    	   	   	  </span>
+							</li>
+						</ul>
+					</div>
+					<!-- end r -->
+				</div>
+				<!-- end 项目描述 -->
+
+			</div>
+		</div>
+		<!-- end block2 -->
+
+	</div>
 </div>
 <!-- end con -->
 <!-- footer start -->
 <div class="zscf_aboutus_wper">
-	  <div class="zscf_aboutus px1000 clearfix">
-	  	    <div class="zscf_aboutus_l fl">
-	  	    	   <ul class="zscf_aboutus_lul clearfix">
-	  	    	   	  <li class="pt10"><a href="#"><img src="images/app.png" alt=""></a>
-	  	    	   	  </li>
-	  	    	   	  <li>
-	  	    	   	  <p class="pb20">服务热线</p>
-	  	    	   	  <strong>400-027-0101</strong>
-	  	    	   	  </li>
-	  	    	   	  <li>
-	  	    	   	  	  <p class="pb10 linkpic">
-	  	    	   	  	     <a href="#"><img src="images/ft_sina.png" alt=""></a>
-	  	    	   	  	     <a href="#"><img src="images/ft_weixin.png" alt=""></a>
-	  	    	   	  	     <a href="#"><img src="images/ft_erji.png" alt=""></a>
-	  	    	   	  	  </p>
-	  	    	   	  	  <p><a href="#">kefu@zhongxincaifu.com</a></p>
-	  	    	   	  </li>
-	  	    	   </ul>
-	  	    </div>
-	  	    <!-- end left -->
-	  	    <div class="zscf_aboutus_r fl clearfix">
-	  	    	 <a href="#" class="fl ft_ewm"><img src="images/ft_erweima.png" alt=""></a>
-	  	    	 <ul class="fl clearfix">
-	  	    	 	<li><a href="#">联系我们</a></li>
-	  	    	 	<li><a href="#">我要融资</a></li>
-	  	    	 	<li><a href="problem.html">帮助中心</a></li>
-	  	    	 	<li><a href="#">友情链接</a></li>
-	  	    	 	<li><a href="#">招贤纳士</a></li>
-	  	    	 	<li><a href="http://www.yinqiao.com/aboutus/scafina.html">收益计算器</a></li>
-	  	    	 </ul>
-	  	    </div>
-	  	    <!-- end right -->
+	<div class="zscf_aboutus px1000 clearfix">
+		<div class="zscf_aboutus_l fl">
+			<ul class="zscf_aboutus_lul clearfix">
+				<li class="pt10"><a href="#"><img src="images/app.png" alt=""></a>
+				</li>
+				<li>
+					<p class="pb20">服务热线</p>
+					<strong>400-027-0101</strong>
+				</li>
+				<li>
+					<p class="pb10 linkpic">
+						<a href="#"><img src="images/ft_sina.png" alt=""></a>
+						<a href="#"><img src="images/ft_weixin.png" alt=""></a>
+						<a href="#"><img src="images/ft_erji.png" alt=""></a>
+					</p>
+					<p><a href="#">kefu@zhongxincaifu.com</a></p>
+				</li>
+			</ul>
+		</div>
+		<!-- end left -->
+		<div class="zscf_aboutus_r fl clearfix">
+			<a href="#" class="fl ft_ewm"><img src="images/ft_erweima.png" alt=""></a>
+			<ul class="fl clearfix">
+				<li><a href="#">联系我们</a></li>
+				<li><a href="#">我要融资</a></li>
+				<li><a href="problem.html">帮助中心</a></li>
+				<li><a href="#">友情链接</a></li>
+				<li><a href="#">招贤纳士</a></li>
+				<li><a href="http://www.yinqiao.com/aboutus/scafina.html">收益计算器</a></li>
+			</ul>
+		</div>
+		<!-- end right -->
 
-	  </div>
+	</div>
 </div>
 
 <div class="zscf_bottom_wper">
 	<div class="zscf_bottom px1000 clearfix">
-		  <p class="fl">© 2014 zhongxincaifu &nbsp;  &nbsp;&nbsp;   中兴财富金融信息服务股份有限公司 &nbsp;&nbsp;&nbsp;    来源:<a href="http://www.mycodes.net/" target="_blank">源码之家</a></p>
-		  <p class="fr">
-		    <a href="#"><img src="images/360.png" alt=""></a>
-		    <a href="#"><img src="images/kexin.png" alt=""></a>
-		    <a href="#"><img src="images/norton.png" alt=""></a>
-		  </p>
+		<p class="fl">© 2014 zhongxincaifu &nbsp;  &nbsp;&nbsp;   中兴财富金融信息服务股份有限公司 &nbsp;&nbsp;&nbsp;    来源:<a href="http://www.mycodes.net/" target="_blank">源码之家</a></p>
+		<p class="fr">
+			<a href="#"><img src="images/360.png" alt=""></a>
+			<a href="#"><img src="images/kexin.png" alt=""></a>
+			<a href="#"><img src="images/norton.png" alt=""></a>
+		</p>
 	</div>
 </div>
 <!-- footer end -->
@@ -451,9 +451,9 @@
 <script>
 
     //layui监听
-    layui.use('layer', function(){
+   /* layui.use('layer', function(){
         var layer = layui.layer;
-    });
+    });*/
 
     $(function () {
 
@@ -463,21 +463,141 @@
         //查询是否投资过  默认隐藏
         $(".one").hide();
         $(".two").hide();
-
+		var xinxi = false;
         $.ajax({
             type: "post",
             url: "/p2p/investmentVerify",
             dataType: "json",
             data: {loansId:loansId},
             success: function (data) {
-				//alert(data.earnings.AVAILMONEY)
-				$("#ZHJE").html(data.earnings.AVAILMONEY);
-                //判断如果查询到已投资  则显示已投资  按钮失效
-                if(data.verify!=null){
-                    $(".one").show();
-                    $(".financing").hide();
+                if(data!=null){
+                    //alert(data.earnings.AVAILMONEY)
+                    $("#ZHJE").html(data.earnings.AVAILMONEY);
+                    //判断如果查询到已投资  则显示已投资  按钮失效
+                    if(data.verify!=null){
+                        $(".one").show();
+                        $(".financing").hide();
+                    }
+				}
+
+                if(data.earnings.CERTIFICATION==2){
+                    xinxi=true;
                 }
-                if(data.earnings.CERTIFICATION==0){
+            }
+        })
+
+        //获取投资信息和投资人信息 放到页面
+        getInvest(loansId,username); //初始化加载
+
+
+
+        var conf = false;
+        var falt = false;
+        var zh   = false;
+        $(".detail_intro_r").on("click",".financing",function() {
+            var financing = Number($("#financing").val()); //输入框输入金额
+            var money = Number($("#money").html())*10000;    //总贷款金额
+            var ratio = Number($("#ratio").html());     //获取利率
+            var investmentamount = Number($(".touzijine").html()); <!--投资总金额-->
+            var ZHJE = Number($("#ZHJE").html());
+            if(username!=null&&username!='') {  //判断是否登陆
+				if(xinxi){
+					if (financing != null && financing != 0) {
+						var patrn = /^[0-9]*$/; //正则 必须为数字
+						if (money < financing) {   //校验
+							falt = false;
+						} else {
+							falt = true;
+							if (patrn.test(financing)) {
+								falt = true;
+							} else {
+								falt = false;
+							}
+						}
+
+						if (confirm("你确定投资吗")) {
+							conf = true;
+							// 判断投资不能少于1000元  投资为1000的倍数
+							if (financing >= 1000 && (financing % 1000) == 0) {
+								if ((investmentamount + financing) > money) { //当前输入贷款金额 + 总投资金额  不能大于 总金额
+									falt = false;
+								}
+							} else {
+								falt = false;
+							}
+						} else {
+							conf = false;
+						}
+
+						if (ZHJE >= financing) {
+							zh = true;
+						}
+
+						/*  var param = {  //拼JSON值
+						  "userId":userId ,
+						  "loansId":loansId,
+						  "investmentMoney":financing,  //输入框输入金额
+						  "interestrate": ratio,		//获取利率
+						  "investmentamount":investmentamount,   //投资总金额
+						  "loansmoney":money     //总贷款金额
+					  }*/
+						if (falt) {  //判断投资金额不得有误
+							if (conf) {  //判断是否确认投资
+								if (zh) {
+									layer.open({
+										type: 2,
+										title: '支付密码界面',
+										shadeClose: true,
+										shade: 0.8,
+										anim: 2,
+										area: ['600px', '360px'],
+										content: '/p2p/investmentPassword?loansId=' + loansId + "&userName=" + username //iframe的url
+									});
+									/* $.ajax({
+								type: "post",
+								url: "/p2p/investmentAmount",
+								contentType: 'application/json; charset=UTF-8',
+								dataType: "json",
+								data: JSON.stringify(param),
+								success: function (data) {
+									if(data!=null&&data!=""){
+										if(Number(data)>0){
+											alert("投资成功,可以到个人账户查询");
+											getInvest(loansId,username); //获取投资信息和投资人信息 放到页面 调用刷新页面
+											$(".financing").hide();  // 隐藏投资按钮
+											$(".one").show();	    //显示已投资按钮
+											$("#financing").val("");
+										}else {
+											$(".det_shouyi").html("投资失败");
+											$(".det_shouyi").css("color","red");
+										}
+									}
+								}
+							})*/
+								} else {
+									sweetAlert("账户资金不足！", "请及时充值！", "info");
+									$("#shouyi").html("");
+									$(".det_shouyi").html("");
+								}
+							} else {
+								$("#shouyi").html("");
+								$(".det_shouyi").html("投资有风险，投资需谨慎。");
+							}
+						} else {
+							falt = false;
+							$("#financing").val("");
+							$("#shouyi").html("");
+							$(".det_shouyi").html("金额输入有误！");
+							$(".det_shouyi").css("color", "red");
+
+						}
+					} else {
+						falt = false;
+						$("#shouyi").html("");
+						$(".det_shouyi").html("请输入您要投资的金额");
+						$(".det_shouyi").css("color", "red");
+					}
+                }else {
                     sweetAlert({
                         title: "提示信息",
                         text: "基本信息未完善，请前往账户中心补全信息，5秒后自动跳转到账户中心",
@@ -488,127 +608,25 @@
                         location.href = "/p2p/toGeRenZhongXinShouYe";
                     });
 				}
-            }
-        })
-
-		//获取投资信息和投资人信息 放到页面
-        getInvest(loansId,username); //初始化加载
-
-
-
-        var conf = false;
-		var falt = false;
-		var zh   = false;
-		$(".detail_intro_r").on("click",".financing",function() {
-			var financing = Number($("#financing").val()); //输入框输入金额
-            var money = Number($("#money").html())*10000;    //总贷款金额
-            var ratio = Number($("#ratio").html());     //获取利率
-			var investmentamount = Number($(".touzijine").html()); <!--投资总金额-->
-			var ZHJE = Number($("#ZHJE").html());
-            if(financing!=null&&financing!=0){
-                var patrn = /^[0-9]*$/; //正则 必须为数字
-                if(money<financing){   //校验
-                    falt=false;
-				}else {
-                    falt=true;
-                    if(patrn.test(financing)){
-                        falt=true;
-                    }else{
-                        falt=false;
-                    }
-				}
-
-				if(confirm("你确定投资吗")){
-                    conf=true;
-                    // 判断投资不能少于1000元  投资为1000的倍数
-                    if(financing>=1000&&(financing%1000)==0){
-                       if((investmentamount+financing)>money){ //当前输入贷款金额 + 总投资金额  不能大于 总金额
-                           falt=false;
-					   }
-					}else {
-                        falt=false;
-					}
-				}else {
-                    conf=false;
-				}
-
-				if(ZHJE>=financing){
-                    zh=true;
-				}
-
-              /*  var param = {  //拼JSON值
-                    "userId":userId ,
-                    "loansId":loansId,
-                    "investmentMoney":financing,  //输入框输入金额
-                    "interestrate": ratio,		//获取利率
-					"investmentamount":investmentamount,   //投资总金额
-					"loansmoney":money     //总贷款金额
-                }*/
-				if(falt){  //判断投资金额不得有误
-				    if(conf){  //判断是否确认投资
-						if(zh) {
-                            layer.open({
-                                type: 2,
-                                title: '支付密码界面',
-                                shadeClose: true,
-                                shade: 0.8,
-                                anim: 2,
-                                area: ['600px', '360px'],
-                                content: '/p2p/investmentPassword?loansId=' + loansId + "&userName=" + username //iframe的url
-                            });
-                            /* $.ajax({
-                            type: "post",
-                            url: "/p2p/investmentAmount",
-                            contentType: 'application/json; charset=UTF-8',
-                            dataType: "json",
-                            data: JSON.stringify(param),
-                            success: function (data) {
-                                if(data!=null&&data!=""){
-									if(Number(data)>0){
-										alert("投资成功,可以到个人账户查询");
-                                        getInvest(loansId,username); //获取投资信息和投资人信息 放到页面 调用刷新页面
-                                        $(".financing").hide();  // 隐藏投资按钮
-                                        $(".one").show();	    //显示已投资按钮
-                                        $("#financing").val("");
-									}else {
-										$(".det_shouyi").html("投资失败");
-										$(".det_shouyi").css("color","red");
-									}
-                                }
-                            }
-                        })*/
-                        }else {
-                            sweetAlert("账户资金不足！","请及时充值！", "info");
-                            $("#shouyi").html("");
-                            $(".det_shouyi").html("");
-						}
-					}else {
-                        $("#shouyi").html("");
-                        $(".det_shouyi").html("投资有风险，投资需谨慎。");
-                    }
-				}else {
-                    falt = false;
-                    $("#financing").val("");
-                    $("#shouyi").html("");
-                    $(".det_shouyi").html("金额输入有误！");
-					$(".det_shouyi").css("color","red");
-
-				}
-			}else {
-                falt = false;
-                $("#shouyi").html("");
-                $(".det_shouyi").html("请输入您要投资的金额");
-                $(".det_shouyi").css("color","red");
-            }
-
-        })
+            }else {
+                sweetAlert({
+                    title: "提示信息",
+                    text: "未登录账户，请前往登陆后再查询详情，5秒后自动跳转到登陆页面",
+                    timer: 5000,
+                    type: "error",
+                    showConfirmButton: false
+                }, function () {
+                    location.href = "/p2p/toLogin";
+                });
+			}
+        });
 
 
         $("#financing").focus(function(){
             $(".det_shouyi").css("color","#000");
-			$(".det_shouyi").html("每投资1万元收益");
+            $(".det_shouyi").html("每投资1万元收益");
             $("#shouyi").html($("#shouyi1").html());
-		})
+        });
 
 
         $.ajax({
@@ -617,25 +635,27 @@
             dataType: "json",
             data: {loansId:loansId},
             success: function (data) {
-				if(data!=null&&data!=''){
+                var i ='';
+                if(data!=null&&data!=''){
                     var str = "";
-                    for (var i = 0; i < data.length; i++) {
+                    for (i = 0; i < data.length; i++) {
                         str +="<tr>"+
-							    "<td>"+(data[i].USERNAME.substr(0,1)+"****")+"</td>"+
-                            	"<td>"+data[i].INVESTMENTMONEY+"</td>"+
-                            	"<td>"+data[i].INVESTMENTDATE+"</td>"+
-							 	"<td>"+'手动投标'+"</td>"+
-                              "</tr>"
+                            "<td>"+(data[i].USERNAME.substr(0,1)+"****")+"</td>"+
+                            "<td>"+data[i].INVESTMENTMONEY+"</td>"+
+                            "<td>"+data[i].INVESTMENTDATE+"</td>"+
+                            "<td>"+'手动投标'+"</td>"+
+                            "</tr>";
                     }
                     $("#TZJL").append(str);
-				}
+                }
+                $("#JL").html(i==''?0:i); //获取投资条数
             }
         })
 
 
-    })
+    });
 
-	//获取投资信息和投资人信息 放到页面
+    //获取投资信息和投资人信息 放到页面
     function getInvest(loansId,username){
         $.ajax({
             type: "post",
@@ -659,7 +679,7 @@
                         $(".touzi").html(data.LOANSMONEY - data.INVESTMENTAMOUNT);      //贷款剩余金额
                         $("#shouyi").html(Math.floor(money * data.REFUNDDEADLINE * (data.LOANSINTERESTRATE / 100) / 12));  //算出投资10000的收益  本金*期数*利率/12
                         $("#shouyi1").html(Math.floor(money * data.REFUNDDEADLINE * (data.LOANSINTERESTRATE / 100) / 12));
-						$(".touzijine").html(data.INVESTMENTAMOUNT);  //投资金额
+                        $(".touzijine").html(data.INVESTMENTAMOUNT);  //投资金额
                         $("#JKRname").html(data.USERNAME.slice(0,1)+"先生");      // 借款人姓名
                         $("#DZ").html(data.SITE.slice(0,3)+"*****");   //地址
                         $("#SJH").html(data.USERPHONE.slice(0,3)+"***********"); // 手机号
@@ -677,34 +697,34 @@
                             $("#DKMC").html(data.USERNAME.slice(0,1)+"先生"+"发起的房屋抵押贷款");
                         }
 
-                  			if(Number(data.LOANSTYPE)!=3){
+                        if(Number(data.LOANSTYPE)!=3){
 
-                                $("#DYWXX").html("抵押物信息");
-                                $("#DYWZP").attr("src",Ipath);
+                            $("#DYWXX").html("抵押物信息");
+                            $("#DYWZP").attr("src",Ipath);
+                            var pre="/p2p/showFtp?fileName=";
+                            var Ipath=pre+data.APPRAISALREPORT;
+                            $("#DYPG").html("评估证明:<img  src=\""+Ipath+"\" height=\"100px;\" width=\"100px;\" >");
+
+                            if(Number(data.LOANSTYPE)==2){
                                 var pre="/p2p/showFtp?fileName=";
-                                var Ipath=pre+data.APPRAISALREPORT;
-                                $("#DYPG").html("评估证明:<img  src=\""+Ipath+"\" height=\"100px;\" width=\"100px;\" >");
+                                //将请求回调回来的图片名称和ftp请求图片方法拼接一起赋给图片的src属性
+                                var Ipath=pre+data.CARINFORMATION;
+                                $("#DYWZJ").html("抵押物证件:<img  src=\""+Ipath+"\" height=\"100px;\" width=\"100px;\" >");
+                            }else if(Number(data.LOANSTYPE)==1){
+                                var pre="/p2p/showFtp?fileName=";
+                                var Ipath=pre+data.HOUSEPROPERTY;
+                                $("#DYWZJ").html("抵押物证件:<img  src=\""+Ipath+"\" height=\"100px;\" width=\"100px;\" >");
+                            }
 
-                                if(Number(data.LOANSTYPE)==2){
-                                    var pre="/p2p/showFtp?fileName=";
-                                    //将请求回调回来的图片名称和ftp请求图片方法拼接一起赋给图片的src属性
-                                    var Ipath=pre+data.CARINFORMATION;
-                                    $("#DYWZJ").html("抵押物证件:<img  src=\""+Ipath+"\" height=\"100px;\" width=\"100px;\" >");
-                                }else if(Number(data.LOANSTYPE)==1){
-                                    var pre="/p2p/showFtp?fileName=";
-                                    var Ipath=pre+data.HOUSEPROPERTY;
-                                    $("#DYWZJ").html("抵押物证件:<img  src=\""+Ipath+"\" height=\"100px;\" width=\"100px;\" >");
-								}
+                        }
 
-							}
-
-						//判断是否满标
-						if(data.TONAME==username){
+                        //判断是否满标
+                        if(data.TONAME==username){
                             $(".financing").hide();
                             $(".one").show();
                             $(".one").html("立即投资");
                             $(".one").css("background","gray");
-						}else if(Number(data.LOANSMONEY) - Number(data.INVESTMENTAMOUNT)==0){
+                        }else if(Number(data.LOANSMONEY) - Number(data.INVESTMENTAMOUNT)==0){
                             $(".financing").hide();
                             $(".one").show();
                             $(".one").html("满标");
@@ -714,10 +734,10 @@
                     }
                 }
             }
-        })
+        });
     }
 
-	//获取地址url方法
+    //获取地址url方法
     function GetQueryString(name)
     {
         var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");

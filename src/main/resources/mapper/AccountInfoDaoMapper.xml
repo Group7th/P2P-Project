@@ -5,7 +5,7 @@
 <mapper namespace="com.group7.dao.AccountInfoDao">
     <!--&lt;!&ndash;配置文件加这个Redis&ndash;&gt;-->
     <!--<cache type="org.mybatis.caches.redis.RedisCache" blocking="false"-->
-           <!--flushInterval="0" readOnly="true" size="1024" eviction="FIFO"/>-->
+    <!--flushInterval="0" readOnly="true" size="1024" eviction="FIFO"/>-->
     <!--获取用户账号所有信息-->
     <select id="accountInfo" resultType="map" parameterType="java.lang.String">
         select * from tb_useraccount where useraccountid =
@@ -41,7 +41,7 @@
         update tb_userinformation set USERPHONE=#{phone} where USERINFORMATIONID=#{userinformationid}
     </update>
 
-    <!--更换用户密码-->
+    <!--更换用户登录密码-->
     <update id="changePwd" parameterType="map">
         update tb_user set PASSWORD=#{password} where USERNAME=#{userName}
     </update>
@@ -51,9 +51,9 @@
         update tb_useraccount set FRONTIMG=#{frontImgName},BEHINDIMG =#{behindImgName} where userinformationid=#{userinformationid}
     </update>
 
-    <!--插入姓名、用户性别、身份证和家庭地址-->
+    <!--插入姓名、用户性别、身份证、家庭地址、学历、婚姻和收入情况-->
     <update id="addIdCardNum">
-        update tb_userinformation set name=#{realName},usersex=#{sex},identitycard=#{idNum},site=#{address} where userinformationid = #{userinformationid}
+        update tb_userinformation set name=#{realName},usersex=#{sex},identitycard=#{idNum},site=#{address},education=#{education},marriage=#{marriage},basicIncome=#{basicIncome},birthday=to_date(#{birthday},'yyyy-mm-dd'),sbttime=sysdate where userinformationid = #{userinformationid}
     </update>
 
     <!--插入银行卡号-->
@@ -63,12 +63,12 @@
 
     <!--验证通过后更新状态码-->
     <update id="changeState" parameterType="map">
-         update tb_useraccount set CERTIFICATION=1 where userinformationid=#{userinformationid}
+        update tb_useraccount set CERTIFICATION=#{certification} where userinformationid=#{userinformationid}
     </update>
 
     <!--查询身份认证的状态-->
     <select id="getState" resultType="int" parameterType="int">
-          select CERTIFICATION from tb_useraccount where userinformationid=#{userinformationid}
+        select CERTIFICATION from tb_useraccount where userinformationid=#{userinformationid}
     </select>
 
     <!--根据userAccountId查找userInformationId-->
@@ -95,7 +95,7 @@
     <insert id="addChargeRecord" parameterType="map">
         insert into tb_moneyrecord values(seq_tb_moneyrecord_id.nextval,sysdate,'充值',#{watercoursemoney},'银行卡',#{userid},#{balance})
     </insert>
-    
+
     <!--提现记录到资金记录表-->
     <insert id="withdrawRecord" parameterType="map">
         insert into tb_moneyrecord values(seq_tb_moneyrecord_id.nextval,sysdate,'提现',#{watercoursemoney},'银行卡',#{userid},#{balance})
@@ -105,4 +105,35 @@
     <update id="addFeeToPool" parameterType="double">
         update tb_money set money=money+#{costMoney}
     </update>
+
+    <!--更换支付密码-->
+    <update id="changePayPwd">
+        update tb_userinformation set paypassword = #{newPayPwd} where userinformationid = #{userinformationid}
+    </update>
+
+    <!--获取用户支付密码-->
+    <select id="getPayPwd" parameterType="int" resultType="String">
+        select paypassword from tb_userinformation where userinformationid = #{userinformationid}
+    </select>
+
+    <!--后台身份审核分页-->
+    <select id="identityAudit" resultType="map">
+        select * from
+        (select rownum rn, c.* from
+        (select a.BANKCARDNUMBERS,a.BASICINCOME,to_char(a.BIRTHDAY,'yyyy-mm-dd') as BIRTHDAY,a.EDUCATION,a.EMAIL,a.HEADPORTRAIT,a.IDENTITYCARD,a.MARRIAGE,a.NAME,a.PAYPASSWORD,to_char(a.SBTTIME,'yyyy-mm-dd HH24:mi:ss') as SBTTIME,a.SITE,a.STATE,a.USERID,a.USERINFORMATIONID,a.USERPHONE,a.USERSEX,b.certification,b.frontimg,b.behindimg from TB_USERINFORMATION a join tb_useraccount b
+        on a.userinformationid = b.userinformationid and b.certification = 1) c
+        where rownum &lt; #{end} ) d
+        where d.rn &gt; #{start}
+    </select>
+
+    <!--后台身份审核总数量-->
+    <select id="identityAuditSum" resultType="int">
+        select count(*) from TB_USERINFORMATION a join tb_useraccount b on a.userinformationid = b.userinformationid and b.certification = 1
+    </select>
+
+    <!--将审核状态添加到系统消息中-->
+    <insert id="addSysMsg" parameterType="map">
+        insert into tb_message (messagetype,messageContent,sendtime,messageid,userid) values(#{messagetype},#{messageContent},sysdate,seq_tb_message_id.nextval,#{userid})
+    </insert>
+
 </mapper>

@@ -89,7 +89,7 @@ public interface RecordInfoDao {
      * @return
      */
     @Select({"<script>"
-            +"select *from "
+            +"select * from "
             +"(select rownum rn, t.* from "
             +"(select a.*,b.loanstypename,c.loansstate  from tb_investment a join tb_loanstype b on a.loansid = b.loansid  join tb_loans c on c.loansid = a.loansid "
             +"where a.userId = #{userid} and a.loansId in (select loansId from tb_loans where loansstate = #{loansstate}) )  t "

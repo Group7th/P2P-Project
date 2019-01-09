@@ -14,7 +14,7 @@ import java.util.Map;
 
 /**
  * className:IoansAccomplishAuditController
- * discriptoin: 满表审核表
+ * discriptoin: 满表审核表 和 审核记录表
  * author:ZHEN
  * createTime:2018-12-08 15:12
  */
@@ -36,7 +36,7 @@ public class IoansAccomplishAuditController {
         Map tempMap = new HashMap();
         tempMap.put("page",ioansService.getList(map));
         tempMap.put("total",ioansService.getPageCount(map));
-        System.out.println(tempMap);
+        //System.out.println(tempMap);
         return tempMap;
     }
 
@@ -52,20 +52,20 @@ public class IoansAccomplishAuditController {
         Map tempMap = new HashMap();
         tempMap.put("page",ioansService.getFailureLoans(map));
         tempMap.put("total",ioansService.getFailureLoansCount(map));
-        System.out.println(tempMap);
+        // System.out.println(tempMap);
         return tempMap;
     }
 
     /**
-     * 贷款(满标)审核
+     * 贷款(满标/流标)审核
      * @return
      */
     @ResponseBody
     @RequestMapping("/loanReview")
     public  Object loanReview(@RequestBody Map map){
-        System.out.println(map);
+        //System.out.println(map);
         int  i =ioansService.loanReview(map);
-        System.out.println(i+"...................");
+        // System.out.println(i+"...................");
         return i;
     }
 
@@ -83,5 +83,30 @@ public class IoansAccomplishAuditController {
         return maps;
     }
 
+    /**
+     * 审核记录表 跳转页面方法
+     * @return
+     */
+    @RequestMapping("toLoansRecord")
+    public Object toIoansRecord(){
+        return "backStage/IoansRecord";
+    }
+
+
+    /**
+     * 查询贷款审核记录
+     * @param map
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("loansRecord")
+    public Object loansRecord(@RequestBody Map map){
+        System.out.println(map);
+        Map tempMap = new HashMap();
+        tempMap.put("page",ioansService.loansRecord(map));
+        tempMap.put("total",ioansService.getLoansRecordCount(map));
+        System.out.println(tempMap);
+        return tempMap;
+    }
 
 }

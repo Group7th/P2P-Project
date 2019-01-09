@@ -2,7 +2,7 @@
 <html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>满标审核</title>
+    <title>贷款审核记录</title>
     <!-- 引入样式 -->
     <script type="text/javascript" src="/p2p/js/vue.js"></script>
     <script type="text/javascript" src="/p2p/js/axios.min.js"></script>
@@ -29,7 +29,7 @@
 </head>
 <body>
 <div id="app">
-    <p v-bind:class="{c2:isShowA}"><span><img src="/p2p/images/block_pic02.png" height="22" width="22"/></span>&nbsp;&nbsp;&nbsp;&nbsp;满标审核
+    <p v-bind:class="{c2:isShowA}"><span><img src="/p2p/images/block_pic02.png" height="22" width="22"/></span>&nbsp;&nbsp;&nbsp;&nbsp;贷款审核记录
     </p>
 </div>
 <div id="tableView">
@@ -43,11 +43,11 @@
                 <el-input v-model="searchForm.userName" placeholder="贷款人姓名"></el-input>
             </el-form-item>
             <el-form-item>
-                <el-select v-model="searchForm.loansType" placeholder="贷款类型">
-                    <el-option label="全部贷款" value="0"></el-option>
-                    <el-option label="房产抵押贷款" value="1"></el-option>
-                    <el-option label="车辆抵押贷款" value="2"></el-option>
-                    <el-option label="信用贷款" value="3"></el-option>
+                <el-select v-model="searchForm.auditStype" placeholder="审核类型">
+                    <el-option label="全部审核记录" value="0"></el-option>
+                    <el-option label="招标审核记录" value="1"></el-option>
+                    <el-option label="满标审核记录" value="2"></el-option>
+                    <el-option label="流标审核记录" value="3"></el-option>
                 </el-select>
             </el-form-item>
             <el-form-item>
@@ -83,16 +83,6 @@
                     width="200">
             </el-table-column>
             <el-table-column
-                    prop="LOANSINTERESTRATE"
-                    label="贷款利率(%)"
-                    width="120">
-            </el-table-column>
-            <el-table-column
-                    prop="REFUNDDEADLINE"
-                    label="还款期限(月)"
-                    width="150">
-            </el-table-column>
-            <el-table-column
                     label="贷款类型"
                     width="150">
                 <template slot-scope="scope">
@@ -110,11 +100,24 @@
                     width="150">
             </el-table-column>
             <el-table-column
-                    label="贷款状态"
-                    width="120">
+                label="贷款状态"
+                width="120">
                 <template slot-scope="scope">
-                    <el-tag type="danger">{{scope.row.LOANSSTATE | formatState}}</el-tag>
+                    <el-tag :type="scope.row.AUDITSTYPE | formatFilter">{{scope.row.AUDITSTYPE | formatState}}</el-tag>
                 </template>
+            </el-table-column>
+
+            <el-table-column
+                label="审核状态"
+                width="120">
+                <template slot-scope="scope">
+                    <el-tag :type="scope.row.AUDITSTATE | auditFilter">{{scope.row.AUDITSTATE | auditState}}</el-tag>
+                </template>
+            </el-table-column>
+            <el-table-column
+                    prop="TIME"
+                    label="审核时间"
+                    width="200">
             </el-table-column>
             <el-table-column
                     label="操作">
@@ -276,7 +279,7 @@
             searchForm: {
                 loansId: '',
                 userName: '',
-                loansType: '',
+                auditStype: '',
             },
             //当前页
             currentPage: 1,
@@ -300,6 +303,7 @@
                 REFUNDDEADLINE: '',
                 BEGINTIME: '',
                 LOANSTYPE: '',
+                AUDITSTYPE:'',
                 LOANSUSED: '',
                 UP: '',
                 CARD: '',
@@ -320,7 +324,7 @@
             var self = this;
             var start = (this.currentPage - 1) * this.pageSize;
             var end = this.currentPage * this.pageSize + 1;
-            axios.post('/p2p/IoansAccomplishAudit', {'start': start, 'end': end}).then(function (response) {
+            axios.post('/p2p/loansRecord', {'start': start, 'end': end}).then(function (response) {
                 self.total = response.data.total;
                 //alert(JSON.stringify(response.data.page));
                 self.tableData = response.data.page;
@@ -329,13 +333,13 @@
         },
         filters: {
             // el-tag类型转换
+
             statusFilter: function (status) {
                 const statusMap = {
                     1: 'success', 2: 'warning', 3: 'info', 4: 'danger'
-                }
+                };
                 return statusMap[status]
             },
-
             // 状态显示转换
             formatStata: function (status) {
                 const statusMap = {
@@ -343,14 +347,33 @@
                 };
                 return statusMap[status]
             },
+            formatFilter: function (status) {
+                const statusMap = {
+                    1: 'success',3: 'danger'
+                };
+                return statusMap[status]
+            },
             formatState: function (status) {
                 const statusMap = {
-                    2: '满标'
+                    1: '招标',2: '满标',3: '流标'
+                };
+                return statusMap[status]
+            },
+            auditFilter: function (status) {
+                const statusMap = {
+                    1: 'success', 2: 'warning',3: 'danger'
+                };
+                return statusMap[status]
+            },
+            auditState: function (status) {
+                const statusMap = {
+                    1: '通过',2: '驳回',3: '确认流标'
                 };
                 return statusMap[status]
             }
         },
         methods: {
+
             loadingData: function () {
                 var _self = this;
                 _self.loading = true;
@@ -362,10 +385,10 @@
                     'end': end,
                     'loansId': this.searchForm.loansId,
                     'userName': this.searchForm.userName,
-                    'loansType': this.searchForm.loansType
+                    'auditStype': this.searchForm.auditStype
                 };
                 //alert(JSON.stringify(searchForm));
-                axios.post('/p2p/IoansAccomplishAudit', searchForm).then(function (response) {
+                axios.post('/p2p/loansRecord', searchForm).then(function (response) {
                     _self.total = response.data.total;
                     _self.tableData = response.data.page;
                 });
@@ -411,83 +434,6 @@
                 this.currentPage = val;
                 this.loadingData();//重新加载数据
             },
-            //通过
-            Submit: function () {
-                this.$confirm('此操作将通过招标审核, 是否继续?', '提示', {
-                    confirmButtonText: '确定',
-                    cancelButtonText: '取消',
-                    type: 'warning'
-                }).then(() => {
-                    this.pass();
-            }).catch(() => {
-                    this.$message({
-                    type: 'info',
-                    message: '已取消操作!'
-                });
-            });
-            },
-            //驳回
-            reject: function () {
-                if (this.editForm.REASON == '') {
-                    sweetAlert("没有检测到驳回理由！","请输入驳回理由！", "info");
-                } else {
-                    this.$confirm('此操作将驳回招标审核, 是否继续?', '提示', {
-                        confirmButtonText: '确定',
-                        cancelButtonText: '取消',
-                        type: 'warning'
-                    }).then(() => {
-                        this.rejectA();
-                }).catch(() => {
-                        this.$message({
-                        type: 'info',
-                        message: '已取消操作!'
-                    });
-                });
-                }
-            },
-            /**
-             * 通过提交方法
-             */
-            pass: function () {
-                var editForm = {
-                    't_loansid': this.editForm.LOANSID,
-                    'state':1                    //状态  1 为通过
-                };
-                axios.post('/p2p/loanReview', editForm).then(function (response) {
-                    alert(response.data)
-                    if(response.data==1){
-                        sweetAlert("操作成功！","贷款已经通过！", "success");
-                    }else{
-                        sweetAlert("操作失败！","系统异常！请联系客服人员，进行查看", "info");
-                    }
-                    setTimeout(function () {
-                        location.href = location.href
-                    }, 3000);
-                });
-
-            },
-            /**
-             * 驳回 存入驳回理由
-             */
-            rejectA: function () {
-                var editForm = {
-                    't_loansid': this.editForm.LOANSID,  //贷款ID
-                    'state':2,                      //状态  2 为驳回
-                    'bohui': this.editForm.REASON    //驳回理由
-                };
-                axios.post('/p2p/loanReview', editForm).then(function (response) {
-                    alert(response.data)
-                    // sweetAlert("操作成功！","贷款已经驳回！", "success");
-                    if(response.data==0){
-                        sweetAlert("操作成功！","贷款已经驳回！", "success");
-                    }else{
-                        sweetAlert("操作失败！","系统异常！请联系客服人员，进行查看", "info");
-                    }
-                    setTimeout(function () {
-                        location.href = location.href
-                    }, 3000);
-                });
-            }
 
         }
     });

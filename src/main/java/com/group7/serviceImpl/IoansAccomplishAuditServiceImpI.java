@@ -40,11 +40,31 @@ public class IoansAccomplishAuditServiceImpI implements IoansAccomplishAuditServ
         return ioansDao.getFailureLoansCount(map);
     }
 
+    /**
+     * 存储过程调用
+     * @param map
+     * @return
+     */
     @Override
     public int loanReview(Map map) {
         ioansDao.loanReview(map);
         //System.out.println(map.get("refundinfo")+"----");
-       //System.out.println(Integer.valueOf(""+map.get("REFUNDINFO")));
+        //System.out.println(Integer.valueOf(""+map.get("REFUNDINFO")));
         return Integer.valueOf(""+map.get("refundinfo"));
+    }
+
+    @Override
+    public List<Map> InvestmentRecord(Map map) {
+        return ioansDao.InvestmentRecord(map);
+    }
+
+    @Override
+    public List<Map> loansRecord(Map map) {
+        return ioansDao.loansRecord(map);
+    }
+
+    @Override
+    public int getLoansRecordCount(Map map) {
+        return ioansDao.getLoansRecordCount(map);
     }
 }

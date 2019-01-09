@@ -86,4 +86,24 @@ public class LoanAuditServiceImpl implements LoanAuditService{
 	public int rejectReson(Integer LOANSID) {
 		return loanAuditDao.rejectReson(LOANSID);
 	}
+
+	/**
+	 * 通过存历史审核记录
+	 * @param LOANSID
+	 * @return
+	 */
+	@Override
+	public int passMessage(Integer LOANSID) {
+		return loanAuditDao.passMessage(LOANSID);
+	}
+
+	/**
+	 * 驳回存历史审核记录
+	 * @param LOANSID
+	 * @return
+	 */
+	@Override
+	public int rejectMessage(Integer LOANSID) {
+		return loanAuditDao.rejectMessage(LOANSID);
+	}
 }

@@ -28,18 +28,46 @@ public class ShiroConfig {
 		//拦截器.
 		Map<String,String> filterChainDefinitionMap = new LinkedHashMap<String,String>();
 		// 配置不会被拦截的链接 顺序判断
+		//放开static resources
+		filterChainDefinitionMap.put("/image/**", "anon");
 		filterChainDefinitionMap.put("/images/**", "anon");
 		filterChainDefinitionMap.put("/css/**", "anon");
+		filterChainDefinitionMap.put("/asset/**", "anon");
 		filterChainDefinitionMap.put("/assets/**", "anon");
 		filterChainDefinitionMap.put("/js/**", "anon");
 		filterChainDefinitionMap.put("/script/**", "anon");
-		filterChainDefinitionMap.put("/toLogin", "anon");
-		filterChainDefinitionMap.put("/toRegister", "anon");
 		filterChainDefinitionMap.put("/style/**", "anon");
+		//放开登录注册以及首页
 		filterChainDefinitionMap.put("/login", "anon");
-		filterChainDefinitionMap.put("/toRegister", "anon");
+		filterChainDefinitionMap.put("/toIndex", "anon");
+		filterChainDefinitionMap.put("/toLogin","anon");
+		filterChainDefinitionMap.put("/toRegister","anon");
+		//未登录放开首页贷款信息
+		filterChainDefinitionMap.put("/indexInformation","anon");
+		filterChainDefinitionMap.put("/indexInformationDiYa","anon");
+		//前台公告放开
+		filterChainDefinitionMap.put("/getNoteceListMap","anon");
+		filterChainDefinitionMap.put("/toNoticelist","anon");
+		//未登录放开贷款页信息
+		filterChainDefinitionMap.put("/toInvest", "anon");
+		filterChainDefinitionMap.put("/toDetail", "anon");
+		filterChainDefinitionMap.put("/invest", "anon");
+		filterChainDefinitionMap.put("/investment", "anon");
+		filterChainDefinitionMap.put("/investmentAmount", "anon");
+		filterChainDefinitionMap.put("/investmentInformation", "anon");
 		filterChainDefinitionMap.put("/user/**", "anon");
 		filterChainDefinitionMap.put("/record/**", "anon");
+		filterChainDefinitionMap.put("/getSessoinUserInfo", "anon");
+		//未登录放开锦囊
+		filterChainDefinitionMap.put("/tojinNang","anon");
+		filterChainDefinitionMap.put("/getJinNangListMap","anon");
+		filterChainDefinitionMap.put("/getJinNangXinXi","anon");
+		filterChainDefinitionMap.put("/getCommentList","anon");
+
+		filterChainDefinitionMap.put("/","anon");
+
+
+
 		//配置退出 过滤器,其中的具体的退出代码Shiro已经替我们实现了
 		filterChainDefinitionMap.put("/logout", "logout");
 		//<!-- 过滤链定义，从上向下顺序执行，一般将/**放在最为下边 -->:这是一个坑呢，一不小心代码就不好使了;

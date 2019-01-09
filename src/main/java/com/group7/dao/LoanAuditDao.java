@@ -92,6 +92,16 @@ public interface LoanAuditDao {
 	int passReason(@Param("ls") Integer LOANSID);
 
 	/**
+	 * 通过存历史审核记录
+	 * @param LOANSID
+	 * @return
+	 */
+	@Insert( "insert into tb_auditrecord(AUDITRECORDID,LOANSID,AUDITSTYPE,AUDITSTATE,TIME)\n"
+			+"values(seq_tb_auditrecord_id.nextval,#{LOANSID},'1','1',sysdate)"
+			)
+	int passMessage( Integer LOANSID);
+
+	/**
 	 * 驳回消息
 	 * @param LOANSID
 	 * @return
@@ -102,4 +112,14 @@ public interface LoanAuditDao {
 			+"(select userid from tb_loans where LOANSID=#{ls}),'招标审核驳回')"
 			+"</script>")
 	int rejectReson(@Param("ls") Integer LOANSID);
+
+	/**
+	 * 驳回存历史审核记录
+	 * @param LOANSID
+	 * @return
+	 */
+	@Insert( "insert into tb_auditrecord(AUDITRECORDID,LOANSID,AUDITSTYPE,AUDITSTATE,TIME)\n"
+			+"values(seq_tb_auditrecord_id.nextval,#{LOANSID},'1','2',sysdate)"
+	)
+	int rejectMessage( Integer LOANSID);
 }

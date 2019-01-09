@@ -138,6 +138,11 @@
         .cf{
             clear:both;
         }
+
+        .marry{
+            margin-left: 5px;
+            margin-right: 15px;
+        }
     </style>
     <script type="text/javascript" src="js/jquery3.3.1.min.js"></script>
     <script type="text/javascript" src="js/jquery.form.js"></script>
@@ -158,6 +163,36 @@
             <input type="text" name="idNum" class="edit" id="card_no" placeholder="请输入您的身份证号码"/>
         </div>
     </div>
+    <div class="info_list">
+        <div class="list_left">学历：</div>
+        <div class="list_right">
+            <select id="education" class="edit" name="education">
+                <option value="0">请选择您的学历</option>
+                <option value="初中或以下">初中或以下</option>
+                <option value="高中/中专">高中/中专</option>
+                <option value="大专">大专</option>
+                <option value="本科">本科</option>
+                <option value="硕士或研究生以上">硕士或研究生以上</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="info_list">
+        <div class="list_left">婚姻状况：</div>
+        <div class="list_right">
+            未婚<input type="radio" name="marriage" class="marry" value="未婚" checked="checked"/>
+            已婚<input type="radio" name="marriage" class="marry" value="已婚"/>
+            离异<input type="radio" name="marriage" class="marry" value="离异"/>
+        </div>
+    </div>
+
+    <div class="info_list">
+        <div class="list_left">收入情况：</div>
+        <div class="list_right">
+            <input type="text" name="basicIncome" class="edit" id="basicIncome" placeholder="请填写您的收入情况"/>
+        </div>
+    </div>
+
     <div class="info_list" style="border-bottom:none;">
         <div class="list_left2">身份证上传<span>(请上传身份证正反面，图片保持清晰)</span></div>
     </div>
@@ -235,6 +270,18 @@
     }
     //申请
     function checkForm(){
+        if($("#real_name").val().trim()==""){
+            alert("请输入您的真实姓名");
+            return false;
+        }
+        if($("#education").val()==0){
+            alert("请选择您的学历");
+            return false;
+        }
+        if($("#basicIncome").val().trim()==""){
+            alert("请填写您的收入状况");
+            return false;
+        }
         var cardNo=$('#card_no');
         if(cardNo.val() &&  /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test(cardNo.val())){
 
@@ -251,7 +298,6 @@
             alert('请上传身份证反面照！');
             return false;
         }
-        alert(cardNo.val());
 
        /* //提交表单
         $("#form1").ajaxSubmit(function (message) {
@@ -274,7 +320,7 @@
 
 
         });*/
-        //return false;
+        // return false;
     }
 </script>
 </body>

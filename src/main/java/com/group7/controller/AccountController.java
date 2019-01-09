@@ -10,6 +10,7 @@ import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -53,7 +54,6 @@ public class AccountController {
     public String accountList(Model model){
         Object userSession = session.getAttribute("userSession");
         String userName = userSession+"";
-        System.out.println("打印用户名字："+userName);
         //获取账户总揽页面所需要的信息
         Map accountList = accountService.accountInfo(userName);
         //获取账户设置页面所需要的信息
@@ -64,15 +64,12 @@ public class AccountController {
         int userInformatioId = accountService.getUserInformatioId(userAccountId);
         //获取用户的认证状态
         int state = accountService.getState(userInformatioId);
-        System.out.println("身份证的状态"+state);
-        System.out.println("accountList的值："+accountList);
         //放入model中实时取值
         model.addAttribute("state",state);
         accountList.put("state",state);
         accountList.put("userName",userName);
         //调用map合并工具类将两个map合并成一个map
         Map<String,Object> resultMap = MapUtil.mergeMaps(new Map[]{accountList,accountSet});
-        System.out.println("测试合并后的map"+resultMap);
         session.setAttribute("accountList",resultMap);
         return "yirenbaopage/GRZX";
     }
@@ -98,7 +95,6 @@ public class AccountController {
      */
     @RequestMapping("/showFtp")
     public ResponseEntity showFtp(String fileName){
-        System.out.println(fileName);
         try {
             // 由于是读取本机的文件，file是一定要加上的， path是在application配置文件中的路径
             Resource resource = resourceLoader.getResource("ftp://ftpadmin:yanhaotian@39.96.8.65/images/"+fileName);
@@ -120,7 +116,6 @@ public class AccountController {
         String userName =userSession+"";
         //查找出来的用户支付密码
         int pwd = accountService.payPwd(userName);
-        System.out.println("用户的密码:"+pwd);
         Map tempMap = new HashMap();
         if(pwd==payPassword_rsainput){
             tempMap.put("msg","success");
@@ -176,10 +171,8 @@ public class AccountController {
     public Map<String,String> getHeadImg(){
         Object userSession = session.getAttribute("userSession");
         String userName =userSession+"";
-        System.out.println(userName+"用户名");
         //查找出来的用户支付密码
         String headPic = accountService.headPic(userName);
-        System.out.println("用户的头像:"+headPic);
         Map tempMap = new HashMap();
         if(headPic!=null&&headPic!=""){
             //如果取到了头像，说明用户修改过头像，直接把数据库中存的头像给他
@@ -199,7 +192,6 @@ public class AccountController {
     @RequestMapping("/addImg")
     @ResponseBody
     public Map<String,String> addHeadImg(@RequestParam String imgName){
-        System.out.println(imgName+"图片的名称传过来了");
         Map accountList =(Map)session.getAttribute("accountList");
         Integer o = Integer.valueOf(accountList.get("USERINFORMATIONID")+"");
         Map tempMap = new HashMap();
@@ -231,15 +223,16 @@ public class AccountController {
         //将从session中取出的userinformationid转换成integer类型
         Integer o = Integer.valueOf(accountList.get("USERINFORMATIONID")+"");
         int state = accountService.getState(o);
+        //获取用户支付密码
+        String payPwd = accountService.getPayPwd(o);
         String phone=accountSet.get("USERPHONE")+"";
         String password=accountSet.get("PASSWORD")+"";
         String bankcardnumbers=accountSet.get("BANKCARDNUMBERS")+"";
-        System.out.println("银行卡号为"+bankcardnumbers);
+        model.addAttribute("payPwd",payPwd);
         model.addAttribute("phone",phone);
         model.addAttribute("password",password);
         model.addAttribute("state",state);
         model.addAttribute("bankcardnumbers",bankcardnumbers);
-//        System.out.println(accountList);
 //        accountList.put("userName",userName);
         //调用map合并工具类将两个map合并成一个map
 //        Map<String,Object> resultMap = MapUtil.mergeMaps(new Map[]{accountList,accountSet});
@@ -306,18 +299,14 @@ public class AccountController {
         //创建返回值的map
         Map tempMap = new HashMap();
         if(!oldPwd.equals(userPwd)){
-            System.out.println("输入的原来的密码："+oldPwd+"-----原来的密码："+userPwd);
             //输入的原密码错误
             tempMap.put("msg","fail");
-            System.out.println("错误");
         }else{
-            System.out.println("新密码"+newPwd);
             userMap.put("password",newPwd);
             userMap.put("userName",userName);
             accountService.changePwd(userMap);
             //密码正确 更新成功
             tempMap.put("msg","success");
-            System.out.println("成功");
         }
         return tempMap;
     }
@@ -349,6 +338,42 @@ public class AccountController {
     }
 
     /**
+     * 修改用户支付密码
+     * @param newPayPwd
+     * @return
+     */
+    @RequestMapping("/changePayPwd")
+    @ResponseBody
+    public Map<String,String> changePayPwd(@RequestParam String newPayPwd,String oldPayPwd){
+        //从session中获取用户的账户信息 是一个map
+        Object accountList = session.getAttribute("accountList");
+        //将object转回成map
+        Map tempAccount = (Map) session.getAttribute("accountList");
+        //获取userinformationid
+        Object o = tempAccount.get("USERINFORMATIONID");
+        //将userinformationid从Object转换为integer类型
+        Integer userinformationid = Integer.valueOf(o+"");
+        //获取用户数据库中的支付密码
+        String payPwd = accountService.getPayPwd(userinformationid);
+        //创建一个map当返回参数
+        Map msgMap = new HashMap();
+        //判断用户输入的原密码和数据库中的密码是否一致
+        if(payPwd.equals(oldPayPwd)){
+            //如果密码一致 进行修改支付密码操作
+            int i = accountService.changePayPwd(newPayPwd, userinformationid);
+            if(i>0){
+                msgMap.put("msg","success");
+            }else {
+                msgMap.put("msg","fail");
+            }
+        }else{
+            //输入的原密码与数据库中的密码不一致
+            msgMap.put("msg","deny");
+        }
+        return msgMap;
+    }
+
+    /**
      * 身份证验证方法(省略了OCR接口验证)
      * @param realName
      * @param idNum
@@ -358,13 +383,19 @@ public class AccountController {
      */
     @RequestMapping("/identityIdCard")
     //@ResponseBody
-    public String IdCard(@RequestParam String realName,String idNum,MultipartFile front,MultipartFile behind,Model model) {
+    public String IdCard(@RequestParam String realName,
+                         String idNum,
+                         MultipartFile front,
+                         MultipartFile behind,
+                         Model model,
+                         String education,
+                         String marriage,
+                         String basicIncome) {
         //OCR身份证识别
 //        String res=new ShowApiRequest("http://route.showapi.com/1429-1","76850","3ae9b0a4bcb346dabeca64447a7406f4")
 //                .addTextPara("imgData","")
 //                .addTextPara("type","")
 //                .post();
-        System.out.println(idNum+"..........."+realName);
         //从session中获取用户的账户信息 是一个map
         Object accountList = session.getAttribute("accountList");
         //将object转回成map
@@ -375,13 +406,13 @@ public class AccountController {
         Integer userinformationid = Integer.valueOf(o+"");
         //调用身份证查询方法 根据身份证号识别籍贯性别等信息
         Map<String, Object> idCardMap = getInfoByIdCard.getIdCard(idNum);
-        //接口方法返回来的性别  1男 2女
-        int sex = Integer.valueOf(idCardMap.get("sex")+"");
-        System.out.println(sex+"性别......");
+        //接口方法返回来的性别
+        String sex = idCardMap.get("sex")+"";
         String address = idCardMap.get("address")+"";
-//       Object birthday = idCardMap.get("birthday");出生年月日信息
-        System.out.println("地址：---------"+address);
-        accountService.addIdCardNum(realName,sex,idNum,address,userinformationid);
+        //出生年月日信息
+        String birthday = idCardMap.get("birthday")+"";
+        //将验证信息存入到数据库
+        accountService.addIdCardNum(realName,sex,idNum,address,education,marriage,basicIncome,birthday,userinformationid);
         //创建一个tempMap当返回值带参
         Map tempMap = new HashMap();
         //创建一个imgMap传入方法中 将图片地址插入数据库
@@ -395,6 +426,8 @@ public class AccountController {
         imgMap.put("userinformationid",userinformationid);
         imgMap.put("frontImgName",frontImgName);
         imgMap.put("behindImgName",behindImgName);
+        //上传认证信息后先更新成待审核状态1
+        stateMap.put("certification",1);
         stateMap.put("userinformationid",userinformationid);
         //将身份证图片路径添加到数据库
         int i = accountService.addIdCard(imgMap);
@@ -479,6 +512,82 @@ public class AccountController {
         double availMoney = accountService.getAvailMoney(userinformationid);
         model.addAttribute("availMoney",availMoney);
         return "yirenbaopage/个人中心-提现";
+    }
+
+    /**
+     * 后台审核信息列表数据
+     * @return
+     */
+    @RequestMapping("/IdentityAudit")
+    @ResponseBody
+    public Map IdentityAudit(@RequestBody Map map){
+        System.out.println("当前的map"+map);
+            Map rmap=new HashMap();
+            rmap.put("data",accountService.identityAudit(map));
+            rmap.put("total",accountService.identityAuditSum());
+            System.out.println("--------------"+rmap);
+            return rmap;
+    }
+
+
+    @RequestMapping("/toIdentityAudit")
+    public String toIdentityAudit(){
+        return "backStage/identityAudit";
+    }
+
+    /**
+     * 后台审核通过方法
+     * @param userinformationid
+     * @return
+     */
+    @RequestMapping("/throughAuditing")
+    @ResponseBody
+    public Map throughAuditing(@RequestBody Map map){
+        System.out.println("后台审核传过来的map");
+        Map stateMap = new HashMap();
+        Map flagMap = new HashMap();
+        //上传认证信息后先更新成已通过状态2
+        stateMap.put("certification",2);
+        stateMap.put("userinformationid",Integer.valueOf(map.get("userinformationid")+""));
+        //上传认证信息后先更新成已通过状态2
+        int i = accountService.changeState(stateMap);
+        Map sysMsgMap = new HashMap();
+        sysMsgMap.put("messagetype","审核");
+        sysMsgMap.put("messageContent","尊敬的客户，您好，您的实名认证审核已通过！请准守平台规则，合理消费，谨防上当受骗！");
+        sysMsgMap.put("userid",Integer.valueOf(map.get("userid")+""));
+        //审核通过给用户发送系统消息
+        int i1 = accountService.addSysMsg(sysMsgMap);
+        if(i>0&&i1>0){
+            flagMap.put("msg","success");
+        }else{
+            flagMap.put("msg","fail");
+        }
+        return flagMap;
+    }
+
+    @RequestMapping("/addSysMsg")
+    @ResponseBody
+    public Map addSysMsg(@RequestBody Map map){
+        Map msgMap = new HashMap();
+        Map sysMsgMap = new HashMap();
+        sysMsgMap.put("messagetype","审核");
+        sysMsgMap.put("messageContent","尊敬的客户，您好，非常抱歉您的实名认证审核未通过！原因："+(map.get("reason")+""));
+        sysMsgMap.put("userid",Integer.valueOf(map.get("userid")+""));
+        //驳回后将通过状态变成未认证
+        Map stateMap = new HashMap();
+        //驳回后将通过状态变成未认证0
+        stateMap.put("certification",0);
+        stateMap.put("userinformationid",Integer.valueOf(map.get("userinformationid")+""));
+        //更改成未认证状态
+        accountService.changeState(stateMap);
+        //将审核不通过的信息发送到系统消息
+        int i = accountService.addSysMsg(sysMsgMap);
+        if(i>0){
+            msgMap.put("msg","success");
+        }else{
+            msgMap.put("msg","fail");
+        }
+        return msgMap;
     }
 
 }

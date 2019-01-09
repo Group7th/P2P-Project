@@ -73,8 +73,8 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public int addIdCardNum(String realName, int sex, String idNum, String address, int userinformationid) {
-        return accountInfoDao.addIdCardNum(realName,sex,idNum,address,userinformationid);
+    public int addIdCardNum(String realName, String sex, String idNum, String address, String education, String marriage, String basicIncome,String birthday ,int userinformationid) {
+        return accountInfoDao.addIdCardNum(realName,sex,idNum,address,education,marriage,basicIncome,birthday,userinformationid);
     }
 
     @Override
@@ -125,5 +125,30 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public int addFeeToPool(double costMoney) {
         return accountInfoDao.addFeeToPool(costMoney);
+    }
+
+    @Override
+    public String getPayPwd(int userinformationid) {
+        return accountInfoDao.getPayPwd(userinformationid);
+    }
+
+    @Override
+    public int changePayPwd(String newPayPwd, int userinformationid) {
+        return accountInfoDao.changePayPwd(newPayPwd,userinformationid);
+    }
+
+    @Override
+    public List<Map> identityAudit(Map map) {
+        return accountInfoDao.identityAudit(map);
+    }
+
+    @Override
+    public int identityAuditSum() {
+        return accountInfoDao.identityAuditSum();
+    }
+
+    @Override
+    public int addSysMsg(Map map) {
+        return accountInfoDao.addSysMsg(map);
     }
 }

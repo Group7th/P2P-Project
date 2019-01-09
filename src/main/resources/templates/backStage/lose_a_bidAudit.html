@@ -70,12 +70,12 @@
             <el-table-column
                     prop="LOANSID"
                     label="贷款编号"
-                    width="150">
+                    width="120">
             </el-table-column>
             <el-table-column
                     prop="USERNAME"
                     label="贷款人"
-                    width="150">
+                    width="120">
             </el-table-column>
             <el-table-column
                     prop="LOANSMONEY"
@@ -85,7 +85,7 @@
             <el-table-column
                     prop="LOANSINTERESTRATE"
                     label="贷款利率(%)"
-                    width="150">
+                    width="120">
             </el-table-column>
             <el-table-column
                     prop="REFUNDDEADLINE"
@@ -94,24 +94,24 @@
             </el-table-column>
             <el-table-column
                     label="贷款类型"
-                    width="200">
+                    width="150">
                 <template slot-scope="scope">
                     <el-tag :type="scope.row.LOANSTYPE | statusFilter">{{scope.row.LOANSTYPE | formatStata}}</el-tag>
-                </template>
+                 </template>
             </el-table-column>
             <el-table-column
                     prop="INVESTMENTAMOUNT"
                     label="总投标金额"
-                    width="200">
+                    width="150">
             </el-table-column>
             <el-table-column
                     prop="CON"
                     label="投标人数"
-                    width="200">
+                    width="150">
             </el-table-column>
             <el-table-column
                     label="贷款状态"
-                    width="200">
+                    width="120">
                 <template slot-scope="scope">
                     <el-tag type="danger">{{scope.row.LOANSSTATE | formatState}}</el-tag>
                 </template>

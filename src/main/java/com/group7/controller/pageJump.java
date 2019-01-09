@@ -94,9 +94,10 @@ public class pageJump {
     }
 
     /**
-0     * @return
+     * 投资页面
+     0     * @return
      */
-    @RequestMapping("toDetail")
+    @RequestMapping("/toDetail")
     public String toDetail(){
         return "frontEnd/11112/detail";
     }
@@ -132,7 +133,7 @@ public class pageJump {
      * 跳转公告列表
      * @return
      */
-    @RequestMapping("toNoticelist")
+    @RequestMapping("/toNoticelist")
     public String toNoticelist(){
         return "frontEnd/noticelist";
     }
@@ -238,7 +239,7 @@ public class pageJump {
      */
     @RequestMapping("toGRZXZiJin")
     public String toGRZXZiJin(){
-        return "yirenbaopage/个人中心-资金记录 .html";
+        return "yirenbaopage/个人中心-资金记录.html";
     }
 
 
@@ -317,7 +318,7 @@ public class pageJump {
     }
 
     /**
-     * 满标一审信息表
+     * 满标审核信息表
      * @return
      */
     @RequestMapping("/toIoansAccomplishAudit")
@@ -326,6 +327,14 @@ public class pageJump {
     }
 
 
+    /**
+     * 流标审核
+     * @return
+     */
+    @RequestMapping("/toLoseABidAudit")
+    public String toLoseABidAudit(){
+        return "backStage/lose_a_bidAudit";
+    }
     /**
      * 公告管理
      * @return
@@ -344,7 +353,14 @@ public class pageJump {
         return "permission/jinnangGuanLi";
     }
 
-
+    /**
+     * 后台统计图表
+     * @return
+     */
+    @RequestMapping("/toBackindex")
+    public String toBackindex(){
+        return "frontEnd/backindex";
+    }
 
 
 

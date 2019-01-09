@@ -3,7 +3,6 @@ package com.group7.controller;
 
 import com.group7.service.JinNangService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.mail.MailProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 

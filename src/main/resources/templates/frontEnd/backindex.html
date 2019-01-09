@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Now UI Dashboard by Creative Tim</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <!-- CSS Files -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/now-ui-dashboard.css?v=1.0.1" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="assets/demo/demo.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style/style.css"/>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript" src="js/axios.min.js"></script>
+    <script src="js/echarts.js"></script>
+    <script src="js/dark.js"></script>
+    <script src="js/macarons.js"></script>
+    <script src="js/roma.js"></script>
+</head>
+
+<body >
+
+
+<!-- End Navbar -->
+<div class="panel-header panel-header-lg" style="height: 100px;">
+
+
+
+
+</div>
+
+
+
+
+<div class="content">
+    <div style="width: 97%;  border-radius:20px;background-color: white;
+        box-shadow: darkgrey 10px 10px 30px 5px ; margin-left: 25px;margin-bottom: 50px;position:absolute;top: 50px ">
+
+
+    <div id="main" style="width: 50%;height:600px; float: left"></div>
+        <div id="main2" style="width: 50%;height:600px;float: left"></div>
+
+
+
+    </div>
+
+</div>
+
+<script>
+
+    var daiKuan=[];
+    var huanKuan=[];
+
+    $.ajax({
+        url: "getJieDaiXinxi",
+        type: "POST",
+        dataType: "json",
+        success: function (data) {
+
+            for(var i=0;i<data.daikuan.length;i++){
+                daiKuan.push(data.daikuan[i].MONEY)
+            }
+            for(var k=0;k<data.huankuan.length;k++){
+                huanKuan.push(data.huankuan[k].MONEY)
+            }
+
+            var myChart = echarts.init(document.getElementById('main'), 'macarons');
+
+            option = {
+                title: {
+                    text: '2018',
+                    subtext: ''
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data: ['放款', '回款']
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        dataView: {show: true, readOnly: false},
+                        magicType: {show: true, type: ['line', 'bar']},
+                        restore: {show: true},
+                        saveAsImage: {show: true}
+                    }
+                },
+                calculable: true,
+                xAxis: [
+                    {
+                        type: 'category',
+                        data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value'
+                    }
+                ],
+                series: [
+                    {
+                        name: '放款',
+                        type: 'bar',
+                        data: daiKuan,
+                        markPoint: {
+                            data: [
+                                {type: 'max', name: '最大值'},
+                                {type: 'min', name: '最小值'}
+                            ]
+                        },
+                        markLine: {
+                            data: [
+                                {type: 'average', name: '平均值'}
+                            ]
+                        }
+                    },
+                    {
+                        name: '回款',
+                        type: 'bar',
+                        data: huanKuan,
+                        markPoint: {
+                            data: [
+                                {name: '年最高', value: 182.2, xAxis: 7, yAxis: 183},
+                                {name: '年最低', value: 2.3, xAxis: 11, yAxis: 3}
+                            ]
+                        },
+                        markLine: {
+                            data: [
+                                {type: 'average', name: '平均值'}
+                            ]
+                        }
+                    }
+                ]
+            };
+
+            myChart.setOption(option);
+        }
+    });
+</script>
+
+
+<script>
+    var myChart = echarts.init(document.getElementById('main2'), 'macarons');
+
+
+    var colors = ['#5793f3', '#d14a61', '#675bba'];
+
+
+    option = {
+        color: colors,
+
+        tooltip: {
+            trigger: 'none',
+            axisPointer: {
+                type: 'cross'
+            }
+        },
+        legend: {
+            data:['充值', '提现']
+        },
+        grid: {
+            top: 70,
+            bottom: 50
+        },
+        xAxis: [
+            {
+                type: 'category',
+                axisTick: {
+                    alignWithLabel: true
+                },
+                axisLine: {
+                    onZero: false,
+                    lineStyle: {
+                        color: colors[1]
+                    }
+                },
+                axisPointer: {
+                    label: {
+                        formatter: function (params) {
+                            return '充值  ' + params.value
+                                + (params.seriesData.length ? '：' + params.seriesData[0].data : '');
+                        }
+                    }
+                },
+                data: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
+            },
+            {
+                type: 'category',
+                axisTick: {
+                    alignWithLabel: true
+                },
+                axisLine: {
+                    onZero: false,
+                    lineStyle: {
+                        color: colors[0]
+                    }
+                },
+                axisPointer: {
+                    label: {
+                        formatter: function (params) {
+                            return '提现  ' + params.value
+                                + (params.seriesData.length ? '：' + params.seriesData[0].data : '');
+                        }
+                    }
+                },
+                data: []
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value'
+            }
+        ],
+        series: [
+            {
+                name:'充值',
+                type:'line',
+                xAxisIndex: 1,
+                smooth: true,
+                data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+            },
+            {
+                name:'提现',
+                type:'line',
+                smooth: true,
+                data: [3.9, 5.9, 11.1, 18.7, 48.3, 69.2, 231.6, 46.6, 55.4, 18.4, 10.3, 0.7]
+            }
+        ]
+    };
+
+
+    myChart.setOption(option);
+</script>
+</body>
+
+
+</html>

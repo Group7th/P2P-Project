@@ -57,4 +57,18 @@ public interface LoanAuditService {
 	 * @return
 	 */
 	int rejectReson(Integer LOANSID);
+
+	/**
+	 * 通过存历史审核记录
+	 * @param LOANSID
+	 * @return
+	 */
+	int passMessage( Integer LOANSID);
+
+	/**
+	 * 驳回存历史审核记录
+	 * @param LOANSID
+	 * @return
+	 */
+	int rejectMessage( Integer LOANSID);
 }

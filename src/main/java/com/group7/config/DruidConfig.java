@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * className:DruidConfig
  * discriptoin:
- * Druid是Java语言中最好的数据库连接池。Druid能够提供强大的监控和扩展功能
+ * Druid是Java语言中最好的数据库连接池。Druid能够提供强大的数据库监控和扩展功能
  * author:毛宇
  * createTime:2018-11-23 16:04
  */

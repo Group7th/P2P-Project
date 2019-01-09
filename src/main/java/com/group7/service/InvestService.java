@@ -47,7 +47,7 @@ public interface InvestService {
      * @param loansId
      * @return
      */
-    Integer investmentVerify(String userName,Integer loansId);
+    Integer investmentVerify(String userName, Integer loansId);
 
     /**
      * 投资金额 添加到 投资表 总投资金额中
@@ -90,7 +90,7 @@ public interface InvestService {
      * @param invest
      * @return
      */
-    int moneyCorporation (InvestmentAmount invest);
+    int moneyCorporation(InvestmentAmount invest);
 
     /**
      * 投资成功  添加 发送系统消息提示客户

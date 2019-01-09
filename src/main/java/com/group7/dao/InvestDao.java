@@ -108,7 +108,7 @@ public interface InvestDao {
      * @param invest
      * @return
      */
-    int moneyCorporation (InvestmentAmount invest);
+    int moneyCorporation(InvestmentAmount invest);
 
 
     }

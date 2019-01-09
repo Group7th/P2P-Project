@@ -46,4 +46,25 @@ public interface IoansAccomplishAuditService {
      * @return
      */
     int loanReview(Map map);
+
+
+    /**
+     * 每个贷款的投资记录
+     * @return
+     */
+    List<Map> InvestmentRecord(Map map);
+
+    /**
+     * 查询贷款审核记录表
+     * @param map
+     * @return
+     */
+    List<Map> loansRecord(Map map);
+
+    /**
+     *  查询贷款审核记录表 条数
+     * @param map
+     * @return
+     */
+    int getLoansRecordCount(Map map);
 }

@@ -22,54 +22,6 @@
   <!-- 引入组件库 -->
   <script src="https://unpkg.com/element-ui/lib/index.js"></script>
   <script type="text/javascript" src="js/moment.min.js"></script>
-  <script type="text/javascript">
-      $(function () {
-      //     $.ajax({
-      //         url:"record/moneyList",
-      //         type:"post",
-      //         data:{pageNo:1,pageSize:8},
-      //         success:function (data) {
-      //             console.log(data.data);
-      //             for(var i=0;i<data.data.length;i++){
-      //                 var WATERCOURSETIME=new Date(data.data[i].WATERCOURSETIME).toJSON();
-      //                 //格式化浏览器时间
-      //                 var dateTime = new Date(+new Date(WATERCOURSETIME)+8*3600*1000).toISOString().replace(/T/g,' ').replace(/\.[\d]{3}Z/,'');
-      //                 var liTemp ='<li>' +'<span class="pmain-title1 pmain-height">'+dateTime+'</span>'+
-      //                     '<span class="pmain-title1 pmain-height" style=\"padding-left:40px\">'+data.data[i].WATERCOURSETYPE+'</span>'+
-      //                     '<span class="pmain-title1 pmain-height" style="padding-left:55px">'+data.data[i].WATERCOURSEMONEY+'</span>'+
-      //                     '<span class="pmain-title1 pmain-height" style="padding-left:0px">'+data.data[i].BALANCE+'</span>'+
-      //                     '<span class="pmain-title1 pmain-height" style="padding-left:0px">'+data.data[i].CHARGEWAY+'</span>'+
-      //                     '</li>';
-      //                 $("#ulList").append(liTemp);
-      //             }
-      //         }
-      //     });
-      // })
-      //
-      // function getList(pageNoTemp,pageSizeTemp){
-      //     $("#ulList").empty();
-      //     $.ajax({
-      //         url:"record/moneyList",
-      //         type:"post",
-      //         data:{pageNo:pageNoTemp,pageSize:pageSizeTemp},
-      //         success:function (data) {
-      //             console.log(data.data);
-      //             for(var i=0;i<data.data.length;i++){
-      //                 var WATERCOURSETIME=new Date(data.data[i].WATERCOURSETIME).toJSON();
-      //                 //格式化浏览器时间
-      //                 var dateTime = new Date(+new Date(WATERCOURSETIME)+8*3600*1000).toISOString().replace(/T/g,' ').replace(/\.[\d]{3}Z/,'')
-      //                 var liTemp ='<li>' +'<span class="pmain-title1 pmain-height">'+dateTime+'</span>'+
-      //                     '<span class="pmain-title1 pmain-height" style=\"padding-left:40px\">'+data.data[i].WATERCOURSETYPE+'</span>'+
-      //                     '<span class="pmain-title1 pmain-height" style="padding-left:55px">'+data.data[i].WATERCOURSEMONEY+'</span>'+
-      //                     '<span class="pmain-title1 pmain-height" style="padding-left:0px">'+data.data[i].BALANCE+'</span>'+
-      //                     '<span class="pmain-title1 pmain-height" style="padding-left:0px">'+data.data[i].CHARGEWAY+'</span>'+
-      //                     '</li>';
-      //                 $("#ulList").append(liTemp);
-      //             }
-      //         }
-      //     });
-      });
-  </script>
 </head>
 <body>
 
@@ -83,9 +35,9 @@
       <a href="#"><img src="images/zxcf_qq.png" alt=""></a>
     </div>
     <div class="zxcf_top_r fr">
-      <a href="toLogin" class="curspan">立即登录</a>
+      <a href="UserExit" class="curspan">注销登陆</a>
       <span>|</span>
-      <a href="toRegister">免费注册</a>
+      <a href="UserExit">切换用户</a>
       <span>|</span>
       <a href="toproblem">常见问题</a>
     </div>
@@ -136,37 +88,6 @@
     <div class="personal-main">
       <div class="personal-money" style="width: 950px">
         <h3><i>资金记录</i></h3>
-            <!--<div id="typeboxstyle" class="select-date"> <span class="select-title" style="display:inline-block;height:25px;line-height:20px;">全部</span>-->
-              <!--<ul>-->
-                <!--<li>全部</li>-->
-                <!--<li value="ti_balance">转入到余额</li>-->
-                <!--<li value="to_balance">从余额转出</li>-->
-                <!--<li value="to_frozen">从冻结金额中转出</li>-->
-                <!--<li value="freeze">冻结</li>-->
-                <!--<li value="unfreeze">解冻</li>-->
-              <!--</ul>-->
-
-
-              <!--<el-form-item label="操作类型">-->
-                <!--<el-select v-model="options" clearable placeholder="全部">-->
-                  <!--<el-option  v-for="item in options"  :key="item.value" :label="item.label" :value="item.value"></el-option>-->
-                <!--</el-select>-->
-              <!--</el-form-item>-->
-
-
-            <!--</div>-->
-            <!--<span class="money-date2">查询时间</span>-->
-            <!--<div id="select-date" class="select-date"> <span class="select-title" style="display:inline-block;height:25px;line-height:20px;">全部</span>-->
-              <!--<ul>-->
-                <!--<li value="0d">今天</li>-->
-                <!--<li value="1w">最近一周</li>-->
-                <!--<li value="1m">一个月</li>-->
-                <!--<li value="6m">六个月</li>-->
-                <!--<li>全部</li>-->
-              <!--</ul>-->
-            <!--</div>-->
-            <!--<button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only btn-sx"><span class="ui-button-text ui-c">筛选</span></button>-->
-            <!--<button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only btn-dc"><span class="ui-button-text ui-c">导出</span></button>-->
 
   <div id="list">
     <div class="money-choose"> <span class="money-date1" style="margin-top: 8px;">操作类型</span></div>
@@ -209,10 +130,12 @@
                     fit="true">
             </el-table-column>
             <el-table-column
-                    prop="WATERCOURSETYPE"
                     label="交易类型"
                     sortable
                     fit="true">
+              <template slot-scope="scope">
+                <el-tag :type="scope.row.WATERCOURSETYPE | statusFilter">{{scope.row.WATERCOURSETYPE}}</el-tag>
+              </template>
             </el-table-column>
             <el-table-column
                     prop="WATERCOURSEMONEY"
@@ -288,6 +211,15 @@
                 _self.tableData = res.data.data;
                 _self.tableTotal = res.data.total;
             })
+        },
+        filters: {
+            statusFilter: function (status) {
+                console.log(status + "-----");
+                const statusMap = {
+                    '还款': 'success', '贷款': 'warning', '回款': 'info', '流标': 'danger' , '投资': 'info'
+                };
+                return statusMap[status]
+            }
         },
         methods: {
         //时间格式化

@@ -1,5 +1,6 @@
 package com.group7.service;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -72,15 +73,18 @@ public interface AccountService {
     int addIdCard(Map map);
 
     /**
-     * 插入姓名、用户性别、身份证和家庭地址
+     * 插入姓名、年龄、身份证、家庭住址、学历、婚姻状况、基本收入
      * @param realName
      * @param sex
      * @param idNum
      * @param address
+     * @param education
+     * @param marriage
+     * @param basicIncome
      * @param userinformationid
      * @return
      */
-    int addIdCardNum(String realName,int sex,String idNum,String address,int userinformationid);
+    int addIdCardNum(String realName,String sex,String idNum,String address,String education, String marriage,String basicIncome,String birthday,int userinformationid);
 
     /**
      * 添加银行卡号
@@ -152,4 +156,38 @@ public interface AccountService {
      * @return
      */
     int addFeeToPool(double costMoney);
+
+    /**
+     * 获取用户支付密码
+     * @param userinformationid
+     * @return
+     */
+    String getPayPwd(int userinformationid);
+
+    /**
+     * 更改支付密码
+     * @param newPayPwd
+     * @param userinformationid
+     * @return
+     */
+    int changePayPwd(String newPayPwd,int userinformationid);
+
+    /**
+     * 后台审核用户信息
+     * @return
+     */
+    List<Map> identityAudit(Map map);
+
+    /**
+     * 后台审核用户信息总量
+     * @return
+     */
+    int identityAuditSum();
+
+    /**
+     * 将审核状态发送到系统消息中
+     * @param map
+     * @return
+     */
+    int addSysMsg(Map map);
 }

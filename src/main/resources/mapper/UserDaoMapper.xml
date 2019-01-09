@@ -5,7 +5,7 @@
 <mapper namespace="com.group7.dao.UserDao">
     <!--配置文件加这个Redis-->
     <!--<cache type="org.mybatis.caches.redis.RedisCache" blocking="false"-->
-           <!--flushInterval="0" readOnly="true" size="1024" eviction="FIFO"/>-->
+    <!--flushInterval="0" readOnly="true" size="1024" eviction="FIFO"/>-->
 
     <!--useGeneratedKeys="true" keyProperty="id" keyColumn="id"-->
 
@@ -14,7 +14,7 @@
         <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Integer">
             select seq_tb_user_id.nextval from dual
         </selectKey>
-          insert into tb_user values (#{id},#{userName},#{password},1,null)
+        insert into tb_user values (#{id},#{userName},#{password},1,null)
     </insert>
 
     <!--给注册用户赋予普通用户的角色-->
